@@ -36,7 +36,7 @@ if (isDedicated) then {
 	
 	// Give warning on 1 minute to go
 	_msg = format ["You now have %1 minute to get %2k clear of %3.",1,1,_townName];
-	_msg = ["Nuclear Strike.",_msg];
+	_msg = ["Nuclear Strike",_msg];
 	_alert = [_msg] call VEMFBroadcast;
 	
 	sleep 60;
@@ -64,7 +64,7 @@ if (isDedicated) then {
 	
 	// Inform players about radiation zone
 	_msg = format ["You will need to keep clear of %1 until the radiation cloud dissipates.",_townName];
-	_msg = ["Nuclear Strike.",_msg];
+	_msg = ["Nuclear Strike",_msg];
 	_alert = [_msg] call VEMFBroadcast;
 	
 	// Delete nukepad
