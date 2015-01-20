@@ -13,7 +13,7 @@ diag_log "[NUKE]: Commencing countdown clock!";
 while {true} do
 {
 	// Wait a Random Amount
-	uiSleep ((floor(random(_timeDiff))) + (VEMFMinMissTime*60));
+	uiSleep ((floor(random(_timeDiff))) + (NUKETimerMin*60));
 	
 	// Initiate countdown
 	[] ExecVM "\FEAR\NUKE\NUKECountdown.sqf";
