@@ -10,5 +10,5 @@ if (isServer) then {
 		
 	[] ExecVM "\VEMF\init.sqf";			// Vampire missions
 	[] ExecVM "\FEAR\dynamic_ups\init_ups.sqf";	// Urban Patrol http://kronzky.info/ups/
-	[] ExecVM "\FEAR\nuke\nuke_Init.sqf"; 		// Nuke towns and cities
+	[] ExecVM "\FEAR\nuke\NUKEInit.sqf"; 		// Nuke towns and cities
 };
