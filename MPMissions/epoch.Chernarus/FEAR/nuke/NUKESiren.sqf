@@ -1,19 +1,20 @@
-// -------------
-//	NUKE Siren
-// -------------
+// -----------
+// NUKE Siren
+// -----------
 
-private["_nukeSirenLength"];
-_nukeSirenLength = 23;
+if (isServer) then {exitWith};
 
-while {(!isDedicated) && (true)} do {
+while {true} do {
 	nukeSiren = false;
+	publicVariable "nukeSiren";
+	
     	sleep 1;
 	 
     	waitUntil {nukeSiren};
 	
 	while {!nukeDetonate} do {
 		if (player distance nukeCoords < 4000) then {nukeCoords say3D "nukesiren"};
-		sleep  _nukeSirenLength;
+		sleep  23; // Length of siren sample to loop
 	};
 	
 	nukeSiren = false;
