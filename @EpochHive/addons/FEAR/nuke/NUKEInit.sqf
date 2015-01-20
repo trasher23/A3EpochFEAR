@@ -26,9 +26,9 @@ publicVariable "nukeDetonate";
 call compile preprocessFileLineNumbers "\FEAR\NUKE\NUKEFunctions.sqf";
 
 // Start the missile launch countdown!
-execVM "\FEAR\NUKE\NUKETimer.sqf";
+[] ExecVM "\FEAR\NUKE\NUKETimer.sqf";
 
 // Let's get the Marker Re-setter running for JIPs (Join In Progress) to stay updated
-execVM "\FEAR\NUKE\NUKEMarkerLoop.sqf";
+[] ExecVM "\FEAR\NUKE\NUKEMarkerLoop.sqf";
 
 diag_log "[NUKE]: Initiating NUKE.";
