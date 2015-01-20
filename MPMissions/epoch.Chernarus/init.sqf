@@ -13,6 +13,5 @@ if (!isServer) then {
 		VEMFChatMsg = nil;
 	};
 
-	"FEARNuke" addPublicVariableEventHandler { [_this select 0] ExecVM "FEAR\nuke\nuke.sqf"; };
-	"FEARNukeSiren" addPublicVariableEventHandler { [_this select 0] ExecVM "FEAR\nuke\nukeSiren.sqf"; };
+	[] ExecVM "FEAR\nuke\NUKEInit.sqf
 };
