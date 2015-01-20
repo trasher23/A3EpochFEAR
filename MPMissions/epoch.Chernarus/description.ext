@@ -41,141 +41,141 @@ class CfgRemoteExecCommands {};
 class CfgSounds
 {
     sounds[] ={introsound, deathscream, nukedaisy, nukesiren, nukenear, nukefar, nukeradiation, wolfhowl1, girlscreaming, snappingtwigs, doorcreak1, leafcrunch, metalcrash, woodlandcrunch, zombienoise1, childrenlaughing, eeriewind, doorcreak2, babycry1, glassbreak1};
-	
+    
     class introsound
     {
 		name="introsound";
 		sound[]={"FEAR\fx\introsound.ogg", db + 0, 1.0};
 		titles[] = {};
     };
-	
-	class deathscream
+    
+    class deathscream
     {
 		name="deathscream";
 		sound[]={"FEAR\fx\deathscream.ogg", db + 30, 1.0};
 		titles[] = {};
     };
-	
-	class nukedaisy
+    
+    class nukedaisy
     {
 		name="nukedaisy";
 		sound[]={"FEAR\fx\nukedaisy.ogg", db + 0, 1.0};
 		titles[] = {};
     };
-	
-	class nukesiren
+    
+    class nukesiren
     {
 		name="nukesiren";
 		sound[]={"FEAR\fx\nukesiren.ogg", db + 30, 1.0};
 		titles[] = {};
     };
-	
-	class nukenear
+    
+    class nukenear
     {
 		name="nukenear";
 		sound[]={"FEAR\fx\nukenear.ogg", db + 30, 1.0};
 		titles[] = {};
     };
-	
-	class nukefar
+    
+    class nukefar
     {
 		name="nukefar";
 		sound[]={"FEAR\fx\nukefar.ogg", db + 30, 1.0};
 		titles[] = {};
     };
-	
-	class nukeradiation
+    
+    class nukeradiation
     {
 		name="nukeradiation";
 		sound[]={"FEAR\fx\nukeradiation.ogg", db + 0, 1.0};
 		titles[] = {};
     };
-	
-	class wolfhowl1
+    
+    class wolfhowl1
     {
         name = "wolfhowl1";
         sound[] = {"FEAR\fx\wolfhowl1.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class girlscreaming
+    
+    class girlscreaming
     {
         name = "girlscreaming";
         sound[] = {"FEAR\fx\girlscreaming.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class snappingtwigs
+    
+    class snappingtwigs
     {
         name = "snappingtwigs";
         sound[] = {"FEAR\fx\snappingtwigs.ogg", db - 5, 1.0};
         titles[] = {};
     };
-	
-	class doorcreak1
+    
+    class doorcreak1
     {
         name = "doorcreak1";
         sound[] = {"FEAR\fx\doorcreak1.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class leafcrunch
+    
+    class leafcrunch
     {
         name = "leafcrunch";
         sound[] = {"FEAR\fx\leafcrunch.ogg", db - 10, 1.0};
         titles[] = {};
     };
-	
-	class metalcrash
+    
+    class metalcrash
     {
         name = "metalcrash";
         sound[] = {"FEAR\fx\metalcrash.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class woodlandcrunch
+    
+    class woodlandcrunch
     {
         name = "woodlandcrunch";
         sound[] = {"FEAR\fx\woodlandcrunch.ogg", db - 5, 1.0};
         titles[] = {};
     };
-	
-	class zombienoise1
+    
+    class zombienoise1
     {
         name = "zombienoise1";
         sound[] = {"FEAR\fx\zombienoise1.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class childrenlaughing
+    
+    class childrenlaughing
     {
         name = "childrenlaughing";
         sound[] = {"FEAR\fx\childrenlaughing.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class eeriewind
+    
+    class eeriewind
     {
         name = "eeriewind";
         sound[] = {"FEAR\fx\eeriewind.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class doorcreak2
+    
+    class doorcreak2
     {
         name = "doorcreak2";
         sound[] = {"FEAR\fx\doorcreak2.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class babycry1
+    
+    class babycry1
     {
         name = "babycry1";
         sound[] = {"FEAR\fx\babycry1.ogg", db + 0, 1.0};
         titles[] = {};
     };
-	
-	class glassbreak1
+    
+    class glassbreak1
     {
         name = "glassbreak1";
         sound[] = {"FEAR\fx\glassbreak1.ogg", db + 0, 1.0};
