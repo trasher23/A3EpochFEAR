@@ -7,11 +7,11 @@ if (!isServer) exitWith {};
 
 // The minimum time in seconds before a cruise missile launch.
 // At least this much time will pass between launches.
-NUKETimerMin = 240; // 30 minutes: 1800
+NUKETimerMin = 2; minutes
 
 // Maximum time in seconds before a cruise missile launch.
 // A cruise missile will always launch before this much time has passed.
-NUKETimerMax = 240; // 1.5 hours: 5400
+NUKETimerMax = 2;
 
 // Blast radius in km
 nukeRadius = 1000;
