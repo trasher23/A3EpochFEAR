@@ -32,7 +32,7 @@ if (isDedicated) then {
 			_x setDamage 1;
 		} else {
 			// The rest are set on fire
-			[_x,10,time,false,true] spawn BIS_Effects_Burn;
+			//[_x,10,time,false,true] spawn BIS_Effects_Burn;
 		};
 		
 		sleep 0.125;
