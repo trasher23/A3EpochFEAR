@@ -13,5 +13,5 @@ if (!isServer) then {
 		VEMFChatMsg = nil;
 	};
 
-	[] ExecVM "FEAR\nuke\NUKEInit.sqf
+	[] ExecVM "FEAR\nuke\NUKEInit.sqf";
 };
