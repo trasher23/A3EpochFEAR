@@ -1,22 +1,6 @@
-// ------------------
-//	NUKE Environment
-// ------------------
-
-earthQuake = {
-	playSound "eq";
-	for "_i" from 0 to 300 do {
-		_vx = vectorUp _this select 0;
-		_vy = vectorUp _this select 1;
-		_vz = vectorUp _this select 2;
-		_coe = 0.03 - (0.0001 * _i);
-		_this setVectorUp [
-			_vx+(-_coe+random (2*_coe)),
-			_vy+(-_coe+random (2*_coe)),
-			_vz+(-_coe+random (2*_coe))
-		];
-		sleep (0.01 + random 0.01);
-	};
-};
+// -----------------
+// NUKE Environment
+// -----------------
 
 nukeQuake = {
 	for "_i" from 0 to 140 do {
@@ -30,6 +14,8 @@ nukeQuake = {
 			_vz+(-_coe+random (2*_coe))
 		];
 		sleep (0.01 + random 0.01);
+		
+		[player, 0, 0] call BIS_fnc_setPitchBank;
 	};
 };
 
@@ -132,10 +118,11 @@ nukeAsh = {
 	snow setDropInterval 0.01;
 	
 	_oldPlayer = vehicle player;
-    while {true} do {
-        waitUntil {vehicle player != _oldPlayer};
-        _parray set [18,vehicle player];
-        _snow setParticleParams _parray;
-        _oldPlayer = vehicle player;
-    };
+	
+	while {true} do {
+	        waitUntil {vehicle player != _oldPlayer};
+	        _parray set [18,vehicle player];
+	        _snow setParticleParams _parray;
+	        _oldPlayer = vehicle player;
+    	};
 };
