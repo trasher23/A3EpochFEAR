@@ -9,12 +9,12 @@ if (isServer) then {
 	
 	waitUntil {nukeRadZone};
 	
-	// Endurance of Radiation in air = 15 minutes (900 seconds)
-	for [{_x = 0},{_x < 900},{_x = _x + 1}] do {
+	// Endurance of Radiation in air = 15 minutes = (180 mins * sleep 5)
+	for [{_x = 0},{_x < 180},{_x = _x + 1}] do {
 		{
 			_x setDammage (getDammage _x + 0.01); // original value: 0.03
 		} forEach (_coords nearEntities [["All"], nukeRadius]);
-		sleep 1;
+		sleep 5;
 	};
 	
 	// Remove map markers
