@@ -1,0 +1,184 @@
+author = "Epoch Mod Team";
+class Header
+{
+ gameType = Sandbox;
+ minPlayers = 1;
+ maxPlayers = 100;
+};
+respawn = "BASE";
+respawnDelay = 600;
+respawnDialog = 0;
+
+onLoadMission= "Epoch";
+OnLoadIntro = "Welcome to Epoch Mod";
+loadScreen = "\x\addons\a3_epoch_assets\pictures\loadScreen_ca.paa"; 
+OnLoadIntroTime = False;
+OnLoadMissionTime = False;
+onLoadName = "Epoch Mod";
+disabledAI = True;
+scriptedPlayer = 1;
+disableChannels[]={0,1,2,6};
+enableItemsDropping = 0;
+briefing = 0;
+debriefing = 0;
+enableDebugConsole = 0;
+joinUnassigned = 0;
+respawnOnStart = 0;
+forceRotorLibSimulation = 0; // FEAR - ARMA 2 heli physics
+
+corpseManagerMode = 1;
+corpseLimit = 10;
+corpseRemovalMinTime = 1200;
+corpseRemovalMaxTime = 3600;
+
+wreckManagerMode = 1;
+wreckLimit = 2;
+wreckRemovalMinTime = 60;
+wreckRemovalMaxTime = 360;
+
+class CfgRemoteExecCommands {};
+
+class CfgSounds
+{
+    sounds[] ={introsound, deathscream, nukedaisy, nukesiren, nukenear, nukefar, nukeradiation, wolfhowl1, girlscreaming, snappingtwigs, doorcreak1, leafcrunch, metalcrash, woodlandcrunch, zombienoise1, childrenlaughing, eeriewind, doorcreak2, babycry1, glassbreak1};
+	
+    class introsound
+    {
+		name="introsound";
+		sound[]={"FEAR\fx\introsound.ogg", db + 0, 1.0};
+		titles[] = {};
+    };
+	
+	class deathscream
+    {
+		name="deathscream";
+		sound[]={"FEAR\fx\deathscream.ogg", db + 30, 1.0};
+		titles[] = {};
+    };
+	
+	class nukedaisy
+    {
+		name="nukedaisy";
+		sound[]={"FEAR\fx\nukedaisy.ogg", db + 0, 1.0};
+		titles[] = {};
+    };
+	
+	class nukesiren
+    {
+		name="nukesiren";
+		sound[]={"FEAR\fx\nukesiren.ogg", db + 30, 1.0};
+		titles[] = {};
+    };
+	
+	class nukenear
+    {
+		name="nukenear";
+		sound[]={"FEAR\fx\nukenear.ogg", db + 30, 1.0};
+		titles[] = {};
+    };
+	
+	class nukefar
+    {
+		name="nukefar";
+		sound[]={"FEAR\fx\nukefar.ogg", db + 30, 1.0};
+		titles[] = {};
+    };
+	
+	class nukeradiation
+    {
+		name="nukeradiation";
+		sound[]={"FEAR\fx\nukeradiation.ogg", db + 0, 1.0};
+		titles[] = {};
+    };
+	
+	class wolfhowl1
+    {
+        name = "wolfhowl1";
+        sound[] = {"FEAR\fx\wolfhowl1.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class girlscreaming
+    {
+        name = "girlscreaming";
+        sound[] = {"FEAR\fx\girlscreaming.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class snappingtwigs
+    {
+        name = "snappingtwigs";
+        sound[] = {"FEAR\fx\snappingtwigs.ogg", db - 5, 1.0};
+        titles[] = {};
+    };
+	
+	class doorcreak1
+    {
+        name = "doorcreak1";
+        sound[] = {"FEAR\fx\doorcreak1.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class leafcrunch
+    {
+        name = "leafcrunch";
+        sound[] = {"FEAR\fx\leafcrunch.ogg", db - 10, 1.0};
+        titles[] = {};
+    };
+	
+	class metalcrash
+    {
+        name = "metalcrash";
+        sound[] = {"FEAR\fx\metalcrash.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class woodlandcrunch
+    {
+        name = "woodlandcrunch";
+        sound[] = {"FEAR\fx\woodlandcrunch.ogg", db - 5, 1.0};
+        titles[] = {};
+    };
+	
+	class zombienoise1
+    {
+        name = "zombienoise1";
+        sound[] = {"FEAR\fx\zombienoise1.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class childrenlaughing
+    {
+        name = "childrenlaughing";
+        sound[] = {"FEAR\fx\childrenlaughing.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class eeriewind
+    {
+        name = "eeriewind";
+        sound[] = {"FEAR\fx\eeriewind.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class doorcreak2
+    {
+        name = "doorcreak2";
+        sound[] = {"FEAR\fx\doorcreak2.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class babycry1
+    {
+        name = "babycry1";
+        sound[] = {"FEAR\fx\babycry1.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+	
+	class glassbreak1
+    {
+        name = "glassbreak1";
+        sound[] = {"FEAR\fx\glassbreak1.ogg", db + 0, 1.0};
+        titles[] = {};
+    };
+};
