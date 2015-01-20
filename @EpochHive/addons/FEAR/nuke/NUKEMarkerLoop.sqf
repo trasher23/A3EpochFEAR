@@ -51,7 +51,7 @@ while {true} do
 
 		_nul = createMarker ["RADMarkerY",nukeMarkerCoords];
 		"RADMarkerY" setMarkerShape "Icon";
-		"RADMarkerY" setMarkerType "Dot";
+		"RADMarkerY" setMarkerType "mil_dot";
 		"RADMarkerY" setMarkerColor "ColorYellow";
 		"RADMarkerY" setMarkerText "  Radiation Zone";
 		
