@@ -2,22 +2,22 @@
 //	NUKE Timer - based on EMS timer script
 // ----------------------------------------
 
-private["_timeVar"];
+private["_timeDiff"];
 
-diag_log format ["[NUKE]: Commencing countdown clock!"];
+// Find the Min and Max time
+_timeDiff = ((NUKETimerMax*60) - (NUKETimerMin*60));
 
-// Calculate time variation
-_timeVar = (NUKETimerMax - NUKETimerMin) + NUKETimerMin;
+diag_log "[NUKE]: Commencing countdown clock!";
 
 // Initialise loop
 while {true} do
 {
-	// Wait for a random period
-	sleep round(random _timeVar);
+	// Wait a Random Amount
+	uiSleep ((floor(random(_timeDiff))) + (VEMFMinMissTime*60));
 	
 	// Initiate countdown
-	execVM "\z\addons\dayz_server\FEAR\NUKE\NUKECountdown.sqf";
-	diag_log format ["[NUKE]: Cruise Missile Launched!"];
+	[] ExecVM "\FEAR\NUKE\NUKECountdown.sqf";
+	diag_log "[NUKE]: Cruise Missile Launched!";
 	
 	// Wait for NUKE script to complete
 	waitUntil {nukeDetonate};
