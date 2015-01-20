@@ -2,8 +2,8 @@
 //	Radiation Zone
 // ----------------
 
-if (isDedicated) then {
-	Private ["_x","_coords"];
+if (isServer) then {
+	Private ["_coords"];
 	
 	_coords = _this select 0;
 	
