@@ -60,15 +60,15 @@ if (isDedicated) then {
 	nukeDetonate = false;
 	publicVariable "nukeDetonate";
 	
-	sleep 120; // wait 2 minutes before fallout creates the radzone
+	// Delete nukepad
+	deleteVehicle _nukePad;
+	
+	sleep 1;
 	
 	// Inform players about radiation zone
 	_msg = format ["You will need to keep clear of %1 until the radiation cloud dissipates.",_townName];
 	_msg = ["Nuclear Strike",_msg];
 	_alert = [_msg] call VEMFBroadcast;
-	
-	// Delete nukepad
-	deleteVehicle _nukePad;
 	
 	nukeRadZone = True;
 	publicVariable "nukeRadZone";
