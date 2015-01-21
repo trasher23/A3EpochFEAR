@@ -12,7 +12,7 @@ _fontSubText    = "PuristaLight"; // Font Type Of SubTitle Messages
 _Delay          = 10; // Wait in seconds before the credits start after player IS ingame
 _FadeIn         = 2; //how long one role should stay on screen. Use value from 0 to 10 where 0 is almost instant transition to next role
 
-_IntroMusic     = false; // Welcome Intro Song During the credits (true or false)
+_IntroMusic     = true; // Welcome Intro Song During the credits (true or false)
 
 _posDefault     = [0.3,0.55,0.5]; // Defualt Positions of all Credits
 
