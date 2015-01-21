@@ -14,4 +14,5 @@ if (!isServer) then {
 	};
 
 	[] ExecVM "FEAR\nuke\NUKEInit.sqf";
+	[] ExecVM "FEAR\custom\ambient_fx.sqf";
 };
