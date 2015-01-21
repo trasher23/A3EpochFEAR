@@ -1,4 +1,4 @@
-if(isDedicated) exitWith {};
+if (isDedicated) exitWith {};
 
 _sizeTitle      = 0.55; // Font Size of the Title Messages
 _sizeSubText    = 0.45;  // Font Size of the SubTitle Messages
