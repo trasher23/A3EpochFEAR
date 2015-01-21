@@ -2,7 +2,7 @@
 // ambient_fx.sqf
 // ---------------
 
-if (isServer) {exitWith};
+if (isServer) exitWith {};
 
 getSoundFx = {
 	private["_towns","_soundArray","_index","_sound"];
