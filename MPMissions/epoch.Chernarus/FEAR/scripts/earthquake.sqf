@@ -2,7 +2,7 @@
 // earthquake.sqf
 // ---------------
 
-if (isServer) {exitWith};
+if (isServer) exitWith {};
 
 earthQuake = {
 	playSound "eq";
