@@ -183,6 +183,15 @@ class CfgSounds
     };
 };
 
+class cfgMusic
+{
+    class intro
+    {
+        name = "intro";
+        sound[] = {"FEAR\fx\IntroSong.ogg", db + 1, 1};
+    };
+};
+
 class RscTitles
 {
 	#include "FEAR\dialog\statusBar.hpp"
