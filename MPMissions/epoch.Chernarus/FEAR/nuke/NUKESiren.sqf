@@ -2,7 +2,7 @@
 // NUKE Siren
 // -----------
 
-if (isServer) then {exitWith};
+if (isServer) exitWith {};
 
 while {true} do {
 	nukeSiren = false;
