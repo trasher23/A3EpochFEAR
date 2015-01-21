@@ -42,7 +42,7 @@ playSoundFx = {
 
 private ["_timeDiff","_maxTime","_minTime"];
 	
-_maxTime = 15; mins
+_maxTime = 15; // mins
 _minTime = 3;
 
 // Find the Min and Max time
