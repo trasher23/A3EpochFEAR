@@ -1,8 +1,9 @@
 // ------------
 //	NUKE Blast
 // ------------
+if (isServer) exitWith {};
 
-while {(!isServer) && (true)} do {
+while {true} do {
 
     nukeDetonate = false;
     sleep 1;
