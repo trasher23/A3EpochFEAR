@@ -40,15 +40,15 @@ playSoundFx = {
 	_soundSource, player say3D _sound;
 };
 
-while {true} do {
-	private ["_timeDiff","_maxTime","_minTime"];
+private ["_timeDiff","_maxTime","_minTime"];
 	
-	_maxTime = 15; mins
-	_minTime = 3;
-	
-	// Find the Min and Max time
-	_timeDiff = ((_maxTime*60) - (_minTime*60));
+_maxTime = 15; mins
+_minTime = 3;
 
+// Find the Min and Max time
+_timeDiff = ((_maxTime*60) - (_minTime*60));
+	
+while {true} do {
 	// Wait a Random Amount
 	uiSleep ((floor(random(_timeDiff))) + (_minTime*60));
 
