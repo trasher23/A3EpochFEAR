@@ -13,8 +13,9 @@ if (!isServer) then {
 		VEMFChatMsg = nil;
 	};
 
-	[] ExecVM "FEAR\nuke\NUKEInit.sqf";
-	[] ExecVM "FEAR\scripts\ambient_fx.sqf";
-	[] ExecVM "FEAR\scripts\earthquake.sqf";
-	[] execVM "FEAR\scripts\fn_statusBar.sqf";
+	[] ExecVM "FEAR\nuke\NUKEInit.sqf";		// Nuke towns
+	[] execVM "FEAR\scripts\welcome.sqf";		// Welcome credits
+	[] ExecVM "FEAR\scripts\ambient_fx.sqf";	// Random sound fx
+	[] ExecVM "FEAR\scripts\earthquake.sqf";	// Random earthquake - need to move trigger to server
+	[] execVM "FEAR\scripts\fn_statusBar.sqf";	// Status bar lower screen
 };
