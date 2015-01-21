@@ -30,8 +30,8 @@ link14[] = {7,2};
 link15[] = {8,2};
 link16[] = {9,2};
 link17[] = {10,2};
-globals[] = {25.000000,1,0,0,0,640,480,1,43,6316128,1,333.114838,926.714661,-78.464355,-602.128540,696,614,1};
-window[] = {0,-1,-1,-1,-1,786,1706,3144,26,1,714};
+globals[] = {25.000000,1,0,0,0,640,480,1,43,6316128,1,343.421814,916.407593,-40.712330,-650.419128,827,880,1};
+window[] = {2,-1,-1,-1,-1,890,1810,3248,130,3,845};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -43,6 +43,14 @@ class FSM
     {
       name = "Init";
       init = /*%FSM<STATEINIT""">*/"diag_log ""Loaded Server FSM"";" \n
+       "" \n
+       "_ahInitAuthCfg = EPOCH_antihack_ahInitAuthCfg;" \n
+       "EPOCH_antihack_ahInitAuthCfg = nil;" \n
+       "" \n
+       "_initAhInitBanOrLog = _ahInitAuthCfg select 0;" \n
+       "_initTimeLimit = _ahInitAuthCfg select 1;" \n
+       "" \n
+       "_prev_diag_fps = 0;" \n
        "" \n
        "_activeVehicles = [];" \n
        "_toBeDesimulated = [];" \n
@@ -62,6 +70,31 @@ class FSM
        "" \n
        "_pvehTime = diag_tickTime;" \n
        "_instanceID =  call EPOCH_fn_InstanceID;" \n
+       "" \n
+       "_checkAuth = {" \n
+       "	_puid = _this select 0;" \n
+       "	_player = _this select 1;" \n
+       "	if !(isNull _player) then {" \n
+       "		if !(_puid call EPOCH_server_Authed) then {" \n
+       "			_lastCheck = _player getVariable ""LAST_AUTH_CHECK"";" \n
+       "			if (isNil ""_lastCheck"") then{" \n
+       "				_player setVariable[""LAST_AUTH_CHECK"", diag_tickTime];" \n
+       "				_lastCheck = diag_tickTime;" \n
+       "			};" \n
+       "			if (diag_tickTime - _lastCheck > _initTimeLimit) then {" \n
+       "				_player setVariable [""LAST_AUTH_CHECK"",nil];" \n
+       "				if (_initAhInitBanOrLog == 0) then {" \n
+       "					'epochserver' callExtension format['820|%1|EpochMod.com Autoban #R2',_puid];" \n
+       "					['ahb', format['%1 (%2): Player not Authenticated', name _player, _puid]] call EPOCH_server_hiveLog;" \n
+       "				} else {" \n
+       "					['ahl', format['%1 (%2): Player not Authenticated', name _player, _puid]] call EPOCH_server_hiveLog;" \n
+       "				};" \n
+       "			};" \n
+       "		} else {" \n
+       "			_player setVariable [""LAST_AUTH_CHECK"",nil];" \n
+       "		};" \n
+       "	};" \n
+       "};" \n
        "" \n
        "_cleanIt = {" \n
        "	if !(isNull _this) then {" \n
@@ -171,7 +204,7 @@ class FSM
           priority = 8.000000;
           to="Process";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastObjectCleanup) > 360)"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastObjectCleanup) > 300)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_lastObjectCleanup = diag_tickTime;" \n
            "" \n
            "// TODO need better way allMissionObjects is not performant" \n
@@ -199,8 +232,7 @@ class FSM
            "	if !(isNull _saveStorage) then {" \n
            "		_saveStorage call EPOCH_server_save_storage;" \n
            "	};" \n
-           "};" \n
-           ""/*%FSM</ACTION""">*/;
+           "};"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "Save_Players">*/
@@ -269,11 +301,15 @@ class FSM
            "		}forEach (_x nearEntities[[""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 300]);" \n
            "" \n
            "		_pUID = getPlayerUID _x;" \n
-           "		if (_pUID != """") then {_playersTemp pushBack _pUID;};" \n
-           "		" \n
-           "		// TODO need a better way as it is bad to perform this for all players every 5 seconds" \n
            "		if !(_x call EPOCH_server_isPAdmin) then {" \n
+           "			// TODO need a better way as it is bad to perform hideObjectGlobal for all players every 5 seconds	" \n
            "	   		_x hideObjectGlobal false;" \n
+           "			if (_pUID != """") then {" \n
+           "				_playersTemp pushBack _pUID;" \n
+           "				[_pUID,_x] call _checkAuth;" \n
+           "			};" \n
+           "		} else {" \n
+           "			if (_pUID != """") then {_playersTemp pushBack _pUID;};" \n
            "		};" \n
            "	};" \n
            "}forEach playableUnits;" \n

@@ -6,7 +6,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "0.2.5.2";
+		epochVersion = "0.2.5.21";
 		requiredAddons[] = {};
 	};
 };
@@ -27,6 +27,7 @@ class CfgEpoch
 		traderBlds[] = {};
 		containerPos[] = {};
 		telePos[] = {};
+		telePosCenter[] = {};
 		propsPos[] = {};
 		staticNpcPos[] = {};
 	};
@@ -51,6 +52,7 @@ class CfgEpoch
 		telePos[] = {
 				{ "Transport_C_EPOCH", { 1719.32, 5129.06, 0.233428 }, "", { 4089.82, 4597.71, 0.00143433 } }
 		};
+		telePosCenter[] = {1719, 5129, 0};
 		propsPos[] = {
 				{ "Land_Castle_01_wall_08_F", { 1830.55, 3389.67, 0 }, 285.304 },
 				{ "Land_Castle_01_tower_F", { 1852.1, 3361.42, 1.51087 }, 283.624 },
@@ -246,6 +248,7 @@ class CfgEpoch
 				{ "Transport_W_EPOCH", { 23585.4, 18000.7, 0.233424 }, "", { 6192.46, 16834, 0.00154114 } }, // Trader city 2
 				{ "Transport_E_EPOCH", { 23615.5, 18000.9, 0.233423 }, "", { 18451.9, 14278.1, 0.00143814 } } // Trader city 3
 		};
+		telePosCenter[] = {23600, 18009, 0};
 		propsPos[] = {
 				//trader city #1
 				{"Land_MarketShelter_F", { 13315.3, 14512.4, 0.0361125 }, 119.966},
@@ -479,6 +482,7 @@ class CfgEpoch
 				{ "Transport_E_EPOCH", { 1040.27, 2023.47, 0.224995 }, "", { 12077.8, 5121.92, 0.00144958 } }, // South East
 				{ "Transport_N_EPOCH", { 1024.91, 2031.31, 0.224995 }, "", { 10688.6, 9428.98, 0.00144958 } } // North East
 		};
+		telePosCenter[] = {1025, 2025, 0};
 		propsPos[] = {
 				//debug lights
 				{ "Land_PortableLight_double_F", { 1041.07,2032.96,0.249583 }, 48.2164 },
