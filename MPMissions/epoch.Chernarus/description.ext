@@ -188,7 +188,7 @@ class cfgMusic
     class intro
     {
         name = "intro";
-        sound[] = {"FEAR\fx\IntroSong.ogg", db + 1, 1};
+        sound[] = {"FEAR\fx\intro.ogg", db + 1, 1};
     };
 };
 
