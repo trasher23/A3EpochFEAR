@@ -2,12 +2,12 @@ StorageSlotsLimit = 1500; // Max storage slots allowed. Warning! Higher the numb
 BuildingSlotsLimit = 1500; // Max building slots allowed. Warning! Higher the number lower performance.
 
 // Time based
-StaticDateTime[] = {0,0,0,19,0}; // {YEAR,MONTH,DAY,HOUR,MINUTES} {2014,6,10,7,0} {0,0,0,8,0} would force the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
-timeDifference = 0; // Server uses real time this will allow you to offset just the hour.
+StaticDateTime[] = {0,0,0,17,0}; // {YEAR,MONTH,DAY,HOUR,MINUTES} {2014,6,10,7,0} {0,0,0,8,0} would force the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
+timeDifference = -1; // Server uses real time this will allow you to offset just the hour.
 timeMultiplier = 4; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
 
 // Events
-WeatherChangeTime = 600; // 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
+WeatherChangeTime = 800; // 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
 SpecialEventTime = 2400;
 NormalEventTime = 1200;
 PlantSpawnTime = 2400;
