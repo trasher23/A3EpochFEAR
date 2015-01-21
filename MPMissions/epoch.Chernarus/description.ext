@@ -182,3 +182,8 @@ class CfgSounds
         titles[] = {};
     };
 };
+
+class RscTitles
+{
+	#include "FEAR\dialog\statusBar.hpp"
+};

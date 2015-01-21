@@ -21,7 +21,7 @@ systemChat format["statusBar Loading player info...", _rscLayer];
 	{
 		sleep 1;
 		_counter = _counter - 1;
-		_time = (round(180-(serverTime)/60));  //edit the '240' (60*4=240) to change the countdown timer if your server restarts are shorter or longer than 4 hour intervals
+		_time = (round(360-(serverTime)/60));  //edit the '240' (60*4=240) to change the countdown timer if your server restarts are shorter or longer than 4 hour intervals
 		_hours = (floor(_time/60));
 		_minutes = (_time - (_hours * 60));
 		
