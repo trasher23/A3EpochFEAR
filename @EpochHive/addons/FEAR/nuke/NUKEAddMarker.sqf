@@ -3,6 +3,7 @@
 //	NUKEMarkerLoop.sqf keeps this marker updated.
 // ------------------------------------------------
 
+// Public variable for markers
 nukeMarkerCoords = _this select 0;
 
 // Orange Zone
