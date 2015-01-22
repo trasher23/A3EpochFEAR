@@ -2,7 +2,7 @@ StorageSlotsLimit = 1500; // Max storage slots allowed. Warning! Higher the numb
 BuildingSlotsLimit = 1500; // Max building slots allowed. Warning! Higher the number lower performance.
 
 // Time based
-StaticDateTime[] = {0,0,0,17,0}; // {YEAR,MONTH,DAY,HOUR,MINUTES} {2014,6,10,7,0} {0,0,0,8,0} would force the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
+StaticDateTime[] = {2035,11,05,17,0}; // {YEAR,MONTH,DAY,HOUR,MINUTES} {2014,6,10,7,0} {0,0,0,8,0} would force the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
 timeDifference = -1; // Server uses real time this will allow you to offset just the hour.
 timeMultiplier = 4; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
 
@@ -20,7 +20,7 @@ antagonistChancePDeath = 0.25;
 antagonistChanceLoot = 0.03;
 
 // Player Related
-cloneCost = 100; // debt incurred on player death
+cloneCost = 0; // debt incurred on player death
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
