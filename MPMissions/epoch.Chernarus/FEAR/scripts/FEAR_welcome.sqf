@@ -1,16 +1,16 @@
 if (isDedicated) exitWith {};
 
-_sizeTitle      = 0.55; // Font Size of the Title Messages
-_sizeSubText    = 0.45;  // Font Size of the SubTitle Messages
+_sizeTitle      = 0.75; // 0.55 Font Size of the Title Messages
+_sizeSubText    = 0.65;  // 0.45 Font Size of the SubTitle Messages
 _colorTitle     = "#FFFFFF"; // HTML Color Code of the Title Messages (must start with '#' )
 _colorSubText   = "#EFEFEF"; // HTML Color Code of the SubTitle Messages (must start with '#' )
 _alignTitle     = "left"; // Alignment of the Title Message (right or left)
-_alignSubText   = "right"; // Alignment of the SubTitle Message (right or left)
+_alignSubText   = "left"; // Alignment of the SubTitle Message (right or left)
 _fontTitle      = "PuristaSemibold"; // Font Type Of Title Messages
 _fontSubText    = "PuristaLight"; // Font Type Of SubTitle Messages
 
 _Delay          = 10; // Wait in seconds before the credits start after player IS ingame
-_FadeIn         = 2; //how long one role should stay on screen. Use value from 0 to 10 where 0 is almost instant transition to next role
+_FadeIn         = 5; // 2 how long one role should stay on screen. Use value from 0 to 10 where 0 is almost instant transition to next role
 
 _IntroMusic     = true; // Welcome Intro Song During the credits (true or false)
 

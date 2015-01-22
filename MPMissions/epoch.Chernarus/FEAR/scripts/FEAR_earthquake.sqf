@@ -1,6 +1,6 @@
-// ---------------
-// earthquake.sqf
-// ---------------
+/*
+	Trigger random earthquakes
+*/
 
 if (isServer) exitWith {};
 

@@ -1,7 +1,3 @@
-// -----------------
-// NUKE Environment
-// -----------------
-
 nukeQuake = {
 	for "_i" from 0 to 140 do {
 		_vx = vectorUp _this select 0;

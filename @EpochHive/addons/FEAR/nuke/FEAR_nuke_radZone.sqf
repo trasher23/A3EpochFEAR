@@ -1,7 +1,3 @@
-// ----------------
-//	Radiation Zone
-// ----------------
-
 if (isServer) then {
 	Private ["_coords"];
 	

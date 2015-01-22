@@ -1,6 +1,6 @@
-// ---------------
-// ambient_fx.sqf
-// ---------------
+/*
+	Trigger random ambient sounds
+*/
 
 if (isServer) exitWith {};
 

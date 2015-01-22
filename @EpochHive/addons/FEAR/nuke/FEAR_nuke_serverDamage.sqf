@@ -1,7 +1,3 @@
-// -----------------------
-//	NUKE damage - Server
-// -----------------------
-
 if (isDedicated) then {
 	private["_x","_coords","_isCar","_direction"];
 

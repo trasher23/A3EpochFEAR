@@ -2,12 +2,12 @@ StorageSlotsLimit = 1500; // Max storage slots allowed. Warning! Higher the numb
 BuildingSlotsLimit = 1500; // Max building slots allowed. Warning! Higher the number lower performance.
 
 // Time based
-StaticDateTime[] = {0,0,0,17,0}; // {YEAR,MONTH,DAY,HOUR,MINUTES} {2014,6,10,7,0} {0,0,0,8,0} would force the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
+StaticDateTime[] = {2035,6,10,18,0}; // {0,0,0,8,0} would forces the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
 timeDifference = -1; // Server uses real time this will allow you to offset just the hour.
 timeMultiplier = 4; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
 
 // Events
-WeatherChangeTime = 800; // 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
+WeatherChangeTime = 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
 SpecialEventTime = 2400;
 NormalEventTime = 1200;
 PlantSpawnTime = 2400;
@@ -15,9 +15,9 @@ showEarthQuakes = true; // used to show locations of earthquakes
 showShippingContainers = true; // used to show locations of shipping containers
 
 // Antagonists
-antagonistChanceTrash = 0.03;
-antagonistChancePDeath = 0.25;
-antagonistChanceLoot = 0.03;
+antagonistChanceTrash = 0.03; //3% chance when player loot a trash object
+antagonistChancePDeath = 0.25; //25% chance when player was killed from a other player (selfkill doesn't count)
+antagonistChanceLoot = 0.03; //3% chance when player click "SEARCH" on a loot object
 
 // Player Related
 cloneCost = 100; // debt incurred on player death
@@ -71,7 +71,7 @@ allowedVehiclesList[] = {
 taxRate = 0.1; // controls the price increase for purchases
 SHOW_TRADERS = true; // used to show locations of traders
 NPCSlotsLimit = 50; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
-forceStaticTraders = false; // disables traders moving from work to home
+forceStaticTraders = true; // disables traders moving from work to home
 
 // Hive Related
 expiresBuilding = "604800";  // expiration date in seconds for buildings

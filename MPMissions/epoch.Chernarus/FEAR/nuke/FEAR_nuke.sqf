@@ -1,6 +1,3 @@
-// ------------
-//	NUKE Blast
-// ------------
 if (isServer) exitWith {};
 
 while {true} do {
@@ -81,7 +78,7 @@ while {true} do {
 
 	sleep 1;
 	
-	[] ExecVM "FEAR\NUKE\NUKEClientDamage.sqf";
+	[] ExecVM "FEAR\nuke\FEAR_nuke_clientDamage.sqf";
 	if (player distance nukeCoords < 2000) then {player say "nukenear"};
 	if (player distance nukeCoords > 2000) then {player say "nukefar"};
 	

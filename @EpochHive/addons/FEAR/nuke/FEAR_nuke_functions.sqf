@@ -1,7 +1,4 @@
-// --------------------------------------------------------------------------------------------
-//	NUKE System Functions
-//	Purpose	:	Returns a random city/town as target site for the nuke blast.
-// --------------------------------------------------------------------------------------------
+/* Purpose:	Returns a random city/town as target site for the nuke blast. */
 
 nukeTarget = {
 	private ["_cnps","_towns","_town"];

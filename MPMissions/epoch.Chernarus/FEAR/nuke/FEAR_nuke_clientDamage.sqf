@@ -1,7 +1,3 @@
-// -----------------------------
-//	Nuke blast damage - Client
-// -----------------------------
-
 if (!isDedicated) then {
 	private["_isinbuilding","_building"];
 	

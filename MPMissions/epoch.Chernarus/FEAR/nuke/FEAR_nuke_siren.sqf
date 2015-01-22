@@ -1,7 +1,3 @@
-// -----------
-// NUKE Siren
-// -----------
-
 if (isServer) exitWith {};
 
 while {true} do {

@@ -8,7 +8,6 @@ if (isServer) then {
 	LSdeleter = compile preProcessFileLineNumbers "\FEAR\LSpawner\LSdeleter.sqf";
 	[] ExecVM "\FEAR\LSpawner\Lootspawner.sqf";
 		
-	[] ExecVM "\VEMF\init.sqf";			// Vampire missions
-	[] ExecVM "\FEAR\dynamic_ups\init_ups.sqf";	// Urban Patrol http://kronzky.info/ups/
-	[] ExecVM "\FEAR\nuke\NUKEInit.sqf"; 		// Nuke towns and cities
+	[] ExecVM "\VEMF\init.sqf";					// Vampire missions
+	[] ExecVM "\FEAR\nuke\FEAR_nuke_init.sqf"; 	// Nuke towns and cities
 };

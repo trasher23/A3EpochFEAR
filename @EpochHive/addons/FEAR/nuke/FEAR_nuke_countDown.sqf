@@ -1,7 +1,3 @@
-// ---------------
-//	Launch NUKE!
-// ---------------
-
 if (isDedicated) then {
 	private["_town","_townName","_townPos","_nukePad","_varName","_msg","_alert"];
 	
@@ -9,10 +5,10 @@ if (isDedicated) then {
 	_townName = text _town; // Assign town name
 	_townPos = position _town; // Get town position
 	
-	diag_log format ["[NUKE]: Target: %1", _townName];
+	diag_log format ["[nuke]: Target: %1", _townName];
 
 	// Assign _townPos as a PublicVariable: nukeCoords
-	// This is used in the NUKEMarkerLoop.sqf and Mission.PBO NUKE files
+	// This is used in the nukeMarkerLoop.sqf and Mission.PBO nuke files
 	_nukePad = createVehicle ["Land_HelipadEmpty_F",_townPos,[],0,"NONE"];
 	_varName = "nukeCoords";
 	_nukePad setVehicleVarName _varName;
@@ -24,8 +20,8 @@ if (isDedicated) then {
 	_msg = ["Nuclear Strike",_msg];
 	_alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 
-	// NUKEAddMarker is a simple script that adds a marker to the location
-	[_townPos] ExecVM "\FEAR\NUKE\NUKEAddMarker.sqf";
+	// nukeAddMarker is a simple script that adds a marker to the location
+	[_townPos] ExecVM "\FEAR\nuke\FEAR_nuke_addMarker.sqf";
 
 	// Start air-raid siren
 	nukeSiren = true;
@@ -42,20 +38,20 @@ if (isDedicated) then {
 	sleep 60;
 	
 	// Broadcast nukeDetonate to clients
-	// This will enable the NUKE script
+	// This will enable the nuke script
 	nukeDetonate = true;
 	publicVariable "nukeDetonate";
 	
-	[_townPos] ExecVM "\FEAR\NUKE\NUKEServerDamage.sqf";
+	[_townPos] ExecVM "\FEAR\nuke\FEAR_nuke_serverDamage.sqf";
 
-	diag_log "[NUKE]: Cruise missile has reached its target.";
+	diag_log "[nuke]: Cruise missile has reached its target.";
 	
 	sleep 1;
 	
 	// Remove map markers
-	deleteMarker "NUKEMarkerO";
-	deleteMarker "NUKEMarkerR";
-	deleteMarker "NUKEDot";
+	deleteMarker "nukeMarkerO";
+	deleteMarker "nukeMarkerR";
+	deleteMarker "nukeDot";
 	
 	nukeDetonate = false;
 	publicVariable "nukeDetonate";
@@ -74,9 +70,9 @@ if (isDedicated) then {
 	publicVariable "nukeRadZone";
 	
 	// Add radiation zone marker
-	[] ExecVM "\FEAR\NUKE\NUKEAddRadMarker.sqf";
+	[] ExecVM "\FEAR\nuke\FEAR_nuke_addRadMarker.sqf";
 	// Activate radiation zone
-	[_townPos] ExecVM "\FEAR\NUKE\NUKERadZone.sqf";
+	[_townPos] ExecVM "\FEAR\nuke\FEAR_nuke_radZone.sqf";
 	
 	// Wait length of time for RadZone (15 minutes)
 	sleep 900;
