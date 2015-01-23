@@ -16,4 +16,5 @@ if (!isServer) then {
 	[] ExecVM "FEAR\scripts\FEAR_earthquake.sqf";	// Random earthquake - need to move trigger to server
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";	// Status bar lower screen
 	[] ExecVM "FEAR\nuke\FEAR_nuke_init.sqf";	// Nuke towns
+	[] ExecVM "FEAR\R3F_LOG\init.sqf";			// [R3F] Logistics http://forums.bistudio.com/showthread.php?180049-R3F-Logistics
 };
