@@ -1,3 +1,5 @@
+#include "FEAR\R3F_LOG\desc_include.h"
+
 author = "Epoch Mod Team";
 class Header
 {
