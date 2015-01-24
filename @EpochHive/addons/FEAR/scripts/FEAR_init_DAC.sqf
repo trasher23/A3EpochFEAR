@@ -43,7 +43,7 @@ _fnc_createTriggers = {
 	
 	// Assign trigger conditions
 	_trig_cond = "{(isPlayer _x) && ((vehicle _x) isKindOf ""Man"")} count thisList > 0"; // Trigger if any player is in range
-	_trig_act_stmnt = format ["fun=[""z%1"",[1,0,0],[10,3,50,8],[],[],[],[1,1,1,1]] spawn DAC_Zone", _triggerIndex];
+	_trig_act_stmnt = format ["[%1, true, 4, 2] call VEMFSpawnAI", _pos]; // [position, grp leader asignment, skill lvl (1-4), no of grps]
 	_trig_deact_stmnt = format ["deleteVehicle %1", _trigName]; // Delete trigger once activated
 	
 	_this setTriggerStatements [_trig_cond, _trig_act_stmnt, _trig_deact_stmnt];
