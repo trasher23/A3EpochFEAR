@@ -2044,7 +2044,7 @@ class Mission
 				class Item0
 				{
 					position[] = {6968.658,324.48145,8345.914};
-					azimut = 153.62447;
+					azimut= -358.65805;
 					id = 100;
 					side = "CIV";
 					vehicle = "A3_Characters_F_Civil";
@@ -2069,24 +2069,6 @@ class Mission
 					vehicle = "DAC_Source_Extern";
 					leader = 1;
 					skill = 0.6;
-				};
-			};
-		};
-		class Item102
-		{
-			side = "LOGIC";
-			class Vehicles
-			{
-				items = 1;
-				class Item0
-				{
-					position[] = {6968.658,324.48145,8345.914};
-					id = 102;
-					side = "LOGIC";
-					vehicle = "Logic";
-					leader = 1;
-					skill = 0.6;
-					text = "DAC_Support_Logic";
 				};
 			};
 		};
