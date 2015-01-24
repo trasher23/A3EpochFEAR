@@ -10,7 +10,7 @@ _fontTitle      = "PuristaSemibold"; // Font Type Of Title Messages
 _fontSubText    = "PuristaLight"; // Font Type Of SubTitle Messages
 
 _Delay          = 10; // Wait in seconds before the credits start after player IS ingame
-_FadeIn         = 5; // 2 how long one role should stay on screen. Use value from 0 to 10 where 0 is almost instant transition to next role
+_FadeIn         = 10; // 2 how long one role should stay on screen. Use value from 0 to 10 where 0 is almost instant transition to next role
 
 _IntroMusic     = true; // Welcome Intro Song During the credits (true or false)
 
@@ -81,8 +81,8 @@ for "_i" from 1 to 50 do
 };
 waitUntil {!isNuLL(uiNameSpace getVariable ["EPOCH_loadingScreen",displayNull])};
 waitUntil {isNuLL(uiNameSpace getVariable ["EPOCH_loadingScreen",displayNull])};
+if (_IntroMusic) then { playMusic "Intro";}; // CE FEAR - moved to start before sleep _Delay;
 sleep _Delay;
-if (_IntroMusic) then { playMusic "Intro";};
 player enableSimulation true;
 {
     _t = _x select 0;
