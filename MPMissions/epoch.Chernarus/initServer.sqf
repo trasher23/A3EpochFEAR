@@ -11,11 +11,9 @@ if (isServer) then {
 		
 	[] ExecVM "\VEMF\init.sqf";			// Vampire missions
 	[] ExecVM "\FEAR\nuke\FEAR_nuke_init.sqf"; 	// Nuke towns and cities
-<<<<<<< HEAD
 	[] ExecVM "\FEAR_init_DAC.sqf"; // Spawn dynamic DAC Triggers on map
 	DAC_Basic_Value = 0;[] ExecVM "\DAC\DAC_Config_Creator.sqf";	// DAC AI Generator http://forums.bistudio.com/showthread.php?176926-DAC-V3-1-%28Dynamic-AI-Creator%29-released/page18
-=======
 	[] ExecVM "\FEAR\scripts\FEAR_init_DAC.sqf"; // Spawn dynamic DAC Triggers on map
->>>>>>> origin/master
+
 	
 };
