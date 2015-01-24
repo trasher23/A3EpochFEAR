@@ -39,7 +39,7 @@ _fnc_createTriggers = {
 	_trigName = format ["DACTrig%1", _triggerIndex];
 	_this = createTrigger ["EmptyDetector", _pos]; 
 	_this setTriggerArea [500, 500, 0, false];
-	_this setTriggerActivation ["WEST", "present", false];
+	_this setTriggerActivation ["CIV", "present", false];
 	
 	// Assign trigger conditions
 	_trig_cond = "{(isPlayer _x) && ((vehicle _x) isKindOf ""Man"")} count thisList > 0"; // Trigger if any player is in range
