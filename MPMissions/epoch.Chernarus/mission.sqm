@@ -2037,7 +2037,7 @@ class Mission
 		};
 		class Item100
 		{
-			side = "CIV";
+			side = "WEST";
 			class Vehicles
 			{
 				items = 1;
@@ -2046,7 +2046,7 @@ class Mission
 					position[] = {6968.658,324.48145,8345.914};
 					azimut = 153.62447;
 					id = 100;
-					side = "CIV";
+					side = "WEST";
 					vehicle = "A3_Characters_F_Civil";
 					player = "PLAYER COMMANDER";
 					leader = 1;
