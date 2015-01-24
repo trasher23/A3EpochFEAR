@@ -2045,13 +2045,13 @@ class Mission
 				{
 					position[] = {6968.658,324.48145,8345.914};
 					azimut = 153.62447;
-					special = "NONE";
 					id = 100;
 					side = "CIV";
 					vehicle = "VirtualMan_EPOCH";
-					player = "S1";
+					player = "PLAYER COMMANDER";
 					leader = 1;
 					skill = 0.6;
+					text="s1";
 				};
 			};
 		};
