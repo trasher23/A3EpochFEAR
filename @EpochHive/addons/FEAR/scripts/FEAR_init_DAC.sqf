@@ -43,7 +43,7 @@ _fnc_createTriggers = {
 	
 	// Assign trigger conditions
 	_trig_cond = "{(isPlayer _x) && ((vehicle _x) isKindOf ""Man"")} count thisList > 0"; // Trigger if any player is in range
-	_trig_act_stmnt = format ["[%1, %2] execVM ""\z\addons\dayz_server\FEAR\dynamic_ups\spawn_urban_patrol.sqf""", _pos, _triggerIndex];
+	_trig_act_stmnt = format ["""z2"",[2,0,0],[],[],[],[1,2,50,0,100,100],[0,0,5,0]] spawn DAC_Zone", _pos, _triggerIndex];
 	_trig_deact_stmnt = format ["deleteVehicle %1", _trigName]; // Delete trigger once activated
 	
 	_this setTriggerStatements [_trig_cond, _trig_act_stmnt, _trig_deact_stmnt];
@@ -59,5 +59,5 @@ if (isServer) then {
 		sleep 0.125;
 	};
 
-	diag_log format ["[Dynamic UPS]: Urban patrol triggers created at: %1", _previousTowns];
+	diag_log format ["[Dynamic DAC]: Urban patrol triggers created at: %1", _previousTowns];
 };
