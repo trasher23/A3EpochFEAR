@@ -6,7 +6,6 @@
 
 #define _ARMA_
 
-//Class C:/Users/Chris/Documents/GitHub/A3EpochFEAR/MPMissions/epoch.Chernarus/mission.sqm{
 version = 12;
 class Mission
 {
