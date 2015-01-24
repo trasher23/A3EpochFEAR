@@ -2037,18 +2037,21 @@ class Mission
 		};
 		class Item100
 		{
-			side = "LOGIC";
+			side = "CIV";
 			class Vehicles
 			{
 				items = 1;
 				class Item0
 				{
 					position[] = {6968.658,324.48145,8345.914};
+					azimut = 153.62447;
 					id = 100;
-					side = "LOGIC";
-					vehicle = "DAC_Source_Extern";
+					side = "CIV";
+					vehicle = "A3_Characters_F_Civil";
+					player = "PLAYER COMMANDER";
 					leader = 1;
 					skill = 0.6;
+					text="s1";
 				};
 			};
 		};
@@ -2062,6 +2065,23 @@ class Mission
 				{
 					position[] = {6968.658,324.48145,8345.914};
 					id = 101;
+					side = "LOGIC";
+					vehicle = "DAC_Source_Extern";
+					leader = 1;
+					skill = 0.6;
+				};
+			};
+		};
+		class Item102
+		{
+			side = "LOGIC";
+			class Vehicles
+			{
+				items = 1;
+				class Item0
+				{
+					position[] = {6968.658,324.48145,8345.914};
+					id = 102;
 					side = "LOGIC";
 					vehicle = "Logic";
 					leader = 1;

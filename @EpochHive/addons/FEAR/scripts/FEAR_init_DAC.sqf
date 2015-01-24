@@ -36,14 +36,14 @@ _fnc_createTriggers = {
 	_pos = position _town; // Get position of town
 	
 	// Create trigger to spawn patrol
-	_trigName = format ["upsTrig%1", _triggerIndex];
+	_trigName = format ["DACTrig%1", _triggerIndex];
 	_this = createTrigger ["EmptyDetector", _pos]; 
 	_this setTriggerArea [500, 500, 0, false];
 	_this setTriggerActivation ["WEST", "present", false];
 	
 	// Assign trigger conditions
 	_trig_cond = "{(isPlayer _x) && ((vehicle _x) isKindOf ""Man"")} count thisList > 0"; // Trigger if any player is in range
-	_trig_act_stmnt = format ["""z2"",[2,0,0],[],[],[],[1,2,50,0,100,100],[0,0,5,0]] spawn DAC_Zone", _pos, _triggerIndex];
+	_trig_act_stmnt = format ["fun=[""DACTrig%1"",[1,2,0],[],[],[],[1,2,50,0,100,100],[0,0,5,0]] spawn DAC_Zone", _triggerIndex];
 	_trig_deact_stmnt = format ["deleteVehicle %1", _trigName]; // Delete trigger once activated
 	
 	_this setTriggerStatements [_trig_cond, _trig_act_stmnt, _trig_deact_stmnt];
