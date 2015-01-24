@@ -2097,6 +2097,26 @@ class Mission
 			angle = 23.608498;
 		};
 	};
+	class Sensors
+	{
+		items=1;
+		class Item0
+		{
+			position[]={1024.8502,5.858802,2023.5204};
+			a=500;
+			b=250;
+			rectangular=1;
+			activationBy="LOGIC";
+			repeating=1;
+			age="UNKNOWN";
+			name="z1";
+			expCond="time > 1";
+			expActiv="fun=[""z1"",[1,0,0],[10,3,50,8],[],[],[],[1,1,1,1]] spawn DAC_Zone";
+			class Effects
+			{
+			};
+		};
+	};
 };
 class Intro
 {
