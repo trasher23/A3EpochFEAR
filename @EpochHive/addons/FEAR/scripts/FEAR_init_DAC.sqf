@@ -36,14 +36,14 @@ _fnc_createTriggers = {
 	_pos = position _town; // Get position of town
 	
 	// Create trigger to spawn patrol
-	_trigName = format ["z%1", _triggerIndex];
+	_trigName = format ["VEMFTrig%1", _triggerIndex];
 	_this = createTrigger ["EmptyDetector", _pos]; 
 	_this setTriggerArea [500, 500, 0, true];
-	_this setTriggerActivation ["CIV", "present", true];
+	_this setTriggerActivation ["CIV", "present", false];
 	
 	// Assign trigger conditions
 	_trig_cond = "{(isPlayer _x) && ((vehicle _x) isKindOf ""Man"")} count thisList > 0"; // Trigger if any player is in range
-	_trig_act_stmnt = format ["[%1, false, 4, 1] ExecVM VEMFSpawnAI", _pos]; // [position, grp leader asignment, skill lvl (1-4), no of grps]
+	_trig_act_stmnt = format ["[%1, false, 4, 1] spawn VEMFSpawnAI", _pos]; // [position, grp leader asignment, skill lvl (1-4), no of grps]
 	_trig_deact_stmnt = format ["deleteVehicle %1", _trigName]; // Delete trigger once activated
 	
 	_this setTriggerStatements [_trig_cond, _trig_act_stmnt, _trig_deact_stmnt];
