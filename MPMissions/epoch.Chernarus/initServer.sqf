@@ -11,6 +11,6 @@ if (isServer) then {
 		
 	[] ExecVM "\VEMF\init.sqf";			// Vampire missions
 	[] ExecVM "\FEAR\nuke\FEAR_nuke_init.sqf"; 	// Nuke towns and cities
-	[] ExecVM "\FEAR_init_DAC.sqf"; // Spawn dynamic DAC Triggers on map
+	[] ExecVM "\FEAR\scripts\FEAR_init_DAC.sqf"; // Spawn dynamic DAC Triggers on map
 	
 };
