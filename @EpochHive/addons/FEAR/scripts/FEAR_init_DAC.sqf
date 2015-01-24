@@ -38,8 +38,8 @@ _fnc_createTriggers = {
 	// Create trigger to spawn patrol
 	_trigName = format ["z%1", _triggerIndex];
 	_this = createTrigger ["EmptyDetector", _pos]; 
-	_this setTriggerArea [500, 500, 0, false];
-	_this setTriggerActivation ["CIV", "present", false];
+	_this setTriggerArea [500, 500, 0, true];
+	_this setTriggerActivation ["CIV", "present", true];
 	
 	// Assign trigger conditions
 	_trig_cond = "{(isPlayer _x) && ((vehicle _x) isKindOf ""Man"")} count thisList > 0"; // Trigger if any player is in range
