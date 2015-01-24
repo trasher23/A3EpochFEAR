@@ -2110,7 +2110,7 @@ class Mission
 			repeating=1;
 			age="UNKNOWN";
 			text="test";
-			name="z3";
+			name="z1";
 			expCond="time > 1";
 			expActiv="fun=[""z1"",[1,0,0],[10,3,50,8],[],[],[],[1,1,1,1]] spawn DAC_Zone";
 			class Effects
