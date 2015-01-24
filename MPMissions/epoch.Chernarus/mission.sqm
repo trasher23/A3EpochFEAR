@@ -2047,7 +2047,7 @@ class Mission
 					azimut = 153.62447;
 					id = 100;
 					side = "CIV";
-					vehicle = "VirtualMan_EPOCH";
+					vehicle = "A3_Characters_F_Civil";
 					player = "PLAYER COMMANDER";
 					leader = 1;
 					skill = 0.6;
