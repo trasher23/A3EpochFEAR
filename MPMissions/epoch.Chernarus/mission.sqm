@@ -2037,7 +2037,7 @@ class Mission
 		};
 		class Item100
 		{
-			side = "WEST";
+			side = "CIV";
 			class Vehicles
 			{
 				items = 1;
@@ -2047,7 +2047,7 @@ class Mission
 					azimut= -358.65805;
 					id = 100;
 					side = "CIV";
-					vehicle = "A3_Characters_F_Civil";
+					vehicle = "VirtualMan_EPOCH";
 					player = "PLAYER COMMANDER";
 					leader = 1;
 					skill = 0.6;
