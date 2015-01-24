@@ -52,7 +52,7 @@ _fnc_createTriggers = {
 if (isServer) then {
 	private["_i","_numberOfTriggers"];
 
-	_numberOfTriggers = 7; // total triggers to create on map
+	_numberOfTriggers = 5; // total triggers to create on map
 	
 	for "_i" from 0 to _numberOfTriggers do {
 		[_i] call _fnc_createTriggers; // Use loop index to number trigger names
