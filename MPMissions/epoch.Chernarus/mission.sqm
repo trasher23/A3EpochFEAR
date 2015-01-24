@@ -2046,7 +2046,7 @@ class Mission
 					position[] = {6968.658,324.48145,8345.914};
 					azimut = 153.62447;
 					id = 100;
-					side = "WEST";
+					side = "CIV";
 					vehicle = "A3_Characters_F_Civil";
 					player = "PLAYER COMMANDER";
 					leader = 1;
