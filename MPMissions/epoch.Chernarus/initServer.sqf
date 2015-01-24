@@ -3,11 +3,6 @@
 */
 
 if (isServer) then {
-
-	// DAC settings	
-	DAC_Basic_Value = 0;
-	DAC_Marker = 1;
-	DAC_Com_Values = [1,2,0,0];
 	
 	// Loot Spawner http://forums.bistudio.com/showthread.php?165234-Lootspawner-configurable-building-loot-system
 	fn_getBuildingstospawnLoot = compile preProcessFileLineNumbers "\LSpawner\fn_LSgetBuildingstospawnLoot.sqf"; 

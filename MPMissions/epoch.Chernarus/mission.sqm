@@ -2035,43 +2035,6 @@ class Mission
 				};
 			};
 		};
-		class Item100
-		{
-			side = "CIV";
-			class Vehicles
-			{
-				items = 1;
-				class Item0
-				{
-					position[] = {6968.658,324.48145,8345.914};
-					azimut= -358.65805;
-					id = 100;
-					side = "CIV";
-					vehicle = "VirtualMan_EPOCH";
-					player = "PLAYER COMMANDER";
-					leader = 1;
-					skill = 0.6;
-					text="s1";
-				};
-			};
-		};
-		class Item101
-		{
-			side = "LOGIC";
-			class Vehicles
-			{
-				items = 1;
-				class Item0
-				{
-					position[] = {6968.658,324.48145,8345.914};
-					id = 101;
-					side = "LOGIC";
-					vehicle = "DAC_Source_Intern";
-					leader = 1;
-					skill = 0.6;
-				};
-			};
-		};
 	};
 	class Markers
 	{
@@ -2095,27 +2058,6 @@ class Mission
 			name = "respawn_west";
 			type = "Empty";
 			angle = 23.608498;
-		};
-	};
-	class Sensors
-	{
-		items=1;
-		class Item0
-		{
-			position[]={6073.3232,300.99222,7766.9844};
-			a=500;
-			b=500;
-			rectangular=1;
-			activationBy="LOGIC";
-			repeating=1;
-			age="UNKNOWN";
-			text="test";
-			name="z1";
-			expCond="time > 1";
-			expActiv="fun=[""z1"",[1,0,0],[10,3,50,8],[],[],[],[1,1,1,1]] spawn DAC_Zone";
-			class Effects
-			{
-			};
 		};
 	};
 };
