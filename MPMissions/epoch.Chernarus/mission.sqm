@@ -2046,7 +2046,7 @@ class Mission
 					position[] = {6968.658,324.48145,8345.914};
 					id = 100;
 					side = "LOGIC";
-					vehicle = "DAC_Source_Extern";
+					vehicle = "DAC_Source_Intern";
 					leader = 1;
 					skill = 0.6;
 				};
