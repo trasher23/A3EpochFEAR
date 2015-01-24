@@ -19,4 +19,3 @@ if (!isServer) then {
 };
 
 [] ExecVM "R3F_LOG\init.sqf";			// [R3F] Logistics http://forums.bistudio.com/showthread.php?180049-R3F-Logistics
-DAC_Basic_Value = 0;execVM "DAC\DAC_Config_Creator.sqf";	// DAC AI Generator http://forums.bistudio.com/showthread.php?176926-DAC-V3-1-%28Dynamic-AI-Creator%29-released/page18
