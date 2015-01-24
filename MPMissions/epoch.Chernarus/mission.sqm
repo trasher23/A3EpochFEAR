@@ -2043,8 +2043,8 @@ class Mission
 				items = 1;
 				class Item0
 				{
-					position[] = {28631.336,-0.18378288,25200.541};
-					id = 8;
+					position[] = {6968.658,324.48145,8345.914};
+					id = 100;
 					side = "LOGIC";
 					vehicle = "DAC_Source_Extern";
 					leader = 1;
@@ -2060,8 +2060,8 @@ class Mission
 				items = 1;
 				class Item0
 				{
-					position[] = {28632.11,-0.062971264,25154.365};
-					id = 9;
+					position[] = {6968.658,324.48145,8345.914};
+					id = 101;
 					side = "LOGIC";
 					vehicle = "Logic";
 					leader = 1;
