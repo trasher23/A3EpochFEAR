@@ -43,7 +43,7 @@ _fnc_createTriggers = {
 	
 	// Assign trigger conditions
 	_trig_cond = "{(isPlayer _x) && ((vehicle _x) isKindOf ""Man"")} count thisList > 0"; // Trigger if any player is in range
-	_trig_act_stmnt = format ["""z2"",[2,0,0],[],[],[],[1,2,50,0,100,100],[0,0,5,0]] spawn DAC_Zone", _pos, _triggerIndex];
+	_trig_act_stmnt = format ["fun=[""z2"",[2,0,0],[],[],[],[1,2,50,0,100,100],[0,0,5,0]] spawn DAC_Zone", _pos, _triggerIndex];
 	_trig_deact_stmnt = format ["deleteVehicle %1", _trigName]; // Delete trigger once activated
 	
 	_this setTriggerStatements [_trig_cond, _trig_act_stmnt, _trig_deact_stmnt];
