@@ -22,7 +22,7 @@ VEMFGroupCnt = 3;
 
 // Punish Players who Run Over AI?
 // Causes 10% Vehicle Damage per AI Runover
-VEMFPunishRunover = false;
+VEMFPunishRunover = true;
 
 // Dynamic Crate Loot?
 // Blacklist Still Applies

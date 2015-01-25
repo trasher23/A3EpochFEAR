@@ -1,6 +1,7 @@
 if (!isServer) then {	
 
 	"VEMFChatMsg" addPublicVariableEventHandler {
+		systemChat ((_this select 1) select 0);
 		[
 			[
 				[((_this select 1) select 0),"align = 'center' size = '1' font='PuristaBold'"],
@@ -8,7 +9,6 @@ if (!isServer) then {
 				[((_this select 1) select 1),"align = 'center' size = '0.5'"]
 			]
 		] spawn BIS_fnc_typeText2;
-		sleep 15;
 		VEMFChatMsg = nil;
 	};
 
