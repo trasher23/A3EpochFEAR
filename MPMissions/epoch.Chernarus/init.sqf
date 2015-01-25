@@ -1,4 +1,5 @@
 if (!isServer) then {	
+
 	"VEMFChatMsg" addPublicVariableEventHandler {
 		[
 			[
@@ -11,11 +12,7 @@ if (!isServer) then {
 		VEMFChatMsg = nil;
 	};
 
-	[] execVM "FEAR\scripts\FEAR_welcome.sqf";	// Welcome credits
-	[] ExecVM "FEAR\scripts\FEAR_soundFx.sqf";	// Random sound fx
-	[] ExecVM "FEAR\scripts\FEAR_earthquake.sqf";	// Random earthquake - need to move trigger to server
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";	// Status bar lower screen
 	[] ExecVM "FEAR\nuke\FEAR_nuke_init.sqf";	// Nuke towns
+	[] ExecVM "FEAR\tow_and_transport\init.sqf";
 };
-
-[] ExecVM "R3F_LOG\init.sqf";			// [R3F] Logistics http://forums.bistudio.com/showthread.php?180049-R3F-Logistics
