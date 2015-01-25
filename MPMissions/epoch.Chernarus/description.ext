@@ -42,7 +42,7 @@ class CfgRemoteExecCommands {};
 
 class CfgSounds
 {
-    sounds[] ={nukesiren, nuke}
+    sounds[] ={nukesiren, nuke};
 	
     class nukesiren
     {
