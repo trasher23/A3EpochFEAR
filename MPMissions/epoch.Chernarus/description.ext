@@ -63,5 +63,3 @@ class RscTitles
 {
 	#include "FEAR\dialog\statusBar.hpp"
 };
-
-#include "FEAR\tow_and_transport\transport\payload_dialog.hpp"

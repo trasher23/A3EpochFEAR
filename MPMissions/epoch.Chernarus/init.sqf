@@ -14,5 +14,5 @@ if (!isServer) then {
 
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";	// Status bar lower screen
 	[] ExecVM "FEAR\nuke\FEAR_nuke_init.sqf";	// Nuke towns
-	[] ExecVM "FEAR\tow_and_transport\init.sqf";
+	
 };
