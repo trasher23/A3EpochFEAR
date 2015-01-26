@@ -5,6 +5,8 @@ while {true} do {
 	_player = player;
 	
 	player addEventHandler ["Respawn", {
+		player addVest "V_41_EPOCH";				
+		player forceAddUniform "U_C_Poor_1";
 		player addWeapon "EpochRadio0"; 
 		player addWeapon "ItemMap";
 		player addWeapon "ItemWatch";
