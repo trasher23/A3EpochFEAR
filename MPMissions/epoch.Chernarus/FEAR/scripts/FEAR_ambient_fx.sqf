@@ -8,7 +8,7 @@ getSoundFx = {
 	_soundArray = ["wolfhowl1.ogg","eeriewind.ogg","girlscreaming.ogg","zombienoise1.ogg","childrenlaughing.ogg","babycry1.ogg"];
 
 	// Pick a sound from array	
-	_sound = _soundArray select floor random count _soundArray
+	_sound = _soundArray call BIS_fnc_selectRandom;
 	
 	// Assign mission path
 	_sound = MISSION_ROOT + "FEAR\fx\" + _sound;
