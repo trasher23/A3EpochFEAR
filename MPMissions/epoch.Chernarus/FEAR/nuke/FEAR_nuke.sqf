@@ -1,5 +1,3 @@
-if (isServer) exitWith {};
-
 while {true} do {
 
     nukeDetonate = false;
@@ -78,13 +76,15 @@ while {true} do {
 
 	sleep 1;
 	
+	_nukeSound =  MISSION_ROOT + "FEAR\fx\" + "nuke.ogg";
+	playSound3D [_nukeSound,player,false,nukeCoords];
+	
 	[] ExecVM "FEAR\nuke\FEAR_nuke_clientDamage.sqf";
-	if (player distance nukeCoords < 2000) then {player say "nukenear"};
-	if (player distance nukeCoords > 2000) then {player say "nukefar"};
 	
 	player spawn nukeQuake;
 	
 	sleep 1;
+	
 	setAperture -1;
 	
 	sleep 1;
