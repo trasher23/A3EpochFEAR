@@ -3,7 +3,7 @@
 */
 
 getSoundFx = {
-	private["_soundArray","_index","_sound"];
+	private["_soundArray","_sound"];
 	
 	_soundArray = ["wolfhowl1.ogg","eeriewind.ogg","girlscreaming.ogg","zombienoise1.ogg","childrenlaughing.ogg","babycry1.ogg"];
 
