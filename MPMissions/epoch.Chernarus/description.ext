@@ -40,25 +40,6 @@ wreckRemovalMaxTime = 360;
 
 class CfgRemoteExecCommands {};
 
-class CfgSounds
-{
-    sounds[] ={nukesiren, nuke};
-	
-    class nukesiren
-    {
-		name="nukesiren";
-		sound[]={"FEAR\fx\nukesiren.ogg",db+0,1};
-		titles[] = {};
-    };
-    
-    class nukenear
-    {
-		name="nukenear";
-		sound[]={"FEAR\fx\nuke.ogg",db+0,1};
-		titles[] = {};
-    };
-};
-
 class RscTitles
 {
 	#include "FEAR\dialog\statusBar.hpp"
