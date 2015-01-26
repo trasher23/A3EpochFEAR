@@ -1,4 +1,4 @@
-if (isServer) exitWith {};
+private ["_nukeSiren"];
 
 _nukeSiren = "MISSION_ROOT + "FEAR\fx\" + "nukesiren.ogg";
 
