@@ -15,7 +15,9 @@ if (!isServer) then {
 		] spawn BIS_fnc_typeText2;
 		VEMFChatMsg = nil;
 	};
-
+	
+	call compile preprocessFileLineNumbers "shk_pos\shk_pos_init.sqf";
+	
 	[] ExecVM "FEAR\nuke\FEAR_nuke_init.sqf";		// Nuke towns
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";		// Status bar lower screen
 	[] ExecVM "FEAR\scripts\FEAR_ambient_fx.sqf";	// Random sound fx
