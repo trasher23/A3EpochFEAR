@@ -4,7 +4,7 @@
 		[_x] spawn {
 			private ["_pos","_numPlayers","_marker","_numCaManBase","_trigger","_null","_aiGroup","_playerCount","_deactivation","_coords","_num","_ai","_skins","_selectedSkin"];
 			_marker = _this select 0;
-			_pos = getpos _marker;
+			_pos = [(_pos select 0), (_pos select 1),0.2];
 			_aiGroup = ObjNull;
 			_aiGroup = createGroup RESISTANCE;	
 			while {true} do {
