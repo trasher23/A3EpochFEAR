@@ -22,9 +22,5 @@ if (!isServer) then {
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
 	[] ExecVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] ExecVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
-	
-	// Zombies
-	[] execVM "zombie\compiles.sqf";
-	"playZSoundHurt" addPublicVariableEventHandler {(_this select 1) call fncNextSound};
-	"playZSound" addPublicVariableEventHandler {(_this select 1) call fncNextSound};
+
 };
