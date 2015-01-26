@@ -56,6 +56,9 @@ if (isDedicated) then {
 	nukeDetonate = false;
 	publicVariable "nukeDetonate";
 	
+	// Delete nukepad
+	deleteVehicle _nukePad;
+	
 	sleep 1;
 	
 	// Inform players about radiation zone
@@ -73,7 +76,4 @@ if (isDedicated) then {
 	
 	// Wait length of time for RadZone (15 minutes)
 	sleep 900;
-	
-	// Delete nukepad
-	deleteVehicle _nukePad;
 };
