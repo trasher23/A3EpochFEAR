@@ -1,3 +1,5 @@
+#include "zombie\zombie.hpp"
+
 author = "Epoch Mod Team";
 
 class Header
