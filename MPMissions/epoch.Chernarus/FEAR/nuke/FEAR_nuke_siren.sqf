@@ -1,5 +1,7 @@
 if (isServer) exitWith {};
 
+_nukeSiren = "MISSION_ROOT + "FEAR\fx\" + "nukesiren.ogg";
+
 while {true} do {
 	nukeSiren = false;
 	publicVariable "nukeSiren";
@@ -9,7 +11,7 @@ while {true} do {
     	waitUntil {nukeSiren};
 	
 	while {!nukeDetonate} do {
-		if (player distance nukeCoords < 4000) then {nukeCoords say3D "nukesiren"};
+		if (player distance nukeCoords < 4000) then { playSound3D [_nukeSiren, player, false, nukeCoords]; };
 		sleep  23; // Length of siren sample to loop
 	};
 	
