@@ -19,7 +19,7 @@ playSoundFx = {
 	private["_sound","_randomPos","_soundSource"];
 	
 	_sound = call getSoundFx;
-	_randomPos = [getPos player,random 360,[100,400]] call SHK_pos;
+	_randomPos = [player,[100,250],random 360] call SHK_pos;
 	_soundSource = "Land_HelipadEmpty_F" createVehicle _randomPos;
 	
 	playSound3D [_sound, player, false, _soundSource];
