@@ -12,7 +12,7 @@ getSoundFx = {
 	
 	// Assign mission path
 	_sound = MISSION_ROOT + "FEAR\fx\" + _sound;
-	_sound;
+	_sound
 };
 
 playSoundFx = {
