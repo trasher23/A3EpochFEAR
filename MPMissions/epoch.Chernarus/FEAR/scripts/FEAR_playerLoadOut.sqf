@@ -5,15 +5,26 @@ while {true} do {
 	_player = player;
 	
 	player addEventHandler ["Respawn", {
-		player addVest "V_41_EPOCH";				
-		player forceAddUniform "U_C_Poor_1";
+		
+		// Clothes
+		_modelMale = (typeOF player == "Epoch_Male_F");
+                _modelFemale = (typeOF player == "Epoch_Female_F");    
+
+		if (_modelFemale) then {
+			player forceAddUniform "U_BasicBodyFemale";
+		};
+		
+		if (_modelMale) then {
+			player forceAddUniform "U_C_Poor_1";
+		};                                                    
+                
+                // Equipment
+		player addVest "V_41_EPOCH";
 		player addWeapon "EpochRadio0"; 
 		player addWeapon "ItemMap";
 		player addWeapon "ItemWatch";
 		player addItemToBackpack "HeatPack";
 		player addItemToBackpack "FirstAidKit";
-		player addWeapon "hgun_Pistol_heavy_01_F";
-		player addMagazine "11Rnd_45ACP_Mag";
 		EPOCH_playerCrypto = 100;
 	}];
 	
