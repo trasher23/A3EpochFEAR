@@ -1,12 +1,10 @@
 author = "Epoch Mod Team";
-
 class Header
 {
  gameType = Sandbox;
  minPlayers = 1;
  maxPlayers = 100;
 };
-
 respawn = "BASE";
 respawnDelay = 600;
 respawnDialog = 0;
@@ -26,7 +24,7 @@ debriefing = 0;
 enableDebugConsole = 0;
 joinUnassigned = 0;
 respawnOnStart = 0;
-forceRotorLibSimulation = 0;
+forceRotorLibSimulation = 1;
 
 corpseManagerMode = 1;
 corpseLimit = 10;
