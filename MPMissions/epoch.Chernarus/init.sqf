@@ -18,9 +18,9 @@ if (!isServer) then {
 	
 	call compile preprocessFileLineNumbers "shk_pos\shk_pos_init.sqf";
 	
-	[] ExecVM "FEAR\nuke\FEAR_nuke_init.sqf";			// Nuke towns
+	[] execVM "FEAR\nuke\FEAR_nuke_init.sqf";			// Nuke towns
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
-	[] ExecVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
-	[] ExecVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
+	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
+	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
 
 };
