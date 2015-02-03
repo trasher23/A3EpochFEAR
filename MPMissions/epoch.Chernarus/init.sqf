@@ -1,7 +1,7 @@
+// Assign mission path to global
+MISSION_ROOT = format ["mpmissions\__cur_mp.%1\", worldName];
+
 if (!isServer) then {	
-	
-	// Assign mission path to global
-	MISSION_ROOT = format ["mpmissions\__cur_mp.%1\", worldName];
 	
 	// VEMF missions
 	"VEMFChatMsg" addPublicVariableEventHandler {
