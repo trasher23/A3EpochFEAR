@@ -20,4 +20,7 @@ MISSION_ROOT = format ["mpmissions\__cur_mp.%1\", worldName];
 //Report FEAR version to RPT log
 diag_log format ["[FEAR] Initializing FEAR version %1 using base path %2.",[configFile >> "CfgPatches" >> "FEAR","FEARVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,FEAR_directory];
 
+//Load A3EAI main configuration file
+call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
+
 [] execVM format ['%1\nuke\FEAR_nuke_init.sqf',FEAR_directory]; // Nuke towns
