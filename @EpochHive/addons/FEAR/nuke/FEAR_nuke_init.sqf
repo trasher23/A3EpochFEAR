@@ -1,19 +1,5 @@
 if (!isServer) exitWith {};
 
-// The minimum time in seconds before a cruise missile launch.
-// At least this much time will pass between launches.
-nukeTimerMin = 30; // minutes
-
-// Maximum time in seconds before a cruise missile launch.
-// A cruise missile will always launch before this much time has passed.
-nukeTimerMax = 120;
-
-// Blast radius in km
-nukeRadius = 1000;
-
-// Ground zero - total annihilation
-groundZero = nukeRadius / 2;
-
 nukeDetonate = false;
 publicVariable "nukeDetonate";
 
