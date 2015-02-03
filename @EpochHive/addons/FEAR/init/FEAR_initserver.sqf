@@ -14,6 +14,8 @@ _directoryAsArray = toArray __FILE__;
 _directoryAsArray resize ((count _directoryAsArray) - 25);
 FEAR_directory = toString _directoryAsArray;
 
+diag_log format ["FEAR_directory %1", FEAR_directory];
+
 // Assign mission path to global
 MISSION_ROOT = format ["mpmissions\__cur_mp.%1\", worldName];
 
