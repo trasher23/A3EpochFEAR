@@ -11,7 +11,7 @@ private ["_startTime","_directoryAsArray"];
 _startTime = diag_tickTime;
 
 _directoryAsArray = toArray __FILE__;
-_directoryAsArray resize ((count _directoryAsArray) - 26);
+_directoryAsArray resize ((count _directoryAsArray) - 25);
 FEAR_directory = toString _directoryAsArray;
 
 //Report FEAR version to RPT log
