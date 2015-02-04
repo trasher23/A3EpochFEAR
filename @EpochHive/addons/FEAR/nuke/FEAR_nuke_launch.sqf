@@ -6,9 +6,6 @@ _townPos = position _town; // Get town position
 
 diag_log format ["[nuke]: Target: %1", _townName];
 
-// Create nuke target
-_nukeTarget = createVehicle ["Land_HelipadEmpty_F",_townPos,[],0,"NONE"];
-
 // Inform players to get the hell out of dodge!
 // 3 minute timer till impact
 _msg = format ["You have %1 minutes to get %2k clear of %3.",3,1,_townName];
@@ -16,10 +13,10 @@ _msg = ["Nuclear Strike",_msg];
 _alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 
 // nukeAddMarker is a simple script that adds a marker to the location
-[_nukeTarget] call FEAR_fnc_nukeAddMarker; // _townPos
+[_townPos] call FEAR_fnc_nukeAddMarker; // _townPos
 
 // Start siren
-NUKESiren = _nukeTarget;
+NUKESiren = _townPos;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKESiren";
@@ -37,14 +34,14 @@ _alert = [_msg] call VEMFBroadcast;
 uisleep 60;
 
 // Drop the Bass...
-NUKEImpact = _nukeTarget;
+NUKEImpact = _townPos;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKEImpact";
 	};
 } forEach playableUnits;
 
-[_nukeTarget] call FEAR_fnc_nukeServerDamage;
+[_townPos] call FEAR_fnc_nukeServerDamage;
 
 diag_log "[nuke]: Cruise missile has reached its target.";
 
@@ -70,7 +67,4 @@ uisleep 900;
 // Remove RadZone map markers
 deleteMarker "RADMarkerR";
 deleteMarker "RADMarkerY";
-	
-// Delete nukeTarget
-deleteVehicle _nukeTarget;
 nukeMarkerCoords = Nil;
