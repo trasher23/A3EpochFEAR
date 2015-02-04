@@ -1,3 +1,5 @@
+diag_log "check 1";
+
 // Load functions
 nukeTarget = compileFinal preprocessFileLineNumbers format ["%1\nuke\FEAR_nuke_functions.sqf",FEAR_Directory];
 
@@ -8,3 +10,5 @@ nukeTarget = compileFinal preprocessFileLineNumbers format ["%1\nuke\FEAR_nuke_f
 [] execVM format ["%1\nuke\FEAR_nuke_markerLoop.sqf",FEAR_Directory];
 
 diag_log "[nuke]: Initiating nuke.";
+
+diag_log "check 2";
