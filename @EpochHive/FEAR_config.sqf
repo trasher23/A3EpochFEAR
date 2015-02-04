@@ -4,7 +4,7 @@
 
 diag_log "[FEAR] Reading FEAR configuration file.";
 
-/* Nuke Settings
+/* Nuke settings
 --------------------------------------------------
 */
 
@@ -19,6 +19,13 @@ nukeRadius = 1000;
 
 // Ground zero - total annihilation
 groundZero = (nukeRadius / 2);
+
+/* Earthquake settings
+--------------------------------------------------
+*/
+
+eqTimerMin = 3;
+eqTimerMax = 3;
 
 //NOTHING TO EDIT BEYOND THIS POINT
 diag_log "[FEAR] FEAR configuration file loaded.";
