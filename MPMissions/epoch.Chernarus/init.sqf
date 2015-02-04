@@ -27,6 +27,7 @@ if (!isServer) then {
 	
 	"FEARQuake" addPublicVariableEventHandler {
 		player execVM "FEAR\scripts\FEAR_earthquake.sqf";
+		FEARQuake = nil;
 	};
 	
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
