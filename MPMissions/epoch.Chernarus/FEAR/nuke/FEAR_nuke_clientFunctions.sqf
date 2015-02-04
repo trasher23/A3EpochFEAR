@@ -5,10 +5,10 @@ FEAR_fnc_nukeSiren = {
 	private ["_nukeSiren","_nukePos"];
 	
 	_nukeSiren = MISSION_directory + "FEAR\fx\" + "nukesiren.ogg";
-	_nukePos = _this 0;
+	_nukePos = _this select 0;
 	
 	// 8 iterations is roughly 3 minutes
-	for [{_i=0}, {_i<8}, {_i=_i+1}] do {
+	for "_x" from 1 to 8 do {
 		playSound3D [_nukeSiren, player, false, _nukePos];
 		uisleep 23; // Length of siren sample to loop
 	};
@@ -17,7 +17,7 @@ FEAR_fnc_nukeSiren = {
 FEAR_fnc_nukeImpact = {
 	private ["_nukePos","_nukeBlast"];
 	
-	_nukePos = _this 0;
+	_nukePos = _this select 0;
 	
 	_nukeBlast = MISSION_directory + "FEAR\fx\" + "nuke.ogg";
 	playSound3D [_nukeBlast, player, false, _nukePos, 2];
