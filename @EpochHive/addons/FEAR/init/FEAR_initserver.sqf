@@ -11,7 +11,7 @@ private ["_startTime","_directoryAsArray"];
 _startTime = diag_tickTime;
 
 _directoryAsArray = toArray __FILE__;
-_directoryAsArray resize ((count _directoryAsArray) - 25);
+_directoryAsArray resize ((count _directoryAsArray) - 24);
 FEAR_directory = toString _directoryAsArray;
 
 // Assign mission path to global
