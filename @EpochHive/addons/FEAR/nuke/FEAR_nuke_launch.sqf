@@ -17,7 +17,7 @@ _alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 [_townPos] call FEAR_fnc_nukeAddMarker; // _townPos
 
 // Start siren
-NUKESiren = _townPos;
+NUKESiren = "Land_HelipadEmpty_F" createVehicle _townPos;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKESiren";
@@ -35,7 +35,7 @@ _alert = [_msg] call VEMFBroadcast;
 uisleep 60;
 
 // Drop the Bass...
-NUKEImpact = _townPos;
+NUKEImpact = "Land_HelipadEmpty_F" createVehicle _townPos;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKEImpact";
