@@ -14,14 +14,12 @@ if (!isServer) then {
 	};
 	
 	"NUKESiren" addPublicVariableEventHandler {
-		_coords = _this select 1;
-		[_coords] spawn FEAR_fnc_nukeSiren;
+		[_this select 1] spawn FEAR_fnc_nukeSiren;
 		NUKESiren = nil;
 	};
 
 	"NUKEImpact" addPublicVariableEventHandler {
-		_coords = _this select 1;
-		[_coords] spawn FEAR_fnc_nukeImpact;
+		[_this select 1] spawn FEAR_fnc_nukeImpact;
 		NUKEImpact = nil;
 	};
 	
