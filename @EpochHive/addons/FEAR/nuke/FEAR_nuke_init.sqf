@@ -1,10 +1,8 @@
-if (!isServer) exitWith {};
-
 nukeDetonate = false;
 publicVariable "nukeDetonate";
 
 // Load functions
-call compile preprocessFileLineNumbers format ["%1\nuke\FEAR_nuke_functions.sqf",FEAR_Directory];
+call compile preprocessFile format ["%1\nuke\FEAR_nuke_functions.sqf",FEAR_Directory];
 
 // Start the missile launch countdown!
 [] execVM format ["%1\nuke\FEAR_nuke_timer.sqf",FEAR_Directory];
