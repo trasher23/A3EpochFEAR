@@ -1,5 +1,5 @@
 // Load functions
-call compile preprocessFileLineNumbers "\FEAR\nuke\FEAR_nuke_functions.sqf";
+nukeTarget = compileFinal preprocessFileLineNumbers format ["%1\nuke\FEAR_nuke_functions.sqf",FEAR_directory];
 
 // Start the missile launch countdown!
 [] ExecVM "\FEAR\nuke\FEAR_nuke_timer.sqf";
