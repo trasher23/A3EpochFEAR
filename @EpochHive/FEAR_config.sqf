@@ -22,5 +22,3 @@ nukeRadius = 1000;
 
 // Ground zero - total annihilation
 groundZero = nukeRadius / 2;
-
-FEAR_Config_Loaded = true;
