@@ -1,10 +1,7 @@
-private ["_timeDiff","_maxTime","_minTime"];
-
-_minTime = 5; // minutes
-_maxTime = 30; 
+private ["_timeDiff"];
 
 // Find the min and max time
-_timeDiff = ((_maxTime*60) - (_minTime*60));
+_timeDiff = ((EQMaxMissTime*60) - (EQMinMissTime*60));
 
 diag_log "[earthquake]: Commencing countdown clock!";
 
@@ -12,7 +9,7 @@ diag_log "[earthquake]: Commencing countdown clock!";
 while {true} do
 {
 	// Wait a Random Amount
-	uiSleep ((floor(random(_timeDiff))) + (_minTime*60));
+	uiSleep ((floor(random(_timeDiff))) + (EQMinMissTime*60));
 	
 	FEARQuake = true;
 	{
