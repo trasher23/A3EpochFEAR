@@ -15,9 +15,12 @@ FEAR_fnc_nukeSiren = {
 };
 
 FEAR_fnc_nukeImpact = {
-	private ["_nukePos"];
+	private ["_nukePos","_nukeBlast"];
 	
 	_nukePos = _this 0;
+	
+	_nukeBlast = MISSION_directory + "FEAR\fx\" + "nuke.ogg";
+	playSound3D [_nukeBlast, player, false, _nukePos, 2];
 	
 	_Cone = "#particlesource" createVehicleLocal getpos _nukePos;
 	_Cone setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48], "", "Billboard", 1, 10, [0, 0, 0],
