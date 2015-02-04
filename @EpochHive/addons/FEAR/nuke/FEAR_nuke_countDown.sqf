@@ -27,14 +27,14 @@ nukeSiren = true;
 publicVariable "nukeSiren";
 
 // Wait 2 minutes
-sleep 120;
+uisleep 120;
 
 // Give warning on 1 minute to go
 _msg = format ["You now have %1 minute to get %2k clear of %3.",1,1,_townName];
 _msg = ["Nuclear Strike",_msg];
 _alert = [_msg] call VEMFBroadcast;
 
-sleep 60;
+uisleep 60;
 
 // Broadcast nukeDetonate to clients
 // This will enable the nuke script
@@ -44,8 +44,6 @@ publicVariable "nukeDetonate";
 [_townPos] execVM format ["%1\nuke\FEAR_nuke_serverDamage.sqf",FEAR_directory];
 
 diag_log "[nuke]: Cruise missile has reached its target.";
-
-sleep 1;
 
 // Remove map markers
 deleteMarker "nukeMarkerO";
@@ -57,8 +55,6 @@ publicVariable "nukeDetonate";
 
 // Delete nukepad
 deleteVehicle _nukePad;
-
-sleep 1;
 
 // Inform players about radiation zone
 _msg = format ["You will need to keep clear of %1 until the radiation cloud dissipates.",_townName];
