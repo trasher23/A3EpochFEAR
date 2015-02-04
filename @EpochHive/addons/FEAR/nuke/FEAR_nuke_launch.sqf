@@ -1,9 +1,10 @@
-private["_town","_townName","_townPos","_nukeTarget","_varName","_msg","_alert"];
+private["_town","_townName","_townPos","_nukeTarget","_msg","_alert"];
 
 // Get random town
 _town = call FEAR_fnc_nukeTarget;
 _townName = text _town;
 _townPos = position _town;
+_nukeTarget = "Land_HelipadEmpty_F" createVehicle _townPos;
 
 diag_log format ["[nuke]: Target: %1", _townName];
 	
@@ -14,10 +15,10 @@ _msg = ["Nuclear Strike",_msg];
 _alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 
 // nukeAddMarker is a simple script that adds a marker to the location
-[_townPos] call FEAR_fnc_nukeAddMarker; // _townPos
+[_townPos] call FEAR_fnc_nukeAddMarker;
 
 // Start siren
-NUKESiren = "Land_HelipadEmpty_F" createVehicle _townPos;
+NUKESiren = _nukeTarget;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKESiren";
@@ -35,7 +36,7 @@ _alert = [_msg] call VEMFBroadcast;
 uisleep 60;
 
 // Drop the Bass...
-NUKEImpact = "Land_HelipadEmpty_F" createVehicle _townPos;
+NUKEImpact = _nukeTarget;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKEImpact";
@@ -68,4 +69,4 @@ uisleep 900;
 // Remove RadZone map markers
 deleteMarker "RADMarkerR";
 deleteMarker "RADMarkerY";
-nukeMarkerCoords = Nil;
+nukeMarkerCoords = nil;
