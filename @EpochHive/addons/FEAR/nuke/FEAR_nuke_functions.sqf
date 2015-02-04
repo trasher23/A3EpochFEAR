@@ -83,7 +83,7 @@ FEAR_fnc_radAddMarker = {
 	/* Adds a marker for Radiation Zone. Only runs once.
 	NUKEMarkerLoop.sqf keeps this marker updated. */
 	
-	if (isNil nukeMarkerCoords) exitWith {};
+	if (isNil "nukeMarkerCoords") exitWith {};
 	
 	_nul = createMarker ["radMarkerR",nukeMarkerCoords];
 	"radMarkerR" setMarkerColor "ColorRed";
