@@ -1,6 +1,6 @@
 private ["_nukeSiren"];
 
-_nukeSiren = MISSION_ROOT + "FEAR\fx\" + "nukesiren.ogg";
+_nukeSiren = MISSION_directory + "FEAR\fx\" + "nukesiren.ogg";
 
 while {true} do {
 	nukeSiren = false;
