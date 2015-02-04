@@ -1,0 +1,3 @@
+/*
+  FEAR Configuration file
+*/
