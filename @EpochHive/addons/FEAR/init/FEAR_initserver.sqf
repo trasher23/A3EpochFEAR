@@ -10,9 +10,13 @@ private ["_startTime","_directoryAsArray"];
 
 _startTime = diag_tickTime;
 
+// Assign FEAR path to global
 _directoryAsArray = toArray __FILE__;
 _directoryAsArray resize ((count _directoryAsArray) - 25);
 FEAR_directory = toString _directoryAsArray;
+
+// Assign mission path to global
+MISSION_directory = format ["mpmissions\__cur_mp.%1\", worldName];
 
 //Report A3EAI version to RPT log
 diag_log format ["[FEAR] Initializing FEAR version %1 using base path %2.",[configFile >> "CfgPatches" >> "FEAR","FEARVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,FEAR_directory];
