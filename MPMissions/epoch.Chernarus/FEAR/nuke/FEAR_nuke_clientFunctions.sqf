@@ -50,19 +50,19 @@ FEAR_fnc_nukeBlast = {
 	if (mdh_nuke_colorcorrection > 0) then
 	{
 		// COLORCORRECTION
-		execVM "nuke\colorcorrection.sqf";
+		call _FEAR_fnc_nukeColorCorrection;
 	}
 	else
 	{
 		// FLASH
-		execVM "nuke\flash.sqf";
+		call _FEAR_fnc_nukeFlash;
 	};
 
 	// EARTHQUAKE
-	execVM "nuke\earthquake.sqf";
+	call _FEAR_fnc_nukeEarthquake;
 
 	// ASH
-	execVM "nuke\ash.sqf";
+	call _FEAR_fnc_nukeAsh;
 
 	// NUKE DESTRUCTION ZONE, USE ZERO/0 AS PARAMETER TO DEACTIVATE DESTRUCTION
 	call compile preprocessfilelinenumbers "nuke\nuke_damage.sqf";
@@ -109,7 +109,7 @@ FEAR_fnc_nukeBlast = {
 	deleteVehicle _smoke;
 };
 
-FEAR_fnc_nukeColorCorrection = {
+_FEAR_fnc_nukeColorCorrection = {
 	"colorCorrections" ppEffectAdjust [2, 30, 0, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];
 	"colorCorrections" ppEffectCommit 0;
 	"colorCorrections" ppEffectAdjust [1, 0.8, -0.001, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];  
@@ -120,7 +120,7 @@ FEAR_fnc_nukeColorCorrection = {
 	"filmGrain" ppEffectCommit 5;
 };
 
-FEAR_fnc_nukeFlash = {
+_FEAR_fnc_nukeFlash = {
 	"dynamicBlur" ppEffectEnable true;
 	"dynamicBlur" ppEffectAdjust [1];
 	"dynamicBlur" ppEffectCommit 1;
@@ -157,7 +157,7 @@ FEAR_fnc_nukeFlash = {
 	"dynamicBlur" ppEffectCommit 1;
 };
 
-FEAR_fnc_nukeEarthquake = {
+_FEAR_fnc_nukeEarthquake = {
 		player spawn {
 		//playsound "eq";
 		for "_i" from 0 to 200 do {
@@ -176,7 +176,7 @@ FEAR_fnc_nukeEarthquake = {
 	};
 };
 
-FEAR_fnc_nukeAsh = {
+_FEAR_fnc_nukeAsh = {
 	sleep 20;
 
 	//--- Ash
