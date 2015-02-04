@@ -61,10 +61,7 @@ _msg = ["Nuclear Strike",_msg];
 _alert = [_msg] call VEMFBroadcast;
 
 // Activate radiation zone
-[] spawn FEAR_fnc_nukeRadDamage;
-
-// Wait length of time for RadZone (15 minutes)
-uisleep 900;
+[] call FEAR_fnc_nukeRadDamage;
 
 // Remove RadZone map markers
 deleteMarker "RADMarkerR";
