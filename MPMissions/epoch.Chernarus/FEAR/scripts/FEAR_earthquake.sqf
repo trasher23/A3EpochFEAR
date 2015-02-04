@@ -11,3 +11,4 @@ for "_i" from 0 to 300 do {
 	];
 	sleep (0.01 + random 0.01);
 };
+[player, 0, 0] call BIS_fnc_setPitchBank;
