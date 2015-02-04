@@ -10,13 +10,10 @@ diag_log "[FEAR] Reading FEAR configuration file.";
 
 // The minimum time in seconds before a cruise missile launch.
 nukeTimerMin = 3; // minutes
-
 // Maximum time in seconds before a cruise missile launch.
 nukeTimerMax = 3;
-
 // Blast radius in km
 nukeRadius = 1000;
-
 // Ground zero - total annihilation
 groundZero = (nukeRadius / 2);
 
