@@ -11,7 +11,7 @@ getSoundFx = {
 	_sound = _soundArray call BIS_fnc_selectRandom;
 	
 	// Assign mission path
-	_sound = MISSION_ROOT + "FEAR\fx\" + _sound;
+	_sound = MISSION_directory + "FEAR\fx\" + _sound;
 	_sound
 };
 
