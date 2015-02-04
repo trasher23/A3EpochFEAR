@@ -1,5 +1,5 @@
 // Load functions
-nukeTown = compileFinal preprocessFileLineNumbers format ["%1\nuke\FEAR_nuke_functions.sqf",FEAR_Directory];
+nukeTarget = compileFinal preprocessFileLineNumbers format ["%1\nuke\FEAR_nuke_functions.sqf",FEAR_Directory];
 
 // Start the missile launch countdown!
 [] execVM format ["%1\nuke\FEAR_nuke_timer.sqf",FEAR_Directory];
