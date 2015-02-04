@@ -7,10 +7,10 @@
 */
 
 // The minimum time in seconds before a cruise missile launch.
-nukeTimerMin = 30; // minutes
+nukeTimerMin = 5; // minutes
 
 // Maximum time in seconds before a cruise missile launch.
-nukeTimerMax = 120;
+nukeTimerMax = 5;
 
 // Blast radius in km
 nukeRadius = 1000;
