@@ -1,6 +1,8 @@
 /* Reset markers
 Checks if a cruise missile has been launched and resets the marker for JIPs */
 
+if (isNil "nukeMarkerCoords") exitWith {};
+
 // Start the timer
 while {true} do
 {
