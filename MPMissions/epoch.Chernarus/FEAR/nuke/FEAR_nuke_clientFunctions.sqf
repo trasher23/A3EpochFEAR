@@ -217,3 +217,15 @@ _FEAR_fnc_nukeAsh = {
 		_snow setDropInterval 0.01;
 	};
 };
+
+"NUKESiren" addPublicVariableEventHandler {
+	diag_log "NUKESiren triggered!";
+	[_this select 0] spawn FEAR_fnc_nukeSiren;
+	NUKESiren = nil;
+};
+
+"NUKEImpact" addPublicVariableEventHandler {
+	diag_log "NUKEImpact triggered!";
+	[_this select 0] spawn FEAR_fnc_nukeImpact;
+	NUKEImpact = nil;
+};
