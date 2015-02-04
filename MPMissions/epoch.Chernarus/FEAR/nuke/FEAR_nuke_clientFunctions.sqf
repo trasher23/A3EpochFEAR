@@ -47,25 +47,14 @@ FEAR_fnc_nukeBlast = {
 
 	//*******************************************************************
 
-	if (mdh_nuke_colorcorrection > 0) then
-	{
-		// COLORCORRECTION
-		call _FEAR_fnc_nukeColorCorrection;
-	}
-	else
-	{
-		// FLASH
-		call _FEAR_fnc_nukeFlash;
-	};
+	// FLASH
+	call _FEAR_fnc_nukeFlash;
 
 	// EARTHQUAKE
 	call _FEAR_fnc_nukeEarthquake;
 
 	// ASH
 	call _FEAR_fnc_nukeAsh;
-
-	// NUKE DESTRUCTION ZONE, USE ZERO/0 AS PARAMETER TO DEACTIVATE DESTRUCTION
-	call compile preprocessfilelinenumbers "nuke\nuke_damage.sqf";
 
 	_Wave setDropInterval 0.001;
 	deletevehicle _top;
@@ -159,7 +148,6 @@ _FEAR_fnc_nukeFlash = {
 
 _FEAR_fnc_nukeEarthquake = {
 		player spawn {
-		//playsound "eq";
 		for "_i" from 0 to 200 do {
 			_vx = vectorup _this select 0;
 			_vy = vectorup _this select 1;
