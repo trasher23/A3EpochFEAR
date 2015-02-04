@@ -6,8 +6,6 @@ _townName = text _town;
 _townPos = position _town;
 
 diag_log format ["[nuke]: Target: %1", _townName];
-
-_nukeTarget = createVehicle ["Land_HelipadEmpty_F",_townPos,[],0,"NONE"];
 	
 // Inform players to get the hell out of dodge!
 // 3 minute timer till impact
@@ -19,7 +17,7 @@ _alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 [_townPos] call FEAR_fnc_nukeAddMarker; // _townPos
 
 // Start siren
-_nukeTarget setVehicleVarName "NUKESiren";
+NUKESiren = _townPos;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKESiren";
@@ -37,14 +35,14 @@ _alert = [_msg] call VEMFBroadcast;
 uisleep 60;
 
 // Drop the Bass...
-_nukeTarget setVehicleVarName "NUKEImpact";
+NUKEImpact = _townPos;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKEImpact";
 	};
 } forEach playableUnits;
 
-[_townPos] call FEAR_fnc_nukeServerDamage;
+[_townPos] spawn FEAR_fnc_nukeServerDamage;
 
 diag_log "[nuke]: Cruise missile has reached its target.";
 
@@ -53,16 +51,16 @@ deleteMarker "nukeMarkerO";
 deleteMarker "nukeMarkerR";
 deleteMarker "nukeDot";
 
+// Add radiation zone marker
+[] spawn FEAR_fnc_radAddMarker;
+
 // Inform players about radiation zone
 _msg = format ["You will need to keep clear of %1 until the radiation cloud dissipates.",_townName];
 _msg = ["Nuclear Strike",_msg];
 _alert = [_msg] call VEMFBroadcast;
 
-// Add radiation zone marker
-[] call FEAR_fnc_radAddMarker;
-
 // Activate radiation zone
-[] call FEAR_fnc_nukeRadDamage;
+[] spawn FEAR_fnc_nukeRadDamage;
 
 // Wait length of time for RadZone (15 minutes)
 uisleep 900;
@@ -71,4 +69,3 @@ uisleep 900;
 deleteMarker "RADMarkerR";
 deleteMarker "RADMarkerY";
 nukeMarkerCoords = Nil;
-deleteVehicle _nukeTarget;
