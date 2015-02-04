@@ -2,7 +2,7 @@
 	FEAR_ambient_fx.sqf
 */
 
-getSoundFx = {
+_getSoundFx = {
 	private["_soundArray","_sound"];
 	
 	_soundArray = ["wolfhowl1.ogg","eeriewind.ogg","girlscreaming.ogg","zombienoise1.ogg","childrenlaughing.ogg","babycry1.ogg"];
@@ -15,10 +15,10 @@ getSoundFx = {
 	_sound
 };
 
-playSoundFx = {
+_playSoundFx = {
 	private["_sound","_randomPos","_soundSource"];
 	
-	_sound = call getSoundFx;
+	_sound = call _getSoundFx;
 	// Get random position between 25 & 150m, around player in 360 degrees for sound source
 	_randomPos = [player,[25,150],random 360] call SHK_pos;
 	_soundSource = "Land_HelipadEmpty_F" createVehicle _randomPos;
@@ -39,5 +39,5 @@ while {true} do {
 	uiSleep ((floor(random(_timeDiff))) + (_minTime*60));
 
 	// Not in a vehicle
-	if (vehicle player == player) then { [] spawn playSoundFx; };
+	if (vehicle player == player) then { [] spawn _playSoundFx; };
 };
