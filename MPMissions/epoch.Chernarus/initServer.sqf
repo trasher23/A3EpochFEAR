@@ -4,6 +4,6 @@
 
 if (isServer) then {
 
-	[] ExecVM "\VEMF\init.sqf";	// Vampire Epoch Missions
+	[] execVM "\VEMF\init.sqf";	// Vampire Epoch Missions
 	
 };
