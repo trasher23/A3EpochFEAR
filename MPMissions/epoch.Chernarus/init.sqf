@@ -1,5 +1,8 @@
 if (!isServer) then {	
 	
+	// Assign mission path to global
+	MISSION_ROOT = format ["mpmissions\__cur_mp.%1\", worldName];
+	
 	// VEMF missions
 	"VEMFChatMsg" addPublicVariableEventHandler {
 		systemChat ((_this select 1) select 0);
@@ -15,9 +18,9 @@ if (!isServer) then {
 	
 	call compile preprocessFileLineNumbers "shk_pos\shk_pos_init.sqf";
 	
-	[] execVM "FEAR\nuke\FEAR_nuke_init.sqf";			// Nuke towns
+	[] ExecVM "FEAR\nuke\FEAR_nuke_init.sqf";			// Nuke towns
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
-	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
-	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
+	[] ExecVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
+	[] ExecVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
 
 };
