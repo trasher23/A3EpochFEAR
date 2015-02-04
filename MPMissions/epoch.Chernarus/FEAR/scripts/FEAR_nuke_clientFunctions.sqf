@@ -1,6 +1,7 @@
 /*
 	Nuke Client Functions
 */
+
 FEAR_fnc_nukeSiren = {
 	private ["_nukeSiren","_nukePos"];
 	
@@ -219,13 +220,15 @@ _FEAR_fnc_nukeAsh = {
 };
 
 "NUKESiren" addPublicVariableEventHandler {
-	systemChat "NUKESiren triggered!";
-	[_this select 0] spawn FEAR_fnc_nukeSiren;
+	_coords = _this select 0;
+	systemChat format ["NUKESiren triggered!, %1", _coords];
+	[_coords] spawn FEAR_fnc_nukeSiren;
 	NUKESiren = nil;
 };
 
 "NUKEImpact" addPublicVariableEventHandler {
-	systemChat "NUKEImpact triggered!";
-	[_this select 0] spawn FEAR_fnc_nukeImpact;
+	_coords = _this select 0;
+	systemChat format ["NUKEImpact triggered!, %1", _coords];
+	[_coords] spawn FEAR_fnc_nukeImpact;
 	NUKEImpact = nil;
 };
