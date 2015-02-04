@@ -24,7 +24,11 @@ if (!isServer) then {
 		[_coords] spawn FEAR_fnc_nukeImpact;
 		NUKEImpact = nil;
 	};
-
+	
+	"FEARQuake" addPublicVariableEventHandler {
+		player execVM "FEAR\scripts\FEAR_earthquake.sqf";
+	};
+	
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
 	
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
