@@ -14,7 +14,4 @@ while {true} do
 	// Initiate countdown
 	[] execVM format ["%1\nuke\FEAR_nuke_countDown.sqf",FEAR_directory];
 	diag_log "[nuke]: Cruise Missile Launched!";
-	
-	// Wait for nuke script to complete
-	waitUntil {nukeDetonate};
 };
