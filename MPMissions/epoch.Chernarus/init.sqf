@@ -15,14 +15,12 @@ if (!isServer) then {
 	
 	"NUKESiren" addPublicVariableEventHandler {
 		_coords = _this select 1;
-		systemChat format ["NUKESiren triggered!, %1", _coords];
 		[_coords] spawn FEAR_fnc_nukeSiren;
 		NUKESiren = nil;
 	};
 
 	"NUKEImpact" addPublicVariableEventHandler {
 		_coords = _this select 1;
-		systemChat format ["NUKEImpact triggered!, %1", _coords];
 		[_coords] spawn FEAR_fnc_nukeImpact;
 		NUKEImpact = nil;
 	};

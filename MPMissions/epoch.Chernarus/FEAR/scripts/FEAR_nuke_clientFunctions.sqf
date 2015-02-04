@@ -3,6 +3,8 @@
 */
 
 FEAR_fnc_nukeSiren = {
+	if (isNil "NUKESiren") exitWith {};
+	
 	private ["_nukeSiren","_nukePos"];
 	
 	_nukeSiren = MISSION_directory + "FEAR\fx\" + "nukesiren.ogg";
@@ -16,12 +18,14 @@ FEAR_fnc_nukeSiren = {
 };
 
 FEAR_fnc_nukeImpact = {
+	if (isNil "NUKEImpact") exitWith {};
+	
 	private ["_nukePos","_nukeBlast"];
 	
 	_nukePos = _this select 0;
 	
 	_nukeBlast = MISSION_directory + "FEAR\fx\" + "nuke.ogg";
-	playSound3D [_nukeBlast, player, false, _nukePos, 2];
+	playSound3D [_nukeBlast, player, false, _nukePos, 5];
 	
 	_Cone = "#particlesource" createVehicleLocal getpos _nukePos;
 	_Cone setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48], "", "Billboard", 1, 10, [0, 0, 0],
@@ -68,13 +72,13 @@ FEAR_fnc_nukeImpact = {
 	//*******************************************************************
 
 	// Flash
-	call _FEAR_fnc_nukeFlash;
+	[] spawn _FEAR_fnc_nukeFlash;
 
 	// Earthquake
-	call _FEAR_fnc_nukeEarthquake;
+	[] spawn _FEAR_fnc_nukeEarthquake;
 
 	// Ash
-	call _FEAR_fnc_nukeAsh;
+	[] spawn _FEAR_fnc_nukeAsh;
 
 	_Wave setDropInterval 0.001;
 	deletevehicle _top;
