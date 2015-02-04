@@ -23,5 +23,6 @@ diag_log format ["[FEAR] Initializing FEAR version %1 using base path %2.",[conf
 //Load FEAR main configuration file
 call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
 
-sleep 10;
+uisleep 10;
+
 [] execVM format ['%1\nuke\FEAR_nuke_init.sqf',FEAR_directory]; // Nuke towns
