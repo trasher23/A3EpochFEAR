@@ -18,7 +18,7 @@ if (!isServer) then {
 		NUKEBlast = nil;
 	};
 	
-	[] execVM "FEAR\nuke\FEAR_nuke_init.sqf";		// Nuke towns
+	[] execVM "FEAR\nuke\FEAR_nuke_siren.sqf";
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";		// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear

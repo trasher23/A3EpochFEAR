@@ -1,6 +1,6 @@
 private["_town","_townName","_townPos","_nukePad","_varName","_msg","_alert"];
 
-_town = call nukeTarget; // Get random town
+_town = call FEAR_fnc_nukeTarget; // Get random town
 _townName = text _town; // Assign town name
 _townPos = position _town; // Get town position
 
