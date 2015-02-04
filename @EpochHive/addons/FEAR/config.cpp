@@ -13,7 +13,7 @@ class CfgFunctions {
 		class FEAR_Server {
 		file = "FEAR";
 			class FEAR_init {
-
+				postInit = 1;
 			};
 		};
 	};
