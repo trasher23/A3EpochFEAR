@@ -219,13 +219,13 @@ _FEAR_fnc_nukeAsh = {
 };
 
 "NUKESiren" addPublicVariableEventHandler {
-	diag_log "NUKESiren triggered!";
+	systemChat "NUKESiren triggered!";
 	[_this select 0] spawn FEAR_fnc_nukeSiren;
 	NUKESiren = nil;
 };
 
 "NUKEImpact" addPublicVariableEventHandler {
-	diag_log "NUKEImpact triggered!";
+	systemChat "NUKEImpact triggered!";
 	[_this select 0] spawn FEAR_fnc_nukeImpact;
 	NUKEImpact = nil;
 };
