@@ -104,6 +104,6 @@ FEAR_fnc_nukeRadDamage = {
 		{
 			_x setDammage (getDammage _x + 0.01); // original value: 0.03
 		} forEach (nukeMarkerCoords nearEntities [["All"], nukeRadius]);
-		sleep 5;
+		uisleep 5;
 	};
 };

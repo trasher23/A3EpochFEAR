@@ -1,11 +1,14 @@
 private["_town","_townName","_townPos","_nukeTarget","_varName","_msg","_alert"];
 
-_town = call FEAR_fnc_nukeTarget; // Get random town
-_townName = text _town; // Assign town name
-_townPos = position _town; // Get town position
+// Get random town
+_town = call FEAR_fnc_nukeTarget;
+_townName = text _town;
+_townPos = position _town;
 
 diag_log format ["[nuke]: Target: %1", _townName];
 
+_nukeTarget = createVehicle ["Land_HelipadEmpty_F",_townPos,[],0,"NONE"];
+	
 // Inform players to get the hell out of dodge!
 // 3 minute timer till impact
 _msg = format ["You have %1 minutes to get %2k clear of %3.",3,1,_townName];
@@ -16,7 +19,7 @@ _alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 [_townPos] call FEAR_fnc_nukeAddMarker; // _townPos
 
 // Start siren
-NUKESiren = _townPos;
+_nukeTarget setVehicleVarName "NUKESiren";
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKESiren";
@@ -34,7 +37,7 @@ _alert = [_msg] call VEMFBroadcast;
 uisleep 60;
 
 // Drop the Bass...
-NUKEImpact = _townPos;
+_nukeTarget setVehicleVarName "NUKEImpact";
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKEImpact";
@@ -68,3 +71,4 @@ uisleep 900;
 deleteMarker "RADMarkerR";
 deleteMarker "RADMarkerY";
 nukeMarkerCoords = Nil;
+deleteVehicle _nukeTarget;
