@@ -1,10 +1,29 @@
+if (!isServer) exitWith {};
+
+// The minimum time in seconds before a cruise missile launch.
+// At least this much time will pass between launches.
+nukeTimerMin = 30; // minutes
+
+// Maximum time in seconds before a cruise missile launch.
+// A cruise missile will always launch before this much time has passed.
+nukeTimerMax = 120;
+
+// Blast radius in km
+nukeRadius = 1000;
+
+// Ground zero - total annihilation
+groundZero = nukeRadius / 2;
+
+nukeDetonate = false;
+publicVariable "nukeDetonate";
+
 // Load functions
-nukeTarget = compileFinal preprocessFileLineNumbers format ["%1\nuke\FEAR_nuke_functions.sqf",FEAR_Directory];
+call compile preprocessFileLineNumbers "\FEAR\nuke\FEAR_nuke_functions.sqf";
 
 // Start the missile launch countdown!
-[] execVM format ["%1\nuke\FEAR_nuke_timer.sqf",FEAR_Directory];
+[] ExecVM "\FEAR\nuke\FEAR_nuke_timer.sqf";
 
 // Let's get the Marker Re-setter running for JIPs (Join In Progress) to stay updated
-[] execVM format ["%1\nuke\FEAR_nuke_markerLoop.sqf",FEAR_Directory];
+[] ExecVM "\FEAR\nuke\FEAR_nuke_markerLoop.sqf";
 
 diag_log "[nuke]: Initiating nuke.";

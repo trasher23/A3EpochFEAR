@@ -21,7 +21,7 @@ if (isDedicated) then {
 	_alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 
 	// nukeAddMarker is a simple script that adds a marker to the location
-	[_townPos] execVM format ["%1\nuke\FEAR_nuke_addMarker.sqf",FEAR_Directory];
+	[_townPos] ExecVM "\FEAR\nuke\FEAR_nuke_addMarker.sqf";
 
 	// Start air-raid siren
 	nukeSiren = true;
@@ -42,7 +42,7 @@ if (isDedicated) then {
 	nukeDetonate = true;
 	publicVariable "nukeDetonate";
 	
-	[_townPos] EexecVM format ["%1\nuke\FEAR_nuke_serverDamage.sqf",FEAR_Directory];
+	[_townPos] ExecVM "\FEAR\nuke\FEAR_nuke_serverDamage.sqf";
 
 	diag_log "[nuke]: Cruise missile has reached its target.";
 	
@@ -70,9 +70,9 @@ if (isDedicated) then {
 	publicVariable "nukeRadZone";
 	
 	// Add radiation zone marker
-	[] execVM format ["%1\nuke\FEAR_nuke_addRadMarker.sqf",FEAR_Directory];
+	[] ExecVM "\FEAR\nuke\FEAR_nuke_addRadMarker.sqf";
 	// Activate radiation zone
-	[_townPos] execVM format ["%1\nuke\FEAR_nuke_radZone.sqf",FEAR_Directory];
+	[_townPos] ExecVM "\FEAR\nuke\FEAR_nuke_radZone.sqf";
 	
 	// Wait length of time for RadZone (15 minutes)
 	sleep 900;
