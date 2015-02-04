@@ -1,3 +1,5 @@
+waitUntil {FEAR_Config_Loaded};
+
 diag_log "NUKE start load";
 
 nukeDetonate = false;
