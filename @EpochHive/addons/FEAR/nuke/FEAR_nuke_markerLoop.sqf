@@ -3,8 +3,9 @@ Checks if a cruise missile has been launched and resets the marker for JIPs */
 
 // Start the timer
 while {true} do
-{
-	sleep 25;
+{	
+	waitUntil {!isNil "nukeMarkerCoords"};
+	
 	// If the marker exists (meaning the mission is active) delete and re-add
 	if (!(getMarkerColor "nukeMarkerO" == "")) then {
 		
@@ -54,4 +55,6 @@ while {true} do
 		"radMarkerY" setMarkerText "  Radiation Zone";
 		
 	};
+	
+	uisleep 25;
 };

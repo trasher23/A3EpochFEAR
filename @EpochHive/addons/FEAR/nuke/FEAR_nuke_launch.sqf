@@ -1,4 +1,4 @@
-private["_town","_townName","_townPos","_nukePad","_varName","_msg","_alert"];
+private["_town","_townName","_townPos","_nukeTarget","_varName","_msg","_alert"];
 
 _town = call FEAR_fnc_nukeTarget; // Get random town
 _townName = text _town; // Assign town name
@@ -6,12 +6,8 @@ _townPos = position _town; // Get town position
 
 diag_log format ["[nuke]: Target: %1", _townName];
 
-// Assign _townPos as a PublicVariable: nukeCoords
-// This is used in the nukeMarkerLoop.sqf and Mission.PBO nuke files
-_nukePad = createVehicle ["Land_HelipadEmpty_F",_townPos,[],0,"NONE"];
-_varName = "nukeCoords";
-_nukePad setVehicleVarName _varName;
-_nukePad call compile format ["%1=_This ; PublicVariable ""%1""",_varName];
+// Create nuke target
+_nukeTarget = createVehicle ["Land_HelipadEmpty_F",_townPos,[],0,"NONE"];
 
 // Inform players to get the hell out of dodge!
 // 3 minute timer till impact
@@ -20,11 +16,15 @@ _msg = ["Nuclear Strike",_msg];
 _alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 
 // nukeAddMarker is a simple script that adds a marker to the location
-[_townPos] execVM format ["%1\nuke\FEAR_nuke_addMarker.sqf",FEAR_directory];
+[_nukeTarget] call FEAR_fnc_nukeAddMarker; // _townPos
 
-// Start air-raid siren
-nukeSiren = true;
-publicVariable "nukeSiren";
+// Start siren
+NUKESiren = _nukeTarget;
+{
+	if (isPlayer _x) then {
+		(owner (vehicle _x)) publicVariableClient "NUKESiren";
+	};
+} forEach playableUnits;
 
 // Wait 2 minutes
 uisleep 120;
@@ -37,13 +37,14 @@ _alert = [_msg] call VEMFBroadcast;
 uisleep 60;
 
 // Drop the Bass...
+NUKEImpact = _nukeTarget;
 {
 	if (isPlayer _x) then {
-		(owner (vehicle _x)) publicVariableClient "NUKEBlast";
+		(owner (vehicle _x)) publicVariableClient "NUKEImpact";
 	};
 } forEach playableUnits;
 
-[_townPos] execVM format ["%1\nuke\FEAR_nuke_serverDamage.sqf",FEAR_directory];
+[_nukeTarget] call FEAR_fnc_nukeServerDamage;
 
 diag_log "[nuke]: Cruise missile has reached its target.";
 
@@ -52,21 +53,24 @@ deleteMarker "nukeMarkerO";
 deleteMarker "nukeMarkerR";
 deleteMarker "nukeDot";
 
-// Delete nukepad
-deleteVehicle _nukePad;
-
 // Inform players about radiation zone
 _msg = format ["You will need to keep clear of %1 until the radiation cloud dissipates.",_townName];
 _msg = ["Nuclear Strike",_msg];
 _alert = [_msg] call VEMFBroadcast;
 
-nukeRadZone = True;
-publicVariable "nukeRadZone";
-
 // Add radiation zone marker
-[] execVM format ["%1\nuke\FEAR_nuke_addRadMarker.sqf",FEAR_directory];
+[] call FEAR_fnc_radAddMarker;
+
 // Activate radiation zone
-[_townPos] execVM format ["%1\nuke\FEAR_nuke_radZone.sqf",FEAR_directory];
+[] call FEAR_fnc_nukeRadDamage;
 
 // Wait length of time for RadZone (15 minutes)
-sleep 900;
+uisleep 900;
+
+// Remove RadZone map markers
+deleteMarker "RADMarkerR";
+deleteMarker "RADMarkerY";
+	
+// Delete nukeTarget
+deleteVehicle _nukeTarget;
+nukeMarkerCoords = Nil;

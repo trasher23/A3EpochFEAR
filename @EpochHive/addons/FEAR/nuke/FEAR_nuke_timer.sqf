@@ -12,6 +12,6 @@ while {true} do
 	uiSleep ((floor(random(_timeDiff))) + (nukeTimerMin*60));
 	
 	// Initiate countdown
-	[] execVM format ["%1\nuke\FEAR_nuke_countDown.sqf",FEAR_directory];
+	[] execVM format ["%1\nuke\FEAR_nuke_launch.sqf",FEAR_directory];
 	diag_log "[nuke]: Cruise Missile Launched!";
 };
