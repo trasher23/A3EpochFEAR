@@ -1,10 +1,9 @@
-private["_town","_townName","_townPos","_nukeTarget","_msg","_alert"];
+private["_town","_townName","_townPos","_msg","_alert"];
 
 // Get random town
 _town = call FEAR_fnc_nukeTarget;
 _townName = text _town;
 _townPos = position _town;
-_nukeTarget = "Land_HelipadEmpty_F" createVehicle _townPos;
 
 diag_log format ["[nuke]: Target: %1", _townName];
 	
@@ -18,7 +17,7 @@ _alert = [_msg] call VEMFBroadcast; // Use VEMF broadcast function
 [_townPos] call FEAR_fnc_nukeAddMarker;
 
 // Start siren
-NUKESiren = _nukeTarget;
+NUKESiren = "Land_HelipadEmpty_F" createVehicle _townPos;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKESiren";
@@ -36,7 +35,7 @@ _alert = [_msg] call VEMFBroadcast;
 uisleep 60;
 
 // Drop the Bass...
-NUKEImpact = _nukeTarget;
+NUKEImpact = "Land_HelipadEmpty_F" createVehicle _townPos;
 {
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKEImpact";
