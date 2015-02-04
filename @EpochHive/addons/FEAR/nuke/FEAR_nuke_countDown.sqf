@@ -36,10 +36,12 @@ _alert = [_msg] call VEMFBroadcast;
 
 uisleep 60;
 
-// Broadcast nukeDetonate to clients
-// This will enable the nuke script
-nukeDetonate = true;
-publicVariable "nukeDetonate";
+// Drop the Bass...
+{
+	if (isPlayer _x) then {
+		(owner (vehicle _x)) publicVariableClient "NUKEBlast";
+	};
+} forEach playableUnits;
 
 [_townPos] execVM format ["%1\nuke\FEAR_nuke_serverDamage.sqf",FEAR_directory];
 
@@ -49,9 +51,6 @@ diag_log "[nuke]: Cruise missile has reached its target.";
 deleteMarker "nukeMarkerO";
 deleteMarker "nukeMarkerR";
 deleteMarker "nukeDot";
-
-nukeDetonate = false;
-publicVariable "nukeDetonate";
 
 // Delete nukepad
 deleteVehicle _nukePad;
