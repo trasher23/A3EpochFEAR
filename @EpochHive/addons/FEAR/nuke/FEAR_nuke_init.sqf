@@ -1,3 +1,5 @@
+diag_log "NUKE Loaded";
+
 nukeDetonate = false;
 publicVariable "nukeDetonate";
 
