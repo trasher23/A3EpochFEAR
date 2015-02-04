@@ -26,7 +26,7 @@ diag_log format ["[FEAR] Initializing FEAR version %1 using base path %2.",[conf
 call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
 
 //Continue loading required FEAR script files
-//[] execVM format ["%1\nuke\FEAR_nuke_init.sqf",FEAR_directory];
+[] execVM format ["%1\nuke\FEAR_nuke_init.sqf",FEAR_directory];
 [] execVM format ["%1\scripts\FEAR_earthquake_timer.sqf",FEAR_directory];
 
 diag_log format ["[FEAR] FEAR loading completed in %1 seconds.",(diag_tickTime - _startTime)];
