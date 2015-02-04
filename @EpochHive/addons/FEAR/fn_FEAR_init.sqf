@@ -1,1 +1,1 @@
-[] call compile preprocessFileLineNumbers "\FEAR\init\FEAR_initserver.sqf";
+[] call compileFinal preprocessFileLineNumbers "\FEAR\init\FEAR_initserver.sqf";
