@@ -3,7 +3,7 @@
 	Copied from A3EAI, coz that code rocks!
 */
 
-if (hasInterface ||!isNil "FEAR_isActive") exitWith {};
+if (hasInterface || !isNil "FEAR_isActive") exitWith {};
 FEAR_isActive = true;
 
 private ["_startTime","_directoryAsArray"];
