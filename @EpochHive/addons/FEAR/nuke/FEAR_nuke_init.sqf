@@ -1,4 +1,4 @@
-diag_log "NUKE Loaded";
+diag_log "NUKE start load";
 
 nukeDetonate = false;
 publicVariable "nukeDetonate";
@@ -13,3 +13,5 @@ call compile preprocessFile format ["%1\nuke\FEAR_nuke_functions.sqf",FEAR_Direc
 [] execVM format ["%1\nuke\FEAR_nuke_markerLoop.sqf",FEAR_Directory];
 
 diag_log "[nuke]: Initiating nuke.";
+
+diag_log "NUKE end load";
