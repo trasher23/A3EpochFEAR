@@ -1,3 +1,5 @@
+waitUntil {!isNil "FEAR_Config_Loaded"};
+
 nukeDetonate = false;
 publicVariable "nukeDetonate";
 
