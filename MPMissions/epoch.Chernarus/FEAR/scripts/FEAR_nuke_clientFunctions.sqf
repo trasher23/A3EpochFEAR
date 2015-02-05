@@ -71,7 +71,8 @@ FEAR_fnc_nukeImpact = {
 	[] spawn FEAR_fnc_nukeFlash;
 
 	// Earthquake
-	[] spawn FEAR_fnc_nukeEarthquake;
+	//[] spawn FEAR_fnc_nukeEarthquake;
+	[4] spawn BIS_fnc_earthquake;
 
 	// Ash
 	[] spawn FEAR_fnc_nukeAsh;
@@ -167,25 +168,6 @@ FEAR_fnc_nukeFlash = {
 	"colorCorrections" ppEffectAdjust [1, 1, 0, [0.5, 0.5, 0.5, 0], [1.0, 1.0, 0.8, 0.4],[0.3, 0.3, 0.3, 0.1]];"colorCorrections" ppEffectCommit 1; "colorCorrections" ppEffectEnable TRUE;
 	"dynamicBlur" ppEffectAdjust [0];
 	"dynamicBlur" ppEffectCommit 1;
-};
-
-FEAR_fnc_nukeEarthquake = {
-	_sound = MISSION_directory + "FEAR\fx\earthquake.ogg";
-	playSound3D [_sound, player];
-	
-	for "_i" from 0 to 200 do {
-		_vx = vectorup _this select 0;
-		_vy = vectorup _this select 1;
-		_vz = vectorup _this select 2;
-		_coef = 0.01 - (0.0001 * _i);
-		_this setvectorup [
-			_vx+(-_coef+random (2*_coef)),
-			_vy+(-_coef+random (2*_coef)),
-			_vz+(-_coef+random (2*_coef))
-		];
-		sleep (0.01 + random 0.01);
-	};
-	[player, 0, 0] call BIS_fnc_setPitchBank;
 };
 
 FEAR_fnc_nukeAsh = {
