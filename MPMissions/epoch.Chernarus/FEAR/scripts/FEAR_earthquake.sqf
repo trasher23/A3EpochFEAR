@@ -1,4 +1,6 @@
-playSound "eq";
+_sound = MISSION_directory + "FEAR\fx\earthquake.ogg";
+playSound3D [_sound, player];
+
 for "_i" from 0 to 300 do {
 	_vx = vectorUp _this select 0;
 	_vy = vectorUp _this select 1;
@@ -11,4 +13,5 @@ for "_i" from 0 to 300 do {
 	];
 	sleep (0.01 + random 0.01);
 };
+sleep 1;
 [player, 0, 0] call BIS_fnc_setPitchBank;
