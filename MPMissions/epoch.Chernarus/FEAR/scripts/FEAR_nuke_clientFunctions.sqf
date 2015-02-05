@@ -68,13 +68,13 @@ FEAR_fnc_nukeImpact = {
 	//*******************************************************************
 
 	// Flash
-	[] spawn _FEAR_fnc_nukeFlash;
+	[] spawn FEAR_fnc_nukeFlash;
 
 	// Earthquake
-	[] spawn _FEAR_fnc_nukeEarthquake;
+	[] spawn FEAR_fnc_nukeEarthquake;
 
 	// Ash
-	[] spawn _FEAR_fnc_nukeAsh;
+	[] spawn FEAR_fnc_nukeAsh;
 
 	_Wave setDropInterval 0.001;
 	deletevehicle _top;
@@ -118,7 +118,7 @@ FEAR_fnc_nukeImpact = {
 	deleteVehicle _smoke;
 };
 
-_FEAR_fnc_nukeColorCorrection = {
+FEAR_fnc_nukeColorCorrection = {
 	"colorCorrections" ppEffectAdjust [2, 30, 0, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];
 	"colorCorrections" ppEffectCommit 0;
 	"colorCorrections" ppEffectAdjust [1, 0.8, -0.001, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];  
@@ -132,7 +132,7 @@ _FEAR_fnc_nukeColorCorrection = {
 	"filmGrain" ppEffectEnable false; 
 };
 
-_FEAR_fnc_nukeFlash = {
+FEAR_fnc_nukeFlash = {
 	"dynamicBlur" ppEffectEnable true;
 	"dynamicBlur" ppEffectAdjust [1];
 	"dynamicBlur" ppEffectCommit 1;
@@ -169,7 +169,7 @@ _FEAR_fnc_nukeFlash = {
 	"dynamicBlur" ppEffectCommit 1;
 };
 
-_FEAR_fnc_nukeEarthquake = {
+FEAR_fnc_nukeEarthquake = {
 		player spawn {
 		for "_i" from 0 to 200 do {
 			_vx = vectorup _this select 0;
@@ -187,7 +187,7 @@ _FEAR_fnc_nukeEarthquake = {
 	};
 };
 
-_FEAR_fnc_nukeAsh = {
+FEAR_fnc_nukeAsh = {
 	sleep 20;
 
 	//--- Ash
