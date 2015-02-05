@@ -30,7 +30,7 @@ if (!isServer) then {
 	
 	"NUKEQuake" addPublicVariableEventHandler {
 		//player spawn FEAR_fnc_nukeEarthquake;
-		[4] spawn BIS_fnc_earthquake;
+		[] spawn BIS_fnc_earthquake;
 		NUKEQuake = nil;
 	};
 	
