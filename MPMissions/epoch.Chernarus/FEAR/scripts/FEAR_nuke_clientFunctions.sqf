@@ -3,8 +3,6 @@
 */
 
 FEAR_fnc_nukeSiren = {
-	if (isNil "NUKESiren") exitWith {};
-	
 	private ["_nukeSiren","_nukePos"];
 	
 	_nukeSiren = MISSION_directory + "FEAR\fx\" + "nukesiren.ogg";
@@ -18,8 +16,6 @@ FEAR_fnc_nukeSiren = {
 };
 
 FEAR_fnc_nukeImpact = {
-	if (isNil "NUKEImpact") exitWith {};
-	
 	private ["_nukePos","_nukeBlast"];
 	
 	_nukePos = _this select 0;
