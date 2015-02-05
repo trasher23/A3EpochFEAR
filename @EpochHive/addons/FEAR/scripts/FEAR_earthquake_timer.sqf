@@ -11,10 +11,10 @@ while {true} do
 	// Wait a Random Amount
 	uiSleep ((floor(random(_timeDiff))) + (eqTimerMin*60));
 	
-	FEARQuake = true;
+	NUKEQuake = true;
 	{
 		if (isPlayer _x) then {
-			(owner (vehicle _x)) publicVariableClient "FEARQuake";
+			(owner (vehicle _x)) publicVariableClient "NUKEQuake";
 		};
 	} forEach playableUnits;
 
