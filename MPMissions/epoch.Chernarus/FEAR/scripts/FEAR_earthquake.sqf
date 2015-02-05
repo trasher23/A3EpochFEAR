@@ -1,5 +1,5 @@
 _sound = MISSION_directory + "FEAR\fx\earthquake.ogg";
-playSound3D [_sound, player];
+playSound3D [_sound, player, false, 2];
 
 for "_i" from 0 to 300 do {
 	_vx = vectorUp _this select 0;
