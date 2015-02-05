@@ -1,6 +1,8 @@
 if (!isServer) then {	
 	
-	// VEMF missions
+	/* VEMF missions
+	-----------------------------------------------------------
+	*/
 	"VEMFChatMsg" addPublicVariableEventHandler {
 		systemChat ((_this select 1) select 0);
 		[
@@ -13,6 +15,9 @@ if (!isServer) then {
 		VEMFChatMsg = nil;
 	};
 	
+	/* Nuke eventhandlers
+	-----------------------------------------------------------
+	*/
 	"NUKESiren" addPublicVariableEventHandler {
 		[_this select 1] spawn FEAR_fnc_nukeSiren;
 		NUKESiren = nil;
@@ -28,6 +33,9 @@ if (!isServer) then {
 		FEARQuake = nil;
 	};
 	
+	/* Load other scripts
+	-----------------------------------------------------------
+	*/
 	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
 	
