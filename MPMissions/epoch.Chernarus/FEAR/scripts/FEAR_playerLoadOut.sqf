@@ -7,14 +7,11 @@ while {true} do {
 	player addEventHandler ["Respawn", {
 		
 		// Clothes
-		_modelMale = (typeOF player == "Epoch_Male_F");
-                _modelFemale = (typeOF player == "Epoch_Female_F");    
-
-		if (_modelFemale) then {
+		if (typeOF player == "Epoch_Female_F") then {
 			player forceAddUniform "U_BasicBodyFemale";
 		};
 		
-		if (_modelMale) then {
+		if (typeOF player == "Epoch_Male_F") then {
 			player forceAddUniform "U_C_Poor_1";
 		};                                                    
                 
