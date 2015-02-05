@@ -29,7 +29,7 @@ if (!isServer) then {
 	};
 	
 	"FEARQuake" addPublicVariableEventHandler {
-		player execVM "FEAR\scripts\FEAR_earthquake.sqf";
+		player spawn FEAR_fnc_nukeEarthquake;
 		FEARQuake = nil;
 	};
 	
