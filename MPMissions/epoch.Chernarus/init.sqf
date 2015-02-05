@@ -31,7 +31,7 @@ if (!isServer) then {
 	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
 	
-	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
+	[] execVM "FEAR\scripts\fn_statusBar.sqf";		// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
 
