@@ -127,6 +127,9 @@ _FEAR_fnc_nukeColorCorrection = {
 	"filmGrain" ppEffectEnable true; 
 	"filmGrain" ppEffectAdjust [0.02, 1, 1, 0.1, 1, false];
 	"filmGrain" ppEffectCommit 5;
+	sleep 100; // time to reset colors
+	"colorCorrections" ppEffectEnable false;
+	"filmGrain" ppEffectEnable false; 
 };
 
 _FEAR_fnc_nukeFlash = {
