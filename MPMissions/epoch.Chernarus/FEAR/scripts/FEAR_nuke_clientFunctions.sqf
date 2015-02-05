@@ -71,8 +71,7 @@ FEAR_fnc_nukeImpact = {
 	[] spawn FEAR_fnc_nukeFlash;
 
 	// Earthquake
-	//[] spawn FEAR_fnc_nukeEarthquake;
-	[4] spawn BIS_fnc_earthquake;
+	[] spawn BIS_fnc_earthquake;
 
 	// Ash
 	[] spawn FEAR_fnc_nukeAsh;
