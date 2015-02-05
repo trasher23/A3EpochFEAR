@@ -28,6 +28,7 @@ if (!isServer) then {
 		FEARQuake = nil;
 	};
 	
+	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
 	
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
