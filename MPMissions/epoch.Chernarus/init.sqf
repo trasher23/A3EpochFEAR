@@ -28,7 +28,7 @@ if (!isServer) then {
 		NUKEImpact = nil;
 	};
 	
-	"FEARQuake" addPublicVariableEventHandler {
+	"NUKEQuake" addPublicVariableEventHandler {
 		player spawn FEAR_fnc_nukeEarthquake;
 		FEARQuake = nil;
 	};
