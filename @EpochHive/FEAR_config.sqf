@@ -22,7 +22,7 @@ groundZero = (nukeRadius / 2);
 */
 
 eqTimerMin = 5;
-eqTimerMax = 60;
+eqTimerMax = 30;
 
 //NOTHING TO EDIT BEYOND THIS POINT
 diag_log "[FEAR] FEAR configuration file loaded.";
