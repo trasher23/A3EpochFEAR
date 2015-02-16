@@ -29,7 +29,7 @@ A3EAI_verifySettings = true;
 A3EAI_cleanupDelay = 900;									
 
 //Enabled: A3EAI will load custom spawn/blacklist definitions file on startup (A3EAI_custom_defs.sqf) (Default: false)
-A3EAI_loadCustomFile = false;
+A3EAI_loadCustomFile = true;
 
 
 /*	Dynamic Classname Settings
