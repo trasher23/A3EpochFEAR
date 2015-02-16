@@ -7,3 +7,12 @@
 
 //----------------------------Add your custom spawn and dynamic area blacklist definitions below this line ----------------------------*/
 
+A3EAI_dynamicUniformList = false;
+
+A3EAI_radioMsgs = true;
+A3EAI_deathMessages = true;
+
+A3EAI_maxHeliPatrols = 5;
+A3EAI_maxLandPatrols = 10;
+
+A3EAI_uniformTypes = ["U_C_Scientist"];
