@@ -13,7 +13,7 @@ diag_log "[A3EAI] Reading A3EAI configuration file.";
 
 //Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: No debug output, 1: Basic Debug output, 2: Detailed Debug output. (Default: 0)
 //Debug output may help finding additional information about A3EAI's background behavior. This output is helpful when asking for help regarding bugs or unexpected behaviors.
-A3EAI_debugLevel = 0;
+A3EAI_debugLevel = 1;
 
 //Frequency of server monitor update to RPT log in seconds. The monitor periodically reports number of max/current AI units and dynamically spawned triggers into RPT log. (Default: 300, 0 = Disable reporting)										
 A3EAI_monitorRate = 300;
@@ -29,7 +29,7 @@ A3EAI_verifySettings = true;
 A3EAI_cleanupDelay = 900;									
 
 //Enabled: A3EAI will load custom spawn/blacklist definitions file on startup (A3EAI_custom_defs.sqf) (Default: false)
-A3EAI_loadCustomFile = true;
+A3EAI_loadCustomFile = false;
 
 
 /*	Dynamic Classname Settings
@@ -38,7 +38,7 @@ A3EAI_loadCustomFile = true;
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Enable to generate AI uniform types from Epoch loot tables (Default: true)
-A3EAI_dynamicUniformList = true;
+A3EAI_dynamicUniformList = false;
 
 //Enable to generate AI skin types from Epoch loot tables (Default: true)
 A3EAI_dynamicWeaponList = true;
@@ -114,10 +114,10 @@ A3EAI_enableHealing = true;
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Enable or disable radio message receiving. Players with radios (Radio Quartz) will be able to intercept some AI communications. (Default: false)
-A3EAI_radioMsgs = false;
+A3EAI_radioMsgs = true;
 
 //Enable or disable AI death messages. Messages will be sent only to player responsible for killing the unit. Messages will be sent in System chat in the format "(Unit name) was killed." (Default: false)
-A3EAI_deathMessages = false;	
+A3EAI_deathMessages = true;	
 
 
 /*	Static AI Spawning Settings
@@ -193,7 +193,7 @@ A3EAI_minRandSpawnDist = 0;
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 0;	
+A3EAI_maxHeliPatrols = 5;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
@@ -235,7 +235,7 @@ A3EAI_paraDropAmount = 3;
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Global maximum number of active AI land vehicle patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxLandPatrols = 0;
+A3EAI_maxLandPatrols = 10;
 
 //Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesLand = [0.00,0.50,0.35,0.15];	
@@ -416,8 +416,9 @@ A3EAI_lootPullChance3 = 0.60; //Default for level 3 AI: 0.60
 
 //AI uniform classnames. Note: A3EAI_uniformTypes will not be read if A3EAI_dynamicUniformList is enabled.
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-A3EAI_uniformTypes = ["U_O_CombatUniform_ocamo", "U_O_GhillieSuit", "U_O_PilotCoveralls", "U_O_Wetsuit", "U_OG_Guerilla1_1", "U_OG_Guerilla2_1", "U_OG_Guerilla2_3", "U_OG_Guerilla3_1", "U_OG_Guerilla3_2", "U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Wetsuit_uniform", "U_Wetsuit_White", "U_Wetsuit_Blue", "U_Wetsuit_Purp", "U_Wetsuit_Camo", "U_CamoRed_uniform", "U_CamoBrn_uniform", "U_CamoBlue_uniform", "U_Camo_uniform", "U_ghillie1_uniform", "U_ghillie2_uniform", "U_ghillie3_uniform", "U_C_Driver_1", "U_C_Driver_2", "U_C_Driver_3", "U_C_Driver_4", "U_C_Driver_1_black", "U_C_Driver_1_blue", "U_C_Driver_1_green", "U_C_Driver_1_red", "U_C_Driver_1_white", "U_C_Driver_1_yellow", "U_C_Driver_1_orange", "U_C_Driver_1_red"];
+/* A3EAI_uniformTypes = ["U_O_CombatUniform_ocamo", "U_O_GhillieSuit", "U_O_PilotCoveralls", "U_O_Wetsuit", "U_OG_Guerilla1_1", "U_OG_Guerilla2_1", "U_OG_Guerilla2_3", "U_OG_Guerilla3_1", "U_OG_Guerilla3_2", "U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Wetsuit_uniform", "U_Wetsuit_White", "U_Wetsuit_Blue", "U_Wetsuit_Purp", "U_Wetsuit_Camo", "U_CamoRed_uniform", "U_CamoBrn_uniform", "U_CamoBlue_uniform", "U_Camo_uniform", "U_ghillie1_uniform", "U_ghillie2_uniform", "U_ghillie3_uniform", "U_C_Driver_1", "U_C_Driver_2", "U_C_Driver_3", "U_C_Driver_4", "U_C_Driver_1_black", "U_C_Driver_1_blue", "U_C_Driver_1_green", "U_C_Driver_1_red", "U_C_Driver_1_white", "U_C_Driver_1_yellow", "U_C_Driver_1_orange", "U_C_Driver_1_red"]; */
 
+A3EAI_uniformTypes = ["U_C_Scientist"];
 
 //AI weapon classnames. Note: A3EAI_pistolList, A3EAI_rifleList, A3EAI_machinegunList, A3EAI_sniperList will not be read if A3EAI_dynamicWeaponList is enabled.
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
