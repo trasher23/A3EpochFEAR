@@ -13,7 +13,7 @@ diag_log "[A3EAI] Reading A3EAI configuration file.";
 
 //Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: No debug output, 1: Basic Debug output, 2: Detailed Debug output. (Default: 0)
 //Debug output may help finding additional information about A3EAI's background behavior. This output is helpful when asking for help regarding bugs or unexpected behaviors.
-A3EAI_debugLevel = 1;
+A3EAI_debugLevel = 0;
 
 //Frequency of server monitor update to RPT log in seconds. The monitor periodically reports number of max/current AI units and dynamically spawned triggers into RPT log. (Default: 300, 0 = Disable reporting)										
 A3EAI_monitorRate = 300;
@@ -106,15 +106,18 @@ A3EAI_launcherLevels = [];
 //Maximum number of launcher weapons allowed per group (Default: 1)
 A3EAI_launchersPerGroup = 1;
 
+//Enable or disable AI self-healing. Level 0 AI cannot self-heal. (Default: true).
+A3EAI_enableHealing = true;
+
 
 /*	A3EAI Client Addon features. These features require the A3EAI client addon to be installed in order to work.
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Enable or disable radio message receiving. Players with radios (Radio Quartz) will be able to intercept some AI communications. (Default: false)
-A3EAI_radioMsgs = true;
+A3EAI_radioMsgs = false;
 
 //Enable or disable AI death messages. Messages will be sent only to player responsible for killing the unit. Messages will be sent in System chat in the format "(Unit name) was killed." (Default: false)
-A3EAI_deathMessages = true;	
+A3EAI_deathMessages = false;	
 
 
 /*	Static AI Spawning Settings
@@ -169,9 +172,6 @@ A3EAI_dynResetLastSpawn = 3600;
 //Probability for dynamic AI to actively hunt a targeted player. If probability check fails, dynamic AI will patrol the area instead of hunting (Default: 0.60)
 A3EAI_huntingChance = 0.60;
 
-//Probability to send first available AI helicopter to reinforce dynamic AI group. No effect if A3EAI_maxHeliPatrols is set to zero. (Default: 0.30)
-A3EAI_heliReinforceChance = 0.30;
-
 //Time to wait before despawning all AI units in dynamic spawn area when no players are present. (Default: 120)
 A3EAI_dynDespawnWait = 120;
 
@@ -193,7 +193,7 @@ A3EAI_minRandSpawnDist = 0;
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 5;
+A3EAI_maxHeliPatrols = 0;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
@@ -205,8 +205,7 @@ A3EAI_respawnTMaxA = 900;
 //Classnames of air vehicle types to use, with the maximum amount of each type to spawn.
 A3EAI_heliList = [
 	["B_Heli_Light_01_armed_F",5],
-	["B_Heli_Transport_01_F",5],
-	["B_Heli_Attack_01_F",2]
+	["B_Heli_Transport_01_F",5]
 ];
 
 //Maximum number of gunner units per air vehicle. Limited by actual number of available gunner positions. (Default: 2)
@@ -215,12 +214,28 @@ A3EAI_heliGunnerUnits = 2;
 //If enabled, A3EAI will remove all missile/rocket-type weaponry from spawned air vehicles. Affects both map-wide patrols and custom-spawned air vehicles. (Default: true)
 A3EAI_removeMissileWeapons = true;
 
+//Probability of AI helicopter sucessfully detecting player if there is line-of-sight. AI helicopters will conduct a visual sweep upon arriving at each waypoint and some distance after leaving. (Default: 0.70)
+A3EAI_detectChance = 0.70;
+
+//Probability to send first available AI helicopter to reinforce dynamic AI group. No effect if A3EAI_maxHeliPatrols is set to zero. (Default: 0.30)
+A3EAI_heliReinforceChance = 0.30;
+
+//Probability of AI to deploy units by parachute if players are nearby when helicopter is investigating a waypoint. (Default: 0.50)
+//Note: Helicopters called to reinforce a position will always deploy a paradrop group. Probability of reinforcement determined by A3EAI_heliReinforceChance.
+A3EAI_paraDropChance = 0.50;
+
+//Cooldown time for AI paradrop deployment in seconds. Note: Cooldown does not affect helicopter reinforcement for dynamic AI spawns. (Default: 1800).
+A3EAI_paraDropCooldown = 1800;
+
+//Number of AI to paradrop if players are nearby when helicopter is investigating a waypoint, or if helicopter is reinforcing a dynamic AI spawn. Limited by number of cargo seats available in the vehicle. (Default: 3)
+A3EAI_paraDropAmount = 3;
+
 
 /*AI Land vehicle patrol settings. These AI vehicles will randomly travel between different cities and towns.
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Global maximum number of active AI land vehicle patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxLandPatrols = 5;
+A3EAI_maxLandPatrols = 0;
 
 //Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesLand = [0.00,0.50,0.35,0.15];	
