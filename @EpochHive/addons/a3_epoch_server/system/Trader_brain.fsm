@@ -357,7 +357,7 @@ class FSM
           to="reset_vars";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(call compile _criteria) || (diag_tickTime > (_t + _sWait));"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"if(!isNil ""_criteriaMetAction"")then{" \n
+          action=/*%FSM<ACTION""">*/"if (!isNil ""_criteriaMetAction"") then {" \n
            "call compile _criteriaMetAction;" \n
            "};"/*%FSM</ACTION""">*/;
         };
@@ -520,11 +520,11 @@ class FSM
        "_allowInterrupt = true;" \n
        "_criteria = format [""count %1 < %2"",""_nrPlyrs"",1];" \n
        "" \n
-       "if(_goHome)then{" \n
+       "if (_goHome) then {" \n
        "_criteriaMetAction = format [""%1 moveTo %2"",""_trader"",""_home""];" \n
        "};" \n
        "" \n
-       "if(_goWork)then{" \n
+       "if (_goWork) then {" \n
        "_criteriaMetAction = format [""%1 moveTo %2"",""_trader"",""_work""];" \n
        "};" \n
        "" \n

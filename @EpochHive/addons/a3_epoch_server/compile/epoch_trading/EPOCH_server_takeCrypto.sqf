@@ -1,0 +1,2 @@
+
+private["_aa","_ab","_ac","_ad","_ae","_af","_ag","_ah","_ai"];_ae=_this select 0;if !([_ae,_this select 1]call EPOCH_server_getPToken)exitWith{};_af=_this select 2;if(isNull _af)exitWith{};if(_ae distance _af > 10)exitWith{};_ai=_af getVariable["Crypto",0];if(_ai > 0)then{deleteVehicle _af;_aa=EPOCH_customVars find "Crypto";_ab=_ae getVariable["VARS",[]+EPOCH_defaultVars_SEPXVar];_ac=_ab select _aa;_ac=((_ac+_ai)min 25000)max 0;[["effectCrypto",_ac],(owner _ae)]call EPOCH_sendPublicVariableClient;_ab set[_aa,_ac];_ae setVariable["VARS",_ab];};

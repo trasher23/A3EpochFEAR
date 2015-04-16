@@ -1,1 +1,1 @@
-private["_aa"];{if((random 1)<=0.4)then{_aa=createVehicle["container_epoch",_x,[],0,"NONE"];_aa setMass 220;};}foreach(getArray(configFile >> "CfgEpoch" >> worldname >> "containerPos"));
+private["_aa"];{if((random 1)<=0.4)then{_aa=createVehicle["container_epoch",_x,[],0,"NONE"];_aa setMass 220;if(EPOCH_SHOW_BOATLOOT)then{_marker=createMarker[str(_x),_x];_marker setMarkerShape "ICON";_marker setMarkerType "mil_dot";_marker setMarkerColor "ColorOrange";};};}foreach(getArray(configFile >> "CfgEpoch" >> worldname >> "containerPos"));
