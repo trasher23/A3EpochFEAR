@@ -1,6 +1,6 @@
 //Function frequency definitions
 #define CLEANDEAD_FREQ 600
-#define VEHICLE_CLEANUP_FREQ 900
+#define VEHICLE_CLEANUP_FREQ 30
 #define LOCATION_CLEANUP_FREQ 360
 #define RANDSPAWN_CHECK_FREQ 360
 #define RANDSPAWN_EXPIRY_TIME 1080
@@ -17,10 +17,6 @@ _dynLocations = _currentTime;
 _checkRandomSpawns = _currentTime - (RANDSPAWN_CHECK_FREQ/2);
 _sideCheck = _currentTime;
 
-//Define settings
-_reportDynOrVehicles = (A3EAI_dynAISpawns || ((A3EAI_maxHeliPatrols > 0) or {(A3EAI_maxLandPatrols > 0)}) || (A3EAI_maxRandomSpawns > 0));
-
-
 //Local functions
 _getUptime = {
 	private ["_currentSec","_outSec","_outMin","_outHour"];
@@ -33,7 +29,7 @@ _getUptime = {
 };
 
 _purgeEH = {
-	{_this removeAllEventHandlers _x} count ["Killed","HandleDamage","GetIn","GetOut","Fired"];
+	{_this removeAllEventHandlers _x} count ["Killed","HandleDamage","GetIn","GetOut","Fired","Local"];
 };
 
 uiSleep 60;
@@ -100,16 +96,12 @@ while {true} do {
 				_deathTime = _x getVariable "A3EAI_deathTime";
 				if (!isNil "_deathTime") then {
 					if ((_currentTime - _deathTime) > VEHICLE_CLEANUP_FREQ) then {
-						_x call _purgeEH;
-						//diag_log format ["DEBUG :: Deleting object %1 (type: %2).",_x,typeOf _x];
-						{
-							if (!alive _x) then {
-								deleteVehicle _x;
-							};
-						} forEach (crew _x);
-						deleteVehicle _x;
-						_vehiclesCleaned = _vehiclesCleaned + 1;
-						_nullObjects = _nullObjects + 1;
+						if (({alive _x} count (crew _x)) isEqualTo 0) then {
+							_x call _purgeEH;
+							deleteVehicle _x;
+							_vehiclesCleaned = _vehiclesCleaned + 1;
+							_nullObjects = _nullObjects + 1;
+						};
 					};
 				};
 			} else {
@@ -153,7 +145,6 @@ while {true} do {
 		{
 			if ((((triggerStatements _x) select 1) != "") && {(_currentTime - (_x getVariable ["timestamp",_currentTime])) > RANDSPAWN_EXPIRY_TIME}) then {
 				_triggerLocation = _x getVariable ["triggerLocation",locationNull];
-				//if (_triggerLocation in A3EAI_areaBlacklists) then {A3EAI_areaBlacklists = A3EAI_areaBlacklists - [_triggerLocation]};
 				deleteLocation _triggerLocation;
 				if (A3EAI_debugMarkersEnabled) then {deleteMarker (str _x)};	
 				deleteVehicle _x;
@@ -168,6 +159,7 @@ while {true} do {
 		_checkRandomSpawns = _currentTime;
 	};
 	
+	//Check for unwanted side modifications
 	if ((_currentTime - _sideCheck) > SIDECHECK_TIME) then {
 		if ((resistance getFriend west) > 0) then {resistance setFriend [west, 0]};
 		if ((resistance getFriend east) > 0) then {resistance setFriend [east, 0]};
@@ -189,12 +181,13 @@ while {true} do {
 		A3EAI_mapMarkerArray = A3EAI_mapMarkerArray - [""];
 	};
 	
+	A3EAI_activeGroupAmount = ({!isNull _x} count A3EAI_activeGroups);
+	
 	//Report statistics to RPT log
 	if ((A3EAI_monitorRate > 0) && {((_currentTime - _monitorReport) > A3EAI_monitorRate)}) then {
 		_uptime = [] call _getUptime;
-		diag_log format ["A3EAI Monitor :: Server Uptime: %1:%2:%3. Server FPS: %4 Active AI Groups: %5.",_uptime select 0, _uptime select 1, _uptime select 2,diag_fps,({!isNull _x} count A3EAI_activeGroups)];
-		diag_log format ["A3EAI Monitor :: Static Spawns: %1. Respawn Queue: %2 groups queued.",(count A3EAI_staticTriggerArray),(count A3EAI_respawnQueue)];
-		if (_reportDynOrVehicles) then {diag_log format ["A3EAI Monitor :: Dynamic Spawns: %1. Random Spawns: %2. Air Patrols: %3. Land Patrols: %4.",(count A3EAI_dynTriggerArray),(count A3EAI_randTriggerArray),A3EAI_curHeliPatrols,A3EAI_curLandPatrols];};
+		diag_log format ["A3EAI Monitor: Uptime: %1:%2:%3. FPS: %4. Active AI Groups: %5. Respawn Queue: %6 groups. HC Connected: %7.",_uptime select 0, _uptime select 1, _uptime select 2,diag_fps,A3EAI_activeGroupAmount,(count A3EAI_respawnQueue),A3EAI_HCIsConnected];
+		diag_log format ["A3EAI Monitor: Static Spawns: %1. Dynamic Spawns: %2. Random Spawns: %3. Air Patrols: %4. Land Patrols: %5.",(count A3EAI_staticTriggerArray),(count A3EAI_dynTriggerArray),(count A3EAI_randTriggerArray),A3EAI_curHeliPatrols,A3EAI_curLandPatrols];
 		_monitorReport = _currentTime;
 	};
 

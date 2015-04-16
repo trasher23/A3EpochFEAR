@@ -13,28 +13,29 @@ _directoryAsArray = toArray __FILE__;
 _directoryAsArray resize ((count _directoryAsArray) - 26);
 A3EAI_directory = toString _directoryAsArray;
 
-if !(isNil "A3EAI_devOptions") then {
-	if ("readoverridefile" in A3EAI_devOptions) then {A3EAI_overrideEnabled = true} else {A3EAI_overrideEnabled = nil};
-	if ("enabledebugmarkers" in A3EAI_devOptions) then {A3EAI_debugMarkersEnabled = true} else {A3EAI_debugMarkersEnabled = false};
-	if ("enableHC" in A3EAI_devOptions) then {A3EAI_enableHC = true} else {A3EAI_enableHC = false};
-	A3EAI_devOptions = nil;
-} else {
+if (isNil "A3EAI_devOptions") then {
 	A3EAI_overrideEnabled = nil;
 	A3EAI_debugMarkersEnabled = false;
-	A3EAI_enableHC = false;
+} else {
+	if ("readoverridefile" in A3EAI_devOptions) then {A3EAI_overrideEnabled = true} else {A3EAI_overrideEnabled = nil};
+	if ("enabledebugmarkers" in A3EAI_devOptions) then {A3EAI_debugMarkersEnabled = true} else {A3EAI_debugMarkersEnabled = false};
+	A3EAI_devOptions = nil;
+};
+
+if (isNil "A3EAI_EpochHiveDir") then {
+	A3EAI_EpochHiveDir = "@epochhive";
 };
 
 //Report A3EAI version to RPT log
 diag_log format ["[A3EAI] Initializing A3EAI version %1 using base path %2.",[configFile >> "CfgPatches" >> "A3EAI","A3EAIVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,A3EAI_directory];
 
 //Load A3EAI main configuration file
-call compile preprocessFileLineNumbers "@EpochHive\A3EAI_config.sqf";
+call compile preprocessFileLineNumbers format ["%1\A3EAI_config.sqf",A3EAI_EpochHiveDir];
 
-if ((isNil "A3EAI_verifySettings") or {(typeName A3EAI_verifySettings) != "BOOL"}) then {A3EAI_verifySettings = true}; //Yo dawg, heard you like verifying, so...
-if (A3EAI_verifySettings) then {call compile preprocessFileLineNumbers format ["%1\scripts\verifySettings.sqf",A3EAI_directory];};
+call compile preprocessFileLineNumbers format ["%1\scripts\verifySettings.sqf",A3EAI_directory];
 
 //Load custom A3EAI settings file.
-if ((!isNil "A3EAI_overrideEnabled") && {A3EAI_overrideEnabled}) then {call compile preprocessFileLineNumbers "@EpochHive\A3EAI_settings_override.sqf"};
+if ((!isNil "A3EAI_overrideEnabled") && {A3EAI_overrideEnabled}) then {call compile preprocessFileLineNumbers format ["%1\A3EAI_settings_override.sqf",A3EAI_EpochHiveDir]};
 
 //Load A3EAI functions
 call compile preprocessFileLineNumbers format ["%1\init\A3EAI_functions.sqf",A3EAI_directory];
@@ -85,12 +86,10 @@ if ((resistance getFriend east) > 0) then {resistance setFriend [east, 0]};
 if ((east getFriend resistance) > 0) then {east setFriend [resistance, 0]};
 if ((west getFriend resistance) > 0) then {west setFriend [resistance, 0]};
 
-if (A3EAI_autoGenerateStatic) then {[] execVM format ["%1\scripts\setup_autoStaticSpawns.sqf",A3EAI_directory];};
-
 //Continue loading required A3EAI script files
 [] execVM format ['%1\scripts\A3EAI_post_init.sqf',A3EAI_directory];
 
 //Report A3EAI startup settings to RPT log
 diag_log format ["[A3EAI] A3EAI settings: Debug Level: %1. DebugMarkers: %2. WorldName: %3. VerifyClassnames: %4. VerifySettings: %5.",A3EAI_debugLevel,A3EAI_debugMarkersEnabled,_worldname,A3EAI_verifyClassnames,A3EAI_verifySettings];
-diag_log format ["[A3EAI] AI spawn settings: Static: %1. Dynamic: %2. Random: %3. Air: %4. Land: %5.",A3EAI_autoGenerateStatic,A3EAI_dynAISpawns,(A3EAI_maxRandomSpawns > 0),(A3EAI_maxHeliPatrols>0),(A3EAI_maxLandPatrols>0)];
+diag_log format ["[A3EAI] AI spawn settings: Static: %1. Dynamic: %2. Random: %3. Air: %4. Land: %5.",A3EAI_autoGenerateStatic,!(A3EAI_dynMaxSpawns isEqualTo 0),!(A3EAI_maxRandomSpawns isEqualTo 0),!(A3EAI_maxHeliPatrols isEqualTo 0),!(A3EAI_maxLandPatrols isEqualTo 0)];
 diag_log format ["[A3EAI] A3EAI loading completed in %1 seconds.",(diag_tickTime - _startTime)];

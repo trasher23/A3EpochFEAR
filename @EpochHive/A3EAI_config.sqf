@@ -11,9 +11,9 @@ diag_log "[A3EAI] Reading A3EAI configuration file.";
 /*	A3EAI Settings
 --------------------------------------------------------------------------------------------------------------------*/	
 
-//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: No debug output, 1: Basic Debug output, 2: Detailed Debug output. (Default: 0)
+//Enable or disable event logging to the server RPT file (named arma3server_[date]_[time].rpt). Debug level setting. 0: No debug output, 1: Basic Debug output, 2: Detailed Debug output. (Default: 0)
 //Debug output may help finding additional information about A3EAI's background behavior. This output is helpful when asking for help regarding bugs or unexpected behaviors.
-A3EAI_debugLevel = 1;
+A3EAI_debugLevel = 0;
 
 //Frequency of server monitor update to RPT log in seconds. The monitor periodically reports number of max/current AI units and dynamically spawned triggers into RPT log. (Default: 300, 0 = Disable reporting)										
 A3EAI_monitorRate = 300;
@@ -32,13 +32,24 @@ A3EAI_cleanupDelay = 900;
 A3EAI_loadCustomFile = false;
 
 
+
+/*	A3EAI HC Settings - NOTE: NOT YET SUPPORTED!
+--------------------------------------------------------------------------------------------------------------------*/	
+
+//Enables A3EAI headless client support. (Default: false)
+A3EAI_enableHC = false;
+
+//If HC support enabled, A3EAI will pause during post-initialization until HC has successfully connected. (Default: false)
+A3EAI_waitForHC = false;
+
+
 /*	Dynamic Classname Settings
 
 	If a setting is disabled, A3EAI will use the corresponding classname table further below. See "AI skin, weapon, loot, and equipment settings" section.
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Enable to generate AI uniform types from Epoch loot tables (Default: true)
-A3EAI_dynamicUniformList = false;
+A3EAI_dynamicUniformList = true;
 
 //Enable to generate AI skin types from Epoch loot tables (Default: true)
 A3EAI_dynamicWeaponList = true;
@@ -68,28 +79,38 @@ A3EAI_dynamicWeaponBlacklist = [];
 /*	Shared AI Unit Settings. These settings affect all AI spawned unless noted otherwise.
 --------------------------------------------------------------------------------------------------------------------*/		
 
-//(For auto-generated spawns only) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
-A3EAI_minAI_capitalCity = 2; //2
-A3EAI_addAI_capitalCity = 1; //1
-A3EAI_unitLevel_capitalCity = 1; //1
-
-//(For auto-generated spawns only) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
-A3EAI_minAI_city = 1; //1
-A3EAI_addAI_city = 2; //2
-A3EAI_unitLevel_city = 1; //1
-
-//(For auto-generated spawns only) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
+//(Static/Dynamic/Random Spawns) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
 A3EAI_minAI_village = 1; //1
 A3EAI_addAI_village = 1; //1
 A3EAI_unitLevel_village = 0; //0
+A3EAI_spawnChance_village = 0.30; //0.30
 
-//(For auto-generated spawns only) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
+//(Static/Dynamic/Random Spawns) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
+A3EAI_minAI_city = 1; //1
+A3EAI_addAI_city = 2; //2
+A3EAI_unitLevel_city = 1; //1
+A3EAI_spawnChance_city = 0.50; //0.50
+
+//(Static/Dynamic/Random Spawns) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
+A3EAI_minAI_capitalCity = 2; //2
+A3EAI_addAI_capitalCity = 1; //1
+A3EAI_unitLevel_capitalCity = 1; //1
+A3EAI_spawnChance_capitalCity = 0.60; //0.60
+
+//(Static/Dynamic/Random Spawns) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
 A3EAI_minAI_remoteArea = 1; //1
 A3EAI_addAI_remoteArea = 1; //1
 A3EAI_unitLevel_remoteArea = 2; //2
+A3EAI_spawnChance_remoteArea = 0.70; //0.70
 
-//(For dynamic and random spawns only) Defines amount of time to wait in seconds until cleaning up temporary blacklist area after dynamic/random spawn is deactivated (Default: 600)
-A3EAI_tempBlacklistTime = 600;
+//(Dynamic/Random Spawns) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
+A3EAI_minAI_wilderness = 1; //1
+A3EAI_addAI_wilderness = 2; //2
+A3EAI_unitLevel_wilderness = 1; //1
+A3EAI_spawnChance_wilderness = 0.40; //0.40
+
+//(For dynamic and random spawns only) Defines amount of time to wait in seconds until cleaning up temporary blacklist area after dynamic/random spawn is deactivated (Default: 1200)
+A3EAI_tempBlacklistTime = 1200;
 
 //If enabled, AI group will attempt to track down player responsible for killing a group member. (Default: true)
 A3EAI_findKiller = true;	
@@ -97,11 +118,14 @@ A3EAI_findKiller = true;
 //If normal probability check for spawning NVGs fails, then give AI temporary NVGs during night hours. Temporary NVGs are unlootable and will be removed at death (Default: false).									
 A3EAI_tempNVGs = false;	
 
-//List of launcher-type weapons that AI can use.
-A3EAI_launcherTypes = [];	
+//Minimum AI unit level requirement to use underslung grenade launchers. Set to -1 to disable completely. (Default: 1)
+A3EAI_GLRequirement = 1;	
 
-//List of AI unit levels that can access launcher weapons. (Acceptable value range: 0-3)
-A3EAI_launcherLevels = [];	
+//Minimum AI unit level requirement to use launcher weapons. Set to -1 to disable completely. (Default: -1)
+A3EAI_launcherLevelReq = -1;	
+
+//List of launcher-type weapons that AI can use.
+A3EAI_launcherTypes = ["launch_NLAW_F","launch_RPG32_F","launch_B_Titan_F","launch_I_Titan_F","launch_O_Titan_F","launch_B_Titan_short_F","launch_I_Titan_short_F","launch_O_Titan_short_F"];	
 
 //Maximum number of launcher weapons allowed per group (Default: 1)
 A3EAI_launchersPerGroup = 1;
@@ -114,10 +138,10 @@ A3EAI_enableHealing = true;
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Enable or disable radio message receiving. Players with radios (Radio Quartz) will be able to intercept some AI communications. (Default: false)
-A3EAI_radioMsgs = true;
+A3EAI_radioMsgs = false;
 
 //Enable or disable AI death messages. Messages will be sent only to player responsible for killing the unit. Messages will be sent in System chat in the format "(Unit name) was killed." (Default: false)
-A3EAI_deathMessages = true;	
+A3EAI_deathMessages = false;	
 
 
 /*	Static AI Spawning Settings
@@ -128,7 +152,7 @@ A3EAI_deathMessages = true;
 A3EAI_autoGenerateStatic = true;
 
 //Probability to increase unit level by 1 upon respawning an AI group.
-//Format: Probability to increase for [towns,cities,remote areas].
+//Format: Probability to increase to [level 1,level 2,level 3].
 A3EAI_promoteChances = [0.20,0.10,0.10];
 
 //Set minimum and maximum wait time in seconds to respawn an AI group after all units have been killed. Applies to both static AI and custom spawned AI (Default: Min 300, Max 600).									
@@ -138,29 +162,20 @@ A3EAI_respawnTimeMax = 600;
 //Time to allow spawned AI units to exist in seconds before being despawned when no players are present in a trigger area. Applies to both static AI and custom spawned AI (Default: 120)										
 A3EAI_despawnWait = 120;										
 
-//Spawn probabilities
-A3EAI_spawnChance0 = 0.40;	//Spawn chance for level 0 units - typically spawn in villages (Default: 0.40)
-A3EAI_spawnChance1 = 0.60;	//Spawn chance for level 1 units - typically spawn in cities and capital cities (Default: 0.60)
-A3EAI_spawnChance2 = 0.80;	//Spawn chance for level 2 units - typically spawn in remote areas (ie: factories, military bases) (Default: 0.80)
-A3EAI_spawnChance3 = 0.90;	//Spawn chance for level 3 units (Default: 0.90)
+//Respawn Limits. Set to -1 for unlimited respawns. (Default: -1 for each).
+A3EAI_respawnLimit_village = -1;
+A3EAI_respawnLimit_city = -1;
+A3EAI_respawnLimit_capitalCity = -1;
+A3EAI_respawnLimit_remoteArea = -1;
 
-//Respawn limits. Set to -1 for unlimited respawns. (Default: -1 for each).
-A3EAI_respawnLimit0 = -1; 	//Respawn limit for level 0 units - AI found in villages (Default: -1)
-A3EAI_respawnLimit1 = -1; 	//Respawn limit for level 1 units - AI found in cities and capital cities (Default: -1)
-A3EAI_respawnLimit2 = -1; 	//Respawn limit for level 2 units - AI found in remote areas (ie: factories, military bases) (Default: -1)
-A3EAI_respawnLimit3 = -1;	//Respawn limit for level 3 units (Default: -1)
+//Add name of location as displayed on map prevent static AI spawns from being created in these locations. Location names are case-sensitive (Example: ["Aggelochori","Panochori","Zaros"])
+A3EAI_staticBlacklistLocations = [];
 
 
 /*	Dynamic AI Spawning Settings. Probabilities should add up to 1.00	
 --------------------------------------------------------------------------------------------------------------------*/		
 
-//Enable or disable dynamic AI spawns. If enabled, AI spawn locations will be generated for randomly selected players at randomized intervals (Default: true)									
-A3EAI_dynAISpawns = true;
-
-//Chance for spawn for each selected player (Default: 0.50)
-A3EAI_dynSpawnChance = 0.50;
-
-//Upper limit of dynamic spawns on map at once (Default: 15)
+//Upper limit of dynamic spawns on map at once. Set to 0 to disable dynamic spawns (Default: 15)
 A3EAI_dynMaxSpawns = 15;
 
 //Minimum time (in seconds) that must pass between dynamic spawns for each player (Default: 900)
@@ -179,8 +194,8 @@ A3EAI_dynDespawnWait = 120;
 /*	Random AI Spawning Settings (Feature in development)
 --------------------------------------------------------------------------------------------------------------------*/		
 
-//Maximum number of placed random spawns on map (Default: 15)
-A3EAI_maxRandomSpawns = 15;
+//Maximum number of placed random spawns on map. Set to -1 for A3EAI to automatically adjust spawn limit according to map size. Set to 0 to disable random spawns. (Default: -1)
+A3EAI_maxRandomSpawns = -1;
 
 //Time to wait before despawning all AI units in random spawn area when no players are present. (Default: 120)
 A3EAI_randDespawnWait = 120;
@@ -193,14 +208,14 @@ A3EAI_minRandSpawnDist = 0;
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 5;	
+A3EAI_maxHeliPatrols = 0;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
 
 //Set minimum and maximum wait time in seconds to respawn an AI vehicle patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
-A3EAI_respawnTMinA = 600;
-A3EAI_respawnTMaxA = 900;
+A3EAI_respawnAirMinTime = 600;
+A3EAI_respawnAirMaxTime = 900;
 
 //Classnames of air vehicle types to use, with the maximum amount of each type to spawn.
 A3EAI_heliList = [
@@ -235,17 +250,18 @@ A3EAI_paraDropAmount = 3;
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Global maximum number of active AI land vehicle patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxLandPatrols = 10;
+A3EAI_maxLandPatrols = 0;
 
 //Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesLand = [0.00,0.50,0.35,0.15];	
 
 //Set minimum and maximum wait time in seconds to respawn an AI vehicle patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
-A3EAI_respawnTMinL = 600;
-A3EAI_respawnTMaxL = 900;
+A3EAI_respawnLandMinTime = 600;
+A3EAI_respawnLandMaxTime = 900;
 
 //Classnames of land vehicle types to use, with the maximum amount of each type to spawn.
 A3EAI_vehList = [
+	["B_MRAP_01_EPOCH",5],
 	["C_Van_01_transport_EPOCH",5],
 	["C_Offroad_01_EPOCH",5],
 	["C_Hatchback_02_EPOCH",5],
@@ -266,7 +282,7 @@ A3EAI_vehCargoUnits = 3;
 /*	Shared AI Vehicle (Air & Land) Settings
 --------------------------------------------------------------------------------------------------------------------*/
 
-//Add name of location as displayed on Map prevent AI vehicle patrols from travelling to these locations. Consult CfgWorlds through Editor if needed (Example: ["Aggelochori","Panochori","Zaros"])
+//Add name of location as displayed on map prevent AI vehicle patrols from travelling to these locations. Location names are case-sensitive. (Example: ["Aggelochori","Panochori","Zaros"])
 //Note: Vehicles may still pass through these areas but will not make stops unless enemies are encountered.
 A3EAI_waypointBlacklist = [];
 
@@ -365,6 +381,12 @@ A3EAI_muzzleChance1 = 0.25;
 A3EAI_muzzleChance2 = 0.50;
 A3EAI_muzzleChance3 = 0.75;
 
+//Probability to select a random underbarrel attachment (ie: bipods) for level 0-3 AI
+A3EAI_underbarrelChance0 = 0.00;
+A3EAI_underbarrelChance1 = 0.25;
+A3EAI_underbarrelChance2 = 0.50;
+A3EAI_underbarrelChance3 = 0.75;
+
 
 /*	AI loot quantity settings
 --------------------------------------------------------------------------------------------------------------------*/
@@ -414,18 +436,20 @@ A3EAI_lootPullChance3 = 0.60; //Default for level 3 AI: 0.60
 */
 
 
-//AI uniform classnames. Note: A3EAI_uniformTypes will not be read if A3EAI_dynamicUniformList is enabled.
+//AI uniform classnames. Note: A3EAI_uniformTypes0-3 will not be read if A3EAI_dynamicUniformList is enabled.
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/* A3EAI_uniformTypes = ["U_O_CombatUniform_ocamo", "U_O_GhillieSuit", "U_O_PilotCoveralls", "U_O_Wetsuit", "U_OG_Guerilla1_1", "U_OG_Guerilla2_1", "U_OG_Guerilla2_3", "U_OG_Guerilla3_1", "U_OG_Guerilla3_2", "U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Wetsuit_uniform", "U_Wetsuit_White", "U_Wetsuit_Blue", "U_Wetsuit_Purp", "U_Wetsuit_Camo", "U_CamoRed_uniform", "U_CamoBrn_uniform", "U_CamoBlue_uniform", "U_Camo_uniform", "U_ghillie1_uniform", "U_ghillie2_uniform", "U_ghillie3_uniform", "U_C_Driver_1", "U_C_Driver_2", "U_C_Driver_3", "U_C_Driver_4", "U_C_Driver_1_black", "U_C_Driver_1_blue", "U_C_Driver_1_green", "U_C_Driver_1_red", "U_C_Driver_1_white", "U_C_Driver_1_yellow", "U_C_Driver_1_orange", "U_C_Driver_1_red"]; */
+A3EAI_uniformTypes0 = ["U_O_CombatUniform_ocamo", "U_O_GhillieSuit", "U_O_PilotCoveralls", "U_O_Wetsuit", "U_OG_Guerilla1_1", "U_OG_Guerilla2_1", "U_OG_Guerilla2_3", "U_OG_Guerilla3_1", "U_OG_Guerilla3_2", "U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Wetsuit_uniform", "U_Wetsuit_White", "U_Wetsuit_Blue", "U_Wetsuit_Purp", "U_Wetsuit_Camo", "U_CamoRed_uniform", "U_CamoBrn_uniform", "U_CamoBlue_uniform", "U_Camo_uniform", "U_ghillie1_uniform", "U_ghillie2_uniform", "U_ghillie3_uniform", "U_C_Driver_1", "U_C_Driver_2", "U_C_Driver_3", "U_C_Driver_4", "U_C_Driver_1_black", "U_C_Driver_1_blue", "U_C_Driver_1_green", "U_C_Driver_1_red", "U_C_Driver_1_white", "U_C_Driver_1_yellow", "U_C_Driver_1_orange", "U_C_Driver_1_red"];
+A3EAI_uniformTypes1 = ["U_O_CombatUniform_ocamo", "U_O_GhillieSuit", "U_O_PilotCoveralls", "U_O_Wetsuit", "U_OG_Guerilla1_1", "U_OG_Guerilla2_1", "U_OG_Guerilla2_3", "U_OG_Guerilla3_1", "U_OG_Guerilla3_2", "U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Wetsuit_uniform", "U_Wetsuit_White", "U_Wetsuit_Blue", "U_Wetsuit_Purp", "U_Wetsuit_Camo", "U_CamoRed_uniform", "U_CamoBrn_uniform", "U_CamoBlue_uniform", "U_Camo_uniform", "U_ghillie1_uniform", "U_ghillie2_uniform", "U_ghillie3_uniform", "U_C_Driver_1", "U_C_Driver_2", "U_C_Driver_3", "U_C_Driver_4", "U_C_Driver_1_black", "U_C_Driver_1_blue", "U_C_Driver_1_green", "U_C_Driver_1_red", "U_C_Driver_1_white", "U_C_Driver_1_yellow", "U_C_Driver_1_orange", "U_C_Driver_1_red"];
+A3EAI_uniformTypes2 = ["U_O_CombatUniform_ocamo", "U_O_GhillieSuit", "U_O_PilotCoveralls", "U_O_Wetsuit", "U_OG_Guerilla1_1", "U_OG_Guerilla2_1", "U_OG_Guerilla2_3", "U_OG_Guerilla3_1", "U_OG_Guerilla3_2", "U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Wetsuit_uniform", "U_Wetsuit_White", "U_Wetsuit_Blue", "U_Wetsuit_Purp", "U_Wetsuit_Camo", "U_CamoRed_uniform", "U_CamoBrn_uniform", "U_CamoBlue_uniform", "U_Camo_uniform", "U_ghillie1_uniform", "U_ghillie2_uniform", "U_ghillie3_uniform", "U_C_Driver_1", "U_C_Driver_2", "U_C_Driver_3", "U_C_Driver_4", "U_C_Driver_1_black", "U_C_Driver_1_blue", "U_C_Driver_1_green", "U_C_Driver_1_red", "U_C_Driver_1_white", "U_C_Driver_1_yellow", "U_C_Driver_1_orange", "U_C_Driver_1_red"];
+A3EAI_uniformTypes3 = ["U_O_CombatUniform_ocamo", "U_O_GhillieSuit", "U_O_PilotCoveralls", "U_O_Wetsuit", "U_OG_Guerilla1_1", "U_OG_Guerilla2_1", "U_OG_Guerilla2_3", "U_OG_Guerilla3_1", "U_OG_Guerilla3_2", "U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Wetsuit_uniform", "U_Wetsuit_White", "U_Wetsuit_Blue", "U_Wetsuit_Purp", "U_Wetsuit_Camo", "U_CamoRed_uniform", "U_CamoBrn_uniform", "U_CamoBlue_uniform", "U_Camo_uniform", "U_ghillie1_uniform", "U_ghillie2_uniform", "U_ghillie3_uniform", "U_C_Driver_1", "U_C_Driver_2", "U_C_Driver_3", "U_C_Driver_4", "U_C_Driver_1_black", "U_C_Driver_1_blue", "U_C_Driver_1_green", "U_C_Driver_1_red", "U_C_Driver_1_white", "U_C_Driver_1_yellow", "U_C_Driver_1_orange", "U_C_Driver_1_red"];
 
-A3EAI_uniformTypes = ["U_C_Scientist"];
 
 //AI weapon classnames. Note: A3EAI_pistolList, A3EAI_rifleList, A3EAI_machinegunList, A3EAI_sniperList will not be read if A3EAI_dynamicWeaponList is enabled.
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-A3EAI_pistolList = ["hgun_ACPC2_F", "hgun_ACPC2_F", "hgun_Rook40_F", "hgun_Rook40_F", "hgun_Rook40_F", "hgun_P07_F", "hgun_P07_F", "hgun_Pistol_heavy_01_F", "hgun_Pistol_heavy_02_F", "ruger_pistol_epoch", "ruger_pistol_epoch", "1911_pistol_epoch", "1911_pistol_epoch"];
-A3EAI_rifleList = ["arifle_Katiba_F", "arifle_Katiba_F", "arifle_Katiba_C_F", "arifle_Katiba_GL_F", "arifle_MXC_F", "arifle_MX_F", "arifle_MX_F", "arifle_MX_GL_F", "arifle_MXM_F", "arifle_SDAR_F", "arifle_TRG21_F", "arifle_TRG20_F", "arifle_TRG21_GL_F", "arifle_Mk20_F", "arifle_Mk20C_F", "arifle_Mk20_GL_F", "arifle_Mk20_plain_F", "arifle_Mk20_plain_F", "arifle_Mk20C_plain_F", "arifle_Mk20_GL_plain_F", "SMG_01_F", "SMG_02_F", "SMG_01_F", "SMG_02_F", "hgun_PDW2000_F", "hgun_PDW2000_F", "arifle_MXM_Black_F", "arifle_MX_GL_Black_F", "arifle_MX_Black_F", "arifle_MXC_Black_F", "Rollins_F", "Rollins_F", "Rollins_F", "Rollins_F", "AKM_EPOCH", "m4a3_EPOCH", "m16_EPOCH", "m16Red_EPOCH"];
-A3EAI_machinegunList = ["LMG_Mk200_F", "arifle_MX_SW_F", "LMG_Zafir_F", "arifle_MX_SW_Black_F", "m249_EPOCH", "m249Tan_EPOCH"];
-A3EAI_sniperList = ["srifle_EBR_F", "srifle_EBR_F", "srifle_GM6_F", "srifle_GM6_F", "srifle_LRR_F", "srifle_DMR_01_F", "M14_EPOCH", "M14Grn_EPOCH", "m107_EPOCH", "m107Tan_EPOCH"];
+A3EAI_pistolList = ["hgun_Pistol_heavy_01_F","hgun_P07_F","hgun_Rook40_F","hgun_Pistol_heavy_02_F","1911_pistol_epoch","hgun_ACPC2_F","ruger_pistol_epoch"];
+A3EAI_rifleList = ["AKM_EPOCH","sr25_epoch","arifle_Katiba_GL_F","arifle_Katiba_C_F","arifle_Katiba_F","arifle_MX_GL_F","arifle_MX_GL_Black_F","arifle_MXM_Black_F","arifle_MXC_Black_F","arifle_MX_Black_F","arifle_MXM_F","arifle_MXC_F","arifle_MX_F","l85a2_epoch","l85a2_pink_epoch","l85a2_ugl_epoch","m4a3_EPOCH","m16_EPOCH","m16Red_EPOCH","arifle_Mk20_GL_F","arifle_Mk20_GL_plain_F","arifle_Mk20C_F","arifle_Mk20C_plain_F","arifle_Mk20_F","arifle_Mk20_plain_F","arifle_TRG21_GL_F","arifle_TRG21_F","arifle_TRG20_F","arifle_SDAR_F","Rollins_F","SMG_01_F","SMG_02_F","hgun_PDW2000_F"];
+A3EAI_machinegunList = ["LMG_Zafir_F","arifle_MX_SW_F","arifle_MX_SW_Black_F","LMG_Mk200_F","m249_EPOCH","m249Tan_EPOCH","MMG_01_hex_F","MMG_01_tan_F","MMG_02_camo_F","MMG_02_black_F","MMG_02_sand_F"];
+A3EAI_sniperList = ["m107_EPOCH","m107Tan_EPOCH","srifle_DMR_02_F","srifle_DMR_02_camo_F","srifle_DMR_02_sniper_F","srifle_DMR_03_F","srifle_DMR_03_khaki_F","srifle_DMR_03_tan_F","srifle_DMR_03_multicam_F","srifle_DMR_03_woodland_F","srifle_DMR_03_spotter_F","srifle_DMR_04_F","srifle_DMR_04_Tan_F","srifle_DMR_05_blk_F","srifle_DMR_05_hex_F","srifle_DMR_05_tan_f","srifle_DMR_06_camo_F","srifle_DMR_06_olive_F","srifle_LRR_F","srifle_GM6_F","srifle_DMR_01_F","M14_EPOCH","M14Grn_EPOCH","srifle_EBR_F"];
 
 
 //AI backpack types (for AI levels 0-3). Note: A3EAI_backpackTypes0-3 will not be read if A3EAI_dynamicBackpackList is enabled.
@@ -444,8 +468,11 @@ A3EAI_vestTypes2 = ["V_1_EPOCH", "V_2_EPOCH", "V_3_EPOCH", "V_4_EPOCH", "V_5_EPO
 A3EAI_vestTypes3 = ["V_1_EPOCH", "V_2_EPOCH", "V_3_EPOCH", "V_4_EPOCH", "V_5_EPOCH", "V_6_EPOCH", "V_7_EPOCH", "V_8_EPOCH", "V_9_EPOCH", "V_10_EPOCH", "V_11_EPOCH", "V_12_EPOCH", "V_13_EPOCH", "V_14_EPOCH", "V_15_EPOCH", "V_16_EPOCH", "V_17_EPOCH", "V_18_EPOCH", "V_19_EPOCH", "V_20_EPOCH", "V_21_EPOCH", "V_22_EPOCH", "V_23_EPOCH", "V_24_EPOCH", "V_25_EPOCH", "V_26_EPOCH", "V_27_EPOCH", "V_28_EPOCH", "V_29_EPOCH", "V_30_EPOCH", "V_31_EPOCH", "V_32_EPOCH", "V_33_EPOCH", "V_34_EPOCH", "V_35_EPOCH", "V_36_EPOCH", "V_37_EPOCH", "V_38_EPOCH", "V_39_EPOCH", "V_40_EPOCH"];
 
 
-//AI head gear types. Note: A3EAI_headgearTypes will not be read if A3EAI_dynamicHeadgearList is enabled.
-A3EAI_headgearTypes = ["H_1_EPOCH","H_2_EPOCH","H_3_EPOCH","H_4_EPOCH","H_5_EPOCH","H_6_EPOCH","H_7_EPOCH","H_8_EPOCH","H_9_EPOCH","H_10_EPOCH","H_11_EPOCH","H_12_EPOCH","H_13_EPOCH","H_14_EPOCH","H_15_EPOCH","H_16_EPOCH","H_17_EPOCH","H_18_EPOCH","H_19_EPOCH","H_20_EPOCH","H_21_EPOCH","H_22_EPOCH","H_23_EPOCH","H_24_EPOCH","H_25_EPOCH","H_26_EPOCH","H_27_EPOCH","H_28_EPOCH","H_29_EPOCH","H_30_EPOCH","H_31_EPOCH","H_32_EPOCH","H_33_EPOCH","H_34_EPOCH","H_35_EPOCH","H_36_EPOCH","H_37_EPOCH","H_38_EPOCH","H_39_EPOCH","H_40_EPOCH","H_41_EPOCH","H_42_EPOCH","H_43_EPOCH","H_44_EPOCH","H_45_EPOCH","H_46_EPOCH","H_47_EPOCH","H_48_EPOCH","H_49_EPOCH","H_50_EPOCH","H_51_EPOCH","H_52_EPOCH","H_53_EPOCH","H_54_EPOCH","H_55_EPOCH","H_56_EPOCH","H_57_EPOCH","H_58_EPOCH","H_59_EPOCH","H_60_EPOCH","H_61_EPOCH","H_62_EPOCH","H_63_EPOCH","H_64_EPOCH","H_65_EPOCH","H_66_EPOCH","H_67_EPOCH","H_68_EPOCH","H_69_EPOCH","H_70_EPOCH","H_71_EPOCH","H_72_EPOCH","H_73_EPOCH","H_74_EPOCH","H_75_EPOCH","H_76_EPOCH","H_77_EPOCH","H_78_EPOCH","H_79_EPOCH","H_80_EPOCH","H_81_EPOCH","H_82_EPOCH","H_83_EPOCH","H_84_EPOCH","H_85_EPOCH","H_86_EPOCH","H_87_EPOCH","H_88_EPOCH","H_89_EPOCH","H_90_EPOCH","H_91_EPOCH","H_92_EPOCH","H_93_EPOCH","H_94_EPOCH","H_95_EPOCH","H_96_EPOCH","H_97_EPOCH","H_98_EPOCH","H_99_EPOCH","H_100_EPOCH","H_101_EPOCH","H_102_EPOCH","H_103_EPOCH","H_104_EPOCH"];
+//AI head gear types. Note: A3EAI_headgearTypes0-3 will not be read if A3EAI_dynamicHeadgearList is enabled.
+A3EAI_headgearTypes0 = ["H_1_EPOCH","H_2_EPOCH","H_3_EPOCH","H_4_EPOCH","H_5_EPOCH","H_6_EPOCH","H_7_EPOCH","H_8_EPOCH","H_9_EPOCH","H_10_EPOCH","H_11_EPOCH","H_12_EPOCH","H_13_EPOCH","H_14_EPOCH","H_15_EPOCH","H_16_EPOCH","H_17_EPOCH","H_18_EPOCH","H_19_EPOCH","H_20_EPOCH","H_21_EPOCH","H_22_EPOCH","H_23_EPOCH","H_24_EPOCH","H_25_EPOCH","H_26_EPOCH","H_27_EPOCH","H_28_EPOCH","H_29_EPOCH","H_30_EPOCH","H_31_EPOCH","H_32_EPOCH","H_33_EPOCH","H_34_EPOCH","H_35_EPOCH","H_36_EPOCH","H_37_EPOCH","H_38_EPOCH","H_39_EPOCH","H_40_EPOCH","H_41_EPOCH","H_42_EPOCH","H_43_EPOCH","H_44_EPOCH","H_45_EPOCH","H_46_EPOCH","H_47_EPOCH","H_48_EPOCH","H_49_EPOCH","H_50_EPOCH","H_51_EPOCH","H_52_EPOCH","H_53_EPOCH","H_54_EPOCH","H_55_EPOCH","H_56_EPOCH","H_57_EPOCH","H_58_EPOCH","H_59_EPOCH","H_60_EPOCH","H_61_EPOCH","H_62_EPOCH","H_63_EPOCH","H_64_EPOCH","H_65_EPOCH","H_66_EPOCH","H_67_EPOCH","H_68_EPOCH","H_69_EPOCH","H_70_EPOCH","H_71_EPOCH","H_72_EPOCH","H_73_EPOCH","H_74_EPOCH","H_75_EPOCH","H_76_EPOCH","H_77_EPOCH","H_78_EPOCH","H_79_EPOCH","H_80_EPOCH","H_81_EPOCH","H_82_EPOCH","H_83_EPOCH","H_84_EPOCH","H_85_EPOCH","H_86_EPOCH","H_87_EPOCH","H_88_EPOCH","H_89_EPOCH","H_90_EPOCH","H_91_EPOCH","H_92_EPOCH","H_93_EPOCH","H_94_EPOCH","H_95_EPOCH","H_96_EPOCH","H_97_EPOCH","H_98_EPOCH","H_99_EPOCH","H_100_EPOCH","H_101_EPOCH","H_102_EPOCH","H_103_EPOCH","H_104_EPOCH"];
+A3EAI_headgearTypes1 = ["H_1_EPOCH","H_2_EPOCH","H_3_EPOCH","H_4_EPOCH","H_5_EPOCH","H_6_EPOCH","H_7_EPOCH","H_8_EPOCH","H_9_EPOCH","H_10_EPOCH","H_11_EPOCH","H_12_EPOCH","H_13_EPOCH","H_14_EPOCH","H_15_EPOCH","H_16_EPOCH","H_17_EPOCH","H_18_EPOCH","H_19_EPOCH","H_20_EPOCH","H_21_EPOCH","H_22_EPOCH","H_23_EPOCH","H_24_EPOCH","H_25_EPOCH","H_26_EPOCH","H_27_EPOCH","H_28_EPOCH","H_29_EPOCH","H_30_EPOCH","H_31_EPOCH","H_32_EPOCH","H_33_EPOCH","H_34_EPOCH","H_35_EPOCH","H_36_EPOCH","H_37_EPOCH","H_38_EPOCH","H_39_EPOCH","H_40_EPOCH","H_41_EPOCH","H_42_EPOCH","H_43_EPOCH","H_44_EPOCH","H_45_EPOCH","H_46_EPOCH","H_47_EPOCH","H_48_EPOCH","H_49_EPOCH","H_50_EPOCH","H_51_EPOCH","H_52_EPOCH","H_53_EPOCH","H_54_EPOCH","H_55_EPOCH","H_56_EPOCH","H_57_EPOCH","H_58_EPOCH","H_59_EPOCH","H_60_EPOCH","H_61_EPOCH","H_62_EPOCH","H_63_EPOCH","H_64_EPOCH","H_65_EPOCH","H_66_EPOCH","H_67_EPOCH","H_68_EPOCH","H_69_EPOCH","H_70_EPOCH","H_71_EPOCH","H_72_EPOCH","H_73_EPOCH","H_74_EPOCH","H_75_EPOCH","H_76_EPOCH","H_77_EPOCH","H_78_EPOCH","H_79_EPOCH","H_80_EPOCH","H_81_EPOCH","H_82_EPOCH","H_83_EPOCH","H_84_EPOCH","H_85_EPOCH","H_86_EPOCH","H_87_EPOCH","H_88_EPOCH","H_89_EPOCH","H_90_EPOCH","H_91_EPOCH","H_92_EPOCH","H_93_EPOCH","H_94_EPOCH","H_95_EPOCH","H_96_EPOCH","H_97_EPOCH","H_98_EPOCH","H_99_EPOCH","H_100_EPOCH","H_101_EPOCH","H_102_EPOCH","H_103_EPOCH","H_104_EPOCH"];
+A3EAI_headgearTypes2 = ["H_1_EPOCH","H_2_EPOCH","H_3_EPOCH","H_4_EPOCH","H_5_EPOCH","H_6_EPOCH","H_7_EPOCH","H_8_EPOCH","H_9_EPOCH","H_10_EPOCH","H_11_EPOCH","H_12_EPOCH","H_13_EPOCH","H_14_EPOCH","H_15_EPOCH","H_16_EPOCH","H_17_EPOCH","H_18_EPOCH","H_19_EPOCH","H_20_EPOCH","H_21_EPOCH","H_22_EPOCH","H_23_EPOCH","H_24_EPOCH","H_25_EPOCH","H_26_EPOCH","H_27_EPOCH","H_28_EPOCH","H_29_EPOCH","H_30_EPOCH","H_31_EPOCH","H_32_EPOCH","H_33_EPOCH","H_34_EPOCH","H_35_EPOCH","H_36_EPOCH","H_37_EPOCH","H_38_EPOCH","H_39_EPOCH","H_40_EPOCH","H_41_EPOCH","H_42_EPOCH","H_43_EPOCH","H_44_EPOCH","H_45_EPOCH","H_46_EPOCH","H_47_EPOCH","H_48_EPOCH","H_49_EPOCH","H_50_EPOCH","H_51_EPOCH","H_52_EPOCH","H_53_EPOCH","H_54_EPOCH","H_55_EPOCH","H_56_EPOCH","H_57_EPOCH","H_58_EPOCH","H_59_EPOCH","H_60_EPOCH","H_61_EPOCH","H_62_EPOCH","H_63_EPOCH","H_64_EPOCH","H_65_EPOCH","H_66_EPOCH","H_67_EPOCH","H_68_EPOCH","H_69_EPOCH","H_70_EPOCH","H_71_EPOCH","H_72_EPOCH","H_73_EPOCH","H_74_EPOCH","H_75_EPOCH","H_76_EPOCH","H_77_EPOCH","H_78_EPOCH","H_79_EPOCH","H_80_EPOCH","H_81_EPOCH","H_82_EPOCH","H_83_EPOCH","H_84_EPOCH","H_85_EPOCH","H_86_EPOCH","H_87_EPOCH","H_88_EPOCH","H_89_EPOCH","H_90_EPOCH","H_91_EPOCH","H_92_EPOCH","H_93_EPOCH","H_94_EPOCH","H_95_EPOCH","H_96_EPOCH","H_97_EPOCH","H_98_EPOCH","H_99_EPOCH","H_100_EPOCH","H_101_EPOCH","H_102_EPOCH","H_103_EPOCH","H_104_EPOCH"];
+A3EAI_headgearTypes3 = ["H_1_EPOCH","H_2_EPOCH","H_3_EPOCH","H_4_EPOCH","H_5_EPOCH","H_6_EPOCH","H_7_EPOCH","H_8_EPOCH","H_9_EPOCH","H_10_EPOCH","H_11_EPOCH","H_12_EPOCH","H_13_EPOCH","H_14_EPOCH","H_15_EPOCH","H_16_EPOCH","H_17_EPOCH","H_18_EPOCH","H_19_EPOCH","H_20_EPOCH","H_21_EPOCH","H_22_EPOCH","H_23_EPOCH","H_24_EPOCH","H_25_EPOCH","H_26_EPOCH","H_27_EPOCH","H_28_EPOCH","H_29_EPOCH","H_30_EPOCH","H_31_EPOCH","H_32_EPOCH","H_33_EPOCH","H_34_EPOCH","H_35_EPOCH","H_36_EPOCH","H_37_EPOCH","H_38_EPOCH","H_39_EPOCH","H_40_EPOCH","H_41_EPOCH","H_42_EPOCH","H_43_EPOCH","H_44_EPOCH","H_45_EPOCH","H_46_EPOCH","H_47_EPOCH","H_48_EPOCH","H_49_EPOCH","H_50_EPOCH","H_51_EPOCH","H_52_EPOCH","H_53_EPOCH","H_54_EPOCH","H_55_EPOCH","H_56_EPOCH","H_57_EPOCH","H_58_EPOCH","H_59_EPOCH","H_60_EPOCH","H_61_EPOCH","H_62_EPOCH","H_63_EPOCH","H_64_EPOCH","H_65_EPOCH","H_66_EPOCH","H_67_EPOCH","H_68_EPOCH","H_69_EPOCH","H_70_EPOCH","H_71_EPOCH","H_72_EPOCH","H_73_EPOCH","H_74_EPOCH","H_75_EPOCH","H_76_EPOCH","H_77_EPOCH","H_78_EPOCH","H_79_EPOCH","H_80_EPOCH","H_81_EPOCH","H_82_EPOCH","H_83_EPOCH","H_84_EPOCH","H_85_EPOCH","H_86_EPOCH","H_87_EPOCH","H_88_EPOCH","H_89_EPOCH","H_90_EPOCH","H_91_EPOCH","H_92_EPOCH","H_93_EPOCH","H_94_EPOCH","H_95_EPOCH","H_96_EPOCH","H_97_EPOCH","H_98_EPOCH","H_99_EPOCH","H_100_EPOCH","H_101_EPOCH","H_102_EPOCH","H_103_EPOCH","H_104_EPOCH"];
 
 
 //AI Food/Loot item types. 
@@ -472,7 +499,6 @@ A3EAI_tools1 = [
 
 //AI-useable toolbelt item types. These items are added to AI inventory at unit creation and may be used by AI. Format: [item classname, item probability]
 //unitLevel level 0-1 AI will use A3EAI_gadgets0 table, unitLevel level 2-3 AI will use A3EAI_gadgets1 table. Custom-spawned AI will use A3EAI_gadgets1 table.
-//Note: NVGoggles will be replaced with NVG_EPOCH on AI death
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 A3EAI_gadgets0 = [

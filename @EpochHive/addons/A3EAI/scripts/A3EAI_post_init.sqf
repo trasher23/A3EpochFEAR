@@ -8,8 +8,8 @@
 if (A3EAI_debugLevel > 0) then {diag_log "A3EAI Debug: A3EAI Startup is running required script files..."};
 
 //Set internal-use variables
-A3EAI_unitLevels = [0,1,2,3];								//All possible weapon grades (does not include custom weapon grades). A "weapon grade" is a tiered classification of gear. 0: Civilian, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
-A3EAI_unitLevelsAll = [0,1,2,3,4,5,6,7,8,9];				//All possible weapon grades (including custom weapon grades).
+A3EAI_unitLevels = [0,1,2,3];								
+A3EAI_unitLevelsAll = A3EAI_unitLevels;				
 A3EAI_curHeliPatrols = 0;									//Current number of active air patrols
 A3EAI_curLandPatrols = 0;									//Current number of active land patrols
 A3EAI_dynTriggerArray = [];									//List of all generated dynamic triggers.
@@ -20,8 +20,8 @@ A3EAI_reinforcePlaces = [];									//AI helicopter patrols will periodically ch
 A3EAI_checkedClassnames = [[],[],[]];						//Classnames verified - Weapons/Magazines/Vehicles
 A3EAI_invalidClassnames = [[],[],[]];						//Classnames known as invalid - Weapons/Magazines/Vehicles
 A3EAI_respawnTimeVariance = (abs (A3EAI_respawnTimeMax - A3EAI_respawnTimeMin));
-A3EAI_respawnTimeVarAir = (abs (A3EAI_respawnTMaxA - A3EAI_respawnTMinA));
-A3EAI_respawnTimeVarLand = (abs (A3EAI_respawnTMaxL - A3EAI_respawnTMinL));
+A3EAI_respawnTimeVarAir = (abs (A3EAI_respawnAirMaxTime - A3EAI_respawnAirMinTime));
+A3EAI_respawnTimeVarLand = (abs (A3EAI_respawnLandMaxTime - A3EAI_respawnLandMaxTime));
 A3EAI_monitoredObjects = []; //used to cleanup AI vehicles that may not be destroyed.
 A3EAI_activeGroups = [];
 A3EAI_locations = [];
@@ -37,52 +37,20 @@ A3EAI_weaponTypeIndices3 = [];
 A3EAI_failedDynamicSpawns = [];
 A3EAI_HCObject = objNull;
 A3EAI_HCIsConnected = false;
+A3EAI_HCObjectOwnerID = 0;
+A3EAI_activeGroupAmount = 0;
+A3EAI_staticInfantrySpawnQueue = [];
+A3EAI_customBlacklistQueue = [];
+A3EAI_customInfantrySpawnQueue = [];
+A3EAI_createCustomSpawnQueue = [];
+A3EAI_customVehicleSpawnQueue = [];
+A3EAI_randomInfantrySpawnQueue = [];
+A3EAI_hiddenObjectsList = [];
 
 if (A3EAI_enableHC) then {
-	"A3EAI_HCLogin" addPublicVariableEventHandler {
-		private ["_HCObject","_versionHC"];
-		_HCObject = (_this select 1) select 0;
-		_versionHC = (_this select 1) select 1;
-		if ((owner A3EAI_HCObject) isEqualTo 0) then {
-			if ((!isNull _HCObject) && {_versionHC isEqualTo "0.2.3"}) then {
-				A3EAI_HCObject = _HCObject;
-				A3EAI_HCObject addEventHandler ["Local",{
-					if (_this select 1) then {
-						private["_unit"];
-						A3EAI_HCIsConnected = false;
-						A3EAI_HCObjectOwnerID = 0;
-						A3EAI_HCObject = objNull;
-						_unit = _this select 0;
-						_unit removeAllEventHandlers "Local";
-						diag_log format ["Debug: Deleting disconnected headless client unit %1.",typeOf _unit];
-						deleteVehicle _unit;
-						deleteGroup (group _unit);
-					};
-				}];
-				A3EAI_HCObjectOwnerID = (owner A3EAI_HCObject);
-				A3EAI_HCIsConnected = true;
-				A3EAI_HC_serverResponse = true;
-				A3EAI_HCObjectOwnerID publicVariableClient "A3EAI_HC_serverResponse";
-				diag_log format ["Debug: Headless client %1 (owner: %2, pUID: %3) logged in successfully.",A3EAI_HCObject,A3EAI_HCObjectOwnerID,getPlayerUID A3EAI_HCObject];
-			} else {
-				diag_log format ["Debug: Headless client %1 (owner: %2) is null object or sent wrong password %2.",_HCObject,owner _HCObject,_versionHC];
-			};
-		} else {
-			A3EAI_HC_serverResponse = false;
-			(owner _HCObject) publicVariableClient "A3EAI_HC_serverResponse";
-			diag_log format ["Debug: Rejected connection from HC %1. A headless client (owner: %2) is already connected.",(_this select 1),A3EAI_HCObjectOwnerID];
-		};
-	};
-	"A3EAI_HCLogin2" addPublicVariableEventHandler {
-		private ["_HCPlayerObject","_versionHC"];
-		_HCPlayerObject = (_this select 1) select 0;
-		_versionHC = (_this select 1) select 1;
-		if ((!isNull _HCPlayerObject) && {_versionHC isEqualTo "0.2.3"}) then {
-			_HCPlayerObject hideObjectGlobal true;
-			diag_log format ["Debug: Set hideObjectGlobal true on %1",(_this select 1)];
-		};
-	};
-	diag_log "Debug: Listening for headless client connection...";
+	[] call compile preprocessFileLineNumbers format ["%1\init\A3EAI_ServerHC_functions.sqf",A3EAI_directory];
+	[] call compile preprocessFileLineNumbers format ["%1\init\A3EAI_ServerHC_PVEH.sqf",A3EAI_directory];
+	diag_log "[A3EAI] A3EAI is now listening for headless client connection.";
 };
 
 //Create default trigger object if AI is spawned without trigger object specified (ie: for custom vehicle AI groups)
@@ -97,6 +65,8 @@ _nul = [] spawn {
 	A3EAI_defaultTrigger setVariable ["maxUnits",[0,0]];
 	A3EAI_defaultTrigger setVariable ["GroupSize",0];
 	A3EAI_defaultTrigger setVariable ["initialized",true];
+	A3EAI_defaultTrigger setVariable ["spawnChance",0];
+	A3EAI_defaultTrigger setVariable ["spawnType",""];
 	A3EAI_defaultTrigger setTriggerText "Default Trigger Object";
 	if (A3EAI_debugLevel > 1) then {diag_log format ["A3EAI Extended Debug: Default trigger check result: %1",[!(isNull A3EAI_defaultTrigger),(typeOf A3EAI_defaultTrigger),(getPosASL A3EAI_defaultTrigger)]]};
 };
@@ -104,14 +74,14 @@ _nul = [] spawn {
 [] call compile preprocessFileLineNumbers format ["%1\scripts\buildWeightedTables.sqf",A3EAI_directory];
 
 if (A3EAI_verifyClassnames) then {
-	A3EAI_tableChecklist = ["A3EAI_pistolList","A3EAI_rifleList","A3EAI_machinegunList","A3EAI_sniperList","A3EAI_headgearTypes",
+	A3EAI_tableChecklist = ["A3EAI_pistolList","A3EAI_rifleList","A3EAI_machinegunList","A3EAI_sniperList","A3EAI_headgearTypes0","A3EAI_headgearTypes1","A3EAI_headgearTypes2","A3EAI_headgearTypes3",
 				"A3EAI_backpackTypes0","A3EAI_backpackTypes1","A3EAI_backpackTypes2","A3EAI_backpackTypes3","A3EAI_foodLoot","A3EAI_MiscLoot1","A3EAI_MiscLoot2",
-				"A3EAI_uniformTypes","A3EAI_launcherTypes","A3EAI_vestTypes0","A3EAI_vestTypes1","A3EAI_vestTypes2","A3EAI_vestTypes3"];
+				"A3EAI_uniformTypes0","A3EAI_uniformTypes1","A3EAI_uniformTypes2","A3EAI_uniformTypes3","A3EAI_launcherTypes","A3EAI_vestTypes0","A3EAI_vestTypes1","A3EAI_vestTypes2","A3EAI_vestTypes3"];
 };
 
-//Build skin classname tables
+
 if (A3EAI_dynamicUniformList) then {
-	_skinlist = [] execVM format ['%1\scripts\A3EAI_buildSkinList.sqf',A3EAI_directory];
+	_skinlist = [] execVM format ['%1\scripts\A3EAI_buildUniformList.sqf',A3EAI_directory];
 	waitUntil {uiSleep 0.05; scriptDone _skinlist};
 };
 
@@ -157,10 +127,17 @@ if (A3EAI_dynamicLootLargeList) then {
 	waitUntil {uiSleep 0.05; scriptDone _lootlistlarge};
 };
 
+
 //Check classname tables if enabled
 if (A3EAI_verifyClassnames) then {
 	_verifyClassnames = [] execVM format ["%1\scripts\verifyClassnames.sqf",A3EAI_directory];
 	waitUntil {uiSleep 0.05; scriptDone _verifyClassnames};
+};
+
+if (A3EAI_enableHC && {A3EAI_waitForHC}) then {
+	diag_log "[A3EAI] Waiting for headless client to connect. A3EAI post-initialization process paused.";
+	waitUntil {uiSleep 5; A3EAI_HCIsConnected};
+	diag_log format ["[A3EAI] Headless client connected with owner ID %1. A3EAI post-initialization process continuing.",A3EAI_HCObjectOwnerID];
 };
 
 A3EAI_classnamesVerified = true;
@@ -168,15 +145,18 @@ A3EAI_classnamesVerified = true;
 //Build map location list.
 _setupLocations = [] execVM format ['%1\scripts\setup_locations.sqf',A3EAI_directory];
 
+//Set up auto-generated static spawns
+if (A3EAI_autoGenerateStatic) then {
+	_staticSpawns = [] execVM format ["%1\scripts\setup_autoStaticSpawns.sqf",A3EAI_directory];
+};
+
 //Start dynamic spawn manager
-if (A3EAI_dynAISpawns) then {
+if !(A3EAI_dynMaxSpawns isEqualTo 0) then {
 	_dynManagerV2 = [] execVM format ['%1\scripts\dynamicSpawn_manager.sqf',A3EAI_directory];
 };
 
 //Start allowDamage fix (disabled)
-if (false) then {
-	_ADP = [] execVM format ['%1\scripts\allowDamage_fix.sqf',A3EAI_directory];
-};
+//_ADP = [] execVM format ['%1\scripts\allowDamage_fix.sqf',A3EAI_directory];
 
 //Set up vehicle patrols
 if ((A3EAI_maxHeliPatrols > 0) or {(A3EAI_maxLandPatrols > 0)}) then {

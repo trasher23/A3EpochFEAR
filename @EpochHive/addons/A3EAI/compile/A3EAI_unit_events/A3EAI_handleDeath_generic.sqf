@@ -1,5 +1,5 @@
-
 private["_victim","_killer","_unitGroup","_unitType","_unitsAlive"];
+
 _victim = _this select 0;
 _killer = _this select 1;
 _unitGroup = _this select 2;
@@ -24,7 +24,5 @@ if (isPlayer _killer) then {
 		_victim call A3EAI_purgeUnitGear;
 	};
 };
-
-if (A3EAI_debugLevel > 0) then {diag_log format["A3EAI Debug: %1 AI unit %2 killed by %3, %4 units left alive in group.",_unitType,_victim,_killer,_unitsAlive];};
 
 true

@@ -1,16 +1,15 @@
 if !((typeName _this) isEqualTo "ARRAY") exitWith {diag_log format ["Error: Wrong arguments sent to %1.",__FILE__]};
-private ["_trigger", "_grpArray", "_infantryQueue", "_continue","_triggerStatements"];
+private ["_trigger", "_grpArray", "_infantryQueue","_triggerStatements"];
 
 _trigger = _this select 3;
 _grpArray = _trigger getVariable ["GroupArray",[]];	
 
 if (_grpArray isEqualTo []) then {
-	if (isNil "A3EAI_customInfantrySpawnQueue") then {
-		A3EAI_customInfantrySpawnQueue = [_this];
+	if (A3EAI_customInfantrySpawnQueue isEqualTo []) then {
+		A3EAI_customInfantrySpawnQueue pushBack _this;
 		_infantryQueue = [] spawn {
 			//uiSleep 0.5;
-			_continue = true;
-			while {_continue} do {
+			while {!(A3EAI_customInfantrySpawnQueue isEqualTo [])} do {
 				private ["_args","_trigger"];
 				_args = (A3EAI_customInfantrySpawnQueue select 0);
 				_trigger = _args select 3;
@@ -25,9 +24,7 @@ if (_grpArray isEqualTo []) then {
 					uiSleep 1;
 				};
 				A3EAI_customInfantrySpawnQueue deleteAt 0;
-				_continue = !(A3EAI_customInfantrySpawnQueue isEqualTo []);
 			};
-			A3EAI_customInfantrySpawnQueue = nil;
 		};
 	} else {
 		A3EAI_customInfantrySpawnQueue pushBack _this;
