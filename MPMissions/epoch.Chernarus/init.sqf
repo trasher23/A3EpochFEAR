@@ -33,6 +33,17 @@ if (!isServer) then {
 		NUKEQuake = nil;
 	};
 	
+	/* Zupa's Capture Points 2.0 eventhandler
+	------------------------------------------------------------
+	*/
+	"PV_ZCP_zupastic" addPublicVariableEventHandler {
+	_messageArray = _this select 1;
+		hint parseText (format [	   
+			"<t color='#ff0000' size='2' align='center'>%1</t><br /><t align='center'>%2</t><br/>",
+			_messageArray  select 0,_messageArray  select 1
+		]);
+	};
+	
 	/* Load other scripts
 	-----------------------------------------------------------
 	*/
@@ -42,6 +53,5 @@ if (!isServer) then {
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
-	[] execVM "FEAR\scripts\zcp.sqf"";					// Zupa's Capture Points 2.0
 
 };

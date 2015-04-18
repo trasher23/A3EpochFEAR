@@ -138,10 +138,10 @@ A3EAI_enableHealing = true;
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Enable or disable radio message receiving. Players with radios (Radio Quartz) will be able to intercept some AI communications. (Default: false)
-A3EAI_radioMsgs = false;
+A3EAI_radioMsgs = true;
 
 //Enable or disable AI death messages. Messages will be sent only to player responsible for killing the unit. Messages will be sent in System chat in the format "(Unit name) was killed." (Default: false)
-A3EAI_deathMessages = false;	
+A3EAI_deathMessages = true;	
 
 
 /*	Static AI Spawning Settings
