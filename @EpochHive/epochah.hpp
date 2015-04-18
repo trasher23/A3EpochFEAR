@@ -13,8 +13,7 @@ antihack_checkFiles[] = { //script check, leave it blank to disable it
 	{"\x\addons\a3_epoch_code\compile\interface_event_handlers\EPOCH_KeyDown.sqf", "EPOCH_KeyDown"}
 };
 
-adminMenu_Owner[] = {{"76561197969049020","Trasher"}}; 
-
+adminMenu_Owner[] = {{"76561197969049020","Trasher"},{"76561198093935187", "John Elliot"}}; 
 
 adminMenu_High[] = {};
 adminMenu_HighSetting[] = {"PLAYER-TELEPORT","MAP-TELEPORT","TARGET-HEAL","TARGET-AMMO","TARGET-KILL","VEHICLEFLIP","BANPANNEL"};

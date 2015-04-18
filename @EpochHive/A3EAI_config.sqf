@@ -208,7 +208,7 @@ A3EAI_minRandSpawnDist = 0;
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 0;	
+A3EAI_maxHeliPatrols = 5;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
@@ -250,7 +250,7 @@ A3EAI_paraDropAmount = 3;
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Global maximum number of active AI land vehicle patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxLandPatrols = 0;
+A3EAI_maxLandPatrols = 5;
 
 //Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesLand = [0.00,0.50,0.35,0.15];	
