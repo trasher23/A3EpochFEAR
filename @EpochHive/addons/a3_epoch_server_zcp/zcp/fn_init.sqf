@@ -14,7 +14,7 @@
 */
 
 diag_log text format ["[ZCP]: Giving server some time to boot."];
-sleep 120;
+//sleep 120;
 diag_log text format ["[ZCP]: Initiate Zupa's Capture Points"];
 call ZCP_fnc_config;
 call ZCP_fnc_initCPData;
