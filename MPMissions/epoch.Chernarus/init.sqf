@@ -29,7 +29,7 @@ if (!isServer) then {
 	};
 	
 	"NUKEQuake" addPublicVariableEventHandler {
-		[] spawn BIS_fnc_earthquake;
+		[random 4] spawn BIS_fnc_earthquake;
 		NUKEQuake = nil;
 	};
 	
