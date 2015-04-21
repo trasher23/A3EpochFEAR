@@ -40,7 +40,7 @@ class CfgRemoteExecCommands {};
 
 class CfgEpochClient
 {
-	buildingNearbyMilitary = 0; //1 to allow building nearby
+	buildingNearbyMilitary = 1; //1 to allow building nearby
 	buildingNearbyMilitaryRange = 300; //Define radius of blocked area
 
 	buildingRequireJammer = 0; // 1 = to allow building without a jammer 

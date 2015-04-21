@@ -18,11 +18,13 @@ antihack_checkFiles[] = { //script check, leave it blank to disable it
 antihack_customVariablesCheck = false; // true enables variable scanning on missionNamespace 
 antihack_customVariables[] = {}; //Add global variables from custom scripts, example: {"MyOwnVar","CP_KK"} //Global Variables begin without "_" !!
 
+/*
 adminMenu_Owner[] = {
 	{"76561197969049020","Trasher"},
 	{"76561198093935187", "John Elliot"}
 }; 
-	
+*/
+adminMenu_Owner[] = {};
 adminMenu_OwnerSetting[] = {
 	"ESP-PLAYER",
 	"ESP-VEHICLE",

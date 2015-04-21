@@ -2,7 +2,7 @@ StorageSlotsLimit = 1500; // Max storage slots allowed. Warning! Higher the numb
 BuildingSlotsLimit = 1500; // Max building slots allowed. Warning! Higher the number lower performance.
 
 // Time based
-StaticDateTime[] = {2035,6,10,7,0}; // {0,0,0,8,0} would forces the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
+StaticDateTime[] = {2035,6,10,10,0}; // {0,0,0,8,0} would forces the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
 timeDifference = 0; // Server uses real time this will allow you to offset just the hour.
 timeMultiplier = 4; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
 lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payout per Epoch loot container.
@@ -17,7 +17,7 @@ events[] = {
 };
 
 // Antagonists
-antagonistChanceTrash = 0.09; //9% chance when player loot a trash object
+antagonistChanceTrash = 0.18; //0.09; //9% chance when player loot a trash object
 antagonistChancePDeath = 0.33; //33% chance when player was killed from a other player (selfkill doesn't count)
 antagonistChanceLoot = 0.09; //9% chance when player click "SEARCH" on a loot object
 
@@ -44,14 +44,14 @@ allowedVehiclesList[] = {
 	{"B_Heli_Light_01_EPOCH",2},
 	{"B_SDV_01_EPOCH",2},
 	{"B_MRAP_01_EPOCH",3},
-	{"B_Truck_01_transport_EPOCH",1},
+	{"B_Truck_01_transport_EPOCH",2},
 	{"B_Truck_01_covered_EPOCH",2},
-	{"B_Truck_01_mover_EPOCH",1},
-	{"B_Truck_01_box_EPOCH",1},
+	{"B_Truck_01_mover_EPOCH",2},
+	{"B_Truck_01_box_EPOCH",2},
 	{"O_Truck_02_covered_EPOCH",2},
-	{"O_Truck_02_transport_EPOCH",1},
-	{"O_Truck_03_covered_EPOCH",1},
-	{"O_Truck_02_box_EPOCH",1},
+	{"O_Truck_02_transport_EPOCH",2},
+	{"O_Truck_03_covered_EPOCH",2},
+	{"O_Truck_02_box_EPOCH",2},
 	{"I_Heli_light_03_unarmed_EPOCH",1},
 	{"O_Heli_Light_02_unarmed_EPOCH",1},
 	{"I_Heli_Transport_02_EPOCH",1},
@@ -61,10 +61,6 @@ allowedVehiclesList[] = {
 	{"O_Heli_Transport_04_covered_EPOCH",1},
 	{"B_Heli_Transport_03_unarmed_EPOCH",1},
 	{"jetski_epoch",7},
-	{"K01",2},
-	{"K02",2},
-	{"K03",2},
-	{"K04",2},
 	{"ebike_epoch",7},
 	{"mosquito_epoch",7}
 };
@@ -77,7 +73,7 @@ forceStaticTraders = true; // disables traders moving from work to home
 
 // Markers
 SHOW_TRADERS = true; // Show locations of traders
-SHOW_JAMMERS = false; // Shows location of base jammers 
+SHOW_JAMMERS = true; // Shows location of base jammers 
 SHOW_BOATLOOT = true; // Shows the location of shipwreck loot 
 DEBUG_VEH = false; // DEBUG ONLY used to debug spawing of vehicles
 
