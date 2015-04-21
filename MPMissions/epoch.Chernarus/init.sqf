@@ -42,5 +42,7 @@ if (!isServer) then {
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
+	
+	#include "A3EAI_Client\A3EAI_initclient.sqf";		// A3AI radio messages
 
 };
