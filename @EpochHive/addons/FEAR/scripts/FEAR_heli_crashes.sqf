@@ -95,5 +95,5 @@ vSpawnCrashes = {
 	};
 };
 
-diag_log "[fear]: Spawning heli crash sites";
+diag_log "[FEAR]: Spawning helicopter crash sites...";
 call vSpawnCrashes;
