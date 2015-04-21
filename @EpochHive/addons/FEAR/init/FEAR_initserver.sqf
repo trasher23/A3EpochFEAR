@@ -26,6 +26,22 @@ diag_log format ["[FEAR] Initializing FEAR version %1 using base path %2.",[conf
 call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
 
 //Continue loading required FEAR script files
+call compile preprocessFileLineNumbers format ["%1\scripts\FEAR_heli_crashes.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\11Outposts.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\BalotaBoatYard.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\ChernoTownWithMilitary.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\DevilsCastleSlums.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\GreenMountain.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\HillTopView.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\Komarovo.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\LostHopeBase.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\NEAFBase.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\NWAFBase.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\NWAFExtraStuff.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\ScrapYard1.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\ScrapYard2.sqf", FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\maps\SkalistyBridge.sqf", FEAR_directory];
+
 [] execVM format ["%1\nuke\FEAR_nuke_init.sqf",FEAR_directory];
 [] execVM format ["%1\scripts\FEAR_earthquake_timer.sqf",FEAR_directory];
 
