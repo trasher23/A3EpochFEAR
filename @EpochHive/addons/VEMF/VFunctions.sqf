@@ -408,10 +408,8 @@ VEMFLoadLoot = {
 		
 		// Generate Loot
 		{
-			_tmp = (getArray(_x >> 'items'));
-			for "_z" from 0 to ((count(_tmp))-1) do {
-				VEMFLootList = VEMFLootList + [((_tmp select _z) select 0)];
-			};
+		     _tmp = (getArray(_x >> 'items'));
+		     {VEMFLootList = VEMFLootList + [ ( _x select 0 ) select 0 ];} forEach (_tmp);
 		} forEach ("configName _x != 'Uniforms' && configName _x != 'Headgear'" configClasses (configFile >> "CfgLootTable"));
 		
 		if (VEMFDebugFunc) then {
