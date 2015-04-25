@@ -16,13 +16,15 @@ FEAR_fnc_nukeSiren = {
 };
 
 FEAR_fnc_nukeImpact = {
-	private ["_nukePos","_nukeBlast"];
+	private ["_nukePos","_nukeBlast","_isInside"];
 	
 	_nukePos = _this select 0;
 	
+	// Nuke blast sound fx
 	_nukeBlast = MISSION_directory + "FEAR\fx\" + "nuke.ogg";
 	playSound3D [_nukeBlast, player, false, _nukePos, 5];
 	
+	// Nuke mushroom cloud
 	_Cone = "#particlesource" createVehicleLocal getpos _nukePos;
 	_Cone setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48], "", "Billboard", 1, 10, [0, 0, 0],
 					[0, 0, 0], 0, 1.275, 1, 0, [40,80], [[0.25, 0.25, 0.25, 0], [0.25, 0.25, 0.25, 0.5], 
@@ -64,9 +66,14 @@ FEAR_fnc_nukeImpact = {
 	_light setLightAmbient[1500, 1200, 1000];
 	_light setLightColor[1500, 1200, 1000];
 	_light setLightBrightness 100000.0;
-
-	//*******************************************************************
-
+	
+	// Radiation effects
+	_isInside = call EPOCH_fnc_isInsideBuilding;
+	if((isPlayer player) && (player distance _nukePos <= 1000) && !_isInside) then {
+		EPOCH_playerToxicity = 85;
+		EPOCH_playerSoiled = 85;
+	};
+	
 	// Flash
 	[] spawn FEAR_fnc_nukeFlash;
 
@@ -153,7 +160,6 @@ FEAR_fnc_nukeFlash = {
 		"colorCorrections" ppEffectCommit 2;
 	};
 
-
 	"dynamicBlur" ppEffectAdjust [2];
 	"dynamicBlur" ppEffectCommit 1;
 
@@ -171,35 +177,18 @@ FEAR_fnc_nukeFlash = {
 
 FEAR_fnc_nukeAsh = {
 	sleep 20;
-
 	//--- Ash
 	[] spawn {
+		private ["_pos","_parray","_snow"];
 		_pos = position player;
-		_parray = [
-		/* 00 */		["A3\Data_F\ParticleEffects\Universal\Universal", 16, 12, 8, 1],//"A3\Data_F\cl_water",
-		/* 01 */		"",
-		/* 02 */		"Billboard",
-		/* 03 */		1,
-		/* 04 */		4,
-		/* 05 */		[0,0,0],
-		/* 06 */		[0,0,0],
-		/* 07 */		1,
-		/* 08 */		0.000001,
-		/* 09 */		0,
-		/* 10 */		1.4,
-		/* 11 */		[0.05,0.05],
-		/* 12 */		[[0.1,0.1,0.1,1]],
-		/* 13 */		[0,1],
-		/* 14 */		0.2,
-		/* 15 */		1.2,
-		/* 16 */		"",
-		/* 17 */		"",
-		/* 18 */		vehicle player
-		];
+		_parray = [["A3\Data_F\ParticleEffects\Universal\Universal", 16, 12, 8, 1],"","Billboard",1,4,[0,0,0],[0,0,0],1,0.000001,0,1.4,[0.05,0.05],[[0.1,0.1,0.1,1]],[0,1],0.2,1.2,"","",vehicle player];
 		_snow = "#particlesource" createVehicleLocal _pos;  
 		_snow setParticleParams _parray;
 		_snow setParticleRandom [0, [10, 10, 7], [0, 0, 0], 0, 0.01, [0, 0, 0, 0.1], 0, 0];
 		_snow setParticleCircle [0.0, [0, 0, 0]];
 		_snow setDropInterval 0.01;
+		// Delete Ash after 5 min
+		sleep 300;
+		deleteVehicle _snow;
 	};
 };

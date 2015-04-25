@@ -1,5 +1,5 @@
 if(isServer) then {
-	sleep 90;
+	//sleep 90;
 	spawn_group				= compile preprocessFileLineNumbers "\x\addons\WAI\compile\spawn_group.sqf";
 	spawn_soldier			= compile preprocessFileLineNumbers "\x\addons\WAI\compile\spawn_soldier.sqf";
 	spawn_static			= compile preprocessFileLineNumbers "\x\addons\WAI\compile\spawn_static.sqf";

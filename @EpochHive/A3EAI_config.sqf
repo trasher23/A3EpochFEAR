@@ -122,7 +122,7 @@ A3EAI_tempNVGs = false;
 A3EAI_GLRequirement = 1;	
 
 //Minimum AI unit level requirement to use launcher weapons. Set to -1 to disable completely. (Default: -1)
-A3EAI_launcherLevelReq = -1;	
+A3EAI_launcherLevelReq = 2;	
 
 //List of launcher-type weapons that AI can use.
 A3EAI_launcherTypes = ["launch_NLAW_F","launch_RPG32_F","launch_B_Titan_F","launch_I_Titan_F","launch_O_Titan_F","launch_B_Titan_short_F","launch_I_Titan_short_F","launch_O_Titan_short_F"];	
@@ -208,7 +208,7 @@ A3EAI_minRandSpawnDist = 0;
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 5;	
+A3EAI_maxHeliPatrols = 3;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
@@ -250,7 +250,7 @@ A3EAI_paraDropAmount = 3;
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Global maximum number of active AI land vehicle patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxLandPatrols = 5;
+A3EAI_maxLandPatrols = 8;
 
 //Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesLand = [0.00,0.50,0.35,0.15];	
