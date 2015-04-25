@@ -37,7 +37,7 @@ if(isServer) then {
 		ai_share_info				= true;			// AI share info on player position
 		ai_share_distance			= 300;			// distance from killed AI for AI to share your rough position
 
-		ai_crypto_gain				= true;			// gain crypto for killing AI
+		ai_crypto_gain				= false;		// gain crypto for killing AI
 		ai_crypto_gain_drop			= 50;			// chance of drop in %
 		ai_add_krypto				= 100;			// amount of crypto gained for killing a bandit AI
 		ai_special_krypto			= 1000;			// amount of crypto gained for killing a special AI
