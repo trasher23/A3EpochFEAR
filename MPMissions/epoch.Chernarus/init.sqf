@@ -38,12 +38,14 @@ if (!isServer) then {
 	*/
 	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
-	
+
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
 	[] execVM "wai\remote.sqf";							// Wicked AI
-
+	
 	#include "A3EAI_Client\A3EAI_initclient.sqf";		// A3AI radio messages
 
 };
+
+[] execVM "messages\init.sqf";						// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
