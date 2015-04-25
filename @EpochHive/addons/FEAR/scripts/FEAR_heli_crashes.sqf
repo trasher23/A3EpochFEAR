@@ -8,7 +8,7 @@ private ["_crashNum","_lootNum","_loot","_coords"];
 _crashNum = 5;
 
 // Number of Loot Piles
-_lootNum = 2;
+_lootNum = 5;
 
 _loot = [
 	"m107_EPOCH","MultiGun","Srifle_GM6_F","Srifle_LRR_F","M14_EPOCH","srifle_EBR_F","m249_EPOCH","LMG_Mk200_F","LMG_Zafir_F",
