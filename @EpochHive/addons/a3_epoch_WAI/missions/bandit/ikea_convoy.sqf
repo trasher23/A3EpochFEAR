@@ -14,8 +14,8 @@ if(isServer) then {
 	_position		= _fn_position select 0;
 	_missionType	= _fn_position select 1;
 	
-	[_mission,_position,"hard","Jem og Fix Convoy","MainBandit",true] call mission_init;
-	diag_log 		format["WAI: [Mission:Jem og Fix Convoy]: Starting... %1",_position];
+	[_mission,_position,"hard","CDC Convoy","MainBandit",true] call mission_init;
+	diag_log 		format["WAI: [Mission:CDC Convoy]: Starting... %1",_position];
 
 	//Setup the crate
 	_crate = [2,_position] call wai_spawn_create;
@@ -78,16 +78,16 @@ if(isServer) then {
 		[_mission,_crate],				// mission number and crate
 		["crate"], 						// ["crate"], or ["kill"], or ["assassinate", _unitGroup],
 		[_baserunover],	// cleanup objects
-		"A heavily guarded Jem og Fix convoy is taking a lunch break, bandites are securing the parameter. See if you can make the building supplies yours.",	// mission announcement
-		"Survivers have successfully ambushed the Jem og Fix convoy and secured the building supplies!",			// mission success
-		"Survivers were unable to surprise the bandites on their lunchbreak"									// mission fail
+		"A heavily guarded CDC convoy has broken down, soldiers are securing the parameter. Secure the building supplies.",	// mission announcement
+		"Survivors have successfully ambushed the CDC convoy and secured the building supplies!",			// mission success
+		"Survivors were unable to surprise the soldiers."									// mission fail
 	] call mission_winorfail;
 
 	if(_complete) then {
 		[_crate,[1,crate_weapons_buildables],[4,crate_tools_buildable],[30,crate_items_buildables],4] call dynamic_crate;
 	};
 
-	diag_log format["WAI: [Mission:Jem og Fix Convoy]: Ended at %1",_position];
+	diag_log format["WAI: [Mission:CDC Convoy]: Ended at %1",_position];
 	
 	b_missionsrunning = b_missionsrunning - 1;
 };

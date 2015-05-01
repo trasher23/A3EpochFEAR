@@ -24,7 +24,7 @@ debriefing = 0;
 enableDebugConsole = 0;
 joinUnassigned = 0;
 respawnOnStart = 0;
-forceRotorLibSimulation = 1;
+forceRotorLibSimulation = 0;
 
 corpseManagerMode = 1;
 corpseLimit = 10;

@@ -12,9 +12,9 @@ if(isServer) then {
 	_fn_position	= [30] call find_position;
 	_position		= _fn_position select 0;
 	_missionType	= _fn_position select 1;
-	[_mission,_position,"medium","Rebel Base","MainBandit",true] call mission_init;
+	[_mission,_position,"medium","CDC Base","MainBandit",true] call mission_init;
 	
-	diag_log 		format["WAI: [Mission: Rebel Base]: Starting... %1",_position];
+	diag_log 		format["WAI: [Mission: CDC Base]: Starting... %1",_position];
 
 	//Setup the crate
 	_crate = [2,_position] call wai_spawn_create;
@@ -53,9 +53,9 @@ if(isServer) then {
 		[_mission,_crate],	// mission number and crate
 		["crate"], 			// ["crate"], or ["kill"], or ["assassinate", _unitGroup],
 		[_baserunover], 	// cleanup objects
-		"Rebel have setup a heavily fortified base",	// mission announcement
-		"Survivers have captured the bandit base",		// mission success
-		"Survivers did not capture the base in time"	// mission fail
+		"CDC have setup a heavily fortified base",	// mission announcement
+		"Survivors have captured the CDC base",		// mission success
+		"Survivors did not capture the base in time"	// mission fail
 	] call mission_winorfail;
 
 	if(_complete) then {

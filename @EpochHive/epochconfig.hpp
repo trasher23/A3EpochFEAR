@@ -27,17 +27,17 @@ cloneCost = 100; // debt incurred on player death
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 allowedVehiclesList[] = {
-	{"C_Offroad_01_EPOCH",10},
-	{"C_Quadbike_01_EPOCH",10},
-	{"C_Hatchback_01_EPOCH",10},
-	{"C_Hatchback_02_EPOCH",10},
-	{"C_SUV_01_EPOCH",10},
+	{"C_Offroad_01_EPOCH",15},
+	{"C_Quadbike_01_EPOCH",15},
+	{"C_Hatchback_01_EPOCH",15},
+	{"C_Hatchback_02_EPOCH",15},
+	{"C_SUV_01_EPOCH",15},
 	{"C_Rubberboat_EPOCH",2},
 	{"C_Rubberboat_02_EPOCH",2},
 	{"C_Rubberboat_03_EPOCH",2},
 	{"C_Rubberboat_04_EPOCH",2},
 	{"C_Van_01_box_EPOCH",10},
-	{"C_Van_01_transport_EPOCH",10},
+	{"C_Van_01_transport_EPOCH",15},
 	{"C_Boat_Civil_01_EPOCH",2},
 	{"C_Boat_Civil_01_police_EPOCH",2},
 	{"C_Boat_Civil_01_rescue_EPOCH",2},
@@ -60,8 +60,8 @@ allowedVehiclesList[] = {
 	{"O_Heli_Transport_04_box_EPOCH",1},
 	{"O_Heli_Transport_04_covered_EPOCH",1},
 	{"B_Heli_Transport_03_unarmed_EPOCH",1},
-	{"jetski_epoch",5},
-	{"ebike_epoch",10},
+	{"jetski_epoch",10},
+	{"ebike_epoch",15},
 	{"mosquito_epoch",10}
 };
 
@@ -73,7 +73,7 @@ forceStaticTraders = true; // disables traders moving from work to home
 
 // Markers
 SHOW_TRADERS = true; // Show locations of traders
-SHOW_JAMMERS = true; // Shows location of base jammers 
+SHOW_JAMMERS = false; // Shows location of base jammers 
 SHOW_BOATLOOT = true; // Shows the location of shipwreck loot 
 DEBUG_VEH = false; // DEBUG ONLY used to debug spawing of vehicles
 

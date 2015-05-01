@@ -72,7 +72,7 @@ if(isServer) then {
 		[_mission,_wreck],			// mission number and crate
 		["crate"],					// ["crate"], or ["kill"], or ["assassinate", _unitGroup], "bomb"
 		[_baserunover+_allArrow], 	// cleanup objects
-		"Sonars have detected an underwater treasure, watch out for sharks!",	// mission announcement
+		"Sonar has detected an underwater treasure, watch out for sharks!",	// mission announcement
 		"Divers have secured the treasure",	// mission success
 		"Waves wash away at treasures"		// mission fail
 	] call mission_winorfail;

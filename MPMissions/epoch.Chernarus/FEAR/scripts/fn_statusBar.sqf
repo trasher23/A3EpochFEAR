@@ -10,8 +10,6 @@ disableSerialization;
 */
 _rscLayer = "osefStatusBar" call BIS_fnc_rscLayer;
 _rscLayer cutRsc["osefStatusBar","PLAIN"];
-systemChat format["statusBar Loading player info...", _rscLayer];
-
 [] spawn {
 	while {true} do
 	{
