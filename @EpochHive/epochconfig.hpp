@@ -13,7 +13,7 @@ events[] = {
 	{ 3600, "CarnivalSpawner" }, // SECOND <scalar>, EVENT <string>
 	{ 1200, "EarthQuake" },
 	{ 1200, "ContainerSpawner" },
-	{ 300, "PlantSpawner" } //No comma on last Entry
+	{ 900, "PlantSpawner" } //No comma on last Entry
 };
 
 // Antagonists
@@ -36,12 +36,12 @@ allowedVehiclesList[] = {
 	{"C_Rubberboat_02_EPOCH",2},
 	{"C_Rubberboat_03_EPOCH",2},
 	{"C_Rubberboat_04_EPOCH",2},
-	{"C_Van_01_box_EPOCH",10},
+	{"C_Van_01_box_EPOCH",5},
 	{"C_Van_01_transport_EPOCH",15},
 	{"C_Boat_Civil_01_EPOCH",2},
 	{"C_Boat_Civil_01_police_EPOCH",2},
 	{"C_Boat_Civil_01_rescue_EPOCH",2},
-	{"B_Heli_Light_01_EPOCH",10},
+	{"B_Heli_Light_01_EPOCH",5},
 	{"B_SDV_01_EPOCH",5},
 	{"B_MRAP_01_EPOCH",5},
 	{"B_Truck_01_transport_EPOCH",2},
@@ -52,17 +52,17 @@ allowedVehiclesList[] = {
 	{"O_Truck_02_transport_EPOCH",2},
 	{"O_Truck_03_covered_EPOCH",2},
 	{"O_Truck_02_box_EPOCH",2},
-	{"I_Heli_light_03_unarmed_EPOCH",10},
-	{"O_Heli_Light_02_unarmed_EPOCH",10},
+	{"I_Heli_light_03_unarmed_EPOCH",5},
+	{"O_Heli_Light_02_unarmed_EPOCH",5},
 	{"I_Heli_Transport_02_EPOCH",1},
 	{"O_Heli_Transport_04_EPOCH",1},
 	{"O_Heli_Transport_04_bench_EPOCH",1},
 	{"O_Heli_Transport_04_box_EPOCH",1},
 	{"O_Heli_Transport_04_covered_EPOCH",1},
 	{"B_Heli_Transport_03_unarmed_EPOCH",1},
-	{"jetski_epoch",10},
+	{"jetski_epoch",5},
 	{"ebike_epoch",15},
-	{"mosquito_epoch",10}
+	{"mosquito_epoch",5}
 };
 
 // Traders
