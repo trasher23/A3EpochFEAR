@@ -78,12 +78,19 @@ SHOW_BOATLOOT = true; // Shows the location of shipwreck loot
 DEBUG_VEH = false; // DEBUG ONLY used to debug spawing of vehicles
 
 // Hive Related
+// 1day=86400, 2days=172800, 4days=345600, 8days=691200
 expiresBuilding = "604800";  // expiration date in seconds for buildings
 expiresPlayer = "2592000";  // expiration date in seconds for players
 expiresBank = "7776000";  // expiration date in seconds for players bank
 expiresVehicle = "604800";  // expiration date in seconds for vehicles
 expiresAIdata = "604800";  // expiration date in seconds for NPC Trader inventory
 hiveAsync = true; // true = asynchronous hive calls (non blocking), false = synchronous hive calls (blocking)
+/*
+N8M4RE Persistence
+*/
+PersistenceTablePrefix = "PERSIST"; // change will create a new table in db ( prefix_mapname )
+PersistenceExpires = 172800; // expiration date in seconds
+PersistenceLimit = 5000; // max limit to store
 
 // Admin Features
 hiveAdminCmdExec = false; // true = enables extra (To Be Released) feature to allow execution of code via hive.

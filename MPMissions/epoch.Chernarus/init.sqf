@@ -1,5 +1,7 @@
 if (!isServer) then {	
 	
+	waitUntil{(isPlayer player) && (alive player) && !isNil "EPOCH_loadingScreenDone"};
+	
 	/* VEMF missions
 	-----------------------------------------------------------
 	*/
@@ -14,6 +16,7 @@ if (!isServer) then {
 		] spawn BIS_fnc_typeText2;
 		VEMFChatMsg = nil;
 	};
+	// --------------------------------------------------------
 	
 	/* Nuke eventhandlers
 	-----------------------------------------------------------
@@ -32,6 +35,29 @@ if (!isServer) then {
 		[random 4] spawn BIS_fnc_earthquake;
 		NUKEQuake = nil;
 	};
+	// --------------------------------------------------------
+	
+	/* 	N8M4RE SupplyDropAddon https://github.com/n8m4re/A3Epoch_SupplyDropAddon
+	-----------------------------------------------------------
+	*/
+	"SDROP_globalHint" addPublicVariableEventHandler { 
+		_this select 1 spawn {	hint parseText format["%1", _this select 1]; };
+	}; 
+	// --------------------------------------------------------
+	
+	/* 	N8M4RE Persistence https://github.com/n8m4re/A3_Epoch_PersistenceAddon
+	-----------------------------------------------------------
+	*/
+	player addEventHandler ["Put",{ 
+		N8M4RE_PERSISTENCE_PUT =_this;
+		publicVariableServer "N8M4RE_PERSISTENCE_PUT";
+	}];
+	
+	player addEventHandler ["Take",{ 
+		N8M4RE_PERSISTENCE_TAKE = _this;
+		publicVariableServer "N8M4RE_PERSISTENCE_TAKE";
+	}];
+	// --------------------------------------------------------
 	
 	/* Load other scripts
 	-----------------------------------------------------------
@@ -43,9 +69,10 @@ if (!isServer) then {
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";	// Initial player gear
 	[] execVM "wai\remote.sqf";							// Wicked AI
+	// --------------------------------------------------------
 	
-	#include "A3EAI_Client\A3EAI_initclient.sqf";		// A3AI radio messages
-
+	#include "A3EAI_Client\A3EAI_initclient.sqf";	// A3AI radio messages
+	
 };
 
-[] execVM "messages\init.sqf";						// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
+[] execVM "messages\init.sqf";	// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
