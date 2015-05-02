@@ -78,9 +78,9 @@ if(isServer) then {
 		[_mission,_crate],				// mission number and crate
 		["crate"], 						// ["crate"], or ["kill"], or ["assassinate", _unitGroup],
 		[_baserunover],	// cleanup objects
-		"A heavily guarded CDC convoy has broken down, soldiers are securing the parameter. Secure the building supplies.",	// mission announcement
-		"Survivors have successfully ambushed the CDC convoy and secured the building supplies!",			// mission success
-		"Survivors were unable to surprise the soldiers."									// mission fail
+		"A heavily guarded CDC convoy has broken down. Secure the building supplies.",	// mission announcement
+		"Survivors have successfully ambushed the CDC convoy!",			// mission success
+		"Survivors were unable to secure the convoy in time."									// mission fail
 	] call mission_winorfail;
 
 	if(_complete) then {

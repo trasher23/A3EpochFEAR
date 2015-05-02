@@ -54,9 +54,9 @@ if(isServer) then {
 		[_mission,_laptop],				// mission number and crate
 		["bomb"],						// ["crate"], or ["kill"], or ["assassinate", _unitGroup], "bomb"
 		[_baserunover], 				// cleanup objects
-		"A soldier squad have set up a nuclear device! Hurry disable it before it goes off<br/>You have 30 min to disarm it.",	// mission announcement
-		"Survivors have taken control of the nuclear device!",		// mission success
-		"Nuclear device detonated!!<br/>Seek cover!"															// mission fail
+		"Our scouts have located a nuclear device! You have 30 minutes to disarm it.",	// mission announcement
+		"Survivors have disarmed the nuclear device!",		// mission success
+		"Nuclear device initiated! Fuck everything and RUN!!!"															// mission fail
 	] call mission_winorfail;
 
 	if(_complete) then {

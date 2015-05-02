@@ -78,9 +78,9 @@ if(isServer) then {
 		[_mission,_crate],				// mission number and crate
 		["crate"],						// ["crate"], or ["kill"], or ["assassinate", _unitGroup],
 		[_baserunover], 				// cleanup objects
-		"A soldier squad have set up a medical re-supply camp! Check your map for the location!",	// mission announcement
+		"The CDC have set up a medical camp. Check your map for the location!",	// mission announcement
 		"Survivors have taken control of the medical supply camp!",									// mission success
-		"Survivors were unable to capture the medical supply camp"									// mission fail
+		"Survivors were unable to secure the medical supplies."									// mission fail
 	] call mission_winorfail;
 
 	if(_complete) then {

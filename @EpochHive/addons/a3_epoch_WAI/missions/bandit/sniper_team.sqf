@@ -41,9 +41,9 @@ if(isServer) then {
 		[_mission,_crate],			// mission number and crate
 		["assassinate",_unitGroup], // ["crate"], or ["kill",wai_kill_percent], or ["assassinate", _unitGroup],
 		[_baserunover], 			// cleanup objects
-		"Our scouts have spotted a sniper team, check the map for there location",	// mission announcement
+		"Our scouts have spotted a sniper team, check the map for their location.",	// mission announcement
 		"Survivors have killed the snipers!",											// mission success
-		"Survivors did not secure the sniper rifles in time"							// mission fail
+		"Survivors did not secure the sniper rifles in time."							// mission fail
 	] call mission_winorfail;
 	
 	if(_complete) then {

@@ -24,7 +24,7 @@ class sdropCfg {
 	SDROP_Debug = 1;					//Set to 0 if you don't want logs added to your RPT - used mostly for testing/diagnosis of issues
 	SDROP_CreateParatrooperAI = 1;		//Set to 0 if you do NOT want AI to drop with the crate
 	SDROP_MissionTimer = 900;			//mission timer - time taken for new helicopter to arrive / conditional (default: 900, which is 15 minutes real-time)
-	SDROP_CrateTimeout = 1800;			//This is the NON-LOOTED crate cleanup timer - (default is 1800 which is half-hour real-time)
+	SDROP_CrateTimeout = 900;			//This is the NON-LOOTED crate cleanup timer - (default is 1800 which is half-hour real-time)
 	SDROP_SupplyDropFailChance = 0;		//Change probability of supply drop - enter chance as whole number from 1-100 (default 0)
 	SDROP_HelicopterCrashChance = 0;	//Change probability of helicopter crashing - enter chance as whole number from 1-100 (default 0)
 	

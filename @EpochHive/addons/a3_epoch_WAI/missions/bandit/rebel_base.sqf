@@ -53,9 +53,9 @@ if(isServer) then {
 		[_mission,_crate],	// mission number and crate
 		["crate"], 			// ["crate"], or ["kill"], or ["assassinate", _unitGroup],
 		[_baserunover], 	// cleanup objects
-		"CDC have setup a heavily fortified base",	// mission announcement
-		"Survivors have captured the CDC base",		// mission success
-		"Survivors did not capture the base in time"	// mission fail
+		"The CDC have set up a heavily fortified base.",	// mission announcement
+		"Survivors have captured the CDC base!",		// mission success
+		"Survivors did not capture the base in time."	// mission fail
 	] call mission_winorfail;
 
 	if(_complete) then {
