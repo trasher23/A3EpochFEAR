@@ -29,7 +29,7 @@ if(isServer) then {
 		ai_clean_dead 				= true;			// clear bodies after certain amount of time
 		ai_cleanup_time 			= 3600;			// time to clear bodies in seconds
 		ai_clean_roadkill			= false; 		// clean bodies that are roadkills
-		ai_roadkill_damageweapon	= 90;			// percentage of chance a roadkill will destroy weapon AI is carrying
+		ai_roadkill_damageweapon	= 10;			// percentage of chance a roadkill will destroy weapon AI is carrying
 
 		ai_bandit_combatmode		= "RED";		// combatmode of bandit AI
 		ai_bandit_behaviour			= "COMBAT";		// behaviour of bandit AI
@@ -40,8 +40,8 @@ if(isServer) then {
 		ai_crypto_gain				= false;		// gain crypto for killing AI
 		ai_crypto_gain_drop			= 50;			// chance of drop in %
 		ai_add_krypto				= 100;			// amount of crypto gained for killing a bandit AI
-		ai_special_krypto			= 1000;			// amount of crypto gained for killing a special AI
-		ai_crypto_bomb				= 5000;			// amount of krypto gaind for defusing the nuke/bomb
+		ai_special_krypto			= 500;			// amount of crypto gained for killing a special AI
+		ai_crypto_bomb				= 1000;			// amount of krypto gaind for defusing the nuke/bomb
 		
 
 		// https://community.bistudio.com/wiki/AI_Sub-skills#general
@@ -145,11 +145,11 @@ if(isServer) then {
 		
 		//Syntax ["MISSION NAME","CHANGE"] Change must equal 100 when put together 
 		wai_bandit_missions			= [
-										["nuke",2],
-										["sniper_team",23],
-										["rebel_base",25],
+										["nuke",20],
+										["sniper_team",20],
+										["rebel_base",20],
 										["medi_camp",20],
-										["ikea_convoy",30],
+										["ikea_convoy",20],
 										
 										
 										["patrol",0],

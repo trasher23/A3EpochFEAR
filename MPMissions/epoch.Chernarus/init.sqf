@@ -19,7 +19,7 @@ if (!isServer) then {
 	};
 	// --------------------------------------------------------
 	
-	/* Nuke eventhandlers
+	/* Nuke
 	-----------------------------------------------------------
 	*/
 	"NUKESiren" addPublicVariableEventHandler {
@@ -36,15 +36,6 @@ if (!isServer) then {
 		[random 4] spawn BIS_fnc_earthquake;
 		NUKEQuake = nil;
 	};
-	// --------------------------------------------------------
-	
-	/* 	N8M4RE SupplyDropAddon https://github.com/n8m4re/A3Epoch_SupplyDropAddon
-	Not currently used, VEMFBroadcast used instead.
-	-----------------------------------------------------------
-	*/
-	"SDROP_globalHint" addPublicVariableEventHandler { 
-		_this select 1 spawn {	hint parseText format["%1", _this select 1]; };
-	}; 
 	// --------------------------------------------------------
 	
 	/* 	N8M4RE Persistence https://github.com/n8m4re/A3_Epoch_PersistenceAddon
