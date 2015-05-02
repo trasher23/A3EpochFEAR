@@ -135,12 +135,17 @@ SDROPRandomLoot = {
 };
 
 SDROPBroadcast = {
-	private ["_title","_subTitle"];
+	private ["_title","_subTitle","_msg","_alert"];
 	
+	/* Use VEMFBroadcast instead
 	_title = _this select 0;
 	_subTitle = _this select 1;
 	_alertMsg = "<t align='center' size='2.0' color='#f29420'>"+ _title + "</t><br/><t size='1.25' color='#ffff00'>______________<br/><br/>"+ _subTitle + "</t>";
 	[_alertMsg] call SDROP_Alert;
+	*/
+	
+	_msg = [_this select 0,_this select 1];
+	_alert = [_msg] call VEMFBroadcast;
 };
 
 SDROPSetAIWaypoints = {

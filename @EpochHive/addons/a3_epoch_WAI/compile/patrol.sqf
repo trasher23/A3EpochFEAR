@@ -106,8 +106,12 @@ if (isServer) then {
 			sleep random(10);
 			
 			if (wai_radio_announce) then {
+				/*
 				RemoteMessage = ["radio",_msg];
 				publicVariable "RemoteMessage";
+				*/
+				_msg = ["Mission",_msg];
+				_alert = [_msg] call VEMFBroadcast;
 			} else {
 				[nil,nil,rTitleText,_msg,"PLAIN",10] call RE;
 			};

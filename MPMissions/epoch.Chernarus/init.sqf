@@ -6,6 +6,7 @@ if (!isServer) then {
 	-----------------------------------------------------------
 	*/
 	"VEMFChatMsg" addPublicVariableEventHandler {
+		playSound "RadioAmbient6";
 		systemChat ((_this select 1) select 0);
 		[
 			[
@@ -38,6 +39,7 @@ if (!isServer) then {
 	// --------------------------------------------------------
 	
 	/* 	N8M4RE SupplyDropAddon https://github.com/n8m4re/A3Epoch_SupplyDropAddon
+	Not currently used, VEMFBroadcast used instead.
 	-----------------------------------------------------------
 	*/
 	"SDROP_globalHint" addPublicVariableEventHandler { 

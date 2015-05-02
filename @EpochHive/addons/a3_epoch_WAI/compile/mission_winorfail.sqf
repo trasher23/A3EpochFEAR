@@ -41,8 +41,12 @@ if(isServer) then {
 	} count allUnits;
 	if(debug_mode) then { diag_log("WAI: _mission_units " + str(_mission_units)); };
 	
+	/*
 	RemoteMessage = [wai_announce,_msgstart];
 	publicVariable "RemoteMessage";
+	*/
+	_msg = ["Mission",_msgstart];
+	_alert = [_msg] call VEMFBroadcast;
 	
 	markerready = true;
 
@@ -194,8 +198,12 @@ if(isServer) then {
 		};
 		
 		// WINNING
+		/*
 		RemoteMessage = [wai_announce,_msgwin];
 		publicVariable "RemoteMessage";
+		*/
+		_msg = ["Mission",_msgwin];
+		_alert = [_msg] call VEMFBroadcast;
 		
 		if (wai_clean_mission) then {
 
@@ -315,8 +323,12 @@ if(isServer) then {
 		} forEach _baseclean + ((wai_mission_data select _mission) select 2) + [_crate];
 
 		// Loosing
+		/*
 		RemoteMessage = [wai_announce,_msglose];
 		publicVariable "RemoteMessage";
+		*/
+		_msg = ["Mission",_msglose];
+		_alert = [_msg] call VEMFBroadcast;
 	};
 	
 	_map_marker = (wai_mission_data select _mission) select 1;
