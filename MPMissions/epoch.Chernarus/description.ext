@@ -46,7 +46,9 @@ class CfgEpochClient
 	buildingRequireJammer = 0; // 1 = to allow building without a jammer 
 	buildingCountLimit = 200; // how many objects can be built within range of a jammer 
 	buildingJammerRange = 75; // jammer range in meters 
-
+	
+	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
+	
 	class Altis
 	{
 		blockedArea[] = { //[POS],radius
@@ -94,7 +96,15 @@ class CfgEpochUAV
 	UAVHeight = 100; //Set height when roaming, slight randomness is applied to this value. UAV will choose own height when locked onto target. Min Value = 42 / Max Value = 280. UAV can still spot targets from height !
 };
 
+class CfgEpochAirDrop
+{
+	AirDropFreq = 1200; //AirDropChance, to decide if Air drop occurs, will only be checked once per AirDropFreq time period, for each player. Min value = 120.
+	AirDropChance = 6; //Percentage chance of air drop, for current player. Checked every AirDropFreq and upon antagonists spawn trigger. -1 To disable.
+};
+
 class RscTitles
 {
+
+
 	#include "FEAR\dialog\statusBar.hpp"
 };
