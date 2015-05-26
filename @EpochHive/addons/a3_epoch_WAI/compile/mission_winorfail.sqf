@@ -45,7 +45,7 @@ if(isServer) then {
 	RemoteMessage = [wai_announce,_msgstart];
 	publicVariable "RemoteMessage";
 	*/
-	_msg = ["Mission",_msgstart];
+	_msg = ["Activity sighted...",_msgstart];
 	_alert = [_msg] call VEMFBroadcast;
 	
 	markerready = true;
@@ -202,7 +202,7 @@ if(isServer) then {
 		RemoteMessage = [wai_announce,_msgwin];
 		publicVariable "RemoteMessage";
 		*/
-		_msg = ["Mission",_msgwin];
+		_msg = ["Activity sighted...",_msgwin];
 		_alert = [_msg] call VEMFBroadcast;
 		
 		if (wai_clean_mission) then {
@@ -327,7 +327,7 @@ if(isServer) then {
 		RemoteMessage = [wai_announce,_msglose];
 		publicVariable "RemoteMessage";
 		*/
-		_msg = ["Mission",_msglose];
+		_msg = ["Activity sighted...",_msglose];
 		_alert = [_msg] call VEMFBroadcast;
 	};
 	

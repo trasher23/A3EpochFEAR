@@ -5,7 +5,7 @@ private ["_folder","_servicePointClasses","_maxDistance","_costsFree","_message"
  
 //====================== general settings
 _folder = "service_point\"; // folder where the service point scripts are saved, relative to the mission file
-_servicePointClasses = ["Land_CarService_F"]; // service point classes (can be house, vehicle and unit classes)
+_servicePointClasses = ["FuelPump_DZ","Land_A_FuelStation_Feed","Land_Ind_FuelStation_Feed_EP1","Land_FuelStation_Feed_PMC","FuelStation","Land_ibr_FuelStation_Feed","Land_fuelstation_army","Land_fuelstation","land_fuelstation_w","Land_benzina_schnell"]; // service point classes (can be house, vehicle and unit classes)
 _maxDistance = 10; // maximum distance from a service point for the options to be shown
 _costsFree = "free"; // text for no costs
 _message = "-- Vehicle Service Point --"; // message to be shown when in range of a service point (set to "" to disable)
@@ -104,7 +104,7 @@ _fnc_actionTitle = {
 				private ["_itemName","_displayName"];
 				_costsText = format ["%1 Crypto",_costs];
 		};
-		_actionTitle = format ["<t color='%3'>%1 (%2)</t>", _actionName, _costsText,_actionColour];
+		_actionTitle = format ["<t color="%3">%1 (%2)</t>", _actionName, _costsText,_actionColour];
 		_actionTitle
 };
  
@@ -167,7 +167,7 @@ while {true} do {
 						if (SP_repair_action < 0 && _repair_enable) then {
 								_costs = [_vehicle, _repair_costs] call _fnc_getCosts;
 								_actionTitle = [format["Repair %1",getText (configFile >> "Cfgvehicles" >> typeOf _vehicle >> "displayName")], _costs] call _fnc_actionTitle;
-								SP_repair_action = _vehicle addAction [format["<img size='1.5'image='\a3\Ui_f\data\IGUI\Cfg\Cursors\iconrepairvehicle_ca.paa'/> %1",_actionTitle], _folder + "service_point_repair.sqf", [_servicePoint, _costs, _repair_repairTime], -1, false, true, "", _actionCondition];
+								SP_repair_action = _vehicle addAction [format["<img size="1.5"image="\a3\Ui_f\data\IGUI\Cfg\Cursors\iconrepairvehicle_ca.paa"/> %1",_actionTitle], _folder + "service_point_repair.sqf", [_servicePoint, _costs, _repair_repairTime], -1, false, true, "", _actionCondition];
 						};
 						if ((count SP_rearm_actions == 0) && _rearm_enable) then {
 								private ["_weapons"];
@@ -184,7 +184,7 @@ while {true} do {
 												_ammoclass = _x select 0;
 												_ammoname = _x select 1;
 												_actionTitle = [format["Rearm %1 with %2", _weaponName,_ammoname], _costs] call _fnc_actionTitle;
-												SP_rearm_action = _vehicle addAction [format["<img size='1.5'image='\a3\Ui_f\data\IGUI\Cfg\WeaponIcons\mg_ca.paa'/> %1",_actionTitle], _folder + "service_point_rearm.sqf", [_servicePoint, _costs, [_weaponName,_ammoclass,_ammoname,_GlobalMagazineMAX,_deny_already_armed_with,_curturret]], -1, false, true, "", _actionCondition];
+												SP_rearm_action = _vehicle addAction [format["<img size="1.5"image="\a3\Ui_f\data\IGUI\Cfg\WeaponIcons\mg_ca.paa"/> %1",_actionTitle], _folder + "service_point_rearm.sqf", [_servicePoint, _costs, [_weaponName,_ammoclass,_ammoname,_GlobalMagazineMAX,_deny_already_armed_with,_curturret]], -1, false, true, "", _actionCondition];
 												SP_rearm_actions set [count SP_rearm_actions, SP_rearm_action];
 										}forEach _ammo;
 									   

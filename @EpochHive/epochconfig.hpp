@@ -44,7 +44,7 @@ allowedVehiclesList[] = {
     {"C_Boat_Civil_01_EPOCH",5},
     {"C_Boat_Civil_01_police_EPOCH",5},
     {"C_Boat_Civil_01_rescue_EPOCH",5},
-    {"B_Heli_Light_01_EPOCH",2},
+    {"B_Heli_Light_01_EPOCH",3},
     {"B_SDV_01_EPOCH",2},
     {"B_MRAP_01_EPOCH",3},
     {"B_Truck_01_transport_EPOCH",1},
@@ -55,19 +55,15 @@ allowedVehiclesList[] = {
     {"O_Truck_02_transport_EPOCH",1},
     {"O_Truck_03_covered_EPOCH",1},
     {"O_Truck_02_box_EPOCH",1},
-    {"I_Heli_light_03_unarmed_EPOCH",1},
-    {"O_Heli_Light_02_unarmed_EPOCH",1},
-    {"I_Heli_Transport_02_EPOCH",1},
-    {"O_Heli_Transport_04_EPOCH",1},
-    {"O_Heli_Transport_04_bench_EPOCH",1},
-    {"O_Heli_Transport_04_box_EPOCH",1},
-    {"O_Heli_Transport_04_covered_EPOCH",1},
-    {"B_Heli_Transport_03_unarmed_EPOCH",1},
+    {"I_Heli_light_03_unarmed_EPOCH",3},
+    {"O_Heli_Light_02_unarmed_EPOCH",3},
+    {"I_Heli_Transport_02_EPOCH",3},
+    {"O_Heli_Transport_04_EPOCH",3},
+    {"O_Heli_Transport_04_bench_EPOCH",3},
+    {"O_Heli_Transport_04_box_EPOCH",3},
+    {"O_Heli_Transport_04_covered_EPOCH",3},
+    {"B_Heli_Transport_03_unarmed_EPOCH",3},
     {"jetski_epoch",7},
-    {"K01",2},
-    {"K02",2},
-    {"K03",2},
-    {"K04",2},
     {"ebike_epoch",7},
     {"mosquito_epoch",7}
 };
@@ -88,7 +84,7 @@ DEBUG_VEH = false; // DEBUG ONLY used to debug spawing of vehicles
 
 // Hive Related
 // 1day=86400, 2days=172800, 4days=345600, 8days=691200
-expiresBuilding = "604800";  // expiration date in seconds for buildings
+expiresBuilding = "31104000" // "604800";  // expiration date in seconds for buildings
 expiresPlayer = "2592000";  // expiration date in seconds for players
 expiresBank = "7776000";  // expiration date in seconds for players bank
 expiresVehicle = "604800";  // expiration date in seconds for vehicles
