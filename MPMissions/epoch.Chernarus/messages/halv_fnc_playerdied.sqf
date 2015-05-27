@@ -67,7 +67,7 @@ if(_killer != _player && (vehicle _killer) != (vehicle _player))then{
 				_killerName,
 				_victimName,
 				_txt,
-				_distance,
+				round _distance,
 				_pic
 				];
  
@@ -84,11 +84,11 @@ if(_killer != _player && (vehicle _killer) != (vehicle _player))then{
 						_victimName,
 						_pic,
 						_txt,
-						_distance
+						round _distance
 				];
  
-				_message = format["%1 was killed by %2 with %3 from %4m",_victimName, _killerName, _txt, _distance];
-				_loc_message = format["[KillFeed]: PKILL: %1 was killed by %2 with %3 from %4m", _victimName, _killerName, _weapon, _distance];
+				_message = format["%1 was killed by %2 with %3 from %4m",_victimName, _killerName, _txt, round _distance];
+				_loc_message = format["[KillFeed]: PKILL: %1 was killed by %2 with %3 from %4m", _victimName, _killerName, _weapon, round _distance];
 		}else{
 				if(HALV_KillFeed_AI)then{
 						//killer is not a player
@@ -96,7 +96,7 @@ if(_killer != _player && (vehicle _killer) != (vehicle _player))then{
 						if(gettext (configFile >> 'CfgVehicles' >> _killerType >> 'displayName') != "")then{
 								_killerName = gettext (configFile >> 'CfgVehicles' >> _killerType >> 'displayName');
 						};
-						_message = format["%1 was killed by a %2 with a %3 from %4m",_victimName,_killerName,_txt,_distance];
+						_message = format["%1 was killed by a %2 with a %3 from %4m",_victimName,_killerName,_txt, round _distance];
 						_hint = _message;
 						_dyntxt = format["<t size='0.70'align='left'>%1</t>",_message];
 						_loc_message = format["[KillFeed]: PKILL: %1 | %2",_message,_killerType];
