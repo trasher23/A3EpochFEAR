@@ -30,42 +30,73 @@ cloneCost = 100; // debt incurred on player death
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 allowedVehiclesList[] = {
-    {"C_Offroad_01_EPOCH",8},
-    {"C_Quadbike_01_EPOCH",8},
-    {"C_Hatchback_01_EPOCH",10},
-    {"C_Hatchback_02_EPOCH",10},
-    {"C_SUV_01_EPOCH",10},
-    {"C_Rubberboat_EPOCH",5},
-    {"C_Rubberboat_02_EPOCH",5},
-    {"C_Rubberboat_03_EPOCH",5},
-    {"C_Rubberboat_04_EPOCH",5},
-    {"C_Van_01_box_EPOCH",8},
-    {"C_Van_01_transport_EPOCH",9},
-    {"C_Boat_Civil_01_EPOCH",5},
-    {"C_Boat_Civil_01_police_EPOCH",5},
-    {"C_Boat_Civil_01_rescue_EPOCH",5},
-    {"B_Heli_Light_01_EPOCH",3},
-    {"B_SDV_01_EPOCH",2},
-    {"B_MRAP_01_EPOCH",3},
-    {"B_Truck_01_transport_EPOCH",1},
-    {"B_Truck_01_covered_EPOCH",2},
-    {"B_Truck_01_mover_EPOCH",1},
-    {"B_Truck_01_box_EPOCH",1},
-    {"O_Truck_02_covered_EPOCH",2},
-    {"O_Truck_02_transport_EPOCH",1},
-    {"O_Truck_03_covered_EPOCH",1},
-    {"O_Truck_02_box_EPOCH",1},
-    {"I_Heli_light_03_unarmed_EPOCH",3},
-    {"O_Heli_Light_02_unarmed_EPOCH",3},
-    {"I_Heli_Transport_02_EPOCH",3},
-    {"O_Heli_Transport_04_EPOCH",3},
-    {"O_Heli_Transport_04_bench_EPOCH",3},
-    {"O_Heli_Transport_04_box_EPOCH",3},
-    {"O_Heli_Transport_04_covered_EPOCH",3},
-    {"B_Heli_Transport_03_unarmed_EPOCH",3},
-    {"jetski_epoch",7},
-    {"ebike_epoch",7},
-    {"mosquito_epoch",7}
+    // Boats
+	{"C_Rubberboat_EPOCH",3},
+	{"C_Rubberboat_02_EPOCH",3},
+	{"C_Rubberboat_03_EPOCH",3},
+	{"C_Rubberboat_04_EPOCH",3},
+	{"C_Boat_Civil_01_EPOCH",3},
+	{"jetski_epoch",2},
+	{"B_Boat_Armed_02_Minigun_F",2},
+
+	// Bikes
+
+	{"C_Quadbike_01_EPOCH",5},
+	{"ebike_epoch",3},
+
+	// Cars
+
+	{"C_Offroad_01_EPOCH",10},
+	{"C_Hatchback_01_EPOCH",10},
+	{"C_Hatchback_02_EPOCH",10},
+	{"C_SUV_01_EPOCH",10},
+
+	// Vans
+
+	{"C_Van_01_box_EPOCH",10},
+	{"C_Van_01_transport_EPOCH",10},
+
+	// Military Wheeled
+
+	{"B_MRAP_01_EPOCH",3},
+	{"O_MRAP_02_F",3},
+	{"I_MRAP_03_F",3},
+
+	// Military Trucks
+
+	{"B_Truck_01_transport_EPOCH",2},
+	{"B_Truck_01_covered_EPOCH",2},
+	{"B_Truck_01_mover_EPOCH",2},
+	{"B_Truck_01_box_EPOCH",2},
+	{"O_Truck_02_covered_EPOCH",2},
+	{"O_Truck_02_transport_EPOCH",2},
+	{"O_Truck_03_covered_EPOCH",2},
+	{"O_Truck_02_box_EPOCH",2},
+	{"O_Truck_03_ammo_F",2},
+	{"O_Truck_03_fuel_F",2},
+	{"O_Truck_03_medical_F",2},
+	{"O_Truck_03_repair_F",2},
+
+	// Helicopters
+
+	{"B_Heli_Light_01_EPOCH",2},
+	{"I_Heli_light_03_unarmed_EPOCH",2},
+	{"O_Heli_Light_02_unarmed_EPOCH",2},
+	{"I_Heli_Transport_02_EPOCH",2},
+	{"O_Heli_Transport_04_EPOCH",2},
+	{"O_Heli_Transport_04_bench_EPOCH",2},
+	{"O_Heli_Transport_04_box_EPOCH",2},
+	{"O_Heli_Transport_04_covered_EPOCH",2},
+	{"B_Heli_Transport_03_unarmed_EPOCH",2},
+	{"I_Heli_light_03_unarmed_F",5},
+	{"mosquito_epoch",5},
+	{"B_Heli_Light_01_armed_F",2},
+
+	// APC
+
+	{"B_APC_Wheeled_01_cannon_F",2},
+	{"I_APC_Wheeled_03_cannon_F",2},
+	{"O_APC_Wheeled_02_rcws_F",2}
 };
 
 // Traders

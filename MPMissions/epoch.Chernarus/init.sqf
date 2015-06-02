@@ -10,7 +10,7 @@ if (!isServer) then {
 		systemChat ((_this select 1) select 0);
 		[
 			[
-				[((_this select 1) select 0),"align = 'center' size = '1' font='PuristaBold'"],
+				[((_this select 1) select 0),"align = 'left' size = '1' font='PuristaBold'"],
 				["","<br/>"],
 				[((_this select 1) select 1),"align = 'center' size = '0.5'"]
 			]
@@ -72,3 +72,4 @@ if (!isServer) then {
 
 [] execVM "messages\init.sqf";								// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
 [] execVM "service_point\HALV_takegive_crypto_init.sqf";	// Service point
+[] execVM "FEAR\scripts\andre_convoy.sqf";					// Convoy http://epochmod.com/forum/index.php?/topic/34352-release-andre-convoy-patrol/
