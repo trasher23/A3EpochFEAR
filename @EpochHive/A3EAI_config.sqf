@@ -16,7 +16,7 @@ diag_log "[A3EAI] Reading A3EAI configuration file.";
 A3EAI_debugLevel = 0;
 
 //Frequency of server monitor update to RPT log in seconds. The monitor periodically reports number of max/current AI units and dynamically spawned triggers into RPT log. (Default: 300, 0 = Disable reporting)										
-A3EAI_monitorRate = 300;
+A3EAI_monitorRate = 900;
 
 //Enable or disable verification and error-correction of classname tables used by A3EAI. If invalid entries are found, they are removed and logged into the RPT log.
 //If disabled, any invalid classnames will not be removed and clients may crash if AI bodies with invalid items are looted. Only disable if a previous scan shows no invalid classnames (Default: true).										
