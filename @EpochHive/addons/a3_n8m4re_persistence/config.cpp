@@ -19,6 +19,8 @@ class CfgFunctions {
 
 class CfgPersistence {
 	PersistenceTablePrefix = "PERSIST"; // change will create a new table in db
-	PersistenceExpires = 172800; // 1day=86400, 2days=172800, 4days=345600, 8days=691200 
-	PersistenceLimit = 5000; // max limit to store
+	PersistenceHolderExpires = 172800; 	// 1day=86400, 2days=172800, 4days=345600, 8days=691200 
+	PersistenceHolderLimit = 5000; 		// max. groundholder limit to store
+	PersistenceMines = true;			// enable/disable storing of mines
+	PersistenceMinesLimit = 10; 		// max. mines limit per player  
 };

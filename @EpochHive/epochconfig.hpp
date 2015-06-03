@@ -122,13 +122,13 @@ expiresVehicle = "604800";  // expiration date in seconds for vehicles
 expiresAIdata = "604800";  // expiration date in seconds for NPC Trader inventory
 hiveAsync = true; // true = asynchronous hive calls (non blocking), false = synchronous hive calls (blocking)
 
-/*
-N8M4RE Persistence
-*/
-PersistenceTablePrefix = "PERSIST"; // change will create a new table in db ( prefix_mapname )
-PersistenceExpires = 172800; // expiration date in seconds
-PersistenceLimit = 5000; // max limit to store
 // Admin Features
 hiveAdminCmdExec = false; // true = enables extra (To Be Released) feature to allow execution of code via hive.
 hiveAdminSavePlayerList = true; // true = enables saving of playerUID array to hive value PLAYERS:#InstanceID.
 hiveAdminCmdTime = 5; // how many seconds between each command queue call.
+
+
+// N8M4RE Persistence
+PersistenceTablePrefix = "PERSIST"; // change will create a new table in db
+PersistenceHolderExpires = 172800;  // expiration date in seconds 1day=86400, 2days=172800, 4days=345600, 8days=691200
+PersistenceHolderLimit = 5000;      // max. groundholder limit to store

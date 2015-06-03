@@ -1,11 +1,13 @@
 call compile preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_Variables.sqf";
 N8M4RE_Persistence_PublicEH=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_PublicEH.sqf";
-N8M4RE_Persistence_Load=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_Load.sqf";
-N8M4RE_Persistence_PutTake=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_PutTake.sqf";
 N8M4RE_Persistence_GetCargo=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_GetCargo.sqf";
 N8M4RE_Persistence_GetEveryContainerCargo=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_GetEveryContainerCargo.sqf";
-N8M4RE_Persistence_GetClassType=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_GetClassType.sqf";
+// N8M4RE_Persistence_GetClassType=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_GetClassType.sqf";
 N8M4RE_Persistence_AddWeaponCargo=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_AddWeaponCargo.sqf";	
 N8M4RE_Persistence_AddItemCargo=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_AddItemCargo.sqf";	
 N8M4RE_Persistence_AddMagazinesCargo=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_AddMagazinesCargo.sqf";	
 N8M4RE_Persistence_AddBackpackCargo=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_AddBackpackCargo.sqf";	
+N8M4RE_Persistence_Holder_Load=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_Holder_Load.sqf";
+N8M4RE_Persistence_Holder_PutTake=compileFinal preprocessFileLineNumbers "\x\addons\a3_n8m4re_persistence\compile\N8M4RE_Persistence_Holder_PutTake.sqf";
+// N8M4RE_Persistence_Mines_Load=compileFinal preprocessFileLineNumbers "compile\N8M4RE_Persistence_Mines_Load.sqf";	
+// N8M4RE_Persistence_Mines_Deploy=compileFinal preprocessFileLineNumbers "compile\N8M4RE_Persistence_Mines_Deploy.sqf";	
