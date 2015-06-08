@@ -50,6 +50,9 @@ allowedVehiclesList[] = {
 	{"C_Hatchback_01_EPOCH",10},
 	{"C_Hatchback_02_EPOCH",10},
 	{"C_SUV_01_EPOCH",10},
+	{"B_G_Offroad_01_F",5},
+        {"I_G_Offroad_01_F",5},
+        {"I_G_Offroad_01_armed_F",3},
 
 	// Vans
 
