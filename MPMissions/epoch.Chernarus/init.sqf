@@ -72,4 +72,3 @@ if !( isServer || isDedicated ) then {
 
 [] execVM "messages\init.sqf";								// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
 [] execVM "service_point\HALV_takegive_crypto_init.sqf";	// Service point
-[] execVM "FEAR\scripts\andre_convoy.sqf";					// Convoy http://epochmod.com/forum/index.php?/topic/34352-release-andre-convoy-patrol/
