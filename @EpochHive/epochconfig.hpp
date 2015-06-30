@@ -40,12 +40,10 @@ allowedVehiclesList[] = {
 	{"B_Boat_Armed_02_Minigun_F",2},
 
 	// Bikes
-
 	{"C_Quadbike_01_EPOCH",5},
 	{"ebike_epoch",3},
 
 	// Cars
-
 	{"C_Offroad_01_EPOCH",10},
 	{"C_Hatchback_01_EPOCH",10},
 	{"C_Hatchback_02_EPOCH",10},
@@ -55,18 +53,16 @@ allowedVehiclesList[] = {
     {"I_G_Offroad_01_armed_F",3},
 
 	// Vans
-
 	{"C_Van_01_box_EPOCH",10},
 	{"C_Van_01_transport_EPOCH",10},
 
 	// Military Wheeled
-
 	{"B_MRAP_01_EPOCH",3},
 	{"O_MRAP_02_F",3},
 	{"I_MRAP_03_F",3},
-
+	{"B_UGV_01_rcws_F",1},
+	
 	// Military Trucks
-
 	{"B_Truck_01_transport_EPOCH",2},
 	{"B_Truck_01_covered_EPOCH",2},
 	{"B_Truck_01_mover_EPOCH",2},
@@ -81,7 +77,6 @@ allowedVehiclesList[] = {
 	{"O_Truck_03_repair_F",2},
 
 	// Helicopters
-
 	{"B_Heli_Light_01_EPOCH",2},
 	{"I_Heli_light_03_unarmed_EPOCH",2},
 	{"O_Heli_Light_02_unarmed_EPOCH",2},
@@ -93,13 +88,23 @@ allowedVehiclesList[] = {
 	{"B_Heli_Transport_03_unarmed_EPOCH",2},
 	{"I_Heli_light_03_unarmed_F",5},
 	{"mosquito_epoch",5},
-	{"B_Heli_Light_01_armed_F",2},
+	{"B_Heli_Light_01_armed_F",5},
+	{"O_Heli_Attack_02_black_F",1},
 
 	// APC
-
 	{"B_APC_Wheeled_01_cannon_F",2},
 	{"I_APC_Wheeled_03_cannon_F",2},
-	{"O_APC_Wheeled_02_rcws_F",2}
+	{"O_APC_Wheeled_02_rcws_F",2},
+	{"I_APC_tracked_03_cannon_F",1},
+	{"B_APC_Tracked_01_CRV_F",1},
+	
+	// Tanks
+	{"O_MBT_02_cannon_F",1},
+	{"B_MBT_01_arty_F",1},
+	
+	// Planes
+	{"B_Plane_CAS_01_F",1},
+	{"O_Plane_CAS_02_F",1}
 };
 
 // Traders
@@ -118,11 +123,11 @@ DEBUG_VEH = false; // DEBUG ONLY used to debug spawing of vehicles
 
 // Hive Related
 // 1day=86400, 2days=172800, 4days=345600, 8days=691200
-expiresBuilding = "31104000" // "604800";  // expiration date in seconds for buildings
-expiresPlayer = "2592000";  // expiration date in seconds for players
-expiresBank = "7776000";  // expiration date in seconds for players bank
-expiresVehicle = "604800";  // expiration date in seconds for vehicles
-expiresAIdata = "604800";  // expiration date in seconds for NPC Trader inventory
+expiresBuilding = "311040000" // "604800";  // expiration date in seconds for buildings
+expiresPlayer = "311040000" // "2592000";  // expiration date in seconds for players
+expiresBank = "311040000" // "7776000";  // expiration date in seconds for players bank
+expiresVehicle = "311040000" // "604800";  // expiration date in seconds for vehicles
+expiresAIdata = "311040000" // "604800";  // expiration date in seconds for NPC Trader inventory
 hiveAsync = true; // true = asynchronous hive calls (non blocking), false = synchronous hive calls (blocking)
 
 // Admin Features
