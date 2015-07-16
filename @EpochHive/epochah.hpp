@@ -1,5 +1,5 @@
 // Anti Hack
-antihack_Enabled = true; // built-in Anti-Hack
+antihack_Enabled = false; // built-in Anti-Hack
 antihack_cfgPatchesCheck = true; // cfgPatches (AddOn Check)
 antihack_PVSPrefix = "EPAH_"; // used to help whitelist pveh variables in BE without BEC and watchdog, leave blank to use no prefix.
 antihack_cfgPatchesCfg[] = {0}; // 0 == BAN - 1 = LOG

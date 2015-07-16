@@ -110,7 +110,7 @@ allowedVehiclesList[] = {
 // Traders
 taxRate = 0.1; // controls the price increase for purchases
 starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "CinderBlocks", "VehicleRepair", "CircuitParts", "ItemCorrugated", "PartPlankPack", "ItemRock", "ItemRope", "ItemStick" }, { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 } }; // Starter Items for fresh spawned trader first array is classnames second is quantity.
-NPCSlotsLimit = 50; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
+NPCSlotsLimit = 10; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
 forceStaticTraders = false; // disables traders moving from work to home
 
 // Markers
@@ -137,6 +137,11 @@ hiveAdminCmdTime = 5; // how many seconds between each command queue call.
 
 
 // N8M4RE Persistence
-PersistenceTablePrefix = "PERSIST"; // change will create a new table in db
-PersistenceHolderExpires = 172800;  // expiration date in seconds 1day=86400, 2days=172800, 4days=345600, 8days=691200
-PersistenceHolderLimit = 5000;      // max. groundholder limit to store
+PersistenceTablePrefix = "PERSIST";     // change will create a new table in db
+
+PersistenceHolder = true;               // enable/disable storing of groundholder items
+PersistenceHolderCanExpire = true;      // enable/disable expiring of holders
+PersistenceHolderExpires = "691200";    // 1day=86400, 2days=172800, 4days=345600, 8days=691200 
+PersistenceHolderLimit = 1500;          // max groundholder can stored (a groundholder can hold more than one item)
+
+PersistenceDayTime = true;              // enable/disable storing of server daytime (StaticDateTime only)

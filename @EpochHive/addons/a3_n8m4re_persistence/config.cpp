@@ -9,8 +9,8 @@ class CfgPatches {
 
 class CfgFunctions {
 	class a3_n8m4re_persistence {
-		class persistence_main {	
-			file = "\x\addons\a3_n8m4re_persistence\init";
+		class a3_n8m4re_persistence_init {	
+			file = "\x\addons\a3_n8m4re_persistence";
 			class init {preInit = 1;};
 			class postinit {postInit = 1;};
 		};
@@ -18,9 +18,18 @@ class CfgFunctions {
 };
 
 class CfgPersistence {
-	PersistenceTablePrefix = "PERSIST"; // change will create a new table in db
-	PersistenceHolderExpires = 172800; 	// 1day=86400, 2days=172800, 4days=345600, 8days=691200 
-	PersistenceHolderLimit = 5000; 		// max. groundholder limit to store
-	PersistenceMines = true;			// enable/disable storing of mines
-	PersistenceMinesLimit = 10; 		// max. mines limit per player  
+	PersistenceTablePrefix = "PERSIST"; 	// change will create a new table in db
+		
+	PersistenceHolder = true; 				// enable/disable storing of groundholder items
+	PersistenceHolderCanExpire = true; 		// enable/disable expiring of holders
+	PersistenceHolderExpires = "172800"; 	// 1day=86400, 2days=172800, 4days=345600, 8days=691200 
+	PersistenceHolderLimit = 1500; 			// max groundholder can stored (a groundholder can hold more than one item)
+	
+	
+	PersistenceMines = true;				// enable/disable storing of mines
+	PersistenceMinesCanExpire = true;		// enable/disable expiring of mines
+	PersistenceMinesExpires = "172800";		// 1day=86400, 2days=172800, 4days=345600, 8days=691200 
+	PersistenceMinesLimit = 10; 			// max mines can stored per player 
+	
+	PersistenceDayTime = true;				// enable/disable storing of server daytime (StaticDateTime only)
 };

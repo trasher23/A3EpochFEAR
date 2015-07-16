@@ -61,7 +61,6 @@ if !( isServer || isDedicated ) then {
 	
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";					// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";				// Random sound fx
-	[] execVM "FEAR\scripts\FEAR_playerLoadOut.sqf";			// Initial player gear
 	[] execVM "wai\remote.sqf";									// Wicked AI
 	[] execVM "service_point\service_point.sqf";				// Service point
 	// --------------------------------------------------------
@@ -72,3 +71,11 @@ if !( isServer || isDedicated ) then {
 
 [] execVM "messages\init.sqf";								// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
 [] execVM "service_point\HALV_takegive_crypto_init.sqf";	// Service point
+
+// Halv scripts http://epochmod.com/forum/index.php?/tags/forums/Halv/
+[] execVM "halv_spawn\init.sqf";
+if (hasInterface) then{
+	[] execVM "paintshop\paintshop.sqf";
+};
+[] execVM "trader\init.sqf";
+[] execVM "trader\resetvehicleammo.sqf";

@@ -25,8 +25,9 @@ if(!isDedicated) then {
 				};
 				
 				0 = [_position] execVM "wai\nuke.sqf";
+				// [_position] spawn FEAR_fnc_nukeImpact;
 			};
-			// 
+			
 			case "vehiclehit": {
 				// Blow front wheels
 				// _position is used as _player

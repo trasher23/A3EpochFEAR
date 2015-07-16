@@ -51,10 +51,65 @@ if (isServer) then {
 	
 	_fuel = 0;
 
+	if (getNumber(configFile >> "CfgVehicles" >> _class >> "isBicycle") != 1) then {
+
+		_hitpoints = _vehicle call vehicle_getHitpoints;
+		
+		if(debug_mode) then { diag_log(format["WAI: Spawned %1 at %2",str(_class),str(_position)]); };
+		
+		{
+			_dam 		= (random((wai_vehicle_damage select 1) - (wai_vehicle_damage select 0)) + (wai_vehicle_damage select 0)) / 100;
+			_selection	= getText(configFile >> "cfgVehicles" >> _class >> "HitPoints" >> _x >> "name");
+
+			if ((_selection in dayZ_explosiveParts) && _dam > 0.8) then {
+				_dam = 0.8
+			};
+
+			_isglass = ["glass", _selection] call KK_fnc_inString;
+
+			if(!_isglass && _dam > 0.1) then {
+				_vehicle setHit[_selection,_dam];
+				if(debug_mode) then { diag_log(format["WAI: Calculated damage for %1 is %2",str(_selection),str(_dam)]); };
+			};
+
+		} count _hitpoints;
+
+		_fuel = ((wai_mission_fuel select 0) + random((wai_mission_fuel select 1) - (wai_mission_fuel select 0))) / 100;
+		_vehicle setFuel _fuel;
+
+		if(debug_mode) then { diag_log(format["WAI: Added %1 percent fuel to vehicle",str(_fuel)]); };
+
+	};
 	
-	addToRemainsCollector[_vehicle];
+	_vehicle addeventhandler ["HandleDamage",{ _this call vehicle_handleDamage } ];
 	
-	
+	if (wai_lock_vehicles) then {
+		_keyid = ceil(random(12500));
+		_vehicle setVariable ["CharacterID",str(_keyid),true];
+
+		call {
+			if ((_keyid > 0) && (_keyid <= 2500)) 		exitWith {_carkey = format["ItemKeyGreen%1",_keyid];};
+			if ((_keyid > 2500) && (_keyid <= 5000))	exitWith {_carkey = format["ItemKeyRed%1",_keyid-2500];};
+			if ((_keyid > 5000) && (_keyid <= 7500)) 	exitWith {_carkey = format["ItemKeyBlue%1",_keyid-5000];};
+			if ((_keyid > 7500) && (_keyid <= 10000)) 	exitWith {_carkey = format["ItemKeyYellow%1",_keyid-7500];};
+			if ((_keyid > 10000) && (_keyid <= 12500)) 	exitWith {_carkey = format["ItemKeyBlack%1",_keyid-10000];};
+		};
+
+		_ailist = [];
+		{
+			if (_x getVariable ["mission",nil] == _mission) then {_ailist set [count _ailist, _x];};
+		} count allUnits;
+
+		_unit = _ailist select (floor(random(count _ailist)));
+		_unit addWeapon _carkey;
+		
+		_vehicle setvehiclelock "locked";
+	} else {
+		_vehicle setVariable ["CharacterID","0",true];
+	};
+
+	PVDZE_serverObjectMonitor set [count PVDZE_serverObjectMonitor,_vehicle];
+
 	if(wai_keep_vehicles) then {
 		
 		_vehicle addEventHandler ["GetIn", {
@@ -83,13 +138,24 @@ if (isServer) then {
 			_fuel 	= fuel _vehicle;
 			_uid 	= _worldspace call dayz_objectUID2;
 
-			_key 	= format["%1:%2",(call EPOCH_fn_InstanceID),_slot];
+			_key 	= format["CHILD:308:%1:%2:%3:%4:%5:%6:%7:%8:%9:",dayZ_instance,_class,_damage,_characterID,_worldspace,_inventory,_array,_fuel,_uid];
 
 			if(debug_mode) then { diag_log ("HIVE: WRITE: "+ str(_key)); };
-						
-			_key call EPOCH_server_hiveSET;
-			
-			[_vehicle,_uid,_fuel,_damage,_array,_characterID,_class] spawn {  //this section needs redone
+			if (wai_linux_server) then {
+				if (count(toArray(_key)) > 1020) then {
+					diag_log format["CHILD:308:%1:%2:%3:%4:%5:%6:%7:%8:%9:",dayZ_instance,_class,_damage,_characterID,_worldspace,[],_array,_fuel,_uid];
+					if(debug_mode) then { diag_log ("Prevent diag_log limit..."); };
+					diag_log format["CHILD:39:%1:0:%2:",_uid,_inventory select 0]; // weapons
+					diag_log format["CHILD:39:%1:1:%2:",_uid,_inventory select 1]; // magazines
+					diag_log format["CHILD:39:%1:2:%2:",_uid,_inventory select 2]; // backpack  
+				} else {
+					diag_log _key;
+				};
+			} else {
+				_key call server_hiveWrite;
+			};
+
+			[_vehicle,_uid,_fuel,_damage,_array,_characterID,_class] spawn {
 
 				private["_vehicle","_uid","_fuel","_damage","_array","_characterID","_done","_retry","_key","_result","_outcome","_oid","_class","_res"];
 
@@ -102,15 +168,40 @@ if (isServer) then {
 				_class 			= _this select 6;
 				_done 			= false;
 
-				
+				if (wai_linux_server) then {
+					sleep 5;
+				};
+
 				while {!_done} do {
-					
+					if (wai_linux_server) then {
+						_key = format["\cache\objects\%1.sqf", _uid];
+						if(debug_mode) then { diag_log ("LOAD OBJECT ID: "+_key); };
+						_res = preprocessFile _key;
+						if(debug_mode) then { diag_log ("OBJECT ID CACHE: "+_res); };
+						if ((_res != "") and (!isNil "_res")) then {
+							_result  = call compile _res;
+							_outcome = _result select 0;
+							if (_outcome == "PASS") then {
+								_oid = _result select 1;
+								_vehicle setVariable ["ObjectID", _oid, true];
+								if(debug_mode) then { diag_log("CUSTOM: Selected " + str(_oid)); };
+								_done = true;
+							} else {
+								if(debug_mode) then { diag_log("CUSTOM: trying again to get id for: " + str(_uid)); };
+								_done = false;
+							};
+						} else {
+							if(debug_mode) then { diag_log("CUSTOM: trying again to get id for: " + str(_uid)); };
+							_done = false;
+						};
+						_res = nil;
+					} else {
 						_key 		= format["CHILD:388:%1:",_uid];
 						_result 	= _key call server_hiveReadWrite;
 						_outcome 	= _result select 0;
 						waitUntil {!isNil "_outcome"};
 						if(debug_mode) then { diag_log ("HIVE: WRITE: "+ str(_key)); };
-						if(_outcome != "PASS") then {
+						if(_outcome == "PASS") then {
 							_oid = _result select 1;
 							_vehicle setVariable ["ObjectID", _oid, true];
 							if(debug_mode) then { diag_log("CUSTOM: Selected " + str(_oid)); };
@@ -121,7 +212,7 @@ if (isServer) then {
 						};
 					};
 					sleep 1;
-			
+				};
 
 				if(!_done) then { 
 					deleteVehicle _vehicle;
@@ -131,10 +222,10 @@ if (isServer) then {
 				};
 			};
 
-			_vehicle call fnc_veh_ResetEH;  //this needs fixed
-			EPOCH_server_vehicleInit = _vehicle;
+			_vehicle call fnc_veh_ResetEH;
+			PVDZE_veh_Init = _vehicle;
 
-			publicVariable "EPOCH_server_vehicleInit";
+			publicVariable "PVDZE_veh_Init";
 
 			if(debug_mode) then { diag_log ("PUBLISH: Created " + (_class) + " with ID " + str(_uid)); };
 		}];

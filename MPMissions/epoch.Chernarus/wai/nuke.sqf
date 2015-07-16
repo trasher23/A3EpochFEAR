@@ -110,7 +110,7 @@ if((isPlayer player) && (player distance _position <= 1600)) then {
 	// Radiation fall out
 	//*******************************************************************
 	_isInside = call EPOCH_fnc_isInsideBuilding;
-	if((isPlayer player) && (player distance _position <= 750) && !_isInside) then {
+	if((isPlayer player) && (player distance _position <= 2000) && !_isInside) then {
 		EPOCH_playerToxicity = 85;
 		EPOCH_playerSoiled = 85;
 	};
