@@ -5,8 +5,8 @@ private ["_folder","_servicePointClasses","_maxDistance","_costsFree","_message"
  
 //====================== general settings
 _folder = "service_point\"; // folder where the service point scripts are saved, relative to the mission file
-_servicePointClasses = ["FuelPump_DZ","Land_A_FuelStation_Feed","Land_Ind_FuelStation_Feed_EP1","Land_FuelStation_Feed_PMC","FuelStation","Land_ibr_FuelStation_Feed","Land_fuelstation_army","Land_fuelstation","land_fuelstation_w","Land_benzina_schnell"]; // service point classes (can be house, vehicle and unit classes)
-_maxDistance = 10; // maximum distance from a service point for the options to be shown
+_servicePointClasses = ["Land_A_FuelStation_Shed","Land_repair_center","FuelStation","FuelStation_army","Land_Mil_Repair_center_EP1","Land_A_FuelStation_Build","Land_A_FuelStation_Feed","Land_Ind_FuelStation_Feed_EP1","Land_Ind_FuelStation_Build_EP1","Land_Ind_FuelStation_Shed_EP1","Land_Ind_Garage01_EP1","Land_benzina_schnell","Land_fuelstation","Land_fuelstation_army"]; // service point classes (can be house, vehicle and unit classes)
+_maxDistance = 20; // maximum distance from a service point for the options to be shown
 _costsFree = "free"; // text for no costs
 _message = "-- Vehicle Service Point --"; // message to be shown when in range of a service point (set to "" to disable)
 _actionColour = "#0096ff"; //the colour of the scroll action Blue: "#0096ff"
@@ -34,9 +34,7 @@ _GlobalMagazineMAX = 6;
 //weapon classes disabled from re-arming
 _NoGoWeapCName = [
 		//irrelevant ones
-		"Horn","SmokeLauncher","MiniCarHorn","SportCarHorn","TruckHorn2","TruckHorn","BikeHorn","CarHorn","TruckHorn3",
-		//not allowed ones
-		"FFARLauncher_14","2A46M","2A46MRocket","M256","AT5LauncherSingle"
+		"Horn","SmokeLauncher","MiniCarHorn","SportCarHorn","TruckHorn2","TruckHorn","BikeHorn","CarHorn","TruckHorn3"
 ];
  
 //magazine classnames not allowed to be rearmed
@@ -55,7 +53,6 @@ _rearm_costs = [
  
 //debug weapons to see classnames in chat/rpt
 _debugWeapon = false;
- 
  
 //=================================== CONFIG END
 if(isNil "isHalvTradeEnabled")then{isHalvTradeEnabled = false};

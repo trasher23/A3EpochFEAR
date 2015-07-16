@@ -59,13 +59,15 @@ if !( isServer || isDedicated ) then {
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
 	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
 	
-	[] execVM "FEAR\scripts\fn_statusBar.sqf";					// Status bar lower screen
-	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";				// Random sound fx
-	[] execVM "wai\remote.sqf";									// Wicked AI
-	[] execVM "service_point\service_point.sqf";				// Service point
+	[] execVM "FEAR\scripts\fn_statusBar.sqf";				// Status bar lower screen
+	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";			// Random sound fx
+	[] execVM "wai\remote.sqf";								// Wicked AI
+	[] execVM "service_point\service_point.sqf";			// Service point
+	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
+	[] execVM "paintshop\paintshop.sqf";					// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
 	// --------------------------------------------------------
 	
-	#include "A3EAI_Client\A3EAI_initclient.sqf";	// A3AI radio messages
+	#include "A3EAI_Client\A3EAI_initclient.sqf";			// A3AI radio messages
 	
 };
 
@@ -74,8 +76,5 @@ if !( isServer || isDedicated ) then {
 
 // Halv scripts http://epochmod.com/forum/index.php?/tags/forums/Halv/
 [] execVM "halv_spawn\init.sqf";
-if (hasInterface) then{
-	[] execVM "paintshop\paintshop.sqf";
-};
 [] execVM "trader\init.sqf";
 [] execVM "trader\resetvehicleammo.sqf";

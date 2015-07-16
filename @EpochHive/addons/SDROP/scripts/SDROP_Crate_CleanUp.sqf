@@ -1,5 +1,5 @@
 private ["_crate","_grp"];
-
+	
 	_crate = _this select 0;
 	_grp = _this select 1;
 	_currentTime = diag_tickTime;
@@ -30,4 +30,4 @@ private ["_crate","_grp"];
 	
 	//Re-Start supply drop mission
 	uiSleep SDROP_MissionTimer;
-	[] spawn SDROP_SupplyDrop;
+	[] execVM "\SDROP\missions\SDROP_SupplyDrop.sqf";
