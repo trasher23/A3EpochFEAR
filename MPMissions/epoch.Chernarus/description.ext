@@ -6,6 +6,8 @@
 
 // Crafting https://github.com/GBR-Suppe/cfgCrafting-Master
 #include "cfgCrafting.hpp"
+
+
 author = "Epoch Mod Team";
 class Header
 {
@@ -221,4 +223,9 @@ class CfgEpochCloak
 	targetChangeFrequency = 42; //Cloak will only attempt to change target once per this period. Make Higher to stick to first target player. (Min: 42)
 	teleportChance = 66; //Chance for cloak to teleport. (Min: 1)
 	hoverFrequency = 1280; //Cloak has new hover attack. When player is above cloak, and at a distance, cloak will float to player and teleport attack. Only perform one of these moves per this period. (Min: 240)
+};
+
+class RscTitles
+{
+	#include "FEAR\dialog\statusBar.hpp"
 };
