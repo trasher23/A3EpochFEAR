@@ -631,7 +631,7 @@ class Halv_spawn_dialog
 //\a3\soft_f_beta\Truck_01\Data\UI\Truck_01_covered_CA.paa
 			checked_strings[] = {"$STR_HALV_GROUND"};
 			onCheckBoxesSelChanged = "if(_this select 2 == 0)then{HALV_HALO = true;systemChat localize ""STR_HALV_HALO_SELECTED"";}else{HALV_HALO = false;systemChat localize ""STR_HALV_GROUND_SELECTED"";};false";
-			tooltip = "$STR_HALV_PRESSSELECT_HALO_OR_GROUND";
+			//tooltip = "$STR_HALV_PRESSSELECT_HALO_OR_GROUND";
 			colorTextSelect[] = {0.6,0.298,0,1};
 		};//102,51,0 - 0.4,0.2,0 //153,76,0 - 0.6,0.298,0
 		class HALV_spawn_halocheck: HALV_RscCheckbox

@@ -19,7 +19,7 @@ _hint = "";
 _killerName = name _killer;
 _victimName = name _player;
 
-_distance = _player distance _killer;
+_distance = round(_player distance _killer);
 
 _weapon = currentWeapon _killer;
 

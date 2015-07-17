@@ -50,8 +50,8 @@ allowedVehiclesList[] = {
 	{"C_Hatchback_01_EPOCH",10},
 	{"C_Hatchback_02_EPOCH",10},
 	{"C_SUV_01_EPOCH",10},
-	{"B_G_Offroad_01_F",5},
-    {"I_G_Offroad_01_F",5},
+	{"B_G_Offroad_01_F",10},
+    {"I_G_Offroad_01_F",10},
     {"I_G_Offroad_01_armed_F",5},
 
 	// Vans
@@ -82,12 +82,14 @@ allowedVehiclesList[] = {
 	{"B_Heli_Light_01_EPOCH",2},
 	{"I_Heli_light_03_unarmed_EPOCH",2},
 	{"O_Heli_Light_02_unarmed_EPOCH",2},
-	{"I_Heli_Transport_02_EPOCH",2},
-	{"O_Heli_Transport_04_EPOCH",2},
+	{"O_Heli_Transport_04_F",2},
+	{"O_Heli_Transport_04_medevac_F",2},
 	{"I_Heli_light_03_unarmed_F",2},
 	{"mosquito_epoch",10},
 	{"B_Heli_Light_01_armed_F",2},
 	{"O_Heli_Attack_02_black_F",2},
+	{"C_Heli_Light_01_civil_F",2},
+	{"O_Heli_Light_02_v2_F",2},
 
 	// APC
 	{"B_APC_Wheeled_01_cannon_F",2},
@@ -99,6 +101,7 @@ allowedVehiclesList[] = {
 	// Tanks
 	{"O_MBT_02_cannon_F",1},
 	{"B_MBT_01_arty_F",1},
+	{"B_MBT_01_mlrs_F",1},
 	
 	// Planes
 	{"B_Plane_CAS_01_F",1},

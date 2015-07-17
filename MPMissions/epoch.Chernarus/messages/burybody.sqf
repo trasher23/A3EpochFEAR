@@ -19,7 +19,7 @@ if (alive _corpse || isPlayer _corpse)exitwith {
 };
 
 _info = _corpse getVariable ["HALV_STUDY",[]];
-if(_info isEqualTo [])exitWith{titletext["Cant bury ai ...", "PLAIN DOWN"];};
+if(_info isEqualTo [])exitWith{titletext["Don't bother, let them rot!", "PLAIN DOWN"];};
 _victimName = _info select 1;
 
 _position = getPosATL _corpse;

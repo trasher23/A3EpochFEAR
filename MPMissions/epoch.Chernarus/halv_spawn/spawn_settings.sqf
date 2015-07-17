@@ -16,7 +16,7 @@ _level1UIDs = _level1UIDs + _level2UIDs;
 _area = 1250;
 
 //force halo jump or ground spawn 0 = user choice, 1 = forced HALO, 2 = forced Ground
-_HALV_forcespawnMode = 0;
+_HALV_forcespawnMode = 2;
 _jumpheight = 1250;
 
 //this is the distance (in meters) it will check for the players dead bodys, set to -1 to disable
@@ -26,10 +26,10 @@ _bodyCheckDist = 2500;
 _script = "halv_spawn\credits.sqf";
 
 //start screen 0 = start on select gear screen, anything else will start it on select map screen
-_halv_spawn_startmode = 0;
+_halv_spawn_startmode = 1;
 
 //if false then gear select screen/button is disabled
-_halv_allowgearselect = true;
+_halv_allowgearselect = false;
 
 //if false, this disables adding gear, so no gear is added 
 //if gear select is disabled and this is false, no random gear is added to player on spawn
