@@ -33,18 +33,17 @@ simulationHandler = false; // When enabled this feature disables simulation on v
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 allowedVehiclesList[] = {
 	// Boats
-	{"C_Rubberboat_EPOCH",3},
-	{"C_Rubberboat_02_EPOCH",3},
-	{"C_Rubberboat_03_EPOCH",3},
-	{"C_Rubberboat_04_EPOCH",3},
-	{"C_Boat_Civil_01_EPOCH",3},
-
-	{"jetski_epoch",2},
-	{"B_Boat_Armed_02_Minigun_F",2},
+	{"C_Rubberboat_EPOCH",1},
+	{"C_Rubberboat_02_EPOCH",1},
+	{"C_Rubberboat_03_EPOCH",1},
+	{"C_Rubberboat_04_EPOCH",1},
+	{"C_Boat_Civil_01_EPOCH",1},
+	{"jetski_epoch",1},
+	{"B_Boat_Armed_02_Minigun_F",1},
 
 	// Bikes
-	{"C_Quadbike_01_EPOCH",5},
-	{"ebike_epoch",3},
+	{"C_Quadbike_01_EPOCH",10},
+	{"ebike_epoch",10},
 
 	// Cars
 	{"C_Offroad_01_EPOCH",10},
@@ -52,20 +51,18 @@ allowedVehiclesList[] = {
 	{"C_Hatchback_02_EPOCH",10},
 	{"C_SUV_01_EPOCH",10},
 	{"B_G_Offroad_01_F",5},
-
-
     {"I_G_Offroad_01_F",5},
-    {"I_G_Offroad_01_armed_F",3},
+    {"I_G_Offroad_01_armed_F",5},
 
 	// Vans
 	{"C_Van_01_box_EPOCH",10},
 	{"C_Van_01_transport_EPOCH",10},
 
 	// Military Wheeled
-	{"B_MRAP_01_EPOCH",3},
-	{"O_MRAP_02_F",3},
-	{"I_MRAP_03_F",3},
-	{"B_UGV_01_rcws_F",1},
+	{"B_MRAP_01_EPOCH",2},
+	{"O_MRAP_02_F",2},
+	{"I_MRAP_03_F",2},
+	{"B_UGV_01_rcws_F",2},
 	
 	// Military Trucks
 	{"B_Truck_01_transport_EPOCH",2},
@@ -87,23 +84,17 @@ allowedVehiclesList[] = {
 	{"O_Heli_Light_02_unarmed_EPOCH",2},
 	{"I_Heli_Transport_02_EPOCH",2},
 	{"O_Heli_Transport_04_EPOCH",2},
-	{"O_Heli_Transport_04_bench_EPOCH",2},
-	{"O_Heli_Transport_04_box_EPOCH",2},
-	{"O_Heli_Transport_04_covered_EPOCH",2},
-	{"B_Heli_Transport_03_unarmed_EPOCH",2},
-	{"I_Heli_light_03_unarmed_F",5},
-	{"mosquito_epoch",5},
-	{"B_Heli_Light_01_armed_F",5},
-	{"O_Heli_Attack_02_black_F",1},
+	{"I_Heli_light_03_unarmed_F",2},
+	{"mosquito_epoch",10},
+	{"B_Heli_Light_01_armed_F",2},
+	{"O_Heli_Attack_02_black_F",2},
 
 	// APC
 	{"B_APC_Wheeled_01_cannon_F",2},
 	{"I_APC_Wheeled_03_cannon_F",2},
 	{"O_APC_Wheeled_02_rcws_F",2},
-
-
-	{"I_APC_tracked_03_cannon_F",1},
-	{"B_APC_Tracked_01_CRV_F",1},
+	{"I_APC_tracked_03_cannon_F",2},
+	{"B_APC_Tracked_01_CRV_F",2},
 	
 	// Tanks
 	{"O_MBT_02_cannon_F",1},
@@ -140,12 +131,11 @@ hiveAsync = true; // true = asynchronous hive calls (non blocking), false = sync
 hiveAdminCmdExec = false; // true = enables extra (To Be Released) feature to allow execution of code via hive.
 hiveAdminSavePlayerList = true; // true = enables saving of playerUID array to hive value PLAYERS:#InstanceID.
 hiveAdminCmdTime = 5; // how many seconds between each command queue call.
+
 // N8M4RE Persistence
 PersistenceTablePrefix = "PERSIST";     // change will create a new table in db
-
 PersistenceHolder = true;               // enable/disable storing of groundholder items
 PersistenceHolderCanExpire = true;      // enable/disable expiring of holders
 PersistenceHolderExpires = "691200";    // 1day=86400, 2days=172800, 4days=345600, 8days=691200 
 PersistenceHolderLimit = 1500;          // max groundholder can stored (a groundholder can hold more than one item)
-
 PersistenceDayTime = true;              // enable/disable storing of server daytime (StaticDateTime only)

@@ -23,7 +23,7 @@ A3EAI_monitorRate = 900;
 A3EAI_verifyClassnames = true;
 
 //Enable filter against vehicles with init statements, which may cause BattlEye kicks. Enable if experiencing BattlEye kicks after adding new vehicle classnames (Default: false).
-A3EAI_checkVehicleInit = false;
+A3EAI_checkVehicleInit = true;
 
 //Enables checking of all A3EAI config settings. (Default: true)
 A3EAI_verifySettings = true;
@@ -94,7 +94,7 @@ A3EAI_dynamicWeaponBlacklist = [];
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Number of online players required for maximum (or minimum) AI spawn chance. Affects Static, Dynamic, Random AI spawns. (Default: 20)	
-A3EAI_playerCountThreshold = 20;
+A3EAI_playerCountThreshold = 2;
 
 //If A3EAI_upwardsChanceScaling is true: Initial spawn chance multiplier. If A3EAI_upwardsChanceScaling is false: Final spawn chance multiplier. (Default: 0.50)
 A3EAI_chanceScalingThreshold = 0.50;
