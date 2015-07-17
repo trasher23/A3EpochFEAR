@@ -1,83 +1,79 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, traders">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, traders">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"trader",0,250,-306.490601,-197.039688,-216.490692,-147.039795,0.000000,"trader"};
-item1[] = {"_",8,218,62.332706,-185.990021,114.284866,-157.584717,0.000000,""};
-item2[] = {"decision",2,250,165.295456,-196.723892,255.295410,-146.723892,0.000000,"decision"};
-item3[] = {"decision_made",4,218,165.267090,-53.833382,255.267029,-3.833395,100.000000,"decision made"};
-item4[] = {"action",2,250,45.978439,130.034073,135.978394,180.034134,0.000000,"action"};
-item5[] = {"actioned",4,218,-166.462479,130.039581,-76.462326,180.039612,100.000000,"actioned"};
-item6[] = {"dispose",4,218,165.269119,-329.019928,255.269180,-279.019958,90.000000,"dispose"};
-item7[] = {"_",8,218,65.758423,391.145691,117.710518,419.550934,0.000000,""};
-item8[] = {"reset_vars",2,250,-57.248745,-196.860123,32.751255,-146.860138,0.000000,"reset vars"};
-item9[] = {"_",8,218,-150.031967,-184.788101,-98.079796,-156.382797,0.000000,""};
-item10[] = {"met",4,218,-164.164124,-131.504044,-74.163895,-81.504021,10.000000,"met"};
-item11[] = {"_",8,218,-37.499084,-14.830628,14.453017,13.574608,5.000000,""};
-item12[] = {"end",1,4346,411.966034,1.474794,501.966095,51.474747,0.000000,"end"};
-item13[] = {"dispose",4,218,231.223953,1.285551,321.223938,51.285561,80.000000,"dispose"};
-item14[] = {"criteria",2,250,-166.153702,-28.650204,-76.153595,21.349773,0.000000,"criteria"};
-item15[] = {"interrupt_action",2,250,46.435959,-26.143324,136.435913,23.856653,0.000000,"interrupt action"};
-item16[] = {"player",4,218,-9.926552,-114.697594,80.073448,-64.697586,10.000000,"player"};
-item17[] = {"_",8,218,65.989426,70.983078,117.941521,99.388313,5.000000,""};
-item18[] = {"go_work",4,218,307.360077,-260.220886,397.360077,-210.220947,70.000000,"go work"};
-item19[] = {"go_home",4,218,336.617432,-196.416534,426.617432,-146.416504,60.000000,"go home"};
-item20[] = {"work",4,218,207.275085,216.567307,297.275055,266.567261,60.000000,"work"};
-item21[] = {"move_to_work",2,250,413.392975,235.851746,503.392883,285.851746,0.000000,"move to work"};
-item22[] = {"home",4,218,156.288269,264.830383,246.288269,314.830444,50.000000,"home"};
-item23[] = {"move_to_home",2,250,413.223114,310.815979,503.223145,360.815979,0.000000,"move to home"};
-item24[] = {"look_at",4,218,243.743164,-299.747253,333.743042,-249.747238,80.000000,"look at"};
-item25[] = {"serve",4,218,255.761963,161.793167,345.761963,211.793152,70.000000,"serve"};
-item26[] = {"look_at",2,250,413.247467,161.793198,503.247498,211.793228,0.000000,"look at"};
-item27[] = {"no_decisiion",4,218,43.318466,-259.367737,133.318466,-209.367737,10.000000,"no decisiion"};
-item28[] = {"interrupt",4,218,260.859833,95.188545,350.859772,145.188568,75.000000,"interrupt"};
-item29[] = {"trade",2,250,417.104889,93.986702,507.104858,143.986725,0.000000,"trade"};
-item30[] = {"vehicle",4,218,92.595787,-99.516922,182.595795,-49.516922,5.000000,"vehicle"};
-item31[] = {"____FAKE____",9,1240,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
-link0[] = {0,9};
-link1[] = {1,2};
+item0[] = {"trader",0,250,-200.000000,-275.000000,-100.000000,-225.000000,0.000000,"trader"};
+item1[] = {"_",8,218,50.000000,375.000000,150.000000,425.000000,5.000000,""};
+item2[] = {"decision",2,250,175.000000,-200.000000,275.000000,-150.000000,0.000000,"decision"};
+item3[] = {"decision_made",4,218,175.000000,-25.000000,275.000000,25.000000,100.000000,"decision made"};
+item4[] = {"action",2,250,50.000000,125.000000,150.000000,175.000000,0.000000,"action"};
+item5[] = {"actioned",4,218,-200.000000,125.000000,-100.000000,175.000000,100.000000,"actioned"};
+item6[] = {"dispose",4,218,125.000000,-325.000000,225.000000,-275.000000,90.000000,"dispose"};
+item7[] = {"reset_vars",2,250,-75.000000,-200.000000,25.000000,-150.000000,0.000000,"reset vars"};
+item8[] = {"_",8,218,-75.000000,-25.000000,25.000000,25.000000,5.000000,""};
+item9[] = {"met",4,218,-200.000000,-125.000000,-100.000000,-75.000000,10.000000,"met"};
+item10[] = {"_",8,218,50.000000,50.000000,150.000000,100.000000,5.000000,""};
+item11[] = {"end",1,250,425.000000,25.000000,525.000000,75.000000,0.000000,"end"};
+item12[] = {"dispose",4,218,250.000000,25.000000,350.000000,75.000000,80.000000,"dispose"};
+item13[] = {"criteria",2,250,-200.000000,-25.000000,-100.000000,25.000000,0.000000,"criteria"};
+item14[] = {"interrupt_action",2,250,50.000000,-25.000000,150.000000,25.000000,0.000000,"interrupt action"};
+item15[] = {"player",4,218,50.000000,-125.000000,150.000000,-75.000000,10.000000,"player"};
+item16[] = {"_",8,218,50.000000,-200.000000,150.000000,-150.000000,5.000000,""};
+item17[] = {"go_work",4,218,307.360077,-260.220886,397.360077,-210.220947,70.000000,"go work"};
+item18[] = {"go_home",4,218,350.000000,-200.000000,450.000000,-150.000000,60.000000,"go home"};
+item19[] = {"work",4,218,175.000000,250.000000,275.000000,300.000000,60.000000,"work"};
+item20[] = {"move_to_work",2,4346,425.000000,250.000000,525.000000,300.000000,0.000000,"move to work"};
+item21[] = {"home",4,218,100.000000,300.000000,200.000000,350.000000,50.000000,"home"};
+item22[] = {"move_to_home",2,250,425.000000,325.000000,525.000000,375.000000,0.000000,"move to home"};
+item23[] = {"look_at",4,218,225.000000,-300.000000,325.000000,-250.000000,80.000000,"look at"};
+item24[] = {"serve",4,218,225.000000,175.000000,325.000000,225.000000,70.000000,"serve"};
+item25[] = {"look_at",2,250,425.000000,175.000000,525.000000,225.000000,0.000000,"look at"};
+item26[] = {"no_decisiion",4,218,50.000000,-275.000000,150.000000,-225.000000,85.000000,"no decisiion"};
+item27[] = {"interrupt",4,218,250.000000,100.000000,350.000000,150.000000,75.000000,"interrupt"};
+item28[] = {"trade",2,250,425.000000,100.000000,525.000000,150.000000,0.000000,"trade"};
+item29[] = {"_",8,218,-200.000000,-200.000000,-100.000000,-150.000000,5.000000,""};
+link0[] = {0,29};
+link1[] = {1,4};
 link2[] = {2,3};
 link3[] = {2,6};
-link4[] = {2,18};
-link5[] = {2,19};
-link6[] = {2,24};
-link7[] = {2,27};
+link4[] = {2,17};
+link5[] = {2,18};
+link6[] = {2,23};
+link7[] = {2,26};
 link8[] = {3,4};
 link9[] = {4,5};
-link10[] = {4,13};
-link11[] = {4,20};
-link12[] = {4,22};
-link13[] = {4,25};
-link14[] = {4,28};
-link15[] = {5,14};
+link10[] = {4,12};
+link11[] = {4,19};
+link12[] = {4,21};
+link13[] = {4,24};
+link14[] = {4,27};
+link15[] = {5,13};
 link16[] = {6,2};
-link17[] = {7,4};
-link18[] = {8,1};
-link19[] = {9,8};
-link20[] = {10,8};
-link21[] = {11,15};
-link22[] = {13,12};
-link23[] = {14,10};
-link24[] = {14,11};
-link25[] = {15,16};
-link26[] = {15,17};
+link17[] = {7,16};
+link18[] = {8,14};
+link19[] = {9,7};
+link20[] = {10,4};
+link21[] = {12,11};
+link22[] = {13,8};
+link23[] = {13,9};
+link24[] = {14,10};
+link25[] = {14,15};
+link26[] = {15,2};
 link27[] = {16,2};
-link28[] = {17,4};
+link28[] = {17,2};
 link29[] = {18,2};
-link30[] = {19,2};
-link31[] = {20,21};
-link32[] = {21,7};
-link33[] = {22,23};
-link34[] = {23,7};
-link35[] = {24,2};
-link36[] = {25,26};
+link30[] = {19,20};
+link31[] = {20,1};
+link32[] = {21,22};
+link33[] = {22,1};
+link34[] = {23,2};
+link35[] = {24,25};
+link36[] = {25,1};
 link37[] = {26,7};
-link38[] = {27,8};
-link39[] = {28,29};
+link38[] = {27,28};
+link39[] = {28,1};
 link40[] = {29,7};
-link41[] = {30,31};
-link42[] = {31,30};
-globals[] = {0.000000,0,0,0,16777215,640,480,1,87,6316128,1,-502.690430,745.430603,554.197327,-319.194641,1279,895,1};
-window[] = {2,1920,0,-1,-1,659,2115,3140,134,3,1297};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,92,6316128,1,-256.926910,577.747742,523.678101,-359.150879,832,880,1};
+window[] = {2,-1,-1,-1,-1,603,1758,2783,78,3,850};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -95,20 +91,22 @@ class FSM
        "_trgt = objNull;" \n
        "" \n
        "_trader disableAI ""FSM"";" \n
+       "_trader disableAI ""TARGET"";" \n
+       "_trader disableAI ""AUTOTARGET"";" \n
        "_trader setBehaviour ""CARELESS"";" \n
-       "_trader setCombatMode ""RED"";" \n
-       "_trader setSkill 0;" \n
+       "_trader setCombatMode ""BLUE"";" \n
        "" \n
-       "_traderNames=[""Aaron"",""Kenneth"",""Paul"",""Darren"",""Damian"",""Niklas"",""Andrew"",""Nigel"",""Harry"",""Phil"",""Antony"",""Dave"",""Hammish"",""Dickie"",""Peter"",""Conor""];" \n
+       "_traderNames=[""Aaron"",""Kenneth"",""Paul"",""Darren"",""Damian"",""Niklas"",""Andrew"",""Nigel"",""Harry"",""Phil"",""Antony"",""Dave"",""Hammish"",""Richard"",""Peter"",""Conor""];" \n
        "_traderName = _traderNames select (floor(random count _traderNames));" \n
        "" \n
-       "_trgtArray = [""Epoch_Male_F"",""Epoch_Female_F""];" \n
+       "_trgtArray = [""Epoch_Man_base_F"",""Epoch_Female_base_F""];" \n
        "_tRange = 20;//Travel Range - Pause if players within range when travelling home" \n
        "_sRange = 10;//Serve Range - Look at players within this distance" \n
        "_maxTravelTime = 480;//Max time before process times out and continues, after moving. moveToCompleted will timeout before this." \n
        "_atWork = false;" \n
        "_atHome = true;" \n
-       "" \n
+       "_lastDir = getDir _trader;" \n
+       "_l = diag_tickTime;" \n
        "" \n
        "" \n
        "" \n
@@ -121,11 +119,11 @@ class FSM
         /*%FSM<LINK "_">*/
         class _
         {
-          priority = 0.000000;
+          priority = 5.000000;
           to="reset_vars";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -135,15 +133,7 @@ class FSM
     class decision
     {
       name = "decision";
-      init = /*%FSM<STATEINIT""">*/"_traderPos = getPosATL _trader;" \n
-       "_daytime = daytime;" \n
-       "_nrPlyrs = (getPosATL _trader) nearEntities [_trgtArray, _sRange];" \n
-       "" \n
-       "//systemChat format [""D:%1"",diag_tickTime];" \n
-       "" \n
-       "" \n
-       "" \n
-       ""/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -168,13 +158,23 @@ class FSM
            "_decisionMade = true;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
+        /*%FSM<LINK "no_decisiion">*/
+        class no_decisiion
+        {
+          priority = 85.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_decisionMade && diag_tickTime - _t > 3;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
         /*%FSM<LINK "look_at">*/
         class look_at
         {
           priority = 80.000000;
           to="decision";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"count _nrPlyrs >0;"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"count _nrPlyrs >0 && diag_tickTime - _l > 3;"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_servePlyr = true;" \n
            "_decisionMade = true;" \n
            "_trgt = _nrPlyrs select 0;"/*%FSM</ACTION""">*/;
@@ -202,16 +202,6 @@ class FSM
            "_decisionMade = true;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "no_decisiion">*/
-        class no_decisiion
-        {
-          priority = 10.000000;
-          to="reset_vars";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!_decisionMade;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
       };
     };
     /*%FSM</STATE>*/
@@ -219,9 +209,7 @@ class FSM
     class action
     {
       name = "action";
-      init = /*%FSM<STATEINIT""">*/"_nrPlyrs = (getPosATL _trader) nearEntities [_trgtArray, _tRange];" \n
-       "" \n
-       "//systemChat format [""A:%1"",diag_tickTime];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_nrPlyrs = (getPosATL _trader) nearEntities [_trgtArray, _tRange];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -314,18 +302,22 @@ class FSM
        "_servePlyr = false;" \n
        "_override = false;" \n
        "" \n
-       "_criteriaMetAction = nil;"/*%FSM</STATEINIT""">*/;
+       "_criteriaMetAction = nil;" \n
+       "" \n
+       "_traderPos = getPosATL _trader;" \n
+       "_daytime = daytime;" \n
+       "_nrPlyrs = (getPosATL _trader) nearEntities [_trgtArray, _sRange];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
         /*%FSM<LINK "_">*/
         class _
         {
-          priority = 0.000000;
+          priority = 5.000000;
           to="decision";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -335,7 +327,7 @@ class FSM
     class end
     {
       name = "end";
-      init = /*%FSM<STATEINIT""">*/"diag_log format[""KILLED: %1"", (!alive _trader)];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""KILLED TRADER: %1"", (!alive _trader)];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -369,7 +361,7 @@ class FSM
           to="interrupt_action";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -402,7 +394,7 @@ class FSM
           to="action";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -423,21 +415,26 @@ class FSM
        "" \n
        "_marker = _trader getVariable[""MARKER_REF"",""""];" \n
        "if (_marker != """") then {" \n
-       "	_marker setMarkerPos (getPosATL _trader);" \n
+       "	deleteMarker _marker;" \n
+       "	_pos = getPosATL _trader;" \n
+       "	_marker = createMarker [str(_pos), (_pos)];" \n
+       "	_marker setMarkerShape ""ICON"";" \n
+       "	_marker setMarkerType ""mil_dot"";" \n
+       "	_marker setMarkerColor ""ColorBrown"";" \n
+       "	_trader setVariable[""MARKER_REF"", _marker];" \n
        "};" \n
-       "" \n
-       "axeDo = ""Move to Work"";"/*%FSM</STATEINIT""">*/;
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
         /*%FSM<LINK "_">*/
         class _
         {
-          priority = 0.000000;
+          priority = 5.000000;
           to="action";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -458,21 +455,26 @@ class FSM
        "" \n
        "_marker = _trader getVariable[""MARKER_REF"",""""];" \n
        "if (_marker != """") then {" \n
-       "	_marker setMarkerPos (getPosATL _trader);" \n
+       "	deleteMarker _marker;" \n
+       "	_pos = getPosATL _trader;" \n
+       "	_marker = createMarker [str(_pos), (_pos)];" \n
+       "	_marker setMarkerShape ""ICON"";" \n
+       "	_marker setMarkerType ""mil_dot"";" \n
+       "	_marker setMarkerColor ""ColorBrown"";" \n
+       "	_trader setVariable[""MARKER_REF"", _marker];" \n
        "};" \n
-       "" \n
-       "axeDo = ""Move to Home"";"/*%FSM</STATEINIT""">*/;
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
         /*%FSM<LINK "_">*/
         class _
         {
-          priority = 0.000000;
+          priority = 5.000000;
           to="action";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -483,25 +485,28 @@ class FSM
     {
       name = "look_at";
       init = /*%FSM<STATEINIT""">*/"if !(isNull _trgt) then {" \n
-       "	_trader setDir ([_trader, _trgt] call BIS_fnc_dirTo);" \n
+       "_dir = [_trader, _trgt] call BIS_fnc_dirTo;" \n
+       "if(_lastDir != _dir)then{" \n
+       "	_trader setDir _dir;" \n
+       "	_lastDir = _dir;" \n
+       "};" \n
        "};" \n
        "_sWait = 1;" \n
        "_actionDone = true;" \n
        "_t = diag_tickTime;" \n
        "_criteria = format [""%1"", true ];" \n
-       "" \n
-       "axeDo = ""Look At"";"/*%FSM</STATEINIT""">*/;
+       "_l = diag_tickTime;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
         /*%FSM<LINK "_">*/
         class _
         {
-          priority = 0.000000;
+          priority = 5.000000;
           to="action";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -527,40 +532,18 @@ class FSM
        "if (_goWork) then {" \n
        "_criteriaMetAction = format [""%1 moveTo %2"",""_trader"",""_work""];" \n
        "};" \n
-       "" \n
-       "axeDo = ""Trade"";"/*%FSM</STATEINIT""">*/;
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
         /*%FSM<LINK "_">*/
         class _
         {
-          priority = 0.000000;
+          priority = 5.000000;
           to="action";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "____FAKE____">*/
-    class ____FAKE____
-    {
-      name = "____FAKE____";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "vehicle">*/
-        class vehicle
-        {
-          priority = 5.000000;
-          to="____FAKE____";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"false;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };

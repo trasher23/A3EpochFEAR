@@ -1,5 +1,5 @@
 class BIS_AddonInfo
 {
 	author="";
-	timepacked="1428228421";
+	timepacked="1435315658";
 };

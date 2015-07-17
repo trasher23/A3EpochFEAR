@@ -10,6 +10,7 @@ timeDifference = 0; // Server uses real time this will allow you to offset just 
 timeMultiplier = 4; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
 lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payout per Epoch loot container.
 // Events
+airDrops = false; // TBA
 WeatherChangeTime = 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
 WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>} 
 events[] = {
@@ -28,14 +29,16 @@ antagonistChanceLoot = 0.18; //9% chance when player click "SEARCH" on a loot ob
 cloneCost = 100; // debt incurred on player death
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
+simulationHandler = false; // When enabled this feature disables simulation on vehicles that are not near players. Can help improve client fps at the cost of server fps. (This is disabled by default now that Arma has fixed the original issue)
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 allowedVehiclesList[] = {
-    // Boats
+	// Boats
 	{"C_Rubberboat_EPOCH",3},
 	{"C_Rubberboat_02_EPOCH",3},
 	{"C_Rubberboat_03_EPOCH",3},
 	{"C_Rubberboat_04_EPOCH",3},
 	{"C_Boat_Civil_01_EPOCH",3},
+
 	{"jetski_epoch",2},
 	{"B_Boat_Armed_02_Minigun_F",2},
 
@@ -49,6 +52,8 @@ allowedVehiclesList[] = {
 	{"C_Hatchback_02_EPOCH",10},
 	{"C_SUV_01_EPOCH",10},
 	{"B_G_Offroad_01_F",5},
+
+
     {"I_G_Offroad_01_F",5},
     {"I_G_Offroad_01_armed_F",3},
 
@@ -95,6 +100,8 @@ allowedVehiclesList[] = {
 	{"B_APC_Wheeled_01_cannon_F",2},
 	{"I_APC_Wheeled_03_cannon_F",2},
 	{"O_APC_Wheeled_02_rcws_F",2},
+
+
 	{"I_APC_tracked_03_cannon_F",1},
 	{"B_APC_Tracked_01_CRV_F",1},
 	
@@ -111,7 +118,7 @@ allowedVehiclesList[] = {
 taxRate = 0.1; // controls the price increase for purchases
 starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "CinderBlocks", "VehicleRepair", "CircuitParts", "ItemCorrugated", "PartPlankPack", "ItemRock", "ItemRope", "ItemStick" }, { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 } }; // Starter Items for fresh spawned trader first array is classnames second is quantity.
 NPCSlotsLimit = 10; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
-forceStaticTraders = false; // disables traders moving from work to home
+forceStaticTraders = true; // disables traders moving from work to home
 
 // Markers
 showEarthQuakes = true; // show mineral viens caused by earthquakes
@@ -122,20 +129,17 @@ SHOW_BOATLOOT = true; // Shows the location of shipwreck loot
 DEBUG_VEH = false; // DEBUG ONLY used to debug spawing of vehicles
 
 // Hive Related
-// 1day=86400, 2days=172800, 4days=345600, 8days=691200
-expiresBuilding = "311040000" // "604800";  // expiration date in seconds for buildings
-expiresPlayer = "311040000" // "2592000";  // expiration date in seconds for players
-expiresBank = "311040000" // "7776000";  // expiration date in seconds for players bank
-expiresVehicle = "311040000" // "604800";  // expiration date in seconds for vehicles
-expiresAIdata = "311040000" // "604800";  // expiration date in seconds for NPC Trader inventory
+expiresBuilding = "311040000";  // expiration date in seconds for buildings
+expiresPlayer = "311040000";  // expiration date in seconds for players
+expiresBank = "311040000";  // expiration date in seconds for players bank
+expiresVehicle = "311040000";  // expiration date in seconds for vehicles
+expiresAIdata = "311040000";  // expiration date in seconds for NPC Trader inventory
 hiveAsync = true; // true = asynchronous hive calls (non blocking), false = synchronous hive calls (blocking)
 
 // Admin Features
 hiveAdminCmdExec = false; // true = enables extra (To Be Released) feature to allow execution of code via hive.
 hiveAdminSavePlayerList = true; // true = enables saving of playerUID array to hive value PLAYERS:#InstanceID.
 hiveAdminCmdTime = 5; // how many seconds between each command queue call.
-
-
 // N8M4RE Persistence
 PersistenceTablePrefix = "PERSIST";     // change will create a new table in db
 
