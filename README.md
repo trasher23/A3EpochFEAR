@@ -9,8 +9,8 @@ Epoch:          http://epochmod.com/
 A3AI:           https://github.com/dayzai/A3EAI
 VEMF:           https://github.com/IT07/A3_VEMF_Reloaded
 WAI:            https://github.com/nerdalertdk/WICKED-AI
-
 SDROP:          https://github.com/tdavison70/Helicopter-Supply-Drop
+
 persistence:    https://github.com/n8m4re/A3_Epoch_PersistenceAddon
 cmEarplugs:     https://github.com/computermancer/cmEarplugs
 spawn:          https://github.com/Halvhjearne/halv_spawn
