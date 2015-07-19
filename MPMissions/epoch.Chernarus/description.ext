@@ -7,7 +7,6 @@
 // Crafting https://github.com/GBR-Suppe/cfgCrafting-Master
 #include "cfgCrafting.hpp"
 
-
 author = "Epoch Mod Team";
 class Header
 {
@@ -59,8 +58,8 @@ class CfgEpochClient
 	buildingNearbyMilitaryRange = 300; //Define radius of blocked area
 
 	buildingRequireJammer = 0; // 1 = to allow building without a jammer 
-	buildingCountLimit = 200; // how many objects can be built within range of a jammer 
-	buildingJammerRange = 75; // jammer range in meters 
+	buildingCountLimit = 500; // how many objects can be built within range of a jammer 
+	buildingJammerRange = 100; // jammer range in meters 
 	
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
 

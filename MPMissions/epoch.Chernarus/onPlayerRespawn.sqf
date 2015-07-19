@@ -44,3 +44,10 @@ if (cmEarplugsKeyPressEnabled) then {
 };
 //cmEARPLUGS CODE END
 //////////////////////////////////////////////////////////////////////////
+
+// Temp fix for 0.3.0.4 issue, they forgot to enable environment sounds...
+waitUntil {vehicle player == player};
+waituntil {!isnull (finddisplay 46)};
+waitUntil {alive vehicle player};	
+waitUntil {typeOF player != "VirtualMan_EPOCH"};
+enableEnvironment true;

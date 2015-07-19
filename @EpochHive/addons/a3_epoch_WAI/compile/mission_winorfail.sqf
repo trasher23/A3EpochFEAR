@@ -46,7 +46,7 @@ if(isServer) then {
 	publicVariable "RemoteMessage";
 	*/
 	_msg = ["Activity sighted...",_msgstart];
-	_alert = [_msg] call VEMFBroadcast;
+	_alert = [_msg] call FEARBroadcast;
 	
 	markerready = true;
 
@@ -203,7 +203,7 @@ if(isServer) then {
 		publicVariable "RemoteMessage";
 		*/
 		_msg = ["Activity sighted...",_msgwin];
-		_alert = [_msg] call VEMFBroadcast;
+		_alert = [_msg] call FEARBroadcast;
 		
 		if (wai_clean_mission) then {
 
@@ -328,7 +328,7 @@ if(isServer) then {
 		publicVariable "RemoteMessage";
 		*/
 		_msg = ["Activity sighted...",_msglose];
-		_alert = [_msg] call VEMFBroadcast;
+		_alert = [_msg] call FEARBroadcast;
 	};
 	
 	_map_marker = (wai_mission_data select _mission) select 1;

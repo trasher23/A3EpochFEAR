@@ -111,7 +111,7 @@ if (isServer) then {
 				publicVariable "RemoteMessage";
 				*/
 				_msg = ["Mission",_msg];
-				_alert = [_msg] call VEMFBroadcast;
+				_alert = [_msg] call FEARBroadcast;
 			} else {
 				[nil,nil,rTitleText,_msg,"PLAIN",10] call RE;
 			};

@@ -133,8 +133,7 @@ cm_EP_LOOP = {
 
 	while {true} do {
 		
-		// Check that player is in a vehicle and not doing a halo jump
-		waitUntil {uisleep 0.5; (vehicle player != player) && (typeOf(vehicle player) != "Steerable_Parachute_F")};
+		waitUntil {uisleep 0.5; vehicle player != player};
 		
 			_cm_whatImInATM = vehicle player;
 			inCaseofDeath = _cm_whatImInATM;
