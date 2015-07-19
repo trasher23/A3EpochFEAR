@@ -30,7 +30,7 @@ _marker = createMarker [format["VEMF_DynaLocInva_ID%1", floor random 9000], (_lo
 _marker setMarkerShape "ICON";
 _marker setMarkerType "b_inf";
 _marker setMarkerColor "ColorEAST";
-_marker setMarkerText format[" %1 INVADED!", _loc select 0];
+_marker setMarkerText format[" %1 CDC kill team!", _loc select 0];
 
 // Usage: COORDS, Radius
 _playerNear = [_loc select 1, 800, _marker, _playerCheck] call VEMF_fnc_waitForPlayers;
