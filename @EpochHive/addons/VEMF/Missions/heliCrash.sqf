@@ -209,4 +209,6 @@ for "_p" from 0 to 7 do
 VEMF_missionCount = VEMF_missionCount - 1;
 
 // Send message to all players
-["Activity sighted...", "A chopper has been downed, check the map.", "", [0], ""] call VEMF_fnc_broadCast;
+//["Activity sighted...", "A chopper has been downed, check the map.", "", [0], ""] call VEMF_fnc_broadCast;
+_msg = ["Activity sighted...","A chopper has been downed, check the map."];
+[_msg] call FEARBroadcast;

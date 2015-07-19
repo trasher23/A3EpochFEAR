@@ -27,6 +27,7 @@ call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
 
 //Continue loading required FEAR script files
 call compile preprocessFileLineNumbers format ["%1\scripts\FEAR_heli_crashes.sqf",FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\scripts\FEAR_Functions.sqf",FEAR_directory];
 /*
 call compile preprocessFileLineNumbers format ["%1\maps\11Outposts.sqf",FEAR_directory];
 call compile preprocessFileLineNumbers format ["%1\maps\BalotaBoatYard.sqf",FEAR_directory];

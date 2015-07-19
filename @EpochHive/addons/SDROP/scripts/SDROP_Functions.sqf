@@ -198,7 +198,7 @@ SDROPBroadcast = {
 	private ["_msg","_alert"];
 	
 	_msg = [_this select 0,_this select 1];
-	_alert = [_msg] call FEARBroadcast;
+	[_msg] call FEARBroadcast;
 };
 
 SDROPSetAIWaypoints = {

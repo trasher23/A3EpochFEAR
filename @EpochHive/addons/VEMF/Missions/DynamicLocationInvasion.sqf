@@ -22,8 +22,10 @@ while {true} do
 };
 
 // Send message to all players
-_msg = format ["A CDC kill team has been spotted in %1", (_loc select 0)];
-["Activity sighted...", _msg, _loc select 0, mapGridPosition (_loc select 1), ""] call VEMF_fnc_broadCast;
+//["Activity sighted...", _msg, _loc select 0, mapGridPosition (_loc select 1), ""] call VEMF_fnc_broadCast;
+_msg = format ["A CDC kill team has been spotted in %1", _loc select 0];
+_msg = ["Activity sighted...",_msg];
+[_msg] call FEARBroadcast;
 
 // Create/place the marker
 _marker = createMarker [format["VEMF_DynaLocInva_ID%1", floor random 9000], (_loc select 1)];
@@ -48,7 +50,9 @@ if (typeName _spawned isEqualTo "BOOL") exitWith
 {
 	diag_log "[VEMF] DynamicLocationInvasion: ERROR, fn_spawnAI returned invalid data. Exiting...";
 	deleteMarker _marker;
-	["Mission done fucked up!", "fn_spawnAI FAILED!", _loc select 0, mapGridPosition (_loc select 1), ""] call VEMF_fnc_broadCast;
+	//["Mission done fucked up!", "fn_spawnAI FAILED!", _loc select 0, mapGridPosition (_loc select 1), ""] call VEMF_fnc_broadCast;
+	_msg = ["Mission done fucked up!", "fn_spawnAI FAILED!"];
+	[_msg] call FEARBroadcast;
 };
 _grpArr = _spawned select 1;
 _unitArr = _spawned select 2;
@@ -63,8 +67,10 @@ if not(_done) exitWith
 };
 
 // Rewards
-_msg = format ["%1 liberated!", (_loc select 0)];
-[_msg, "Check for supplies...", _loc select 0, mapGridPosition (_loc select 1), ""] call VEMF_fnc_broadCast;
+//[_msg, "Check for supplies...", _loc select 0, mapGridPosition (_loc select 1), ""] call VEMF_fnc_broadCast;
+_msg = format ["%1 liberated!", _loc select 0];
+_msg = [_msg,"Check for supplies..."];
+[_msg] call FEARBroadcast;
 
 // Choose a box
 _boxes = ["I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F","I_supplyCrate_F","Box_East_AmmoVeh_F","Box_NATO_AmmoVeh_F"];

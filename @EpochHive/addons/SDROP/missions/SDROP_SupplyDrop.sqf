@@ -144,7 +144,7 @@ if (SDROP_Debug) then {
 //Announce a drop is inbound to all players
 _title = "Supply Helicopter Inbound!";
 _subTitle = "A chopper carrying survivor equipment has been spotted.";
-[_title,_subTitle] call SDROPBroadcast;
+_alert = [_title,_subTitle] call SDROPBroadcast;
 
 //if we're crashing, we need to destroy the crew and helicopter, and restart mission params
 if (_heliWillCrash) exitWith {

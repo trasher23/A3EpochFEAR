@@ -24,7 +24,7 @@ class osefStatusBar {
 			size = 0.03;
 			type = 13;
 			style = 0;
-			text="Loading statusBar...";
+			text="";
 			class Attributes {
 				align="right";
 				color = "#58FA58";

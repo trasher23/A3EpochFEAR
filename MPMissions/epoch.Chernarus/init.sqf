@@ -2,17 +2,17 @@ if !( isServer || isDedicated ) then {
 	
 	waitUntil{(isPlayer player) && (alive player) && !isNil "EPOCH_loadingScreenDone"};
 	
-	/* All broadcasts, uses VEMF missions
+	/* All broadcasts, uses VEMF missions [title, type]
 	-----------------------------------------------------------
 	*/
 	"VEMFChatMsg" addPublicVariableEventHandler {
 		playSound "RadioAmbient6";
-		systemChat ((_this select 1) select 0); // _title
+		systemChat ((_this select 1) select 0);
 		[
 			[
-				[((_this select 1) select 0),"align = 'center' size = '1' font='PuristaBold'"], //_title
+				[((_this select 1) select 0),"align = 'center' size = '1' font='PuristaBold'"],
 				["","<br/>"],
-				[((_this select 1) select 1),"align = 'center' size = '0.5'"] // _type
+				[((_this select 1) select 1),"align = 'center' size = '0.5'"]
 			]
 		] spawn BIS_fnc_typeText2;
 		VEMFChatMsg = nil;
@@ -62,7 +62,7 @@ if !( isServer || isDedicated ) then {
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";				// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";			// Random sound fx
 	[] execVM "wai\remote.sqf";								// Wicked AI
-	[] execVM "service_point\service_point.sqf";			// Service point
+	[] execVM "service_point\service_point.sqf";			// http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
 	[] execVM "paintshop\paintshop.sqf";					// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
 	// --------------------------------------------------------
