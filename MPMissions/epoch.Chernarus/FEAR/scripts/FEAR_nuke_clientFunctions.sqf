@@ -194,6 +194,14 @@ FEAR_fnc_nukeAsh = {
 	};
 };
 
+FEAR_fnc_nukeGeiger = {
+	private ["_nukeGeiger"];
+	
+	_nukeGeiger = MISSION_directory + "FEAR\fx\" + "geiger.ogg";
+	
+	playSound3D [_nukeGeiger, player, false, getPosASL player, 1, 1, 0];
+};
+
 KK_fnc_inString = {
     /*
     Author: Killzone_Kid

@@ -36,6 +36,12 @@ if !( isServer || isDedicated ) then {
 		[random 4] spawn BIS_fnc_earthquake;
 		NUKEQuake = nil;
 	};
+	
+	"NUKEGeiger" addPublicVariableEventHandler {
+		[] spawn FEAR_fnc_nukeGeiger;
+		NUKEGeiger = nil;
+	};
+	
 	// --------------------------------------------------------
 	
 	/* 	N8M4RE Persistence https://github.com/n8m4re/A3_Epoch_PersistenceAddon

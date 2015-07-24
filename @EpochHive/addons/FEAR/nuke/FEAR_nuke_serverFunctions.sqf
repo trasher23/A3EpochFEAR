@@ -104,6 +104,15 @@ FEAR_fnc_nukeRadDamage = {
 		{
 			_x setDammage (getDammage _x + 0.01); // original value: 0.03
 		} forEach (nukeMarkerCoords nearEntities [["All"], nukeRadius]);
+		
+		// Play Geiger counter sound, which is 5 seconds in length
+		{
+			// if player and player distance is within nukeRadius
+			if ((isPlayer _x) && (player distance nukeMarkerCoords <= nukeRadius)) then {
+				(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
+			};
+		} forEach playableUnits;
+		
 		uisleep 5;
 	};
 };

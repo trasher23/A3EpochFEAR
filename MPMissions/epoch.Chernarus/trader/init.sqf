@@ -26,7 +26,7 @@ _dist2roadMax = 350;
 
 //amount of traders to build
 //_tradercount = round(random 4)+6;
-_tradercount = round(random 2);
+_tradercount = 1;
 //min distance from other traders in meters, dont go to higher than _spawnarea/(_tradercount+1) or script will just revert back to this amount to avoid problems 
 _mindist = 4000;
 //marker text for traders. "" for no name(only the dot)

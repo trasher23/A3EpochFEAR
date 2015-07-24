@@ -16,6 +16,7 @@ _alltext = [
 		[
 			//Sub Text(s)
 			"No bullshit PVP/PVE",
+			"AI is a bitch",
 			"Fuck Everything and RUN!"
 		]
 	]

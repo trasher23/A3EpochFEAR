@@ -41,7 +41,7 @@ _geararr = [
 	[
 //this is the array for "tool" items the player can choose from, this has to be "item" type items
 		[
-			"FAK","FAK","Heal_EPOCH","Defib_EPOCH","Repair_EPOCH","MeleeSledge","Plunger"
+			"FAK","Heal_EPOCH","Defib_EPOCH","Repair_EPOCH","MeleeSledge","Plunger"
 		],
 //this is how many "tool" items the player is allowed to choose
 		2
@@ -49,8 +49,7 @@ _geararr = [
 //this is the array of "weapon" items the player can choose from, this has to be "weapon" type items
 	[
 		[
-			"EpochRadio0","EpochRadio1","EpochRadio2","EpochRadio3","EpochRadio4","EpochRadio5","EpochRadio6","EpochRadio7","EpochRadio8","EpochRadio9",
-			"ItemCompass","ItemWatch","Binocular","ItemMap","NVG_EPOCH","ItemGPS"
+			"EpochRadio0","ItemCompass","ItemWatch","Binocular","ItemMap","NVG_EPOCH","ItemGPS"
 		],
 //this is how many "weapon" items the player is allowed to choose
 		3

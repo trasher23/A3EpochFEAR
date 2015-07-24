@@ -19,9 +19,9 @@ class VEMFconfig
 	minPlayers = 1; // Missions will not start until player count reaches this number
 	maxMissions = 4; // Max amount of missions that are allowed to run at the same time
 	timeOut = 1; // Set to 0 if you do not want missions to timeout
- 	timeOutTime = 25; // In minutes. Ignore if useTimeout = 0;
+ 	timeOutTime = 30; // In minutes. Ignore if useTimeout = 0;
 	minMissionTime = 3; // Minimum time before next mission can run
-	maxMissionTime = 5; // Maximum time before next mission can run
+	maxMissionTime = 15; // Maximum time before next mission can run
 	//missionList[] = {"DynamicLocationInvasion","heliCrash"}; // Speaks for itself, right?
 	missionList[] = {"DynamicLocationInvasion","heliCrash"}; // Speaks for itself, right?
 	addons[] = {}; // Not used for now

@@ -142,7 +142,7 @@ A3EAI_tempNVGs = false;
 A3EAI_GLRequirement = 1;	
 
 //Minimum AI unit level requirement to use launcher weapons. Set to -1 to disable completely. (Default: -1)
-A3EAI_launcherLevelReq = 1;	
+A3EAI_launcherLevelReq = 2;	
 
 //List of launcher-type weapons that AI can use.
 A3EAI_launcherTypes = ["launch_NLAW_F","launch_RPG32_F","launch_B_Titan_F","launch_I_Titan_F","launch_O_Titan_F","launch_B_Titan_short_F","launch_I_Titan_short_F","launch_O_Titan_short_F"];	
@@ -378,7 +378,7 @@ A3EAI_UAVList = [
 ];
 
 //Probability of spawning Level 0/1/2/3 UAV spawns. Probabilities should add up to 1.00	
-A3EAI_levelChancesUAV = [0.70,0.20,0.05,0.00];	
+A3EAI_levelChancesUAV = [0.80,0.10,0.05,0.05];	
 
 //Set minimum and maximum wait time in seconds to respawn a UAV after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnUAVMinTime = 600;
@@ -410,7 +410,7 @@ A3EAI_UGVList = [
 ];
 
 //Probability of spawning Level 0/1/2/3 AI UGV spawns. Probabilities should add up to 1.00	
-A3EAI_levelChancesUGV = [0.75,0.20,0.5,0.00];	
+A3EAI_levelChancesUGV = [0.80,0.10,0.5,0.05];	
 
 //Set minimum and maximum wait time in seconds to respawn a UGV patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnUGVMinTime = 600;
@@ -420,7 +420,7 @@ A3EAI_respawnUGVMaxTime = 900;
 A3EAI_UGVCallReinforceCooldown = 1800;
 
 //Probability to successfully detect player if there is line-of-sight. If at least one player is detected, air reinforcements will be summoned to the area. (Default: 0.50)
-A3EAI_UGVDetectChance = 0.35;
+A3EAI_UGVDetectChance = 0.30;
 
 
 /*	Shared AI Vehicle Settings
@@ -430,7 +430,8 @@ A3EAI_UGVDetectChance = 0.35;
 
 //Add name of location as displayed on map prevent AI vehicle patrols from travelling to these locations. Location names are case-sensitive. (Example: ["Aggelochori","Panochori","Zaros"])
 //Note: Vehicles may still pass through these areas but will not make stops unless enemies are encountered.
-A3EAI_waypointBlacklist = [];
+A3EAI_waypointBlacklistAir = []; //Affects Air vehicles (including UAVs)
+A3EAI_waypointBlacklistLand = [];  //Affects Air vehicles (including UGVs)
 
 
 /*
@@ -448,56 +449,56 @@ A3EAI_waypointBlacklist = [];
 	Hint: For all skill types, higher number = better skill. For skill sub-type explanation, see: https://community.bistudio.com/wiki/AI_Sub-skills
 */
 
-//AI skill settings level 0 (Skill, Minimum skill, Maximum skill). Baseline skill level: 0.40
+//AI skill settings level 0 (Skill, Minimum skill, Maximum skill). Defaults: Accuracy 0.05-0.10, Others 0.30-0.50
 A3EAI_skill0 = [	
 	["aimingAccuracy",0.05,0.10],
-	["aimingShake",0.40,0.50],
-	["aimingSpeed",0.40,0.50],
-	["spotDistance",0.40,0.50],
-	["spotTime",0.40,0.50],
-	["courage",0.40,0.50],
-	["reloadSpeed",0.40,0.50],
-	["commanding",0.40,0.50],
-	["general",0.40,0.50]
+	["aimingShake",0.30,0.50],
+	["aimingSpeed",0.30,0.50],
+	["spotDistance",0.30,0.50],
+	["spotTime",0.30,0.50],
+	["courage",0.30,0.50],
+	["reloadSpeed",0.30,0.50],
+	["commanding",0.30,0.50],
+	["general",0.30,0.50]
 ];
 
-//AI skill settings level 1 (Skill, Minimum skill, Maximum skill). Baseline skill level: 0.50
+//AI skill settings level 1 (Skill, Minimum skill, Maximum skill). Defaults: Accuracy 0.10-0.15, Others 0.40-0.60
 A3EAI_skill1 = [	
 	["aimingAccuracy",0.10,0.15],
-	["aimingShake",0.50,0.60],
-	["aimingSpeed",0.50,0.60],
-	["spotDistance",0.50,0.60],
-	["spotTime",0.50,0.60],
-	["courage",0.50,0.60],
-	["reloadSpeed",0.50,0.60],
-	["commanding",0.50,0.60],
-	["general",0.50,0.60]
+	["aimingShake",0.40,0.60],
+	["aimingSpeed",0.40,0.60],
+	["spotDistance",0.40,0.60],
+	["spotTime",0.40,0.60],
+	["courage",0.40,0.60],
+	["reloadSpeed",0.40,0.60],
+	["commanding",0.40,0.60],
+	["general",0.40,0.60]
 ];
 
-//AI skill settings level 2 (Skill, Minimum skill, Maximum skill). Baseline skill level: 0.60
+//AI skill settings level 2 (Skill, Minimum skill, Maximum skill). Defaults: Accuracy 0.15-0.20, Others 0.50-0.70
 A3EAI_skill2 = [	
 	["aimingAccuracy",0.15,0.20],
-	["aimingShake",0.60,0.70],
-	["aimingSpeed",0.60,0.70],
-	["spotDistance",0.60,0.70],
-	["spotTime",0.60,0.70],
-	["courage",0.60,0.70],
-	["reloadSpeed",0.60,0.70],
-	["commanding",0.60,0.70],
-	["general",0.60,0.70]
+	["aimingShake",0.50,0.70],
+	["aimingSpeed",0.50,0.70],
+	["spotDistance",0.50,0.70],
+	["spotTime",0.50,0.70],
+	["courage",0.50,0.70],
+	["reloadSpeed",0.50,0.70],
+	["commanding",0.50,0.70],
+	["general",0.50,0.70]
 ];
 
-//AI skill settings level 3 (Skill, Minimum skill, Maximum skill). Baseline skill level: 0.70
+//AI skill settings level 3 (Skill, Minimum skill, Maximum skill). Defaults: Accuracy 0.20-0.25, Others 0.60-0.80
 A3EAI_skill3 = [	
 	["aimingAccuracy",0.20,0.25],
-	["aimingShake",0.70,0.80],
-	["aimingSpeed",0.70,0.80],
-	["spotDistance",0.70,0.80],
-	["spotTime",0.70,0.80],
-	["courage",0.70,0.80],
-	["reloadSpeed",0.70,0.80],
-	["commanding",0.70,0.80],
-	["general",0.70,0.80]
+	["aimingShake",0.60,0.80],
+	["aimingSpeed",0.60,0.80],
+	["spotDistance",0.60,0.80],
+	["spotTime",0.60,0.80],
+	["courage",0.60,0.80],
+	["reloadSpeed",0.60,0.80],
+	["commanding",0.60,0.80],
+	["general",0.60,0.80]
 ];
 
 
@@ -547,6 +548,10 @@ A3EAI_kryptoAmount0 = 50; 	//Default for level 0 AI: 50
 A3EAI_kryptoAmount1 = 75; 	//Default for level 1 AI: 75
 A3EAI_kryptoAmount2 = 100; 	//Default for level 2 AI: 100
 A3EAI_kryptoAmount3 = 150; 	//Default for level 3 AI: 150
+
+//Krypto pickup assist time window in seconds. Players must be within 2 meters of a Krypto device for 10 seconds to pick up Krypto automatically. 0: Disabled (Default: 0)
+//After this time limit, players must manually pick up any dropped Krypto.
+A3EAI_kryptoPickupAssist = 1;
 
 //Maximum number of food loot items found on AI. (Default: 1)								
 A3EAI_foodLootCount = 1;

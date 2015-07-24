@@ -169,7 +169,7 @@ _wp setWaypointSpeed "FULL";
 _wp setWaypointLoiterType "CIRCLE";
 _wp setWaypointLoiterRadius 0;
 
-// Wait for _heli to reach 1st destionation
+// Wait for _heli to reach 1st destination
 waitUntil { uiSleep 1; ((_heli distance _dest) < 1000) };
 {
 	[_x] allowGetIn false;
