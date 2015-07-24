@@ -13,14 +13,14 @@ _level2UIDs = [];
 _level1UIDs = _level1UIDs + _level2UIDs;
 
 //Spawn area radius, setting this low might make bis_fnc_findsafepos fail and place the player in the middle of the map
-_area = 1250;
+_area = 500;
 
 //force halo jump or ground spawn 0 = user choice, 1 = forced HALO, 2 = forced Ground
 _HALV_forcespawnMode = 2;
 _jumpheight = 1250;
 
 //this is the distance (in meters) it will check for the players dead bodys, set to -1 to disable
-_bodyCheckDist = 2500;
+_bodyCheckDist = -1;
 
 //execVM script (like credits) on spawn? "pathto\script\filename.sqf" or "" to disable
 _script = "halv_spawn\credits.sqf";

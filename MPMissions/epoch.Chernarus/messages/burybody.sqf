@@ -86,7 +86,7 @@ _mound setPosATL _position;
 	deleteVehicle _mound;
 };
 
-titletext [format["The name was %1, may he or she rest in peace ...",_victimName], "PLAIN DOWN"];
+titletext [format["The name was %1, RIP! ...",_victimName], "PLAIN DOWN"];
 
 player playMoveNow "AmovPercMstpSlowWrflDnon_Salute";
 

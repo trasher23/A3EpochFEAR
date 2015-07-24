@@ -125,12 +125,12 @@ SDROPLoadLootRandom = {
 };
 
 // Crate Blacklist - These are items that should NOT be in random crate - should eliminate most BE filter issues (may need more testing)
+//"NVGoggles_OPFOR", "NVGoggles_INDEP"
 SDROPCrateBlacklist = [
 	"DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag", "ATMine_Range_Mag",
 	"ClaymoreDirectionalMine_Remote_Mag", "APERSMine_Range_Mag",
 	"APERSBoundingMine_Range_Mag", "SLAMDirectionalMine_Wire_Mag",
-	"APERSTripMine_Wire_Mag", "NVGoggles_OPFOR", "NVGoggles_INDEP",
-	"FirstAidKit", "Medikit", "ToolKit", "optic_DMS"
+	"APERSTripMine_Wire_Mag", "FirstAidKit", "Medikit", "ToolKit", "optic_DMS"
 ];
 
 SDROPRandomLoot = {

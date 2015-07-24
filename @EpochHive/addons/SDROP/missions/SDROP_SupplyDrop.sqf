@@ -27,14 +27,18 @@ if (SDROP_HelicopterCrashChance > 0) then {
 
 // ALTIS - north, south, east, west starting locations for supply helicopter
 // these distances are all oceanic spawns
-_posArray = [[15971.3,25950.5,200],[14727.5,3934.5,200],[26869.5,15454.5,200],[1306.16,14832.8,200]];
-
-//random supply helicopter spawn
-_heliSpawnPosition = _posArray call bis_fnc_selectrandom;  
-
+//_posArray = [[15971.3,25950.5,200],[14727.5,3934.5,200],[26869.5,15454.5,200],[1306.16,14832.8,200]];
 //these variables determine a safe location for the supply crate drops
 //using the helicopter spawn as starting point
-_coords = [_heliSpawnPosition,0,-1,30,0,30,0] call BIS_fnc_findSafePos;
+//_heliSpawnPosition = _posArray call bis_fnc_selectrandom; 
+//_coords = [_heliSpawnPosition,0,-1,30,0,30,0] call BIS_fnc_findSafePos;
+
+//CHERNARUS - starting locations
+_posArray = [[72.0000,8184.00,200],[15320.0,7816.00,200],[7528.00,15320.0,200],[6888.00,40.0000,200]]; 
+
+//random supply helicopter spawn
+_mapCenter = [7067.50,7798.63];
+_coords = [_mapCenter,500,5000,30,0,10,0] call BIS_fnc_findSafePos;
 
 uiSleep 5;
 

@@ -243,7 +243,7 @@ A3EAI_minRandSpawnDist = 0;
 A3EAI_maxHeliPatrols = 2;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
-A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
+A3EAI_levelChancesAir = [0.50,0.35,0.15,0.00];	
 
 //Set minimum and maximum wait time in seconds to respawn an AI vehicle patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnAirMinTime = 600;
@@ -288,7 +288,7 @@ A3EAI_paraDropAmount = 3;
 A3EAI_maxLandPatrols = 10;
 
 //Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
-A3EAI_levelChancesLand = [0.00,0.50,0.35,0.15];	
+A3EAI_levelChancesLand = [0.50,0.35,0.15,0.00];	
 
 //Set minimum and maximum wait time in seconds to respawn an AI vehicle patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnLandMinTime = 600;
@@ -365,7 +365,7 @@ A3EAI_airReinforcementDuration3 = 300; //Level 3 Default: 300
 --------------------------------------------------------------------------------------------------------------------*/
 
 //Global maximum number of active UAV patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxUAVPatrols = 2;
+A3EAI_maxUAVPatrols = 1;
 
 //Classnames of UAV types to use, with the maximum amount of each type to spawn.
 A3EAI_UAVList = [
@@ -378,7 +378,7 @@ A3EAI_UAVList = [
 ];
 
 //Probability of spawning Level 0/1/2/3 UAV spawns. Probabilities should add up to 1.00	
-A3EAI_levelChancesUAV = [0.35,0.50,0.15,0.00];	
+A3EAI_levelChancesUAV = [0.70,0.20,0.05,0.00];	
 
 //Set minimum and maximum wait time in seconds to respawn a UAV after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnUAVMinTime = 600;
@@ -388,7 +388,7 @@ A3EAI_respawnUAVMaxTime = 900;
 A3EAI_UAVCallReinforceCooldown = 1800;
 
 //Probability to successfully detect player if there is line-of-sight. If at least one player is detected, air reinforcements will be summoned to the area. (Default: 0.50)
-A3EAI_UAVDetectChance = 0.50;
+A3EAI_UAVDetectChance = 0.30;
 
 
 /*	UGV Patrol Settings
@@ -410,7 +410,7 @@ A3EAI_UGVList = [
 ];
 
 //Probability of spawning Level 0/1/2/3 AI UGV spawns. Probabilities should add up to 1.00	
-A3EAI_levelChancesUGV = [0.35,0.50,0.15,0.00];	
+A3EAI_levelChancesUGV = [0.75,0.20,0.5,0.00];	
 
 //Set minimum and maximum wait time in seconds to respawn a UGV patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnUGVMinTime = 600;
@@ -420,7 +420,7 @@ A3EAI_respawnUGVMaxTime = 900;
 A3EAI_UGVCallReinforceCooldown = 1800;
 
 //Probability to successfully detect player if there is line-of-sight. If at least one player is detected, air reinforcements will be summoned to the area. (Default: 0.50)
-A3EAI_UGVDetectChance = 0.50;
+A3EAI_UGVDetectChance = 0.35;
 
 
 /*	Shared AI Vehicle Settings
