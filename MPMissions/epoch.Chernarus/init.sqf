@@ -65,7 +65,7 @@ if !( isServer || isDedicated ) then {
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
 	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
 	
-	[] execVM "FEAR\scripts\fn_statusBar.sqf";				// Status bar lower screen
+	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";			// Random sound fx
 	[] execVM "wai\remote.sqf";								// Wicked AI
 	[] execVM "service_point\service_point.sqf";			// http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
@@ -74,7 +74,6 @@ if !( isServer || isDedicated ) then {
 	// --------------------------------------------------------
 	
 	#include "A3EAI_Client\A3EAI_initclient.sqf";			// A3AI radio messages
-	
 };
 
 [] execVM "messages\init.sqf";								// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
@@ -84,3 +83,21 @@ if !( isServer || isDedicated ) then {
 [] execVM "halv_spawn\init.sqf";
 [] execVM "trader\init.sqf";
 [] execVM "trader\resetvehicleammo.sqf";
+
+if (!isDedicated && hasInterface) then {
+	// http://epochmod.com/forum/index.php?/topic/34576-release-attach-explosives/
+	while {true} do
+	{
+		waitUntil {alive vehicle player};
+		Sleep 30;
+		[] execVM "FEAR\scripts\EtV.sqf";
+		waitUntil {!isNil "EtVInitialized"};
+		[player] call EtV_Actions;
+				
+		waitUntil {!alive player};
+		Sleep 30;
+		[] execVM "FEAR\scripts\EtV.sqf";
+		waitUntil {!isNil "EtVInitialized"};
+		[player] call EtV_Actions;	
+	};
+};
