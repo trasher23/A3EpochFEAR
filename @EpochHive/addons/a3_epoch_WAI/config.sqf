@@ -29,7 +29,7 @@ if(isServer) then {
 		ai_clean_dead 				= true;			// clear bodies after certain amount of time
 		ai_cleanup_time 			= 3600;			// time to clear bodies in seconds
 		ai_clean_roadkill			= false; 		// clean bodies that are roadkills
-		ai_roadkill_damageweapon	= 10;			// percentage of chance a roadkill will destroy weapon AI is carrying
+		ai_roadkill_damageweapon	= 0;			// percentage of chance a roadkill will destroy weapon AI is carrying
 
 		ai_bandit_combatmode		= "RED";		// combatmode of bandit AI
 		ai_bandit_behaviour			= "COMBAT";		// behaviour of bandit AI

@@ -54,7 +54,7 @@ _pref = []; // Closer then _maxPrefered
 	};
 } forEach _locs;
 
-// Check if there are any prefered locations. If yes, randomly select one
+// Check if there are any preferred locations. If yes, randomly select one
 if (count _pref > 0) then
 {
 	_loc = _pref select floor random count _pref;

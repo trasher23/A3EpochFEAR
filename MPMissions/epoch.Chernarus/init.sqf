@@ -38,7 +38,7 @@ if !( isServer || isDedicated ) then {
 	};
 	
 	"NUKEGeiger" addPublicVariableEventHandler {
-		[] spawn FEAR_fnc_nukeGeiger;
+		[_this select 1] spawn FEAR_fnc_nukeGeiger;
 		NUKEGeiger = nil;
 	};
 	

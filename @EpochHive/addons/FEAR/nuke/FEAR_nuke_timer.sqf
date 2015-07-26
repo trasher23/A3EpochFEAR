@@ -2,6 +2,8 @@ private["_timeDiff"];
 
 // Find the Min and Max time
 _timeDiff = ((nukeTimerMax*60) - (nukeTimerMin*60));
+// Default nukeMarkerCoords to nil
+nukeMarkerCoords = nil;
 
 diag_log "[nuke]: Commencing countdown clock!";
 

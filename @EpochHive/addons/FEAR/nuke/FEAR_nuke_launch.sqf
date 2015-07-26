@@ -1,5 +1,7 @@
 private["_town","_townName","_townPos","_msg"];
 
+if !(isnil "nukeMarkerCoords") exitWith {diag_log "[nuke]: Launch aborted; one already in progress";};
+
 // Get random town
 _town = call FEAR_fnc_nukeTarget;
 _townName = text _town;
@@ -60,7 +62,10 @@ _msg = ["Nuclear Strike",_msg];
 [_msg] call FEARBroadcast;
 
 // Activate radiation zone
-[] call FEAR_fnc_nukeRadDamage;
+[_townPos] spawn FEAR_fnc_nukeRadDamage;
+
+// Sleep 15 minutes
+uisleep 900;
 
 // Remove RadZone map markers
 deleteMarker "RADMarkerR";

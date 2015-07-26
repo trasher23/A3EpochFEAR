@@ -99,20 +99,20 @@ FEAR_fnc_radAddMarker = {
 };
 
 FEAR_fnc_nukeRadDamage = {	
+	private["_coords"];
+	
+	_coords = _this select 0;
+	NUKEGeiger = "Land_HelipadEmpty_F" createVehicle _coords;
+	
 	// Endurance of Radiation in air = 15 minutes = (180 mins * sleep 5)
 	for [{_x = 0},{_x < 180},{_x = _x + 1}] do {
-		{
+		{	
+			// Damage
 			_x setDammage (getDammage _x + 0.01); // original value: 0.03
-		} forEach (nukeMarkerCoords nearEntities [["All"], nukeRadius]);
-		
-		// Play Geiger counter sound, which is 5 seconds in length
-		{
-			// if player and player distance is within nukeRadius
-			if ((isPlayer _x) && (player distance nukeMarkerCoords <= nukeRadius)) then {
-				(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
-			};
-		} forEach playableUnits;
-		
+			// Geiger counter sound within radius
+			(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
+		} forEach (_coords nearEntities [["All"], nukeRadius]);
+
 		uisleep 5;
 	};
 };

@@ -1,7 +1,9 @@
 if(!isDedicated) then {
 	fnc_wai_client = {
 		private ["_type","_position"];
+		
 		_type 		= _this select 0;
+		
 		// Can be used as option variable
 		if (count _this > 1) then {
 			_position = _this select 1;
@@ -24,11 +26,13 @@ if(!isDedicated) then {
 					playsound "Alarm_BLUFOR";
 				};
 				
-				0 = [_position] execVM "wai\nuke.sqf";
-				// [_position] spawn FEAR_fnc_nukeImpact;
+				uisleep 10;
+				
+				[_position] spawn FEAR_fnc_nukeImpact;
 			};
 			
-			case "vehiclehit": {
+			case "vehiclehit": 
+			{
 				// Blow front wheels
 				// _position is used as _player
 				diag_log("Blow front wheels");
@@ -39,39 +43,7 @@ if(!isDedicated) then {
 		};
 	
 	};
-	fnc_remote_message = {
 	
-		private ["_type","_message","_player","_items","_radio","_hasRadio","_hint","_i"];
-	
-		_type 		= _this select 0;
-		_message 	= _this select 1;
-		_items 		= assignedItems player;
-		
-		_hint = parseText format["
-		<t align='center' color='#FF0033' shadow='1' size='1.5'>Mission</t><br/>
-		<t size='1.0' align='center' color='#ffffff'>%1</t><br/>",_message];
-
-		call {
-			if(_type == "radio") exitWith {
-				for [{_i=0},{_i<10},{_i=_i+1}] do
-                {
-					_radio = format ["EpochRadio%1",_i];
-                    _hasRadio = _radio in _items;
-                    
-					if (_hasRadio) then {
-						hintSilent _hint;
-						playSound "RadioAmbient6";
-					};
-                };
-			};
-			
-			if(_type == "global") exitWith { systemChat _message; };
-			if(_type == "hint") exitWith { hintSilent _hint; };
-			if(_type == "text") exitWith { 0 =["<t size='0.8' shadow='0' color='#99ffffff'>" + _message + "</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext; };
-		};
-	};
-	
-	"RemoteMessage" addPublicVariableEventHandler { (_this select 1) call fnc_remote_message; };
 	"WAIclient" addPublicVariableEventHandler { (_this select 1) call fnc_wai_client; };
 };
 remote_ready = true;

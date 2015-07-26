@@ -15,15 +15,15 @@ WeatherChangeTime = 1200; // This controls how fast the weather changes as well 
 WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>} 
 events[] = {
     { 3600, "CarnivalSpawner" }, // SECOND <scalar>, EVENT <string>
-    { 1200, "EarthQuake" },
+    { 1800, "EarthQuake" },
     { 1200, "ContainerSpawner" },
-    { 900, "PlantSpawner" } //No comma on last Entry
+    { 1800, "PlantSpawner" } //No comma on last Entry
 };
 
 // Antagonists
-antagonistChanceTrash = 0.18; //9% chance when player loot a trash object
+antagonistChanceTrash = 0.25; //9% chance when player loot a trash object
 antagonistChancePDeath = 0.33; //33% chance when player was killed from a other player (selfkill doesn't count)
-antagonistChanceLoot = 0.18; //9% chance when player click "SEARCH" on a loot object
+antagonistChanceLoot = 0.25; //9% chance when player click "SEARCH" on a loot object
 
 // Player Related
 cloneCost = 100; // debt incurred on player death
