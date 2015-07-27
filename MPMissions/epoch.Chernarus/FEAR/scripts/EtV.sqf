@@ -4,8 +4,6 @@
 
 */
 
-
-
 EtV_ChargeCheck =
 {
 	

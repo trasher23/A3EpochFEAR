@@ -5,7 +5,7 @@
 getSoundFx = {
 	private["_soundArray","_sound"];
 	
-	_soundArray = ["sapper_alert1.ogg","wolfhowl1.ogg","eeriewind.ogg","girlscreaming.ogg","zombienoise1.ogg","childrenlaughing.ogg","babycry1.ogg"];
+	_soundArray = ["sapper_alert1.ogg","wolfhowl1.ogg","eeriewind.ogg","girlscreaming.ogg","zombienoise1.ogg","babycry1.ogg"];
 
 	// Pick a sound from array	
 	_sound = _soundArray call BIS_fnc_selectRandom;

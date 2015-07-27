@@ -14,6 +14,6 @@ _rscLayer cutRsc["osefStatusBar","PLAIN"];
 	while {true} do
 	{
 		sleep 1;		
-		((uiNamespace getVariable "osefStatusBar")displayCtrl 1000)ctrlSetText format["FPS: %1 | PLAYERS: %2 | DAMAGE: %3 | KRYPTO: %4 | HUNGER: %5 | THIRST: %6 | STAMINA: %7 | GRIDREF: %8", round diag_fps, count playableUnits, damage player, EPOCH_playerCrypto, EPOCH_playerHunger, EPOCH_playerThirst, round EPOCH_playerStamina, mapGridPosition player];
+		((uiNamespace getVariable "osefStatusBar")displayCtrl 1000)ctrlSetText format["FPS: %1 | PLAYERS: %2 | DAMAGE: %3 | KRYPTO: %4 | HUNGER: %5 | THIRST: %6 | STAMINA: %7 | GRIDREF: %8", round diag_fps, count playableUnits, round(damage player), EPOCH_playerCrypto, EPOCH_playerHunger, EPOCH_playerThirst, round EPOCH_playerStamina, mapGridPosition player];
 	}; 
 };

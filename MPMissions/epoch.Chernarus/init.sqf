@@ -1,8 +1,8 @@
 if !( isServer || isDedicated ) then {	
 	
-	waitUntil{(isPlayer player) && (alive player) && !isNil "EPOCH_loadingScreenDone"};
+	waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
 	
-	/* All broadcasts, uses VEMF missions [title, type]
+	/* All broadcasts, uses VEMFBroadcast[title, type]
 	-----------------------------------------------------------
 	*/
 	"VEMFChatMsg" addPublicVariableEventHandler {
@@ -17,7 +17,6 @@ if !( isServer || isDedicated ) then {
 		] spawn BIS_fnc_typeText2;
 		VEMFChatMsg = nil;
 	};
-	// --------------------------------------------------------
 	
 	/* Nuke
 	-----------------------------------------------------------
@@ -42,8 +41,6 @@ if !( isServer || isDedicated ) then {
 		NUKEGeiger = nil;
 	};
 	
-	// --------------------------------------------------------
-	
 	/* 	N8M4RE Persistence https://github.com/n8m4re/A3_Epoch_PersistenceAddon
 	-----------------------------------------------------------
 	*/
@@ -56,7 +53,6 @@ if !( isServer || isDedicated ) then {
 		N8M4RE_PERSISTENCE_TAKE = _this;
 		publicVariableServer "N8M4RE_PERSISTENCE_TAKE";
 	}];
-	// --------------------------------------------------------
 	
 	/* Load other scripts
 	-----------------------------------------------------------
@@ -65,13 +61,13 @@ if !( isServer || isDedicated ) then {
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
 	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
 	
-	[] execVM "FEAR\scripts\fn_statusBar.sqf";			// Status bar lower screen
+	[] execVM "FEAR\scripts\fn_statusBar.sqf";				// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";			// Random sound fx
+	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
+	
 	[] execVM "wai\remote.sqf";								// Wicked AI
 	[] execVM "service_point\service_point.sqf";			// http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
-	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
 	[] execVM "paintshop\paintshop.sqf";					// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
-	// --------------------------------------------------------
 	
 	#include "A3EAI_Client\A3EAI_initclient.sqf";			// A3AI radio messages
 };

@@ -109,10 +109,16 @@ FEAR_fnc_nukeRadDamage = {
 		{	
 			// Damage
 			_x setDammage (getDammage _x + 0.01); // original value: 0.03
+			
 			// Geiger counter sound within radius
-			(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
+			if (isPlayer _x) then {
+				(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
+			};
+			
 		} forEach (_coords nearEntities [["All"], nukeRadius]);
 
 		uisleep 5;
 	};
 };
+
+

@@ -16,7 +16,7 @@ FEAR_fnc_nukeSiren = {
 };
 
 FEAR_fnc_nukeGeiger = {
-	private ["_nukeGeiger"];
+	private ["_nukeGeiger","_nukePos"];
 	
 	_nukeGeiger = MISSION_directory + "FEAR\fx\" + "geiger.ogg";
 	_nukePos = _this select 0;
@@ -34,7 +34,7 @@ FEAR_fnc_nukeImpact = {
 	playSound3D [_nukeBlast, player, false, _nukePos, 10];
 	
 	// Earthquake
-	[] spawn BIS_fnc_earthquake;
+	[4] spawn BIS_fnc_earthquake;
 	
 	// Mushroom cloud
 	_Cone = "#particlesource" createVehicleLocal getPos _nukePos;
@@ -169,23 +169,12 @@ FEAR_fnc_nukeImpact = {
 
 	sleep 900;
 	
+	// Reset colours
+	[] Call FEAR_fnc_nukeColorCorrection;
+	
 	deleteVehicle _Wave;
 	deleteVehicle _cone;
 	deleteVehicle _smoke;
-};
-
-FEAR_fnc_nukeColorCorrection = {
-	"colorCorrections" ppEffectAdjust [2, 30, 0, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];
-	"colorCorrections" ppEffectCommit 0;
-	"colorCorrections" ppEffectAdjust [1, 0.8, -0.001, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];  
-	"colorCorrections" ppEffectCommit 3;
-	"colorCorrections" ppEffectEnable true;
-	"filmGrain" ppEffectEnable true; 
-	"filmGrain" ppEffectAdjust [0.02, 1, 1, 0.1, 1, false];
-	"filmGrain" ppEffectCommit 5;
-	sleep 100; // time to reset colors
-	"colorCorrections" ppEffectEnable false;
-	"filmGrain" ppEffectEnable false; 
 };
 
 FEAR_fnc_nukeFlash = {
@@ -240,4 +229,18 @@ FEAR_fnc_nukeAsh = {
 		sleep 300;
 		deleteVehicle _snow;
 	};
+};
+
+FEAR_fnc_nukeColorCorrection = {
+	"colorCorrections" ppEffectAdjust [2, 30, 0, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];
+	"colorCorrections" ppEffectCommit 0;
+	"colorCorrections" ppEffectAdjust [1, 0.8, -0.001, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];  
+	"colorCorrections" ppEffectCommit 3;
+	"colorCorrections" ppEffectEnable true;
+	"filmGrain" ppEffectEnable true; 
+	"filmGrain" ppEffectAdjust [0.02, 1, 1, 0.1, 1, false];
+	"filmGrain" ppEffectCommit 5;
+	sleep 100; // time to reset colours
+	"colorCorrections" ppEffectEnable false;
+	"filmGrain" ppEffectEnable false; 
 };

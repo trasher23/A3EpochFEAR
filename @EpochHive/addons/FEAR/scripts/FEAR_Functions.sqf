@@ -1,7 +1,7 @@
 /*
-	Lifted from Vampires original VEMF code
+	Lifted from Vampires' original VEMF code
 	Idea was to consolidate all messages to player using same method, for consistency
-	Still uses VEMFChatMsg to broadcast in IT07's revised code
+	Still uses VEMFChatMsg to broadcast in IT07's revised code (in mission PBO)
 */
 
 // Alerts Players With a Random Radio Type
