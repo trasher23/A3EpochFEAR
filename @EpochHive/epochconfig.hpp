@@ -12,12 +12,13 @@ lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payo
 // Events
 airDrops = false; // TBA
 WeatherChangeTime = 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
-WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>} 
+WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>}
 events[] = {
     { 3600, "CarnivalSpawner" }, // SECOND <scalar>, EVENT <string>
-    { 1800, "EarthQuake" },
+    { 2400, "EarthQuake" },
+    { 1800, "ChangeWeather" },
     { 1200, "ContainerSpawner" },
-    { 1800, "PlantSpawner" } //No comma on last Entry
+    { 900, "PlantSpawner" } //No comma on last Entry
 };
 
 // Antagonists
@@ -42,6 +43,7 @@ allowedVehiclesList[] = {
 	{"B_Boat_Armed_02_Minigun_F",1},
 
 	// Bikes
+
 	{"C_Quadbike_01_EPOCH",10},
 	{"ebike_epoch",10},
 
@@ -118,8 +120,8 @@ forceStaticTraders = true; // disables traders moving from work to home
 showEarthQuakes = true; // show mineral viens caused by earthquakes
 showShippingContainers = true; // Show location of events based loots (plants, shipping container, Carnival)
 SHOW_TRADERS = true; // Show locations of traders
-SHOW_JAMMERS = false; // Shows location of base jammers 
-SHOW_BOATLOOT = true; // Shows the location of shipwreck loot 
+SHOW_JAMMERS = false; // Shows location of base jammers
+SHOW_BOATLOOT = true; // Shows the location of shipwreck loot
 DEBUG_VEH = false; // DEBUG ONLY used to debug spawing of vehicles
 
 // Hive Related

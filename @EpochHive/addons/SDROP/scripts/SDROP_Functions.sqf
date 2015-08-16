@@ -125,12 +125,12 @@ SDROPLoadLootRandom = {
 };
 
 // Crate Blacklist - These are items that should NOT be in random crate - should eliminate most BE filter issues (may need more testing)
-//"NVGoggles_OPFOR", "NVGoggles_INDEP"
 SDROPCrateBlacklist = [
 	"DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag", "ATMine_Range_Mag",
 	"ClaymoreDirectionalMine_Remote_Mag", "APERSMine_Range_Mag",
 	"APERSBoundingMine_Range_Mag", "SLAMDirectionalMine_Wire_Mag",
-	"APERSTripMine_Wire_Mag", "FirstAidKit", "Medikit", "ToolKit", "optic_DMS"
+	"APERSTripMine_Wire_Mag", "NVGoggles_OPFOR", "NVGoggles_INDEP",
+	"FirstAidKit", "Medikit", "ToolKit", "optic_DMS"
 ];
 
 SDROPRandomLoot = {
@@ -145,13 +145,11 @@ SDROPRandomLoot = {
 	clearItemCargoGlobal _crate;
 	
 	SDROPLootList = [];
-		// Generate Loot
-		{
-			_tmp = (getArray(_x >> 'items'));
-			for "_z" from 0 to ((count(_tmp))-1) do {
-				SDROPLootList = SDROPLootList + [((_tmp select _z) select 0)];
-			};
-		} forEach ("configName _x != 'Uniforms' && configName _x != 'Headgear'" configClasses (configFile >> "CfgLootTable"));
+	// Generate Loot
+	{
+	 _tmp = (getArray(_x >> 'items'));
+	 {SDROPLootList = SDROPLootList + [ ( _x select 0 ) select 0 ];} forEach (_tmp);
+	} forEach ("configName _x != 'Uniforms' && configName _x != 'Headgear'" configClasses (configFile >> "CfgLootTable"));
 	
 	_report = [];
 	// Load Random Loot Amount
@@ -192,13 +190,6 @@ SDROPRandomLoot = {
 	if ((count _report) > 0) then {
 		diag_log text format ["[SDROP]: LoadLoot: <Unknown> %1", str _report];
 	};
-};
-
-SDROPBroadcast = {
-	private ["_msg","_alert"];
-	
-	_msg = [_this select 0,_this select 1];
-	[_msg] call FEARBroadcast;
 };
 
 SDROPSetAIWaypoints = {

@@ -240,7 +240,7 @@ A3EAI_minRandSpawnDist = 0;
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 2;	
+A3EAI_maxHeliPatrols = 1;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesAir = [0.50,0.35,0.15,0.00];	
@@ -365,7 +365,7 @@ A3EAI_airReinforcementDuration3 = 300; //Level 3 Default: 300
 --------------------------------------------------------------------------------------------------------------------*/
 
 //Global maximum number of active UAV patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxUAVPatrols = 1;
+A3EAI_maxUAVPatrols = 0;
 
 //Classnames of UAV types to use, with the maximum amount of each type to spawn.
 A3EAI_UAVList = [
@@ -400,7 +400,7 @@ A3EAI_UAVDetectChance = 0.30;
 --------------------------------------------------------------------------------------------------------------------*/
 
 //Global maximum number of active UGV patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxUGVPatrols = 2;
+A3EAI_maxUGVPatrols = 4;
 
 //Classnames of UGV types to use, with the maximum amount of each type to spawn.
 A3EAI_UGVList = [

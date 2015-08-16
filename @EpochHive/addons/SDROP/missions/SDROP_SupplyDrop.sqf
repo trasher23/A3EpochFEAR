@@ -29,12 +29,19 @@ if (_failed) then {
 		_crashChance = (floor (random 100) + 1);
 		if (_crashChance <= SDROP_HelicopterCrashChance) then {_heliWillCrash = true};
 	};
-	
-	_posArray = [[15971.3,25950.5,200],[14727.5,3934.5,200],[26869.5,15454.5,200],[1306.16,14832.8,200]];
-	
-	_heliSpawnPosition = _posArray call bis_fnc_selectrandom; 
-	_coords = [_heliSpawnPosition,0,-1,30,0,30,0] call BIS_fnc_findSafePos;
-	
+
+	// north, south, east, west starting locations for supply helicopter
+	// these distances are all oceanic spawns	
+	_posArray = [[72.0000,8184.00,200],[15320.0,7816.00,200],[7528.00,15320.0,200],[6888.00,40.0000,200]];
+
+	//random supply helicopter spawn
+	_heliSpawnPosition = _posArray call bis_fnc_selectrandom;  
+
+	//these variables determine a safe location for the supply crate drops
+	//map center is based on CHERNARUS with halved values	
+	_mapCenter = [7067.50,7798.63];
+	_coords = [_mapCenter,500,5000,30,0,10,0] call BIS_fnc_findSafePos;
+
 	uiSleep 5;
 
 	//create helicopter and spawn it
@@ -120,6 +127,7 @@ if (_failed) then {
 		};
 	};
 
+
 	//set waypoint for helicopter
 	_wpPosition =_grpPilot addWaypoint [_coords, 0];
 	_wpPosition setWaypointType "MOVE";
@@ -133,6 +141,7 @@ if (_failed) then {
 		diag_log text format ["[SDROP]: Paratrooper group null? %1, Number of units in group = %2", _grpNull, _myUnitCount];
 	};
 
+
 	//let's get timer to set a timeout for the drop
 	_supplyDropStartTime = diag_tickTime;
 
@@ -140,8 +149,9 @@ if (_failed) then {
 		diag_log text format ["[SDROP]: Helicopter spawned, and moving to WP"];
 	};
 
+
 	//Announce a drop is inbound to all players
-	_title = "Supply Helicopter Inbound!";
+	_title = "Activity sighted...";
 	_subTitle = "A chopper carrying survivor equipment has been spotted.";
 	[_title,_subTitle] call FEARBroadcast;
 
@@ -162,8 +172,8 @@ if (_failed) then {
 				_supplyHeli setDamage 0.9;
 				
 				//Announce the heli got destroyed - optional, comment out below if you don't want to notify players
-				_title = "Supply Helicopter Crashed!";
-				_subTitle = "Looks like you'll have to wait a while for those supplies.";
+				_title = "Activity sighted...";
+				_subTitle = "Chopper crashed, no supplies this time...";
 				[_title,_subTitle] call FEARBroadcast;
 				
 				if (SDROP_CreateParatrooperAI) then {
@@ -182,6 +192,7 @@ if (_failed) then {
 		[] execVM "\SDROP\missions\SDROP_SupplyDrop.sqf";
 	};
 
+
 	//Waits until heli gets near the position to drop crate, or if waypoint timeout has been triggered
 	_destinationDone = false;
 	while {true} do {
@@ -191,6 +202,7 @@ if (_failed) then {
 		if (_destinationDone) exitWith {};
 		uiSleep 10;
 	};
+
 
 	//create the parachute and crate
 	_crate = createVehicle ["IG_supplyCrate_F", [0,0,0], [], 0, "CAN_COLLIDE"];
@@ -335,8 +347,8 @@ if (_failed) then {
 	};
 
 	//announce to players the eagle has landed
-	_title = "Supply Crate Delivered!";
-	_subTitle = "Check your map for the drop zone, and go get those supplies!";
+	_title = "Activity sighted...";
+	_subTitle = "Check map for chopper drop zone.";
 	[_title,_subTitle] call FEARBroadcast;
 
 	//check to see if helicopter is loitering (it should be long gone by now)

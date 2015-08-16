@@ -14,7 +14,10 @@ while {true} do
 	// Wait a Random Amount
 	uiSleep ((floor(random(_timeDiff))) + (nukeTimerMin*60));
 	
-	// Initiate countdown
-	[] execVM format ["%1\nuke\FEAR_nuke_launch.sqf",FEAR_directory];
-	diag_log "[nuke]: Cruise Missile Launched!";
+	// Initiate countdown if players on server
+	if ((count playableUnits) >= 1) then 
+	{
+		[] execVM format ["%1\nuke\FEAR_nuke_launch.sqf",FEAR_directory];
+		diag_log "[nuke]: Cruise Missile Launched!";
+	};
 };

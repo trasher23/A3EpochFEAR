@@ -16,7 +16,7 @@ antihack_checkFiles[] = { //script check, leave it blank to disable it
 	{"\x\addons\a3_epoch_code\compile\interface_event_handlers\EPOCH_KeyDown.sqf", "EPOCH_KeyDown"}
 };
 antihack_addActionCheck = false; // false to disable addAction checks
-antihack_customVariablesCheck = true; // true enables variable scanning on missionNamespace
+antihack_customVariablesCheck = false; // true enables variable scanning on missionNamespace
 antihack_customVariables[] = {}; //Add global variables from custom scripts, example: {"MyOwnVar","CP_KK"} //Global Variables begin without "_" !!
 antihack_customVariablesCheckMode = 1; // 0 = Ban, 1 = Log, 2 == learning mode (only enable with trusted players in a passwored server to profile your variables keep disabled for normal operation)
 

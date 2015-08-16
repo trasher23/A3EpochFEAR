@@ -89,11 +89,11 @@ if (!isDedicated && hasInterface) then {
 		[] execVM "FEAR\scripts\EtV.sqf";
 		waitUntil {!isNil "EtVInitialized"};
 		[player] call EtV_Actions;
-				
+
 		waitUntil {!alive player};
 		Sleep 30;
 		[] execVM "FEAR\scripts\EtV.sqf";
 		waitUntil {!isNil "EtVInitialized"};
-		[player] call EtV_Actions;	
+		[player] call EtV_Actions;
 	};
 };

@@ -6,7 +6,6 @@
 
 // Crafting https://github.com/GBR-Suppe/cfgCrafting-Master
 #include "cfgCrafting.hpp"
-
 author = "Epoch Mod Team";
 class Header
 {
@@ -49,7 +48,7 @@ class CfgRemoteExecCommands {};
 
 class CfgEpochClient
 {
-	epochVersion = "0.3.0.4";
+	epochVersion = "0.3.1.0";
 	
 	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
@@ -223,7 +222,6 @@ class CfgEpochCloak
 	teleportChance = 66; //Chance for cloak to teleport. (Min: 1)
 	hoverFrequency = 1280; //Cloak has new hover attack. When player is above cloak, and at a distance, cloak will float to player and teleport attack. Only perform one of these moves per this period. (Min: 240)
 };
-
 class RscTitles
 {
 	#include "FEAR\dialog\statusBar.hpp"
