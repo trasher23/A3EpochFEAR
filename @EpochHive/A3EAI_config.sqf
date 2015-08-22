@@ -240,10 +240,10 @@ A3EAI_minRandSpawnDist = 0;
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 1;	
+A3EAI_maxHeliPatrols = 2;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
-A3EAI_levelChancesAir = [0.50,0.35,0.15,0.00];	
+A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
 
 //Set minimum and maximum wait time in seconds to respawn an AI vehicle patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnAirMinTime = 600;
@@ -288,7 +288,7 @@ A3EAI_paraDropAmount = 3;
 A3EAI_maxLandPatrols = 10;
 
 //Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
-A3EAI_levelChancesLand = [0.50,0.35,0.15,0.00];	
+A3EAI_levelChancesLand = [0.00,0.50,0.35,0.15];	
 
 //Set minimum and maximum wait time in seconds to respawn an AI vehicle patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnLandMinTime = 600;
@@ -340,10 +340,10 @@ A3EAI_airReinforcementVehicles = [
 ]; 
 
 //Probability to spawn reinforcements for each AI level.
-A3EAI_airReinforcementSpawnChance0 = 0.10; //Probability of reinforcing Level 0 AI (Default: 0.10)
-A3EAI_airReinforcementSpawnChance1 = 0.20; //Probability of reinforcing Level 1 AI (Default: 0.20)
-A3EAI_airReinforcementSpawnChance2 = 0.30; //Probability of reinforcing Level 2 AI (Default: 0.30)
-A3EAI_airReinforcementSpawnChance3 = 0.40; //Probability of reinforcing Level 3 AI (Default: 0.40)
+A3EAI_airReinforcementSpawnChance0 = 0.00; //Probability of reinforcing Level 0 AI (Default: 0.00)
+A3EAI_airReinforcementSpawnChance1 = 0.10; //Probability of reinforcing Level 1 AI (Default: 0.10)
+A3EAI_airReinforcementSpawnChance2 = 0.20; //Probability of reinforcing Level 2 AI (Default: 0.20)
+A3EAI_airReinforcementSpawnChance3 = 0.30; //Probability of reinforcing Level 3 AI (Default: 0.30)
 
 //AI types permitted to summon reinforcements. Default: ["static","dynamic","random"]
 //Usable AI types: "static", "dynamic", "random", "air", "land", "staticcustom", "aircustom", "landcustom", "vehiclecrew"
@@ -365,7 +365,7 @@ A3EAI_airReinforcementDuration3 = 300; //Level 3 Default: 300
 --------------------------------------------------------------------------------------------------------------------*/
 
 //Global maximum number of active UAV patrols. Set at 0 to disable (Default: 0).	
-A3EAI_maxUAVPatrols = 0;
+A3EAI_maxUAVPatrols = 2;
 
 //Classnames of UAV types to use, with the maximum amount of each type to spawn.
 A3EAI_UAVList = [
@@ -378,17 +378,20 @@ A3EAI_UAVList = [
 ];
 
 //Probability of spawning Level 0/1/2/3 UAV spawns. Probabilities should add up to 1.00	
-A3EAI_levelChancesUAV = [0.80,0.10,0.05,0.05];	
+A3EAI_levelChancesUAV = [0.35,0.50,0.15,0.00];	
 
 //Set minimum and maximum wait time in seconds to respawn a UAV after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnUAVMinTime = 600;
 A3EAI_respawnUAVMaxTime = 900;
 
+//Set to 'true' to set detection-only behavior (UAV will not directly engage enemies). (Default: false)
+A3EAI_UAVDetectOnly = false;
+
 //Cooldown required in between air reinforcement summons when detecting players. Value in seconds. (Default: 1800)
 A3EAI_UAVCallReinforceCooldown = 1800;
 
 //Probability to successfully detect player if there is line-of-sight. If at least one player is detected, air reinforcements will be summoned to the area. (Default: 0.50)
-A3EAI_UAVDetectChance = 0.30;
+A3EAI_UAVDetectChance = 0.50;
 
 
 /*	UGV Patrol Settings
@@ -410,17 +413,20 @@ A3EAI_UGVList = [
 ];
 
 //Probability of spawning Level 0/1/2/3 AI UGV spawns. Probabilities should add up to 1.00	
-A3EAI_levelChancesUGV = [0.80,0.10,0.5,0.05];	
+A3EAI_levelChancesUGV = [0.35,0.50,0.15,0.00];	
 
 //Set minimum and maximum wait time in seconds to respawn a UGV patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 A3EAI_respawnUGVMinTime = 600;
 A3EAI_respawnUGVMaxTime = 900;
 
+//Set to 'true' to set detection-only behavior (UGV will not directly engage enemies). (Default: false)
+A3EAI_UGVDetectOnly = true;
+
 //Cooldown required in between air reinforcement summons when detecting players. Value in seconds. (Default: 1800)
 A3EAI_UGVCallReinforceCooldown = 1800;
 
 //Probability to successfully detect player if there is line-of-sight. If at least one player is detected, air reinforcements will be summoned to the area. (Default: 0.50)
-A3EAI_UGVDetectChance = 0.30;
+A3EAI_UGVDetectChance = 0.50;
 
 
 /*	Shared AI Vehicle Settings
@@ -549,15 +555,15 @@ A3EAI_kryptoAmount1 = 75; 	//Default for level 1 AI: 75
 A3EAI_kryptoAmount2 = 100; 	//Default for level 2 AI: 100
 A3EAI_kryptoAmount3 = 150; 	//Default for level 3 AI: 150
 
-//Krypto pickup assist time window in seconds. Players must be within 2 meters of a Krypto device for 10 seconds to pick up Krypto automatically. 0: Disabled (Default: 0)
+//Krypto pickup assist time window in seconds. Players must be within 2 meters of a Krypto device for 5 seconds to pick up Krypto automatically. 0: Disabled (Default: 0)
 //After this time limit, players must manually pick up any dropped Krypto.
 A3EAI_kryptoPickupAssist = 1;
 
 //Maximum number of food loot items found on AI. (Default: 1)								
-A3EAI_foodLootCount = 1;
+A3EAI_foodLootCount = 2;
 
 //Maximum number of items to select from A3EAI_MiscLoot1 (generic loot) table. (Default: 1)											
-A3EAI_miscLootCount1 = 1;						
+A3EAI_miscLootCount1 = 2;						
 
 //Maximum number of items to select from A3EAI_MiscLoot2 (large generic loot) table. (Default: 1)					
 A3EAI_miscLootCount2 = 1;	
@@ -566,8 +572,8 @@ A3EAI_miscLootCount2 = 1;
 /*	AI loot probability settings. AI loot is pre-generated into a pool for each unit and randomly pulled to units as time passes.
 --------------------------------------------------------------------------------------------------------------------*/
 
-//Chance to add a single First Aid Kit to group loot pool per unit (Default: 0.20)
-A3EAI_chanceFirstAidKit = 0.20;
+//Chance to add a single First Aid Kit to group loot pool per unit (Default: 0.25)
+A3EAI_chanceFirstAidKit = 0.25;
 
 //Chance to add each edible item to group loot pool per unit (Default: 0.40)								
 A3EAI_chanceFoodLoot = 0.40;
@@ -579,10 +585,10 @@ A3EAI_chanceMiscLoot1 = 0.40;
 A3EAI_chanceMiscLoot2 = 0.30;
 
 //Probability to successfully pull a random item from loot pool for level 0-3 AI. Influences the rate at which loot items are added to units.
-A3EAI_lootPullChance0 = 0.30; //Default for level 0 AI: 0.30
+A3EAI_lootPullChance0 = 0.20; //Default for level 0 AI: 0.20
 A3EAI_lootPullChance1 = 0.40; //Default for level 1 AI: 0.40
-A3EAI_lootPullChance2 = 0.50; //Default for level 2 AI: 0.50
-A3EAI_lootPullChance3 = 0.60; //Default for level 3 AI: 0.60
+A3EAI_lootPullChance2 = 0.60; //Default for level 2 AI: 0.60
+A3EAI_lootPullChance3 = 0.80; //Default for level 3 AI: 0.80
 
 
 /*
