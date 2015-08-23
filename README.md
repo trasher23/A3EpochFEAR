@@ -5,35 +5,37 @@ Chernarus has been quarantined.  Remnants of the CDC are deploying mini-nukes to
 
 A mish-mash of:
 <br/>
-Arma 3 1.48:         http://arma3.com/
+Arma 3 1.48: http://arma3.com/
 <br/>
-Epoch 0.3.2.0:          http://epochmod.com/
-<br/>
-<br/>
-A3AI 0.8.4d:           https://github.com/dayzai/A3EAI
-<br/>
-VEMF v0.0714.4:           https://github.com/IT07/A3_VEMF_Reloaded
-<br/>
-WAI 1.0.0:            https://github.com/nerdalertdk/WICKED-AI
-<br/>
-SDROP 1.0c:          https://github.com/tdavison70/Helicopter-Supply-Drop
+Epoch 0.3.2.0: http://epochmod.com/
 <br/>
 <br/>
-persistence 0.1.7:    https://github.com/n8m4re/A3_Epoch_PersistenceAddon
+A3AI 0.8.4d: https://github.com/dayzai/A3EAI
 <br/>
-cmEarplugs 2.0:     https://github.com/computermancer/cmEarplugs
+VEMF v0.0714.4: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
-spawn:          https://github.com/Halvhjearne/halv_spawn
+WAI 1.0.0: https://github.com/nerdalertdk/WICKED-AI
 <br/>
-killfeed:       https://github.com/Halvhjearne/killfeed
+SDROP 1.0c: https://github.com/tdavison70/Helicopter-Supply-Drop
 <br/>
-paintshop:      https://github.com/Halvhjearne/paintshop
 <br/>
-service_point:  http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
+persistence 0.1.7: https://github.com/n8m4re/A3_Epoch_PersistenceAddon
 <br/>
-HSBlackmarket 1.5:  https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
+cmEarplugs 2.0: https://github.com/computermancer/cmEarplugs
 <br/>
-status_bar:     https://github.com/piXm8/statusBar
+spawn: https://github.com/Halvhjearne/halv_spawn
+<br/>
+killfeed: https://github.com/Halvhjearne/killfeed
+<br/>
+paintshop: https://github.com/Halvhjearne/paintshop
+<br/>
+service_point: http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
+<br/>
+HSBlackmarket 1.5: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
+<br/>
+status_bar: https://github.com/piXm8/statusBar
+<br/>
+EtV: https://github.com/DarthRogue/EtV
 <br/>
 <br/>
 Thank you all.
