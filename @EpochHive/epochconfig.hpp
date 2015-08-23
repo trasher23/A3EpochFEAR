@@ -10,7 +10,6 @@ timeDifference = 0; // Server uses real time this will allow you to offset just 
 timeMultiplier = 4; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
 lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payout per Epoch loot container.
 // Events
-airDrops = false; // TBA
 WeatherChangeTime = 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
 WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>}
 events[] = {
@@ -43,7 +42,6 @@ allowedVehiclesList[] = {
 	{"B_Boat_Armed_02_Minigun_F",1},
 
 	// Bikes
-
 	{"C_Quadbike_01_EPOCH",10},
 	{"ebike_epoch",10},
 
@@ -62,6 +60,7 @@ allowedVehiclesList[] = {
 
 	// Military Wheeled
 	{"B_MRAP_01_EPOCH",2},
+
 	{"O_MRAP_02_F",2},
 	{"I_MRAP_03_F",2},
 	{"B_UGV_01_rcws_F",2},
@@ -87,6 +86,7 @@ allowedVehiclesList[] = {
 	{"O_Heli_Transport_04_F",2},
 	{"O_Heli_Transport_04_medevac_F",2},
 	{"I_Heli_light_03_unarmed_F",2},
+
 	{"mosquito_epoch",10},
 	{"B_Heli_Light_01_armed_F",2},
 	{"O_Heli_Attack_02_black_F",2},
@@ -101,13 +101,13 @@ allowedVehiclesList[] = {
 	{"B_APC_Tracked_01_CRV_F",2},
 	
 	// Tanks
-	{"O_MBT_02_cannon_F",1},
-	{"B_MBT_01_arty_F",1},
-	{"B_MBT_01_mlrs_F",1},
+	{"O_MBT_02_cannon_F",2},
+	{"B_MBT_01_arty_F",2},
+	{"B_MBT_01_mlrs_F",2},
 	
 	// Planes
-	{"B_Plane_CAS_01_F",1},
-	{"O_Plane_CAS_02_F",1}
+	{"B_Plane_CAS_01_F",2},
+	{"O_Plane_CAS_02_F",2}
 };
 
 // Traders

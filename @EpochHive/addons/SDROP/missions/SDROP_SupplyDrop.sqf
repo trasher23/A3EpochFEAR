@@ -151,9 +151,7 @@ if (_failed) then {
 
 
 	//Announce a drop is inbound to all players
-	_title = "Activity sighted...";
-	_subTitle = "A chopper carrying survivor equipment has been spotted.";
-	[_title,_subTitle] call FEARBroadcast;
+	[["Activity sighted...","A chopper carrying survivor equipment has been spotted.","",""],""] call FEARBroadcast;
 
 	//if we're crashing, we need to destroy the crew and helicopter, and restart mission params
 	if (_heliWillCrash) exitWith {
@@ -172,9 +170,7 @@ if (_failed) then {
 				_supplyHeli setDamage 0.9;
 				
 				//Announce the heli got destroyed - optional, comment out below if you don't want to notify players
-				_title = "Activity sighted...";
-				_subTitle = "Chopper crashed, no supplies this time...";
-				[_title,_subTitle] call FEARBroadcast;
+				[["Activity sighted...","Chopper crashed, no supplies this time...","",""], ""] call FEARBroadcast;
 				
 				if (SDROP_CreateParatrooperAI) then {
 					if (!isNull _grp && count units _grp >= 1) then {
@@ -347,9 +343,7 @@ if (_failed) then {
 	};
 
 	//announce to players the eagle has landed
-	_title = "Activity sighted...";
-	_subTitle = "Check map for chopper drop zone.";
-	[_title,_subTitle] call FEARBroadcast;
+	[["Activity sighted...","Check map for chopper drop zone.","",""],""] call FEARBroadcast;
 
 	//check to see if helicopter is loitering (it should be long gone by now)
 	//hate to do this, but have to just delete the vehicle as it refuses to comply with waypoint

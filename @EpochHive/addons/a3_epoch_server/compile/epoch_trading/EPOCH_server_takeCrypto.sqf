@@ -1,2 +1,30 @@
+// Epoch Mod - Server isde take crypto 
 
-private["_aa","_ab","_ac","_ad","_ae","_af","_ag","_ah","_ai"];_ae=_this select 0;if !([_ae,_this select 1]call EPOCH_server_getPToken)exitWith{};_af=_this select 2;if(isNull _af)exitWith{};if(_ae distance _af > 10)exitWith{};_ai=_af getVariable["Crypto",0];if(_ai > 0)then{deleteVehicle _af;_aa=EPOCH_customVars find "Crypto";_ab=_ae getVariable["VARS",[]+EPOCH_defaultVars_SEPXVar];_ac=_ab select _aa;_playerCryptoLimit=[(configFile >> "CfgSecConf" >> "limits"),"playerCrypto",25000]call EPOCH_fnc_returnConfigEntry;_ac=((_ac+_ai)min _playerCryptoLimit)max 0;[["effectCrypto",_ac],(owner _ae)]call EPOCH_sendPublicVariableClient;_ab set[_aa,_ac];_ae setVariable["VARS",_ab];};
+private ["_cIndex","_vars","_current_crypto","_change","_player","_object","_player1","_player2","_getCrypto"];
+
+_player = _this select 0;
+if !([_player,_this select 1] call EPOCH_server_getPToken) exitWith {};
+
+_object = _this select 2;
+if (isNull _object) exitWith {};
+
+if (_player distance _object > 10) exitWith {};
+
+_getCrypto = _object getVariable["Crypto", 0];
+
+if (_getCrypto > 0) then {
+
+	deleteVehicle _object;
+
+	// get vars array and current Crypto value
+	_cIndex = EPOCH_customVars find "Crypto";
+	_vars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+	_current_crypto = _vars select _cIndex;
+	
+	_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;
+
+	_current_crypto = ((_current_crypto + _getCrypto) min _playerCryptoLimit) max 0;
+	[["effectCrypto", _current_crypto], (owner _player)] call EPOCH_sendPublicVariableClient;
+	_vars set[_cIndex, _current_crypto];
+	_player setVariable["VARS", _vars];
+};

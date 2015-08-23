@@ -1,1 +1,13 @@
-private["_aa","_ab","_ac","_ad"];_aa=_this select 0;_ab=_this select 1;if !([_aa,_this select 2]call EPOCH_server_getPToken)exitWith{};if(isNull _ab)exitWith{};if(_plyr distance _ab > 20)exitWith{};_tp=_ab getVariable["ParentBuilding",[]];if !(_tp isEqualTo[])then{_aa setPosATL _tp;};
+private ["_player","_teleporter","_pos","_telePosArray"];
+
+_player = _this select 0;
+_teleporter = _this select 1;
+
+if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
+if (isNull _teleporter) exitWith{};
+if (_plyr distance _teleporter > 20) exitWith{};
+
+_tp = _teleporter getVariable["ParentBuilding", []];
+if !(_tp isEqualTo []) then {
+	_player setPosATL _tp;
+};

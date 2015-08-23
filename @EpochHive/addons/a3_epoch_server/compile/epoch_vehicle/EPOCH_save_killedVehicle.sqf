@@ -1,1 +1,17 @@
-private["_aa","_ab","_ac","_ad"];_aa=_this select 0;_ad=_this select 1;if(!isNull _aa)then{_ab=_aa getVariable["VEHICLE_SLOT","ABORT"];if(_ab !="ABORT")then{_ac=format["%1:%2",(call EPOCH_fn_InstanceID),_ab];["Vehicle",_ac,[]]call EPOCH_server_hiveSET;EPOCH_VehicleSlots pushBack _ab;EPOCH_VehicleSlotCount=count EPOCH_VehicleSlots;publicVariable "EPOCH_VehicleSlotCount";['VehicleKilled',format["%1 was killed by %2 at %3",typeOf _aa,_ad,getPosATL _aa]]call EPOCH_server_hiveLog;};};
+private ["_vehicle","_vehSlot","_vehHiveKey","_killer"];
+
+_vehicle = _this select 0;
+_killer = _this select 1;
+
+if (!isNull _vehicle) then {
+	_vehSlot = _vehicle getVariable ["VEHICLE_SLOT", "ABORT"];
+	if (_vehSlot != "ABORT") then {
+		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
+		["Vehicle", _vehHiveKey, []] call EPOCH_server_hiveSET;
+		EPOCH_VehicleSlots pushBack _vehSlot;
+		EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
+		publicVariable "EPOCH_VehicleSlotCount";
+
+		['VehicleKilled', format["%1 was killed by %2 at %3", typeOf _vehicle, _killer, getPosATL _vehicle]] call EPOCH_server_hiveLog;
+	};
+};

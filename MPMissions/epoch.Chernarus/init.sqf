@@ -2,22 +2,6 @@ if !( isServer || isDedicated ) then {
 	
 	waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
 	
-	/* All broadcasts, uses VEMFBroadcast[title, type]
-	-----------------------------------------------------------
-	*/
-	"VEMFChatMsg" addPublicVariableEventHandler {
-		playSound "RadioAmbient6";
-		systemChat ((_this select 1) select 0);
-		[
-			[
-				[((_this select 1) select 0),"align = 'center' size = '1' font='PuristaBold'"],
-				["","<br/>"],
-				[((_this select 1) select 1),"align = 'center' size = '0.5'"]
-			]
-		] spawn BIS_fnc_typeText2;
-		VEMFChatMsg = nil;
-	};
-	
 	/* Nuke
 	-----------------------------------------------------------
 	*/

@@ -110,8 +110,7 @@ if (isServer) then {
 				RemoteMessage = ["radio",_msg];
 				publicVariable "RemoteMessage";
 				*/
-				_msg = ["Activity sighted...",_msg];
-				[_msg] call FEARBroadcast;
+				[["Activity sighted...",_msg,"",""],""] call FEARBroadcast;
 			} else {
 				[nil,nil,rTitleText,_msg,"PLAIN",10] call RE;
 			};

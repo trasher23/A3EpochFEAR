@@ -6,9 +6,10 @@
 
 // Alerts Players With a Random Radio Type
 FEARBroadcast = {
-	private ["_msg","_eRads","_allUnits","_curRad","_send"];
+	private ["_msg","_mode","_eRads","_allUnits","_curRad","_send"];
 	
 	_msg = _this select 0;
+	_mode = _this select 1;
 	
 	_eRads = ["EpochRadio0","EpochRadio1","EpochRadio2","EpochRadio3","EpochRadio4","EpochRadio5","EpochRadio6","EpochRadio7","EpochRadio8","EpochRadio9"];
 	_eRads = _eRads call BIS_fnc_arrayShuffle;
@@ -42,7 +43,7 @@ FEARBroadcast = {
 	if (_send) then {
 		{
 			if ((_eRads select _curRad) in (assignedItems _x)) then {
-				VEMFChatMsg = _msg;
+				VEMFChatMsg = [_msg, _mode];
 				(owner (vehicle _x)) publicVariableClient "VEMFChatMsg";
 			};
 		} forEach _allUnits;

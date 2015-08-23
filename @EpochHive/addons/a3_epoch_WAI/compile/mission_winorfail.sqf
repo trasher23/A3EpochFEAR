@@ -45,8 +45,7 @@ if(isServer) then {
 	RemoteMessage = [wai_announce,_msgstart];
 	publicVariable "RemoteMessage";
 	*/
-	_msg = ["Activity sighted...",_msgstart];
-	[_msg] call FEARBroadcast;
+	[["Activity sighted...",_msgstart,"",""],""] call FEARBroadcast;
 	
 	markerready = true;
 
@@ -202,8 +201,7 @@ if(isServer) then {
 		RemoteMessage = [wai_announce,_msgwin];
 		publicVariable "RemoteMessage";
 		*/
-		_msg = ["Activity sighted...",_msgwin];
-		[_msg] call FEARBroadcast;
+		[["Activity sighted...",_msgwin,"",""],""] call FEARBroadcast;
 		
 		if (wai_clean_mission) then {
 
@@ -327,8 +325,7 @@ if(isServer) then {
 		RemoteMessage = [wai_announce,_msglose];
 		publicVariable "RemoteMessage";
 		*/
-		_msg = ["Activity sighted...",_msglose];
-		[_msg] call FEARBroadcast;
+		[["Activity sighted...",_msglose,"",""],""] call FEARBroadcast;
 	};
 	
 	_map_marker = (wai_mission_data select _mission) select 1;

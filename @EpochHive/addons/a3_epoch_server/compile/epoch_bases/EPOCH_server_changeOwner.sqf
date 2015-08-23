@@ -1,1 +1,13 @@
-private["_aa","_ab","_ac"];_ab=_this select 0;_ac=owner(_this select 1);_aa=false;if(!isNull _ab)then{if(local _ab)then{if((owner _ab)!=_ac)then{_aa=_ab setOwner _ac;diag_log format["DEBUG CHANGEOWNER: %1 OWNER: %2 PLAYER: %3 RESULT: %4",_ab,owner(_ab),_ac,_aa];};};};_aa
+private ["_result","_object","_newOwner"];
+_object = _this select 0;
+_newOwner = owner (_this select 1);
+_result = false;
+if (!isNull _object) then {
+	if (local _object) then {
+		if ((owner _object) != _newOwner) then {
+			_result = _object setOwner _newOwner;
+			diag_log format["DEBUG CHANGEOWNER: %1 OWNER: %2 PLAYER: %3 RESULT: %4", _object,owner(_object),_newOwner,_result];
+		};
+	};
+};
+_result

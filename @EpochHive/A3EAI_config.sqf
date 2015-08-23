@@ -557,7 +557,7 @@ A3EAI_kryptoAmount3 = 150; 	//Default for level 3 AI: 150
 
 //Krypto pickup assist time window in seconds. Players must be within 2 meters of a Krypto device for 5 seconds to pick up Krypto automatically. 0: Disabled (Default: 0)
 //After this time limit, players must manually pick up any dropped Krypto.
-A3EAI_kryptoPickupAssist = 1;
+A3EAI_kryptoPickupAssist = 0;
 
 //Maximum number of food loot items found on AI. (Default: 1)								
 A3EAI_foodLootCount = 2;

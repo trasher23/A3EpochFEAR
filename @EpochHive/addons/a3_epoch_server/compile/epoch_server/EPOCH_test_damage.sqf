@@ -1,1 +1,1 @@
-diag_log format["DEBUG DMG: %1 ",_this];
+diag_log format["DEBUG DMG: %1 ", _this];

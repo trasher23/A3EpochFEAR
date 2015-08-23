@@ -4,16 +4,15 @@
 item0[] = {"Init",0,250,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
 item1[] = {"_",8,218,600.000000,-500.000000,700.000000,-450.000000,0.000000,""};
 item2[] = {"Process",2,250,600.000000,-350.000000,700.000000,-300.000000,0.000000,"Process"};
-item3[] = {"De_simulate_Vehicle",4,218,750.000000,-300.000000,850.000000,-250.000000,2.000000,"De-simulate" \n "Vehicle Check"};
-item4[] = {"Simulate_Vehicle",4,4314,750.000000,-350.000000,850.000000,-300.000000,1.000000,"Simulate" \n "Vehicle Check"};
+item3[] = {"De_simulate_Vehicle",4,218,750.000000,-225.000000,850.000000,-175.000000,2.000000,"De-simulate" \n "Vehicle Check"};
+item4[] = {"Simulate_Vehicle",4,4314,750.000000,-300.000000,850.000000,-250.000000,1.000000,"Simulate" \n "Vehicle Check"};
 item5[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
-item6[] = {"Save_Players",4,218,450.000000,-400.000000,550.000000,-350.000000,3.000000,"Save" \n "Players"};
-item7[] = {"Cleanup",4,218,750.000000,-400.000000,850.000000,-350.000000,8.000000,"Cleanup"};
-item8[] = {"Events",4,218,450.000000,-300.000000,550.000000,-250.000000,0.000000,"Events"};
-item9[] = {"Save_Vehicles",4,218,450.000000,-350.000000,550.000000,-300.000000,4.000000,"Save" \n "Vehicles"};
+item6[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
+item7[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
+item8[] = {"Events",4,218,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events"};
+item9[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
 item10[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
-item11[] = {"Server_FPS",4,218,500.000000,-250.000000,600.000000,-200.000000,0.000000,"Server FPS"};
-item12[] = {"Weather_Change",4,218,700.000000,-250.000000,800.000000,-200.000000,0.000000,"Weather" \n "Change"};
+item11[] = {"Server_FPS",4,218,600.000000,-225.000000,700.000000,-175.000000,0.000000,"Server FPS"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -25,19 +24,17 @@ link7[] = {2,8};
 link8[] = {2,9};
 link9[] = {2,10};
 link10[] = {2,11};
-link11[] = {2,12};
-link12[] = {3,2};
-link13[] = {4,2};
-link14[] = {5,2};
-link15[] = {6,2};
-link16[] = {7,2};
-link17[] = {8,2};
-link18[] = {9,2};
-link19[] = {10,2};
-link20[] = {11,2};
-link21[] = {12,2};
+link11[] = {3,2};
+link12[] = {4,2};
+link13[] = {5,2};
+link14[] = {6,2};
+link15[] = {7,2};
+link16[] = {8,2};
+link17[] = {9,2};
+link18[] = {10,2};
+link19[] = {11,2};
 globals[] = {25.000000,1,0,0,0,640,480,1,2,6316128,1,389.487762,950.881897,-53.358742,-574.484070,948,880,1};
-window[] = {2,-1,-1,-1,-1,916,156,1594,156,3,966};
+window[] = {2,-1,-1,-1,-1,838,1758,3196,78,3,966};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -52,7 +49,7 @@ class FSM
        "" \n
        "_serverSettingsConfig = configFile >> ""CfgEpochServer"";" \n
        "_ahInitAuthCfg = [_serverSettingsConfig, ""antihack_ahInitAuthCfg"", [0,90]] call EPOCH_fnc_returnConfigEntry;" \n
-       "_events = [_serverSettingsConfig, ""events"", [[3600, ""CarnivalSpawner""], [1200, ""EarthQuake""], [1200, ""ContainerSpawner""], [300, ""PlantSpawner""]]] call EPOCH_fnc_returnConfigEntry;" \n
+       "_events = [_serverSettingsConfig, ""events"", [[3600, ""CarnivalSpawner""], [2400, ""EarthQuake""], [1800, ""ChangeWeather""], [1200, ""ContainerSpawner""], [300, ""PlantSpawner""]]] call EPOCH_fnc_returnConfigEntry;" \n
        "_simulationHandler = [_serverSettingsConfig, ""simulationHandler"", false] call EPOCH_fnc_returnConfigEntry;" \n
        "" \n
        "_initAhInitBanOrLog = _ahInitAuthCfg select 0;" \n
@@ -126,7 +123,7 @@ class FSM
        "			_lastCheck = diag_tickTime;" \n
        "		};" \n
        "		if (diag_tickTime - _lastCheck > 1200) then {" \n
-       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air""], 45];" \n
+       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
        "			if ({ isPlayer _x }count _list == 0) then {" \n
        "				_this setVariable [""LAST_CHECK"",nil];" \n
        "				deleteVehicle _this;" \n
@@ -144,7 +141,7 @@ class FSM
        "			_lastCheck = diag_tickTime;" \n
        "		};" \n
        "		if (diag_tickTime - _lastCheck > 1200) then {" \n
-       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air""], 45];" \n
+       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
        "			if ({ isPlayer _x }count _list == 0) then {" \n
        "				{" \n
        "					deleteVehicle _x;" \n
@@ -288,7 +285,7 @@ class FSM
            "		_deSim = false;" \n
            "		if (crew _selectedVehicle isEqualTo []) then {" \n
            "			if ((getPos _selectedVehicle) select 2 < 1) then {" \n
-           "				if ({isPlayer _selectedVehicle} count (_selectedVehicle nearEntities[[""CAManBase"", ""LandVehicle"", ""Ship"", ""Air""], 300]) == 0) then {" \n
+           "				if ({isPlayer _selectedVehicle} count (_selectedVehicle nearEntities[[""CAManBase"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 300]) == 0) then {" \n
            "					_selectedVehicle enableSimulationGlobal false;" \n
            "					_deSim = true;" \n
            "				};" \n
@@ -331,8 +328,9 @@ class FSM
            "		_pUID = getPlayerUID _x;" \n
            "" \n
            "		if !(_x call EPOCH_server_isPAdmin) then {" \n
-           "			// TODO need a better way as it is bad to perform hideObjectGlobal for all players every 5 seconds  " \n
-           "			_x hideObjectGlobal false;" \n
+           "			if (isObjectHidden _x) then {" \n
+           "				_x hideObjectGlobal false;" \n
+           "			};" \n
            "			if (_pUID != """") then {" \n
            "				_playersTemp pushBack _pUID;" \n
            "				[_pUID, _x] call _checkAuth;" \n
@@ -343,6 +341,30 @@ class FSM
            "	};" \n
            "}forEach playableUnits;" \n
            "_players = _playersTemp;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Server_FPS">*/
+        class Server_FPS
+        {
+          priority = 0.000000;
+          to="Process";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _serverFpsTime) > 30) && _serverFPSCheckFine"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_serverFpsTime = diag_tickTime;" \n
+           "" \n
+           "if (_oldFPS isEqualTo EPOCH_diag_fps) then {" \n
+           "	_currentFPS = round(diag_fps);" \n
+           "	if !(_oldFPS isEqualTo _currentFPS) then {" \n
+           "		EPOCH_diag_fps = _currentFPS;" \n
+           "		publicVariable ""EPOCH_diag_fps"";" \n
+           "		_oldFPS = _currentFPS;" \n
+           "	};" \n
+           "} else {" \n
+           "	EPOCH_diag_fps = compileFinal """";" \n
+           "	publicVariable ""EPOCH_diag_fps"";" \n
+           "	_serverFPSCheckFine = false;" \n
+           "};" \n
+           ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "Events">*/
@@ -421,41 +443,6 @@ class FSM
            "		};" \n
            "	};" \n
            "};"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Server_FPS">*/
-        class Server_FPS
-        {
-          priority = 0.000000;
-          to="Process";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _serverFpsTime) > 30) && _serverFPSCheckFine"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_serverFpsTime = diag_tickTime;" \n
-           "" \n
-           "if (_oldFPS isEqualTo EPOCH_diag_fps) then {" \n
-           "	_currentFPS = round(diag_fps);" \n
-           "	if !(_oldFPS isEqualTo _currentFPS) then {" \n
-           "		EPOCH_diag_fps = _currentFPS;" \n
-           "		publicVariable ""EPOCH_diag_fps"";" \n
-           "		_oldFPS = _currentFPS;" \n
-           "	};" \n
-           "} else {" \n
-           "	EPOCH_diag_fps = compileFinal """";" \n
-           "	publicVariable ""EPOCH_diag_fps"";" \n
-           "	_serverFPSCheckFine = false;" \n
-           "};" \n
-           ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Weather_Change">*/
-        class Weather_Change
-        {
-          priority = 0.000000;
-          to="Process";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastWeatherChange) > EPOCH_WeatherChangeTime)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_lastWeatherChange = diag_tickTime;" \n
-           "false call EPOCH_server_setWeather;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };

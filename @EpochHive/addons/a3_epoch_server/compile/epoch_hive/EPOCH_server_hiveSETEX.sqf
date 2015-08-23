@@ -1,1 +1,43 @@
-private["_aa","_ab","_ac","_ad","_ae","_af","_ag","_ah","_ai"];_aa     =_this select 0;_ab        =_this select 1;_ac    =_this select 2;_ad      =str(_this select 3);_ae=count _ad;_af=101;_ag=121;if !(EPOCH_hiveAsync)then{_af=100;_ag=120;};_ah=0;_ai=8000;if(_ae > _ai)then{if(isNil "EPOCH_hiveCallID")then{EPOCH_hiveCallID=0;}else{if(EPOCH_hiveCallID > 10)then{EPOCH_hiveCallID=0;};EPOCH_hiveCallID=EPOCH_hiveCallID+1;};while{_ae > _ai}do{_ae=_ae-_ai;"epochserver" callExtension format["%1|%2:%3|%4|%5",_af,_aa,_ab,EPOCH_hiveCallID,_ad select[_ah,_ai]];_ah=_ah+_ai;};"epochserver" callExtension format["%1|%2:%3|%4|%5|%6",_ag,_aa,_ab,_ac,EPOCH_hiveCallID,_ad select[_ah,_ai]];}else{"epochserver" callExtension format["%1|%2:%3|%4|%5|%6",_ag,_aa,_ab,_ac,"",_ad select[_ah,_ai]];};
+private ["_prefix","_key","_expires","_value","_valueLength","_callStack","_call","_index","_charLimit"];
+
+_prefix      = _this select 0;
+_key         = _this select 1;
+_expires     = _this select 2;
+_value       = str (_this select 3);
+_valueLength = count _value;
+
+_callStack = 101;
+_call = 121;
+if !(EPOCH_hiveAsync) then {
+    _callStack = 100;
+    _call = 120;
+};
+
+_index = 0;
+_charLimit = 8000;
+
+if (_valueLength > _charLimit) then{
+
+	if (isNil "EPOCH_hiveCallID") then{
+		EPOCH_hiveCallID = 0;
+	} else {
+		if (EPOCH_hiveCallID > 10) then{
+			EPOCH_hiveCallID = 0;
+		};
+		EPOCH_hiveCallID = EPOCH_hiveCallID + 1;
+	};
+
+	while {_valueLength > _charLimit} do {
+		_valueLength = _valueLength - _charLimit;
+		"epochserver" callExtension format["%1|%2:%3|%4|%5", _callStack, _prefix, _key, EPOCH_hiveCallID, _value select[_index, _charLimit]];
+		//diag_log format["Append: %1", [_index, _callStack, _prefix, _key, _value select[_index, _charLimit]]];
+		_index = _index + _charLimit;
+	};
+
+	"epochserver" callExtension format["%1|%2:%3|%4|%5|%6", _call, _prefix, _key, _expires, EPOCH_hiveCallID, _value select[_index, _charLimit]];
+	//diag_log format["Large: %1", [_index, _call, _prefix, _key, _expires, _value select[_index, _charLimit]]];
+
+} else {
+	"epochserver" callExtension format["%1|%2:%3|%4|%5|%6", _call, _prefix, _key, _expires, "", _value select[_index, _charLimit]];
+	//diag_log format["Small: %1", [_index, _call, _prefix, _key, _expires, _value select[_index, _charLimit]]];
+};

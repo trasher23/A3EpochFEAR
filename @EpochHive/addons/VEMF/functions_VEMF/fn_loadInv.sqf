@@ -4,131 +4,119 @@
 	Description:
 	loads AI inventory
 
+	Param:
+	_this: ARRAY
+	_this select 0: ARRAY - units to load inventory for
+	_this select 1: STRING - what type of mission the loadout should be for
+
 	Returns:
-	BOOLEAN - true if finished
+	BOOLEAN - true if nothing failed
 */
 
-private ["_unit","_fin","_prim","_seco","_pAmmo","_hAmmo","_attachment","_uniforms"];
-// Define settings
-_uniforms = (["aiUniforms"] call VEMF_fnc_getSetting) select 0;
-_headGear = (["aiHeadGear"] call VEMF_fnc_getSetting) select 0;
-_vests = (["aiVests"] call VEMF_fnc_getSetting) select 0;
-_backpacks = (["backpacksLoot"] call VEMF_fnc_getSetting) select 0;
-_useLaunchers = (["useLaunchers"] call VEMF_fnc_getSetting) select 0;
-_launchers = (["aiLaunchers"] call VEMF_fnc_getSetting) select 0;
-_aiItems = (["aiItems"] call VEMF_fnc_getSetting) select 0;
-_rifles = (["aiRifles"] call VEMF_fnc_getSetting) select 0;
-_pistols = (["aiPistols"] call VEMF_fnc_getSetting) select 0;
-
-_unit = _this select 0;
-_mode = _this select 1;
-_fin = false;
-
-if (!isNull _unit) then
+private ["_params","_units","_mode","_settings","_useLaunchers","_aiGear","_uniforms","_headGear","_vests","_backpacks","_launchers","_rifles","_pistols"];
+_params = _this;
+if not((typeName _this) isEqualTo "ARRAY") exitWith
 {
-	// Strip Unit
-	removeAllWeapons _unit;
-	{
-		_unit removeMagazine _x;
-		uiSleep 0.05;
-	} foreach (magazines _unit);
+	["fn_loadInv", 0, "incorrect params given!"] call VEMF_fnc_log;
+	false
+};
 
+_units = [_this, 0, [], [[]]] call BIS_fnc_param;
+if (_units isEqualTo []) exitWith
+{
+	["fn_loadInv", 0, "incorrect or no units given!"] call VEMF_fnc_log;
+	false
+};
+
+_mode = [_this, 1, "", [""]] call BIS_fnc_param;
+if (_mode isEqualTo "") exitWith
+{
+	["fn_loadInv", 0, "incorrect OR missing _mode..."] call VEMF_fnc_log;
+	false
+};
+
+// Define settings
+_useLaunchers = ([["VEMFconfig","DLI"],["useLaunchers"]] call VEMF_fnc_getSetting) select 0;
+
+_aiGear = [["VEMFconfig","aiGear"],["aiUniforms","aiHeadGear","aiVests","aiBackpacks","aiLaunchers","aiRifles","aiPistols"]] call VEMF_fnc_getSetting;
+_uniforms = _aiGear select 0;
+_headGear = _aiGear select 1;
+_vests = _aiGear select 2;
+_backpacks = _aiGear select 3;
+_launchers = _aiGear select 4;
+_rifles = _aiGear select 5;
+_pistols = _aiGear select 6;
+
+{
+	private ["_unit","_gear","_hasVest","_ammo"];
+	_unit = _x;
+	// Strip it
+	removeAllWeapons _unit;
 	removeAllItems _unit;
 	removeUniform _unit;
 	removeVest _unit;
 	removeBackpack _unit;
 	removeGoggles _unit;
 	removeHeadGear _unit;
+	{ // Remove all magazines
+		_unit removeMagazine _x;
+	} foreach (magazines _unit);
 
-	// Add Uniform
-	_unit forceAddUniform (_uniforms call BIS_fnc_selectRandom);
+	_gear = _uniforms call VEMF_fnc_random;
+	_unit forceAddUniform _gear; // Give the poor naked guy some clothing :)
 
-	// Add Headgear
-	_unit addHeadGear (_headGear call BIS_fnc_selectRandom);
+	_gear = _headGear call VEMF_fnc_random;
+	_unit addHeadGear _gear;
 
 	if ((floor random 3) isEqualTo 2) then
 	{
-		_unit addVest (_vests call BIS_fnc_selectRandom);
+		_gear = _vests call VEMF_fnc_random;
+		_unit addVest _gear;
+		_hasVest = true;
 	};
 
-	// 50% chance of unit with backpack
-	if ((floor random 2) isEqualTo 0 AND _mode isEqualTo "Invasion") then
+	if ((floor random 2) isEqualTo 0 OR isNil"_hasVest") then
 	{
-		_unit addBackpack (_backpacks call BIS_fnc_selectRandom);
-		if (_useLaunchers isEqualTo 1) then
+		_gear = _backpacks call VEMF_fnc_random;
+		_unit addBackpack _gear;
+		if (_useLaunchers isEqualTo 1 AND (floor random 4) isEqualTo 0) then
 		{
-			_launcher = _launchers call BIS_fnc_selectRandom;
-			_unit addWeapon _launcher;
-			_lAmmo = [] + getArray (configFile >> "cfgWeapons" >> _launcher >> "magazines");
+			_gear = _launchers call VEMF_fnc_random;
+			_unit addWeapon _gear;
+			_ammo = [] + getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
 			{
-				for "_i" from 0 to (floor(random 3)+2) do
+				for "_i" from 0 to (1+(round random 2)) do
 				{
 					_unit addMagazine _x;
 				};
-				uiSleep 0.05;
-			} forEach _lAmmo;
+			} forEach _ammo;
 		};
-	};
-
-	// Add Food/Drink
-	if ((floor random 2) isEqualTo 1) then
-	{
-		_unit addMagazine (_aiItems call BIS_fnc_selectRandom);
 	};
 
 	// Add Weapons & Ammo
-	_prim = _rifles call BIS_fnc_selectRandom;
+	_gear = _rifles call VEMF_fnc_random;
+	_unit addWeapon _gear;
+	_unit selectWeapon _gear;
 
-	_seco = _pistols call BIS_fnc_selectRandom;
-
-	_pAmmo = [] + getArray (configFile >> "cfgWeapons" >> _prim >> "magazines");
+	_ammo = [] + getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
 	{
-		for "_i" from 0 to (floor(random 4)+2) do
+		for "_i" from 0 to (3+(round random 2)) do
 		{
 			_unit addMagazine _x;
 		};
-		uiSleep 0.05;
-	} forEach _pAmmo;
+	} forEach _ammo;
 
-
-
-	_hAmmo = [] + getArray (configFile >> "cfgWeapons" >> _seco >> "magazines");
+	if not isNil"_hasVest" then
 	{
-		//if (isClass(configFile >> "CfgPricing" >> _x)) exitWith
-		//{
-			for "_i" from 0 to (floor(random 5)+2) do
+		_gear = _pistols call VEMF_fnc_random;
+		_unit addWeapon _gear;
+		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
+		{
+			for "_i" from 0 to (1+(round random 2)) do
 			{
 				_unit addMagazine _x;
 			};
-		//};
-		uiSleep 0.05;
-	} forEach _hAmmo;
-
-	_unit addWeapon _prim;
-	_unit selectWeapon _prim;
-	_unit addWeapon _seco;
-
-	// Add Grenades for GL Units
-	if ((count(getArray (configFile >> "cfgWeapons" >> _prim >> "muzzles"))) > 1) then
-	{
-		_unit addMagazine "1Rnd_HE_Grenade_shell";
+		} forEach _ammo;
 	};
-
-	// 20% Chance Hand Grenade
-	// Random Returns 0,1,2,3,4
-	if ((floor(random(5))) == 2) then
-	{
-		_unit addMagazine "HandGrenade";
-	};
-
-	// 10% Scope Attachment Chance
-	if ((floor(random(10))) == 5) then
-	{
-		_attachment = (getArray (configFile >> "cfgLootTable" >> "Scopes" >> "items")) call BIS_fnc_selectRandom;
-		_unit addPrimaryWeaponItem str(_attachment select 0);
-	};
-
-	_fin = true;
-};
-
-_fin
+} forEach _units;
+true

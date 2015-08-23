@@ -1,2 +1,61 @@
+/*
+Player Death
 
-private["_aa","_ab","_ac","_ad","_ae","_af","_ag","_ah","_ai","_aj","_ak","_al","_am"];_aa=_this select 0;_ai=_this select 1;if !([_aa,_this select 3]call EPOCH_server_getPToken)exitWith{};_aj=getPlayerUID _aa;_ab=getposATL _aa;if(_aa !=_ai)then{if(random 1 <=EPOCH_antagonistChancePDeath)then{_ad=2;if(surfaceIsWater _ab)then{_ad=3;};[_ai,"Sapper"]call EPOCH_server_triggerEvent;};_ae=_this select 2;if(typeName _ae=="ARRAY")then{_ae=toString(_this select 2);};['deathlog',format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7',_ae,_aj,name _ai,getPlayerUID _ai,currentWeapon _ai,_aa distance _ai,_ab]]call EPOCH_server_hiveLog;};_ak=EPOCH_customVars find "Crypto";_al=_aa getVariable["VARS",[]+EPOCH_defaultVars_SEPXVar];_am=_al select _ak;if(_am > 0)then{_ac=createVehicle["Land_MPS_EPOCH",_ab,[],1.5,"NONE"];diag_log format["ADMIN: Created crypto device for %1 with %2 at %3",getPlayerUID _aa,_am,_ab];_ac setVariable["Crypto",_am,true];};[_aa,[]+EPOCH_defaultVars_SEPXVar]call EPOCH_server_savePlayer;if(EPOCH_cloneCost > 0)then{_ah=["Bank",_aj]call EPOCH_server_hiveGETRANGE;if((_ah select 0)==1 && typeName(_ah select 1)=="ARRAY")then{_ag=_ah select 1;_af=0;if !(_ag isEqualTo[])then{_af=_ag select 0;};_af=_af-EPOCH_cloneCost;["Bank",_aj,EPOCH_expiresBank,[_af]]call EPOCH_server_hiveSETEX;};};
+Epoch Mod - EpochMod.com
+All Rights Reserved.
+*/
+private ["_playerObj","_pos","_veh","_triggerType","_playerName","_bankBalance","_bankData","_response","_killer","_plyrUID","_cIndex","_vars","_current_crypto"];
+_playerObj = _this select 0;
+_killer = _this select 1;
+
+// handle token check and isnull for _plyr
+if !([_playerObj, _this select 3] call EPOCH_server_getPToken) exitWith{};
+_plyrUID = getPlayerUID _playerObj;
+_pos = getposATL _playerObj;
+
+if (_playerObj != _killer) then {
+	if (random 1 <= EPOCH_antagonistChancePDeath) then {
+		_triggerType = 2;
+		if (surfaceIsWater _pos) then {
+			_triggerType = 3;
+		};
+		[_killer, "Sapper"] call EPOCH_server_triggerEvent;
+	};
+
+	// backwards compat for now - 
+	_playerName = _this select 2;
+	if (typeName _playerName == "ARRAY") then{
+		_playerName = toString (_this select 2);
+	};
+
+	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _plyrUID, name _killer, getPlayerUID _killer, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_server_hiveLog;
+};
+
+// get vars array and current Crypto value
+_cIndex = EPOCH_customVars find "Crypto";
+_vars = _playerObj getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+_current_crypto = _vars select _cIndex;
+
+if (_current_crypto > 0) then{
+	_veh = createVehicle["Land_MPS_EPOCH", _pos, [], 1.5, "NONE"];
+	diag_log format["ADMIN: Created crypto device for %1 with %2 at %3", getPlayerUID _playerObj, _current_crypto, _pos];
+	_veh setVariable["Crypto", _current_crypto, true];
+};
+
+[_playerObj, [] + EPOCH_defaultVars_SEPXVar] call EPOCH_server_savePlayer;
+
+// death cost
+if (EPOCH_cloneCost > 0) then {
+	_response = ["Bank", _plyrUID] call EPOCH_server_hiveGETRANGE;
+	if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
+		_bankData = _response select 1;
+		_bankBalance = 0;
+
+		if !(_bankData isEqualTo[]) then {
+			_bankBalance = _bankData select 0;
+		};
+
+		_bankBalance = _bankBalance - EPOCH_cloneCost;
+		["Bank", _plyrUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_server_hiveSETEX;
+	};
+};

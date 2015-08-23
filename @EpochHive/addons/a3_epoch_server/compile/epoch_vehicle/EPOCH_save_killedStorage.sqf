@@ -1,1 +1,18 @@
-private["_aa","_ab","_ac","_ad","_ae"];_ad=_this select 0;_ae=_this select 1;if(!isNull _ad)then{_ab=_ad getVariable["STORAGE_SLOT","ABORT"];if(_ab !="ABORT")then{_ac=format["%1:%2",(call EPOCH_fn_InstanceID),_ab];["Storage",_ac,[]]call EPOCH_server_hiveSET;EPOCH_StorageSlots pushBack _ab;EPOCH_StorageSlotsCount=count EPOCH_StorageSlots;publicVariable "EPOCH_StorageSlotsCount";['StorageKilled',format["%1 was killed by %2 at %3",typeOf _ad,_ae,getPosATL _ad]]call EPOCH_server_hiveLog;};};
+private ["_vehicle","_vehSlot","_vehHiveKey","_storage","_killer"];
+
+_storage = _this select 0;
+_killer = _this select 1;
+
+if (!isNull _storage) then {
+	_vehSlot = _storage getVariable["STORAGE_SLOT", "ABORT"];
+	if (_vehSlot != "ABORT") then {
+		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
+		["Storage", _vehHiveKey, []] call EPOCH_server_hiveSET;
+		EPOCH_StorageSlots pushBack _vehSlot;
+
+		EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
+		publicVariable "EPOCH_StorageSlotsCount";
+
+		['StorageKilled', format["%1 was killed by %2 at %3", typeOf _storage, _killer, getPosATL _storage]] call EPOCH_server_hiveLog;
+	};
+};
