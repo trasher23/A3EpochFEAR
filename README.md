@@ -4,6 +4,7 @@ A3 Epoch F.E.A.R.
 Chernarus has been quarantined.  Remnants of the CDC are deploying mini-nukes to sanitise conurbations.  Military force has been authorised and all infected and non-infected persons are being shot on sight.  Armed with a backpack, map and army pistol, can you find a way to survive the spiralling chaos?
 
 A mish-mash of:
+<br/>
 Arma 3 1.48:         http://arma3.com/
 <br/>
 Epoch 0.3.2.0:          http://epochmod.com/
