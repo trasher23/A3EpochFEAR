@@ -5,10 +5,10 @@ Chernarus has been quarantined.  Remnants of the CDC are deploying mini-nukes to
 
 Arma 3 1.48:         http://arma3.com/
 <br/>
-Epoch 0.3.0.4_b2:          http://epochmod.com/
+Epoch 0.3.2.0:          http://epochmod.com/
 <br/>
 <br/>
-A3AI 0.8.0a:           https://github.com/dayzai/A3EAI
+A3AI 0.8.4d:           https://github.com/dayzai/A3EAI
 <br/>
 VEMF 0.0702.16:           https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
