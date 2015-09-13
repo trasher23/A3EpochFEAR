@@ -1,3 +1,6 @@
+#define PLAYER_UNITS "Epoch_Male_F","Epoch_Female_F"
+#define LOOT_HOLDER_CLASS "WH_Loot"
+
 private ["_unitGroup","_searchRange","_searchType","_searchPoints"];
 _unitGroup = _this select 0;
 
@@ -7,10 +10,10 @@ _searchType = floor (random 2);
 
 _searchPoints = call {
 	if (_searchType isEqualTo 0) exitWith {
-		(leader _unitGroup) nearObjects ["WH_Loot",75]
+		(leader _unitGroup) nearObjects [LOOT_HOLDER_CLASS,100]
 	};
 	if (_searchType isEqualTo 1) exitWith {
-		(leader _unitGroup) nearEntities [["Epoch_Male_F","Epoch_Female_F","LandVehicle"],100]
+		(leader _unitGroup) nearEntities [[PLAYER_UNITS,"LandVehicle"],100]
 	};
 	[]
 };
