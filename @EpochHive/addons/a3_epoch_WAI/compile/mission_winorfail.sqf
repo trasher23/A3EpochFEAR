@@ -1,6 +1,6 @@
 if(isServer) then {
 
-	private ["_player_near","_map_marker","_node","_max_ai","_timeout_time","_currenttime","_starttime","_msglose","_msgwin","_msgstart","_objectives","_crate","_marker","_in_range","_objectivetarget","_position","_type","_complete","_timeout","_mission","_killpercent","_delete_mines","_cleanunits","_clearmission","_baseclean","_msg"];
+	private ["_player_near","_map_marker","_node","_max_ai","_timeout_time","_currenttime","_starttime","_msglose","_msgwin","_msgstart","_objectives","_crate","_marker","_in_range","_objectivetarget","_position","_type","_complete","_timeout","_mission","_killpercent","_delete_mines","_cleanunits","_clearmission","_baseclean","_msgresponse"];
 
 	_mission	= (_this select 0) select 0;
 	_crate		= (_this select 0) select 1;
@@ -45,7 +45,7 @@ if(isServer) then {
 	RemoteMessage = [wai_announce,_msgstart];
 	publicVariable "RemoteMessage";
 	*/
-	[["Activity sighted...",_msgstart,"",""],""] call FEARBroadcast;
+	_msgresponse = [["Activity sighted...",_msgstart,"",""],""] call FEARBroadcast;
 	
 	markerready = true;
 
@@ -201,7 +201,7 @@ if(isServer) then {
 		RemoteMessage = [wai_announce,_msgwin];
 		publicVariable "RemoteMessage";
 		*/
-		[["Activity sighted...",_msgwin,"",""],""] call FEARBroadcast;
+		_msgresponse = [["Activity sighted...",_msgwin,"",""],""] call FEARBroadcast;
 		
 		if (wai_clean_mission) then {
 
@@ -325,7 +325,7 @@ if(isServer) then {
 		RemoteMessage = [wai_announce,_msglose];
 		publicVariable "RemoteMessage";
 		*/
-		[["Activity sighted...",_msglose,"",""],""] call FEARBroadcast;
+		_msgresponse = [["Activity sighted...",_msglose,"",""],""] call FEARBroadcast;
 	};
 	
 	_map_marker = (wai_mission_data select _mission) select 1;

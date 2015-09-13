@@ -17,117 +17,183 @@
 	ARRAY - [name of town, town position]
 */
 
-private ["_settings","_locPos","_loc","_locName","_ret","_continue","_settings","_blackList","_usedLocs","_checkRange","_tooCloseRange","_maxPrefered","_playerCheck","_allowSmall","_mode","_pos","_hasPlayers"];
+private ["_settings","_locPos","_loc","_locName","_ret","_continue","_settings","_blackList","_usedLocs","_checkRange","_tooCloseRange","_maxPrefered","_playerCheck","_allowSmall","_mode","_pos","_hasPlayers","_blackPos","_checkBlackPos"];
 
+_ret = false;
 // Define settings
-_settings = [["locationBlackList","allowSmall"]] call VEMF_fnc_getSetting;
-_blackList = _settings select 0;
-_allowSmall = _settings select 1;
-_mode = _this select 0;
-_onRoad = _this select 1;
-	_roadRange = 5000;
-_cntr = _this select 2;
-_rad = _this select 3;
-_tooCloseRange = _this select 4;
-_maxPrefered = _this select 5;
-_playerCheck = _this select 6;
-
-switch _mode do
+_settings = [["locationBlackList","allowSmall","noMissionPos"]] call VEMF_fnc_getSetting;
+_blackList = [_settings, 0, [], [[]]] call BIS_fnc_param;
+_allowSmall = [_settings, 1, 1, [0]] call BIS_fnc_param;
+_blackPos = [_settings, 2, [], [[]]] call BIS_fnc_param;
+_checkBlackPos = false;
+if (count _blackPos > 0) then
 {
-	case "loc":
+	_checkBlackPos = true;
+};
+_mode = [_this, 0, "", [""]] call BIS_fnc_param;
+if not(_mode isEqualTo "") then
+{
+	_onRoad = [_this, 1, false, [false]] call BIS_fnc_param;
+	_roadRange = 5000;
+	_cntr = [_this, 2, [], [[]]] call BIS_fnc_param;
+	if (count _cntr > 0) then
 	{
-		// Get a list of locations close to _cntr (position of player)
-		_locs = nearestLocations [_cntr, ["NameVillage","NameCity","NameCityCapital",if(_allowSmall isEqualTo 1)then{"nameLocal"}], _rad];
-		_usedLocs = uiNamespace getVariable "vemfUsedLocs";
-		_remLocs = [];
-		{ // Check _locs for invalid locations (too close, hasPlayers or inBlacklist)
-			_hasPlayers = [locationPosition _x, _playerCheck] call VEMF_fnc_checkPlayerPresence;
-			if (_hasPlayers OR (text _x) in _blackList OR _cntr distance (locationPosition _x) < _tooCloseRange OR [text _x, locationPosition _x] in _usedLocs) then
-		 	{
-				_remLocs pushBack _x;
-			};
-		} forEach _locs;
-
-		{ // Remove all invalid locations from _locs
-			_index = _locs find _x;
-			_locs deleteAt _index;
-		} forEach _remLocs;
-
-		// Check what kind of distances we have
-		_far = []; // Further than _maxPrefered
-		_pref = []; // Closer then _maxPrefered
+		_rad = [_this, 3, -1, [0]] call BIS_fnc_param;
+		if (_rad > -1) then
 		{
-			_dist = _cntr distance (locationPosition _x);
-			call
+			_tooCloseRange = [_this, 4, -1, [0]] call BIS_fnc_param;
+			if (_tooCloseRange > -1) then
 			{
-				if (_dist > _maxPrefered) exitWith
+				_maxPrefered = [_this, 5, -1, [0]] call BIS_fnc_param;
+				if (_maxPrefered > -1) then
 				{
-					_far pushBack _x;
-				};
-				if (_dist < _maxPrefered) exitWith
-				{
-					_pref pushBack _x;
-				};
-			};
-		} forEach _locs;
-
-		// Check if there are any prefered locations. If yes, randomly select one
-		if (count _pref > 0) then
-		{
-			_loc = _pref select floor random count _pref;
-		};
-
-		// Check if _far has any locations and if _pref is empty
-		if (count _far > 0 AND count _pref isEqualTo 0) then
-		{
-			_loc = _far select floor random count _far;
-		};
-
-		// Validate _locs just to prevent the .RPT from getting spammed
-		if (count _locs isEqualTo 0) exitWith
-		{
-			["fn_findPos", 0, "No valid locations found!"] call VEMF_fnc_log
-		};
-
-		// Return Name and POS
-		_locPos = [((locationPosition _loc) select 0), ((locationPosition _loc) select 1), 0];
-		_locName = (text _loc);
-		_ret = [_locName, _locPos];
-		_usedLocs pushBack _ret;
-	};
-	case "pos":
-	{
-		_valid = false;
-		for "_p" from 1 to 10 do
-		{
-			_pos = [_cntr, _tooCloseRange, _rad, 2, 0, 500, 0] call BIS_fnc_findSafePos;
-			if _onRoad then
-			{
-				_roads = _pos nearRoads _roadRange;
-				if (count _roads > 0) then
-				{
-					private ["_closest","_dist"];
-					_closest = ["", _roadRange];
-					{ // Find the closest road
-						_dist = _x distance _pos;
-						if (_dist < (_closest select 1)) then
+					_playerCheck = [_this, 6, -1, [0]] call BIS_fnc_param;
+					if (_playerCheck > -1) then
+					{
+						if (_mode isEqualTo "loc") then
 						{
-							_closest = [_x, _dist];
+							// Get a list of locations close to _cntr (position of player)
+							_locs = nearestLocations [_cntr, ["Area","BorderCrossing","CityCenter","Hill","fakeTown","Name","RockArea","Strategic","StrongpointArea","ViewPoint","NameVillage","NameCity","NameCityCapital",if(_allowSmall isEqualTo 1)then{"nameLocal"}], _rad];
+							if (count _locs > 0) then
+							{
+								_usedLocs = uiNamespace getVariable "vemfUsedLocs";
+								_remLocs = [];
+								{ // Check _locs for invalid locations (too close, hasPlayers or inBlacklist)
+									_hasPlayers = [locationPosition _x, _playerCheck] call VEMF_fnc_checkPlayerPresence;
+									if _hasPlayers then
+									{
+										_remLocs pushBack _x;
+									};
+									if not _hasPlayers then
+									{
+										if _checkBlackPos then
+										{
+											private ["_locPos","_loc"];
+											_locPos = locationPosition _x;
+											_loc = _x;
+											{
+												if (count _x isEqualTo 2) then
+												{
+													_pos = [_x, 0, [0,0,0], [[]]] call BIS_fnc_param;
+													if not(_pos isEqualTo [0,0,0]) then
+													{
+														_range = [_x, 1, 600, [0]] call BIS_fnc_param;
+														if ((_pos distance _locPos) < _range) then
+														{
+															_remLocs pushBack _loc;
+														};
+													};
+												};
+												if not(count _x isEqualTo 2) then
+												{
+													["fn_findPos", 0, format["found invalid entry in mission blacklist: %1", _x]] call VEMF_fnc_log;
+												};
+											} forEach _blackPos;
+										};
+										if ((text _x) in _blackList) then
+										{
+											_remLocs pushBack _x;
+										};
+										if not((text _x) in _blacklist) then
+										{
+											if (_cntr distance (locationPosition _x) < _tooCloseRange) then
+											{
+												_remLocs pushBack _x;
+											};
+											if (_cntr distance (locationPosition _x) > _tooCloseRange) then
+											{
+												if (([text _x, locationPosition _x]) in _usedLocs) then
+												{
+													_remLocs pushBack _x;
+												};
+											};
+										};
+									};
+								} forEach _locs;
+
+								{ // Remove all invalid locations from _locs
+									_index = _locs find _x;
+									_locs deleteAt _index;
+								} forEach _remLocs;
+
+								// Check what kind of distances we have
+								_far = []; // Further than _maxPrefered
+								_pref = []; // Closer then _maxPrefered
+								{
+									_dist = _cntr distance (locationPosition _x);
+									if (_dist > _maxPrefered) then
+									{
+										_far pushBack _x;
+									};
+									if (_dist < _maxPrefered) then
+									{
+										_pref pushBack _x;
+									};
+								} forEach _locs;
+
+								// Check if there are any prefered locations. If yes, randomly select one
+								if (count _pref > 0) then
+								{
+									_loc = _pref select floor random count _pref;
+								};
+
+								// Check if _far has any locations and if _pref is empty
+								if (count _far > 0) then
+								{
+									if (count _pref isEqualTo 0) then
+									{
+										_loc = _far select floor random count _far;
+									};
+								};
+
+								// Validate _locs just to prevent the .RPT from getting spammed
+								if (count _locs > 0) then
+								{
+									// Return Name and POS
+									_ret = [text _loc, locationPosition _loc];
+									(uiNamespace getVariable "vemfUsedLocs") pushBack _ret;
+								};
+							};
 						};
-					} forEach _roads;
-					_pos = position (_closest select 0);
+						if (_mode isEqualTo "pos") then
+						{
+							_valid = false;
+							for "_p" from 1 to 10 do
+							{
+								if (typeName _ret isEqualTo "BOOL") then
+								{
+									if not _ret then
+									{
+										_pos = [_cntr, _tooCloseRange, _rad, 2, 0, 500, 0] call BIS_fnc_findSafePos;
+										if _onRoad then
+										{
+											_roads = _pos nearRoads _roadRange;
+											if (count _roads > 0) then
+											{
+												private ["_closest","_dist"];
+												_closest = ["", _roadRange];
+												{ // Find the closest road
+													_dist = _x distance _pos;
+													if (_dist < (_closest select 1)) then
+													{
+														_closest = [_x, _dist];
+													};
+												} forEach _roads;
+												_pos = position (_closest select 0);
+											};
+										};
+										_hasPlayers = [_pos, _playerCheck] call VEMF_fnc_checkPlayerPresence;
+										if not(_hasPlayers) then
+										{
+											_ret = _pos;
+										};
+									};
+								};
+							};
+						};
+					};
 				};
 			};
-			_hasPlayers = [_pos, _playerCheck] call VEMF_fnc_checkPlayerPresence;
-			if not(_hasPlayers) exitWith
-			{
-				_ret = _pos;
-			};
-		};
-		if _hasPlayers exitWith
-		{
-			_ret = false;
-			["fn_findPos", 0, "unable to find a good _pos! Oops..."] call VEMF_fnc_log;
 		};
 	};
 };

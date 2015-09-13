@@ -17,7 +17,6 @@ if (hasInterface) then
 			default
 			{
 				playSound "RadioAmbient6";
-				
 				[
 					[
 						[(_msg select 0),"<t align = 'left' shadow = '1' size = '1' font='PuristaBold'>%1</t><br />"],

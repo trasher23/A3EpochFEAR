@@ -19,19 +19,18 @@
     while {true} do
     {
         _groups = uiNamespace getVariable "vemfGroups";
-        waitUntil { uiSleep 2; count _groups > 0 };
+        waitUntil { uiSleep 1; count _groups > 0 };
         {
             if (local _x) then
             {
-                if ((count units _x) isEqualTo 0) exitWith
+                if ((count units _x) < 1) then
                 {
                     deleteGroup _x;
                 };
-                // Group still has units, check if there is anyone that can be the owner
-                for "_o" from 1 to 2 do
+                if (count (units _x) > 0) then
                 {
-                    _success = [_x] call VEMF_fnc_transferOwner;
-                    if _success exitWith {};
+                    // Group still has units, check if there is anyone that can be the owner
+                    [_x] call VEMF_fnc_transferOwner;
                 };
             };
         } forEach _groups;

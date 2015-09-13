@@ -13,110 +13,123 @@
 	BOOLEAN - true if nothing failed
 */
 
+_ok = false;
 private ["_params","_units","_mode","_settings","_useLaunchers","_aiGear","_uniforms","_headGear","_vests","_backpacks","_launchers","_rifles","_pistols"];
 _params = _this;
-if not((typeName _this) isEqualTo "ARRAY") exitWith
+if (typeName _this isEqualTo "ARRAY") then
 {
-	["fn_loadInv", 0, "incorrect params given!"] call VEMF_fnc_log;
-	false
-};
-
-_units = [_this, 0, [], [[]]] call BIS_fnc_param;
-if (_units isEqualTo []) exitWith
-{
-	["fn_loadInv", 0, "incorrect or no units given!"] call VEMF_fnc_log;
-	false
-};
-
-_mode = [_this, 1, "", [""]] call BIS_fnc_param;
-if (_mode isEqualTo "") exitWith
-{
-	["fn_loadInv", 0, "incorrect OR missing _mode..."] call VEMF_fnc_log;
-	false
-};
-
-// Define settings
-_useLaunchers = ([["VEMFconfig","DLI"],["useLaunchers"]] call VEMF_fnc_getSetting) select 0;
-
-_aiGear = [["VEMFconfig","aiGear"],["aiUniforms","aiHeadGear","aiVests","aiBackpacks","aiLaunchers","aiRifles","aiPistols"]] call VEMF_fnc_getSetting;
-_uniforms = _aiGear select 0;
-_headGear = _aiGear select 1;
-_vests = _aiGear select 2;
-_backpacks = _aiGear select 3;
-_launchers = _aiGear select 4;
-_rifles = _aiGear select 5;
-_pistols = _aiGear select 6;
-
-{
-	private ["_unit","_gear","_hasVest","_ammo"];
-	_unit = _x;
-	// Strip it
-	removeAllWeapons _unit;
-	removeAllItems _unit;
-	removeUniform _unit;
-	removeVest _unit;
-	removeBackpack _unit;
-	removeGoggles _unit;
-	removeHeadGear _unit;
-	{ // Remove all magazines
-		_unit removeMagazine _x;
-	} foreach (magazines _unit);
-
-	_gear = _uniforms call VEMF_fnc_random;
-	_unit forceAddUniform _gear; // Give the poor naked guy some clothing :)
-
-	_gear = _headGear call VEMF_fnc_random;
-	_unit addHeadGear _gear;
-
-	if ((floor random 3) isEqualTo 2) then
+	_units = [_this, 0, [], [[]]] call BIS_fnc_param;
+	if (count _units > 0) then
 	{
-		_gear = _vests call VEMF_fnc_random;
-		_unit addVest _gear;
-		_hasVest = true;
-	};
-
-	if ((floor random 2) isEqualTo 0 OR isNil"_hasVest") then
-	{
-		_gear = _backpacks call VEMF_fnc_random;
-		_unit addBackpack _gear;
-		if (_useLaunchers isEqualTo 1 AND (floor random 4) isEqualTo 0) then
+		_mode = [_this, 1, "", [""]] call BIS_fnc_param;
+		if not(_mode isEqualTo "") then
 		{
-			_gear = _launchers call VEMF_fnc_random;
-			_unit addWeapon _gear;
-			_ammo = [] + getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
+			// Define settings
+			_aiGear = [["aiGear"],["aiUniforms","aiHeadGear","aiVests","aiBackpacks","aiLaunchers","aiRifles","aiPistols"]] call VEMF_fnc_getSetting;
+			_uniforms = [_aiGear, 0, [], [[]]] call BIS_fnc_param;
+			if (count _uniforms > 0) then
 			{
-				for "_i" from 0 to (1+(round random 2)) do
+				_headGear = [_aiGear, 1, [], [[]]] call BIS_fnc_param;
+				if (count _headGear > 0) then
 				{
-					_unit addMagazine _x;
+					_vests = [_aiGear, 2, [], [[]]] call BIS_fnc_param;
+					if (count _vests > 0) then
+					{
+						_backpacks = [_aiGear, 3, [], [[]]] call BIS_fnc_param;
+						if (count _backpacks > 0) then
+						{
+							_rifles = [_aiGear, 5, [], [[]]] call BIS_fnc_param;
+							if (count _rifles > 0) then
+							{
+								_pistols = [_aiGear, 6, [], [[]]] call BIS_fnc_param;
+								if (count _pistols > 0) then
+								{
+									_useLaunchers = [[["DLI"],["useLaunchers"]] call VEMF_fnc_getSetting, 0, -1, [0]] call BIS_fnc_param;
+									if (_useLaunchers isEqualTo 1) then
+									{
+										_launchers = [_aiGear, 4, [], [[]]] call BIS_fnc_param;
+										if (count _launchers isEqualTo 0) then { _useLaunchers = -1 };
+									};
+									{
+										private ["_unit","_gear","_ammo"];
+										_unit = _x;
+										// Strip it
+										removeAllWeapons _unit;
+										removeAllItems _unit;
+										removeUniform _unit;
+										removeVest _unit;
+										removeBackpack _unit;
+										removeGoggles _unit;
+										removeHeadGear _unit;
+										{ // Remove all magazines
+											_unit removeMagazine _x;
+										} foreach (magazines _unit);
+
+										_gear = _uniforms call VEMF_fnc_random;
+										_unit forceAddUniform _gear; // Give the poor naked guy some clothing :)
+
+										_gear = _headGear call VEMF_fnc_random;
+										_unit addHeadGear _gear;
+
+										_gear = _vests call VEMF_fnc_random;
+										_unit addVest _gear;
+
+										if ((floor random 2) isEqualTo 0) then
+										{
+											_gear = _backpacks call VEMF_fnc_random;
+											_unit addBackpack _gear;
+											if (_useLaunchers isEqualTo 1) then
+											{
+												if ((floor random 4) isEqualTo 0) then
+												{
+													private ["_ammo"];
+													_gear = _launchers call VEMF_fnc_random;
+													_unit addWeapon _gear;
+													_ammo = getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
+													if (count _ammo > 2) then
+													{
+														_ammo resize 2;
+													};
+													for "_i" from 0 to (2 + (round random 1)) do
+													{
+														_unit addMagazine (_ammo select floor random count _ammo);
+													};
+												};
+											};
+										};
+
+										// Add Weapons & Ammo
+										_gear = _rifles call VEMF_fnc_random;
+										_unit addWeapon _gear;
+										_unit selectWeapon _gear;
+
+										_ammo = getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
+										if (count _ammo > 2) then
+										{
+											_ammo resize 2;
+										};
+										for "_i" from 0 to (3 + (round random 2)) do
+										{
+											_unit addMagazine (_ammo select floor random count _ammo);
+										};
+
+										_gear = _pistols call VEMF_fnc_random;
+										_unit addWeapon _gear;
+										_ammo = getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
+										for "_i" from 0 to (2 + (round random 2)) do
+										{
+											_unit addMagazine (_ammo select floor random count _ammo);
+										};
+									} forEach _units;
+									_ok = true;
+								};
+							};
+						};
+					};
 				};
-			} forEach _ammo;
-		};
-	};
-
-	// Add Weapons & Ammo
-	_gear = _rifles call VEMF_fnc_random;
-	_unit addWeapon _gear;
-	_unit selectWeapon _gear;
-
-	_ammo = [] + getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
-	{
-		for "_i" from 0 to (3+(round random 2)) do
-		{
-			_unit addMagazine _x;
-		};
-	} forEach _ammo;
-
-	if not isNil"_hasVest" then
-	{
-		_gear = _pistols call VEMF_fnc_random;
-		_unit addWeapon _gear;
-		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
-		{
-			for "_i" from 0 to (1+(round random 2)) do
-			{
-				_unit addMagazine _x;
 			};
-		} forEach _ammo;
+		};
 	};
-} forEach _units;
-true
+};
+
+_ok

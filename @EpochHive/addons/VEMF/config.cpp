@@ -14,25 +14,29 @@
 
 class VEMFconfig
 {
+	/////////////////////////////
+	VEMF_version = 0.0720.2; /// Do NOT change
+	/////////////////////////////
 	/////// Configure VEMF here ///////
 	// Global settings
-	allowHeadLessClient = -1; // Set to 1 if you have (a) headless client(s) | -1 = DISABLED
+	allowHeadLessClient = -1; // HC support is currently broken // Set to 1 if you have (a) headless client(s) | -1 = DISABLED
 	minServerFPS = 20; // Missions will not spawn if server's FPS is below this number
 	validateLoot = 1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
 	minPlayers = 1; // Missions will not start until player count reaches this number OR when player count goes below this amount
-	maxGlobalMissions = 3; // Max amount of missions that are allowed to run at the same time
+	maxGlobalMissions = 5; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
  	timeOutTime = 20; // In minutes. Use -1 to disable mission timeout; Minimal: 5
-	minNew = 1; // Minimum time before new mission can run
-	maxNew = 2; // Maximum time before new mission can run
+	minNew = 3; // Minimum time before new mission can run
+	maxNew = 10; // Maximum time before new mission can run
 	missionList[] = {"DynamicLocationInvasion"}; // Speaks for itself, right?
 	addons[] = {}; // Not used for now
-	noMissionPos[] = {}; // Needs functionality check
-	locationBlackList[] = {"Sagonisi","Monisi","Fournos","Savri","Atsalis","Polemista","Cap Makrinos","Pyrgi","Makrynisi","Chelonisi","Almyra"};  // Works
+	noMissionPos[] = {{{18452.8,14279.5,0.00128174},500}}; // Works | Format: {{position},radius} | Default: Altis East spawn
+	locationBlackList[] = {"Sagonisi","Monisi","Fournos","Savri","Atsalis","Polemista","Cap Makrinos","Pyrgi","Makrynisi","Chelonisi","Almyra","Surf Club"};  // Works
 	killPercentage = 100; // In percent. 100 means all AI that belong to mission need to be killed
 	sayKilled = 1; // Set to -1 if you do not want AI killed messages
 	allowSmall = 1; // Set to -1 if you do not want missions to target very small unusual locations
-	removeLaunchers = 1; // Set to -1 if you do not want the launchers to be removed from AI's body when killed
-	removeAIbodies = -1; // Set to -1 if you want the AI's body to stay after they are killed
+	keepLaunchers = 1; // Set to -1 if you do not want the launchers to be removed from AI's body when killed
+	keepAIbodies = -1; // Set to -1 if you want the AI's body to stay after they are killed
+
 	/////// Debugging/learning mode ///////
 	enableDebug = 2; // -1 to disable, 0 = ERRORS only | 1 = INFO only | 2 = ERRORS & INFO
 	///////////////////////////////////////
@@ -40,33 +44,52 @@ class VEMFconfig
 	// Global AI skill settings. They affect each VEMF unit for any default VEMF mission
 	class aiSkill // Minimum: 0 | Maximum: 1
 	{
-		accuracy = 0.25;
-		aimingShake = 0.4;
-		aimingSpeed = 0.15;
-		endurance = 0.3;
-		spotDistance = 0.2;
-		spotTime = 0.2;
-		courage = 0.4;
-		reloadSpeed = 0.15;
-		commanding = 0.5;
-		general = 0.15;
+		difficulty = "Veteran"; // Options: "Easy" "Normal" "Veteran" "Hardcore" | Default: Veteran
+		class Easy // AI looks stupid with this setting xD
+		{
+			accuracy = 0.1; aimingShake = 0.25; aimingSpeed = 0.075; endurance = 0.15; spotDistance = 0.3; spotTime = 0.1; courage = 0.35; reloadSpeed = 0.1; commanding = 0.3; general = 0.15;
+		};
+		class Normal
+		{
+			accuracy = 0.15; aimingShake = 0.2; aimingSpeed = 0.1; endurance = 0.2; spotDistance = 0.4; spotTime = 0.15; courage = 0.5; reloadSpeed = 0.15; commanding = 0.4; general = 0.15;
+		};
+		class Veteran
+		{
+			accuracy = 0.2; aimingShake = 0.25; aimingSpeed = 0.15; endurance = 0.25; spotDistance = 0.5; spotTime = 0.2; courage = 0.7; reloadSpeed = 0.15; commanding = 0.5; general = 0.3;
+		};
+		class Hardcore // Also known as Aimbots
+		{
+			accuracy = 0.3; aimingShake = 0.3; aimingSpeed = 0.2; endurance = 0.5; spotDistance = 0.7; spotTime = 0.25; courage = 1; reloadSpeed = 0.3; commanding = 0.8; general = 0.5;
+		};
 	};
 
 	class DLI // DynamicLocationInvasion settings
 	{
+		useMarker = 1; // Use -1 to disable mission markers
 		maxInvasions = 5; // Max amount of active uncompleted invasions allowed at the same time
 		groupCount = 3; // Amount of groups that spawn at location
 		groupUnits = 4; // Amount of units in each group
 		/* TIP: increase groupCount and decrease groupUnits to make it harder for players. Easier to get flanked from all sides */
 		useLaunchers = 1; // Set to 0 if you do NOT want the AI to have launchers
-		remLaunchers = 1; // Set to 0 if you do NOT want the launcher (and its ammo) to be removed from AI when they die
-		hasLauncherChance = 25; // In percentage. How big the chance is that a unit gets a launcher
-		playerCheck = 650; // If player(s) within this range of location, location gets skipped. Distance in m (meters)
+			remLaunchers = 1; // Set to 0 if you do NOT want the launcher (and its ammo) to be removed from AI when they die
+			hasLauncherChance = 25; // In percentage. How big the chance is that a unit gets a launcher
+		playerCheck = 800; // If player(s) within this range of location, location gets skipped. Distance in m (meters)
 		distanceCheck = 15000; // Check for locations around random player within this distance in m (meters)
 		/* distanceCheck NOTE: set it to the minimal distance between ANY town on the map you are using. Otherwise location selection will fail */
-		distanceTooClose = 2000; // Mission will not spawn closer to random player than this distance in meters
-		distanceMaxPrefered = 6500; // Mission will prefer locations closer than this distance (in meters) to random player
-		crateAltitude = 200; // Crate with parachute will spawn at this altitude (meters)
+		distanceTooClose = 2500; // Mission will not spawn closer to random player than this distance in meters
+		distanceMaxPrefered = 4500; // Mission will prefer locations closer than this distance (in meters) to random player
+		parachuteCrate = -1; // Use -1 to disable the crate parachuting in
+			crateAltitude = 250; // Crate with parachute(!) will spawn at this altitude (meters)
+		crateMapMarker = 1; // Use -1 if you do not want a marker to be placed on the crate
+		crateVisualMarker = 1; // Use -1 to disable chemlight/smoke on crate
+		crateSpawnSound = 1; // Use -1 to disable a spawn sound when crate spawns (only if parachuteCrate = 1)
+		crateTypes[] = {"I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F","I_supplyCrate_F","Box_East_AmmoVeh_F","Box_NATO_AmmoVeh_F"};
+		smokeTypes[] = {"SmokeShell","SmokeShellBlue","SmokeShellGreen","SmokeShellOrange","SmokeShellRed","SmokeShellYellow"};
+		flairTypes[] = {"Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"};
+		placeMines = -1; // Set to -1 if you do not want mines at missions | using infiSTAR? set _RAM to false if you set placeMines to 1
+		minesMode = 1; // 1 = Anti-Armor | 2 = Anti-Personell | 3 = Both Anti-Armor and Anti-Personell
+		minesAmount = 20; // Ignore if placeMines = -1;
+		cleanMines = 2; // 1 = remove mines when mission done | 2 = explode mines when mission done :D guarenteed chaos, LOL!
 	};
 
 	// Loot crate configuration
@@ -75,7 +98,7 @@ class VEMFconfig
 		maxPrimarySlots = 10; // Maximum primary weapons in each loot crate
 		minPrimarySlots = 4; // Minimum primary weapons in each loot crate
 		primaryWeaponLoot[] =
-		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"srifle_DMR_01_F",2},{"srifle_EBR_F",3},{"srifle_GM6_F",1},{"LMG_Mk200_F",3},{"LMG_Zafir_F",3},{"arifle_Katiba_F",3},{"arifle_Katiba_GL_F",2},{"arifle_Mk20_F",2},
 			{"arifle_Mk20_plain_F",2},{"arifle_Mk20C_F",2},{"arifle_Mk20C_plain_F",2},{"arifle_Mk20_GL_F",2},{"arifle_Mk20_GL_plain_F",2},{"arifle_MXC_F",2},{"arifle_MX_F",2},
 			{"arifle_MX_GL_F",2},{"arifle_MX_SW_F",2},{"arifle_MXM_F",2},{"arifle_MXC_Black_F",2},{"arifle_MX_Black_F",2},{"arifle_MX_GL_Black_F",2},{"arifle_MX_SW_Black_F",2},
@@ -88,14 +111,14 @@ class VEMFconfig
 		maxSecondarySlots = 4; // Maximum number of secondary weapons to be in each loot crate
 		minSecondarySlots = 2; // Minimum number of secondary weapons to be in each loot crate
 		secondaryWeaponLoot[] =
-		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"hgun_ACPC2_F",3},{"hgun_P07_F",3},{"hgun_Pistol_heavy_01_F",3},{"hgun_Pistol_heavy_02_F",3},{"hgun_Rook40_F",3},{"ruger_pistol_epoch",3},{"1911_pistol_epoch",3}
 		};
 
 		maxMagSlots = 6; // Maximum number of magazine slots in each loot crate
 		minMagSlots = 4; // Minimum number of magazine slots in each loot crate
 		magazinesLoot[] =
-		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"30Rnd_556x45_Stanag",20},{"30Rnd_556x45_Stanag_Tracer_Red",20},{"30Rnd_556x45_Stanag_Tracer_Green",20},
 			{"30Rnd_556x45_Stanag_Tracer_Yellow",20},{"30Rnd_65x39_caseless_mag",20},{"30Rnd_65x39_caseless_green",20},{"30Rnd_65x39_caseless_mag_Tracer",20},
 			{"30Rnd_65x39_caseless_green_mag_Tracer",20},{"20Rnd_762x51_Mag",20},{"7Rnd_408_Mag",20},{"5Rnd_127x108_Mag",20},{"100Rnd_65x39_caseless_mag",20},
@@ -108,7 +131,7 @@ class VEMFconfig
 		maxAttSlots = 4; // Maximum number of attachment slots in each loot crate
 		minAttSlots = 2; // Minimum number of attachment slots in each loot crate
 		attachmentsLoot[] =
-		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"ItemGPS",5},{"ItemRadio",4},{"ItemMap",6},{"MineDetector",1},{"Binocular",4},{"Rangefinder",2},{"Medikit",3},{"ToolKit",1},
 			{"muzzle_snds_H",2},{"muzzle_snds_L",2},{"muzzle_snds_M",2},{"muzzle_snds_B",2},{"muzzle_snds_H_MG",2},{"muzzle_snds_H_SW",2},
 			{"optic_Arco",3},{"optic_Aco",3},{"optic_ACO_grn",3},{"optic_Aco_smg",3},{"optic_ACO_grn_smg",3},{"optic_Holosight",3},
@@ -122,14 +145,14 @@ class VEMFconfig
 		maxItemSlots = 4; // Maximum number of attachment slots in each loot crate
 		minItemSlots = 2; // Minimum number of attachment slots in each loot crate
 		itemsLoot[] =
-		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"FAK",15},{"EnergyPack",10},{"EnergyPackLg",6}
 		};
 
 		maxVestSlots = 4; // Maximum number of vest slots in each loot crate
-		minVestsSlots = 2; // Minimum number of vest slots in each loot crate
+		minVestSlots = 2; // Minimum number of vest slots in each loot crate
 		vestsLoot[] = // NOTE ABOUT VESTS: it is recommended to keep amount for each vest at 1 because vests do not stack unlike weapons, items and magazines
-		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"V_PlateCarrier1_rgr",1},{"V_PlateCarrier2_rgr",1},{"V_PlateCarrier3_rgr",1},{"V_PlateCarrierGL_rgr",1},{"V_PlateCarrier1_blk",1},
 			{"V_PlateCarrierSpec_rgr",1},{"V_Chestrig_khk",1},{"V_Chestrig_rgr",1},{"V_Chestrig_blk",1},{"V_Chestrig_oli",1},{"V_TacVest_khk",1},
 			{"V_TacVest_brn",1},{"V_TacVest_oli",1},{"V_TacVest_blk",1},{"V_TacVest_camo",1},{"V_TacVest_blk_POLICE",1},{"V_TacVestIR_blk",1},{"V_TacVestCamo_khk",1},
@@ -141,7 +164,7 @@ class VEMFconfig
 		maxHeadGearSlots = 4; // Maximum number of headGear slots in each loot crate
 		minHeadGearSlots = 2; // Minimum number of headGear slots in each loot crate
 		headGearLoot[] = // NOTE ABOUT HEADGEAR: it is recommended to keep amount for each headGear item at 1 because headGear items do not stack unlike weapons, items and magazines
-		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"H_HelmetB",1},{"H_HelmetB_camo",1},{"H_HelmetB_paint",1},{"H_HelmetB_light",1},{"H_Booniehat_khk",1},{"H_Booniehat_oli",1},{"H_Booniehat_indp",1},
 			{"H_Booniehat_mcamo",1},{"H_Booniehat_grn",1},{"H_Booniehat_tan",1},{"H_Booniehat_dirty",1},{"H_Booniehat_dgtl",1},{"H_Booniehat_khk_hs",1},{"H_HelmetB_plain_mcamo",1},
 			{"H_HelmetB_plain_blk",1},{"H_HelmetSpecB",1},{"H_HelmetSpecB_paint1",1},{"H_HelmetSpecB_paint2",1},{"H_HelmetSpecB_blk",1},{"H_HelmetIA",1},{"H_HelmetIA_net",1},
@@ -163,12 +186,12 @@ class VEMFconfig
 		maxBagSlots = 4;
 		minBagSlots = 2;
 		backpacksLoot[] = // NOTE ABOUT BACKPACKS: it is recommended to keep amount for each bag at 1 because bags do not stack unlike weapons, items and magazines
-		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"B_AssaultPack_khk",1},{"B_AssaultPack_dgtl",1},{"B_AssaultPack_rgr",1},{"B_AssaultPack_sgg",1},{"B_AssaultPack_cbr",1},
 			{"B_AssaultPack_mcamo",1},{"B_TacticalPack_rgr",1},{"B_TacticalPack_mcamo",1},{"B_TacticalPack_ocamo",1},{"B_TacticalPack_blk",1},
 			{"B_TacticalPack_oli",1},{"B_FieldPack_khk",1},{"B_FieldPack_ocamo",1},{"B_FieldPack_oucamo",1},{"B_FieldPack_cbr",1},
 			{"B_FieldPack_blk",1},{"B_Carryall_ocamo",1},{"B_Carryall_oucamo",1},{"B_Carryall_mcamo",1},{"B_Carryall_khk",1},{"B_Carryall_cbr",1},
-			{"B_Parachute",1},{"B_FieldPack_oli",1},{"B_Carryall_oli",1},{"B_Kitbag_Base",1},{"B_Kitbag_cbr",1},{"B_Kitbag_mcamo",1},{"B_Kitbag_mcamo_Eng",1},
+			{"B_Parachute",1},{"B_FieldPack_oli",1},{"B_Carryall_oli",1},{"B_Kitbag_Base",1},{"B_Kitbag_cbr",1},{"B_Kitbag_mcamo",1},
 			{"B_Kitbag_rgr",1},{"B_Kitbag_sgg",1},{"B_OutdoorPack_Base",1},{"B_OutdoorPack_blk",1},{"B_OutdoorPack_blu",1},
 			{"B_OutdoorPack_tan",1}
 		};
@@ -230,7 +253,7 @@ class VEMFconfig
 			"B_AssaultPack_mcamo","B_TacticalPack_rgr","B_TacticalPack_mcamo","B_TacticalPack_ocamo","B_TacticalPack_blk",
 			"B_TacticalPack_oli","B_FieldPack_khk","B_FieldPack_ocamo","B_FieldPack_oucamo","B_FieldPack_cbr",
 			"B_FieldPack_blk","B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_khk","B_Carryall_cbr",
-			"B_Parachute","B_FieldPack_oli","B_Carryall_oli","B_Kitbag_Base","B_Kitbag_cbr","B_Kitbag_mcamo","B_Kitbag_mcamo_Eng",
+			"B_Parachute","B_FieldPack_oli","B_Carryall_oli","B_Kitbag_Base","B_Kitbag_cbr","B_Kitbag_mcamo",
 			"B_Kitbag_rgr","B_Kitbag_sgg","B_OutdoorPack_Base","B_OutdoorPack_blk","B_OutdoorPack_blu",
 			"B_OutdoorPack_tan"
 		};
@@ -252,7 +275,6 @@ class CfgPatches
 		units[] = {"I_Soldier_EPOCH"};
 		requiredAddons[] = {};
 		fileName = "VEMF.pbo";
-		VEMF_version = 0.0714.4;
 		requiredVersion = 1.48;
 		author[]= {"Vampire","IT07"}; // Original author: Vampire. Permission to continue/remake VEMF given to IT07
 	};
@@ -279,6 +301,7 @@ class cfgFunctions
 			class loadInv {};
 			class spawnAI {};
 			class loadLoot {};
+			class placeMines {};
 			class waitForPlayers {};
 			class waitForMissionDone {};
 			class checkLoot {};

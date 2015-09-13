@@ -11,38 +11,64 @@
     nothing
 */
 
-_settings = [["VEMFconfig"],["minServerFPS","minPlayers","maxGlobalMissions","minMissionTime","maxMissionTime","missionList"]] call VEMF_fnc_getSetting;
-_minFPS = _settings select 0;
-_minPlayers = _settings select 1;
-_maxGlobalMissions = _settings select 2;
-_minTime = _settings select 3;
-_maxTime = _settings select 4;
-_missionList = _settings select 5;
-
-while {true} do
+_minFPS = "minServerFPS" call VEMF_fnc_getSetting;
+if (_minFPS > 0) then
 {
-    if (_minPlayers call VEMF_fnc_playerCount AND diag_fps > _minFPS) exitWith
+    _minPlayers = "minPlayers" call VEMF_fnc_getSetting;
+    if (_minPlayers > 0) then
     {
-        ["Launcher", 1, format["Minimal player count of %1 reached! Starting timer...", _minPlayers]] call VEMF_fnc_log
-    };
-    uiSleep 3;
-};
-
-VEMF_missionCount = 0;
-while {true} do
-{
-    // Wait random amount
-    uiSleep ((_minTime*60)+ floor random ((_maxTime*60)-(_minTime*60)));
-
-    // Pick A Mission if enough players online
-    if (1 call VEMF_fnc_playerCount) then
-    {
-        if (VEMF_missionCount < _maxGlobalMissions AND not(count playableUnits isEqualTo 0)) then
+        _maxGlobalMissions = "maxGlobalMissions" call VEMF_fnc_getSetting;
+        if (_maxGlobalMissions > 0) then
         {
-            VEMF_missionCount = VEMF_missionCount +1;
-            _missVar = _missionList call BIS_fnc_selectRandom;
-            [] execVM format["\VEMF\Missions\%1.sqf", _missVar];
-            _lastMission = time;
+            _minNew = "minNew" call VEMF_fnc_getSetting;
+            if (_minNew > 0) then
+            {
+                _maxNew = "maxNew" call VEMF_fnc_getSetting;
+                if (_maxNew > 1) then
+                {
+                    _missionList = "missionList" call VEMF_fnc_getSetting;
+                    if (count _missionList > 0) then
+                    {
+                        waitUntil { uiSleep 2; (_minPlayers call VEMF_fnc_playerCount); diag_fps > _minFPS };
+                        ["Launcher", 1, format["Minimal player count of %1 reached! Starting timer...", _minPlayers]] call VEMF_fnc_log;
+
+                        VEMF_missionCount = 0;
+                        private ["_ignoreLimit"];
+                        _ignoreLimit = false;
+                        if (_maxGlobalMissions isEqualTo -1) then
+                        {
+                            _ignoreLimit = true;
+                        };
+                        while {true} do
+                        {
+                            // Wait random amount
+                            uiSleep ((_minNew*60)+ floor random ((_maxNew*60)-(_minNew*60)));
+
+                            // Pick A Mission if enough players online
+                            if ([_minPlayers] call VEMF_fnc_playerCount) then
+                            {
+                                if _ignoreLimit then
+                                {
+                                    VEMF_missionCount = VEMF_missionCount +1;
+                                    _missVar = _missionList call BIS_fnc_selectRandom;
+                                    [] execVM format["VEMF\Missions\%1.sqf", _missVar];
+                                    _lastMission = time;
+                                };
+                                if not _ignoreLimit then
+                                {
+                                    if (VEMF_missionCount < _maxGlobalMissions) then
+                                    {
+                                        VEMF_missionCount = VEMF_missionCount +1;
+                                        _missVar = _missionList call BIS_fnc_selectRandom;
+                                        [] execVM format["VEMF\Missions\%1.sqf", _missVar];
+                                        _lastMission = time;
+                                    };
+                                };
+                            };
+                        };
+                    };
+                };
+            };
         };
     };
 };

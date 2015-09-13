@@ -9,19 +9,25 @@
 	_this select 1: STRING - mode to send to client
 
 	Returns:
-	BOOLEAN - true if no errors encountered during process
+	BOOL - true if no errors encountered during process
 */
 
 private ["_msg","_mode","_sent"];
 _msg = _this select 0;
 _mode = _this select 1;
 _sent = false;
+if (count playableUnits > 0) then
 {
-	if (isPlayer _x) then
 	{
-		VEMFChatMsg = [_msg, _mode];
-		(owner _x) publicVariableClient "VEMFChatMsg";
-		_sent = true;
-	};
-} forEach playableUnits;
+		if (isPlayer _x) then
+		{
+			if (side _x isEqualTo EAST) then
+			{
+				VEMFChatMsg = [_msg, _mode];
+				(owner _x) publicVariableClient "VEMFChatMsg";
+			};
+		};
+	} forEach playableUnits;
+	_sent = true;
+};
 _sent

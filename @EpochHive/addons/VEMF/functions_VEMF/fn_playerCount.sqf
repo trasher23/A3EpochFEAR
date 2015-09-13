@@ -11,20 +11,20 @@
     ARRAY - [false if current player count is below minimum, true of more than minimum]
 */
 
-private ["_minimum","_players","_params"];
-if not((typeName _this) isEqualTo "SCALAR") then { _params = [1]; } else { _params = _this; };
-_minimum = [_params, 0, 1, ["SCALAR"]] call BIS_fnc_param;
+private ["_minimum","_players","_ok"];
+_ok = false;
+_minimum = [_this, 0, 1, [0]] call BIS_fnc_param;
 _players = 0;
 {
-    if (isPlayer _x AND (side _x) isEqualTo EAST) then
+    if ((isPlayer _x) AND ((side _x) isEqualTo EAST)) then
     {
         _players = _players + 1;
     };
 } forEach playableUnits;
 
-if (_players > _minimum OR _players isEqualTo _minimum) exitWith
+if (_players >= _minimum) then
 {
-    true
+    _ok = true
 };
 
-false
+_ok

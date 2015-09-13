@@ -16,42 +16,49 @@
 
 private ["_param","_prefix","_mode","_logThis","_logModesAllowed","_loggingEnabled"];
 _loggingEnabled = "enableDebug" call VEMF_fnc_getSetting;
-if (_loggingEnabled < 0) exitWith {}; // Silently fail if disabled
-_logModesAllowed = [];
-switch _loggingEnabled do
+if (_loggingEnabled > -1) then
 {
-    case 0:
+    _logModesAllowed = [3];
+    if (_loggingEnabled isEqualTo 0) then
     {
         _logModesAllowed pushBack 0;
     };
-    case 1:
+    if (_loggingEnabled isEqualTo 1) then
     {
         _logModesAllowed pushBack 1;
     };
-    case 2:
+    if (_loggingEnabled isEqualTo 2) then
     {
-        _logModesAllowed pushBack [0,1];
+        _logModesAllowed pushBack 0;
+        _logModesAllowed pushBack 1;
     };
-};
-_param = _this;
-if not(typeName _param isEqualTo "ARRAY") exitWith { diag_log format["[VEMF] fn_handleDebug ERROR: _param (%1) is not an ARRAY!", _param]; };
-_prefix = _this select 0;
-_mode = _this select 1;
-if (_mode < 0 OR _mode > 2) exitWith { diag_log format["[VEMF] fn_handleDebug ERROR: invalid _mode (%1) given! Use 0 for ERROR and 1 for INFO", _mode]; };
-_logThis = _this select 2;
-if (not(typeName _prefix isEqualTo "STRING") OR not(typeName _mode isEqualTo "SCALAR") OR not(typeName _logThis isEqualTo "STRING")) exitWith { diag_log"[VEMF] fn_handleDebug ERROR: incorrect params given! Can not log"; };
 
-// Correct typenames given. Build log line and log it
-switch (_mode) do
-{
-    case 0:
+    _prefix = [_this, 0, "", [""]] call BIS_fnc_param;
+    if not(_prefix isEqualTo "") then
     {
-        _mode = "ERROR";
+        _mode = [_this, 1, -1, [0]] call BIS_fnc_param;
+        if (_mode > -1) then
+        {
+            if (_mode < 4) then
+            {
+                _logThis = [_this, 2, "", [""]] call BIS_fnc_param;
+                if not(_logThis isEqualTo "") then
+                {
+                    if (_mode isEqualTo 0) then
+                    {
+                        _mode = "ERROR";
+                    };
+                    if (_mode isEqualTo 1) then
+                    {
+                        _mode = "INFO";
+                    };
+                    if (_mode isEqualTo 3) then
+                    {
+                        _mode = "";
+                    };
+                    diag_log format["[VEMF] %1 %2: %3", _prefix, _mode, _logThis];
+                };
+            };
+        };
     };
-    case 1:
-    {
-        _mode = "INFO";
-    };
-    default{};
 };
-diag_log format["[VEMF] %1 %2: %3", _prefix, _mode, _logThis];

@@ -2,7 +2,7 @@ if (isServer) then {
 
 	_this spawn {
 
-		private["_vehicle","_position","_unitgroup","_waypoint_data","_num_waypoints","_leader","_count_wp","_waypoints","_waypoint_prev","_msg","_wp"];
+		private["_vehicle","_position","_unitgroup","_waypoint_data","_num_waypoints","_leader","_count_wp","_waypoints","_waypoint_prev","_msg","_wp", "_msgresponse"];
 
 		_vehicle 		= _this select 0;
 		_position 		= _this select 1;
@@ -110,7 +110,7 @@ if (isServer) then {
 				RemoteMessage = ["radio",_msg];
 				publicVariable "RemoteMessage";
 				*/
-				[["Activity sighted...",_msg,"",""],""] call FEARBroadcast;
+				_msgresponse = [["Activity sighted...",_msg,"",""],""] call FEARBroadcast;
 			} else {
 				[nil,nil,rTitleText,_msg,"PLAIN",10] call RE;
 			};

@@ -6,10 +6,11 @@
 
 // Alerts Players With a Random Radio Type
 FEARBroadcast = {
-	private ["_msg","_mode","_eRads","_allUnits","_curRad","_send"];
+	private ["_msg","_mode","_eRads","_allUnits","_curRad","_send","_sent"];
 	
 	_msg = _this select 0;
 	_mode = _this select 1;
+	_sent = false;
 	
 	_eRads = ["EpochRadio0","EpochRadio1","EpochRadio2","EpochRadio3","EpochRadio4","EpochRadio5","EpochRadio6","EpochRadio7","EpochRadio8","EpochRadio9"] call BIS_fnc_arrayShuffle;
 	
@@ -47,4 +48,7 @@ FEARBroadcast = {
 			};
 		} forEach _allUnits;
 	};
+	// Send regardless of whether player has radio
+	_sent = true;
+	_sent
 };

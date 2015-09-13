@@ -21,62 +21,60 @@ private["_cfg","_v","_r","_path"];
 _r = [];
 _check =
 {
-	if (isNumber _cfg) exitWith { _v = getNumber _cfg };
-	if (isText _cfg) exitWith { _v = getText _cfg };
-	if (isArray _cfg) exitWith { _v = getArray _cfg };
-};
-switch true do
-{
-	case (typeName _this isEqualTo "STRING"):
+	if (isNumber _cfg) then
 	{
-		_cfg = configFile >> "VEMFconfig" >> _this;
-		call
-		{
-			if (isNumber _cfg) exitWith { _v = getNumber _cfg };
-			if (isText _cfg) exitWith { _v = getText _cfg };
-			if (isArray _cfg) exitWith { _v = getArray _cfg };
-			_v = nil; // Value
-		};
-		if not(isNil"_v") exitWith
-		{
-			_r = _v;
-		};
+		_v = getNumber _cfg
 	};
-	case (typeName _this isEqualTo "ARRAY"):
+	if not(isNumber _cfg) then
 	{
-		switch (count _this) do
+		if (isText _cfg) then
 		{
-			case 2:
+			_v = getText _cfg
+		};
+		if not(isText _cfg) then
+		{
+			if (isArray _cfg) then
 			{
-				_cfg = configFile;
-				_path = _cfg;
-				{
-					_path = _path >> _x; // Build the config path
-				} forEach (_this select 0);
-				{
-					_cfg = _path >> _x;
-					call _check;
-					_r pushBack _v;
-				} forEach (_this select 1);
-			};
-			case 1:
-			{
-				{
-					_cfg = configFile >> "VEMFconfig" >> _x;
-					call _check;
-					_r pushBack _v;
-				} forEach (_this select 0);
+				_v = getArray _cfg
 			};
 		};
-	};
-	default
-	{
-		["fn_getSetting", 0, format["typeName _this is %1", typeName _this]] call VEMF_fnc_log
 	};
 };
 
-if (isNil"_v") then
+if (typeName _this isEqualTo "STRING") then
 {
-	_r = "No result";
+	_cfg = configFile >> "VEMFconfig" >> _this;
+	call _check;
+	if not(isNil"_v") then
+	{
+		_r = _v;
+	};
 };
+
+if (typeName _this isEqualTo "ARRAY") then
+{
+	if (count _this isEqualTo 2) then
+	{
+		_cfg = configFile >> "VEMFconfig";
+		_path = _cfg;
+		{
+			_path = _path >> _x; // Build the config path
+		} forEach (_this select 0);
+		{
+			_cfg = _path >> _x;
+			call _check;
+			_r pushBack _v;
+		} forEach (_this select 1);
+	};
+	if (count _this isEqualTo 1) then
+	{
+		{
+			_cfg = configFile >> "VEMFconfig" >> _x;
+			call _check;
+			_r pushBack _v;
+		} forEach (_this select 0);
+	};
+};
+
+if isNil"_v" then { _r = "No result" };
 _r

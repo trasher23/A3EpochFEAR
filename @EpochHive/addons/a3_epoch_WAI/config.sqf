@@ -113,7 +113,7 @@ if(isServer) then {
 		wai_mission_timer			= [300,900];		// time between missions 5-15 minutes
 		wai_mission_timeout			= [900,1800]; 		// time each missions takes to despawn if inactive 15-30 minutes
 		wai_timeout_distance		= 1000;				// if a player is this close to a mission then it won't time-out
-		wai_timeout_bomb			= 1800;				// How long bomb missions is, when it times out it gos BOOM
+		wai_timeout_bomb			= 900;				// How long bomb missions is, when it times out it gos BOOM
 		
 		wai_clean_mission			= true;				// clean all mission buildings after a certain period
 		wai_clean_mission_time		= 900;				// time after a mission is complete to clean mission buildings
