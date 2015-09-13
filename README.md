@@ -7,7 +7,7 @@ A mish-mash of:
 <br/>
 Arma 3 1.48: http://arma3.com/
 <br/>
-Epoch 0.3.2.0: http://epochmod.com/
+Epoch 0.3.3.0: http://epochmod.com/
 <br/>
 <br/>
 A3AI 0.8.4d: https://github.com/dayzai/A3EAI
