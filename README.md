@@ -9,7 +9,7 @@ Arma 3 1.48: http://arma3.com/
 <br/>
 Epoch 0.3.3.0: http://epochmod.com/
 <br/>
-Esseker 0.7.0.5
+Esseker 0.7.0.5 http://a3esseker.info/
 <br/>
 <br/>
 A3AI 0.9.1: https://github.com/dayzai/A3EAI
