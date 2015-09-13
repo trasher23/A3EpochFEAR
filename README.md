@@ -10,7 +10,7 @@ Arma 3 1.48: http://arma3.com/
 Epoch 0.3.3.0: http://epochmod.com/
 <br/>
 <br/>
-A3AI 0.8.4d: https://github.com/dayzai/A3EAI
+A3AI 0.9.1: https://github.com/dayzai/A3EAI
 <br/>
 VEMF v0.0714.4: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
