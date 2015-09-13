@@ -12,7 +12,7 @@ Epoch 0.3.3.0: http://epochmod.com/
 <br/>
 A3AI 0.9.1: https://github.com/dayzai/A3EAI
 <br/>
-VEMF v0.0714.4: https://github.com/IT07/A3_VEMF_Reloaded
+VEMF v0.0720.2: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
 WAI 1.0.0: https://github.com/nerdalertdk/WICKED-AI
 <br/>
