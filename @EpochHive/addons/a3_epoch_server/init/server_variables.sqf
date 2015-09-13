@@ -3,6 +3,7 @@ EPOCH_TraderSlots = [];
 EPOCH_saveBldQueue = [];
 EPOCH_saveVehQueue = [];
 EPOCH_saveStorQueue = [];
+EPOCH_saveBuildQueue = [];
 EPOCH_cleanupQueue = [];
 EPOCH_defaultVars_SEPXVar = EPOCH_defaultVars;
 EPOCH_group_upgrade_lvl_SEPXVar = EPOCH_group_upgrade_lvl;

@@ -3,7 +3,7 @@ Building Save Damage
 
 Epoch Mod - EpochMod.com
 All Rights Reserved.
-*/
+
 private["_class", "_worldspace", "_VAL", "_storageSlot", "_owner", "_textureSlot", "_arr", "_arrCount", "_bldHiveKey", "_response", "_vehicle", "_slot"];
 
 _vehicle = _this;
@@ -13,7 +13,7 @@ if (alive _vehicle) then {
 	if (_slot != -1) then {
 
 		_bldHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
-		_response = ["Building", _bldHiveKey] call EPOCH_server_hiveGETRANGE;
+		_response = ["Building", _bldHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 
 		if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY" && !((_response select 1) isEqualTo[])) then {
 			_arr = _response select 1;
@@ -42,8 +42,10 @@ if (alive _vehicle) then {
 			};
 
 			_VAL = [_class, _worldspace, _storageSlot, _owner, _textureSlot, damage _vehicle];
-			["Building", _bldHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_server_hiveSETEX;
+			["Building", _bldHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
 		
 		};
 	};
 };
+
+*/

@@ -27,7 +27,7 @@ if (isText _config) then {
 
 			_config = (configFile >> "CfgVehicles" >> _oemType >> "staticClass");
 			if (isText(_config)) then {
-			
+
 				_slot = EPOCH_StorageSlots select 0;
 				EPOCH_StorageSlots = EPOCH_StorageSlots - [_slot];
 
@@ -72,11 +72,11 @@ if (isText _config) then {
 			EPOCH_BuildingSlotCount = { _x == 0 } count EPOCH_BuildingSlots;
 			publicVariable "EPOCH_BuildingSlotCount";
 
-		
-			if (_objSlot != -1) then { 
+
+			if (_objSlot != -1) then {
 				_vehiclePos = getposATL _vehicle;
-				_worldspace = [(_vehiclePos call EPOCH_precisionPos), vectordir _vehicle, vectorup _vehicle];
-				_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
+				// _worldspace = [(_vehiclePos call EPOCH_precisionPos), vectordir _vehicle, vectorup _vehicle];
+				// _objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
 
 				_newVehicle = [_vehicle, false] call EPOCH_server_simulSwap;
 
@@ -129,9 +129,11 @@ if (isText _config) then {
 					};
 				};
 
-				_VAL = [_staticClass, _worldspace, _slot, _plyrUID, _textureSlot, damage _vehicle];
-				["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_server_hiveSETEX;
-				//_return = ["Building", _objHiveKey, _VAL] call EPOCH_server_hiveSET;
+				_newVehicle call EPOCH_fnc_saveBuilding;
+
+				// _VAL = [_staticClass, _worldspace, _slot, _plyrUID, _textureSlot, _animPhases];
+				// ["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
+				//_return = ["Building", _objHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 			};
 
 		} else {

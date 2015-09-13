@@ -11,8 +11,7 @@ FEARBroadcast = {
 	_msg = _this select 0;
 	_mode = _this select 1;
 	
-	_eRads = ["EpochRadio0","EpochRadio1","EpochRadio2","EpochRadio3","EpochRadio4","EpochRadio5","EpochRadio6","EpochRadio7","EpochRadio8","EpochRadio9"];
-	_eRads = _eRads call BIS_fnc_arrayShuffle;
+	_eRads = ["EpochRadio0","EpochRadio1","EpochRadio2","EpochRadio3","EpochRadio4","EpochRadio5","EpochRadio6","EpochRadio7","EpochRadio8","EpochRadio9"] call BIS_fnc_arrayShuffle;
 	
 	// Broadcast to Each Player
 	_allUnits = allUnits;

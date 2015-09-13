@@ -23,7 +23,7 @@ if (_plyrUID == "") exitWith {
 
 if !(alive _plyr) exitWith{
 	// Dead Stat bit index 0
-	_return = ["PlayerStats", _plyrUID, 0, 1] call EPOCH_server_hiveSETBIT;
+	_return = ["PlayerStats", _plyrUID, 0, 1] call EPOCH_fnc_server_hiveSETBIT;
 };
 
 // add vehicle to update queue
@@ -62,7 +62,7 @@ if (typeName _vars == "ARRAY") then {
 
 			_pos = getPosATL _plyr;
 
-			if (vehicle _plyr != _plyr) then { 
+			if (vehicle _plyr != _plyr) then {
 				_closest = [EPOCH_staticTraderLocations, [], { _plyr distance _x }, "ASCEND"] call BIS_fnc_sortBy;
 				if !(_closest isEqualTo []) then{
 					_pos = _closest select 0;
@@ -83,15 +83,15 @@ if (typeName _vars == "ARRAY") then {
 				_plyr setVariable ["VARS", _vars];
 			};
 
-			// save player 
-			_return = ["Player", _plyrUID, EPOCH_expiresPlayer, [[getDir _plyr, _pos, (call EPOCH_fn_InstanceID)], _medical, _appearance, _server_vars, _vars, _weapons, assignedItems _plyr, magazinesAmmo _plyr, _itemsplayer, _weaponsplayer, _group, _revive]] call EPOCH_server_hiveSETEX;
-			
+			// save player
+			_return = ["Player", _plyrUID, EPOCH_expiresPlayer, [[getDir _plyr, _pos, (call EPOCH_fn_InstanceID)], _medical, _appearance, _server_vars, _vars, _weapons, assignedItems _plyr, magazinesAmmo _plyr, _itemsplayer, _weaponsplayer, _group, _revive]] call EPOCH_fnc_server_hiveSETEX;
+
 			// kill player if blood pressure >= 180
 			if (_vars select 12 >= 180) then {
 				_plyr setDamage 1;
 			} else {
 				// set player alive bit
-				["PlayerStats", _plyrUID, 0, 0] call EPOCH_server_hiveSETBIT;
+				["PlayerStats", _plyrUID, 0, 0] call EPOCH_fnc_server_hiveSETBIT;
 			};
 		};
 	};

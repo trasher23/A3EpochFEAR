@@ -12,7 +12,7 @@ _groupID = getPlayerUID _player;
 
 diag_log format ["GROUP: Delete %1",_this];
 
-_response = ["Group", _groupID] call EPOCH_server_hiveGETRANGE;
+_response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
 if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
 	{
 		if ((_x getVariable["GROUP", ""]) == _groupID) exitWith {
@@ -25,7 +25,7 @@ if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then 
 	} forEach playableUnits;
 
 	// Remove Key
-	["Group", _groupID] call EPOCH_server_hiveDEL;
+	["Group", _groupID] call EPOCH_fnc_server_hiveDEL;
 };
 
 true

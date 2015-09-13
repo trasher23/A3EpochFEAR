@@ -12,7 +12,7 @@ if (typename _this == "OBJECT") then {
 		_plyrUID = getPlayerUID _plyrObj;
 		if (_plyrUID != "") then {
 
-			_response = ["Player", _plyrUID] call EPOCH_server_hiveGETRANGE;
+			_response = ["Player", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
 
 			_dead = false;
 			_isMale = true;
@@ -35,7 +35,7 @@ if (typename _this == "OBJECT") then {
 				_vars = _arr select 4;
 				_hitpoints = _vars select 11;
 
-				_deadPlayer = ["PlayerStats", _plyrUID, 0] call EPOCH_server_hiveGETBIT;
+				_deadPlayer = ["PlayerStats", _plyrUID, 0] call EPOCH_fnc_server_hiveGETBIT;
 
 				if (_deadPlayer || (_medical select 3 == 1) || (_hitpoints select 2 == 1) || (_hitpoints select 3 == 1) || (_vars select 12 >= 180)) then {
 					_dead = true;

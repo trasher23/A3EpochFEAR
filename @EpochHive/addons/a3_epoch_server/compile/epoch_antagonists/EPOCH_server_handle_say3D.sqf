@@ -15,7 +15,7 @@ _sound = EPOCH_sounds select _soundIndex;
 
 if (!isNil "_sound") then {
 	_range = getNumber(configFile >> "CfgSay3Dhandler" >> _sound >> "distance");
-	_nearBy = (getPosATL _target) nearEntities [["Epoch_Male_F","Epoch_Female_F","LandVehicle","Ship","Air","Tank"], _range];
+	_nearBy = _target nearEntities [["Epoch_Male_F","Epoch_Female_F","LandVehicle","Ship","Air","Tank"], _range];
 	{
 		if (isPlayer _x) then {
 			[["say3D", [_target, _soundIndex]], owner _x] call EPOCH_sendPublicVariableClient

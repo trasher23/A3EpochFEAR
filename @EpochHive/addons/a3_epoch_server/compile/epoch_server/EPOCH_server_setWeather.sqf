@@ -8,7 +8,7 @@ if !(EPOCH_WeatherStaticForecast isEqualTo []) then {
 	_windOVRD = EPOCH_WeatherStaticForecast select 4;
 	diag_log format["DEBUG: static weather: %1", EPOCH_WeatherStaticForecast];
 } else {
-	_response = ["Weather", (call EPOCH_fn_InstanceID)] call EPOCH_server_hiveGETRANGE;
+	_response = ["Weather", (call EPOCH_fn_InstanceID)] call EPOCH_fnc_server_hiveGETRANGE;
 	if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY" && !((_response select 1) isEqualTo[])) then {
 		_arr = _response select 1;
 		_tempOVRD = _arr select 0;

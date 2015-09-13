@@ -209,7 +209,7 @@ class FSM
     class action
     {
       name = "action";
-      init = /*%FSM<STATEINIT""">*/"_nrPlyrs = (getPosATL _trader) nearEntities [_trgtArray, _tRange];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_nrPlyrs = _trader nearEntities [_trgtArray, _tRange];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -306,7 +306,7 @@ class FSM
        "" \n
        "_traderPos = getPosATL _trader;" \n
        "_daytime = daytime;" \n
-       "_nrPlyrs = (getPosATL _trader) nearEntities [_trgtArray, _sRange];"/*%FSM</STATEINIT""">*/;
+       "_nrPlyrs = _trader nearEntities [_trgtArray, _sRange];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

@@ -21,7 +21,7 @@ if (typename _this == "ARRAY") then {
 		if (_plyrUID != "") then {
 
 			// Make Hive call
-			_response = ["Player", _plyrUID] call EPOCH_server_hiveGETRANGE;
+			_response = ["Player", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
 			_arr = [];
 			if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 				_arr = (_response select 1);
@@ -54,7 +54,7 @@ if (typename _this == "ARRAY") then {
 
 			_hitpoints = _vars select 11;
 
-			_deadPlayer = ["PlayerStats", _plyrUID, 0] call EPOCH_server_hiveGETBIT;
+			_deadPlayer = ["PlayerStats", _plyrUID, 0] call EPOCH_fnc_server_hiveGETBIT;
 			_alreadyDead = (_deadPlayer || (_medical select 3 == 1) || (_hitpoints select 2 == 1) || (_hitpoints select 3 == 1) || (_vars select 12 >= 180));
 
 			if (_alreadyDead || _prevInstance != _instanceID || (count _location) < 3 || typeName _location != "ARRAY") then {
@@ -184,7 +184,10 @@ if (typename _this == "ARRAY") then {
 								};
 								case 4:	{ // secondary
 									// removeAllSecondaryWeaponItems player; does not exist ?
-										{ _newPlyr addSecondaryWeaponItem _x } forEach _attachments;
+									{
+										_newPlyr removeSecondaryWeaponItem _x;
+									} forEach (secondaryWeaponItems _newPlyr);
+									{ _newPlyr addSecondaryWeaponItem _x } forEach _attachments;
 								};
 								};
 							} 
@@ -257,7 +260,7 @@ if (typename _this == "ARRAY") then {
 					_reject = false;
 
 					if (_plyrGroup != "") then {
-						_response = ["Group", _plyrGroup] call EPOCH_server_hiveGETRANGE;
+						_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
 						diag_log format["DEBUG (Load Player) Group Content: %1", _response];
 						_found = false;
 						if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY" && !((_response select 1) isEqualTo[])) then {

@@ -15,7 +15,7 @@ if !([_plyr, _this select 2] call EPOCH_server_getPToken) exitWith{};
 _plyrUID = getPlayerUID _plyr;
 
 // load players account
-_response = ["Bank", _plyrUID] call EPOCH_server_hiveGETRANGE;
+_response = ["Bank", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
 
 if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 
@@ -79,7 +79,7 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 			if (_transferBalance > 0) then {
 
 				_transferTargetUID = getPlayerUID _transferTarget;
-				_transferResponse = ["Bank", _transferTargetUID] call EPOCH_server_hiveGETRANGE;
+				_transferResponse = ["Bank", _transferTargetUID] call EPOCH_fnc_server_hiveGETRANGE;
 
 				if ((_transferResponse select 0) == 1 && typeName(_transferResponse select 1) == "ARRAY") then {
 
@@ -99,7 +99,7 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 					_transferBankBalance = _transferBankBalance + _transferBalance;
 
 					if (_transferBankBalanceBefore != _transferBankBalance) then {
-						_return = ["Bank", _transferTargetUID, EPOCH_expiresPlayer, [_transferBankBalance]] call EPOCH_server_hiveSETEX;
+						_return = ["Bank", _transferTargetUID, EPOCH_expiresPlayer, [_transferBankBalance]] call EPOCH_fnc_server_hiveSETEX;
 						[["bankBalance", _transferBankBalance], (owner _transferTarget)] call EPOCH_sendPublicVariableClient;
 					};
 				};
@@ -107,7 +107,7 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 		};
 
 		if (_bankBalanceBefore != _bankBalance) then {
-			_return = ["Bank", _plyrUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_server_hiveSETEX;
+			_return = ["Bank", _plyrUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
 		};
 	};
 };

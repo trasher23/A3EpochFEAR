@@ -8,4 +8,8 @@ private ["_vehSlot"];
 	if (_storSlot != "ABORT") then {
 		if !(_x in EPOCH_saveStorQueue) then { EPOCH_saveStorQueue pushBack _x };
 	};
+	_objSlot = _x getVariable["BUILD_SLOT", -1];
+	if (_objSlot != -1) then{
+		if !(_x in EPOCH_saveBuildQueue) then{ EPOCH_saveBuildQueue pushBack _x };
+	};
 } forEach _this;

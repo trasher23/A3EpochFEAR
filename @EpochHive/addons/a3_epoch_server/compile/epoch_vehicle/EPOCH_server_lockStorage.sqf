@@ -26,7 +26,7 @@ if (_type in ["LockBox_EPOCH","LockBoxProxy_EPOCH"]) then {
 				_unit setVariable["EPOCH_Locked", _lockStatus, true];
 				_weaponHolder setPosATL(getPosATL _unit);
 			} else {
-				_response = ["Group", _plyrGroup] call EPOCH_server_hiveGETRANGE;
+				_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
 				if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 					_gArray = _response select 1;
 					if (
@@ -58,7 +58,7 @@ if (_type in ["LockBox_EPOCH","LockBoxProxy_EPOCH"]) then {
 		_plyrUID = getPlayerUID _plyr;
 		_plyrGroup = _plyr getVariable ["GROUP",""];
 		if (_plyrGroup != "") then {
-			_response = ["Group", _plyrGroup] call EPOCH_server_hiveGETRANGE;
+			_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
 			if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
 				_gArray = _response select 1;
 				if (

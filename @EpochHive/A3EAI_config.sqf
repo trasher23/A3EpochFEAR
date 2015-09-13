@@ -385,7 +385,7 @@ A3EAI_respawnUAVMinTime = 600;
 A3EAI_respawnUAVMaxTime = 900;
 
 //Set to 'true' to set detection-only behavior (UAV will not directly engage enemies). (Default: false)
-A3EAI_UAVDetectOnly = false;
+A3EAI_UAVDetectOnly = true;
 
 //Cooldown required in between air reinforcement summons when detecting players. Value in seconds. (Default: 1800)
 A3EAI_UAVCallReinforceCooldown = 1800;

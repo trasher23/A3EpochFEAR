@@ -13,7 +13,7 @@ for "_i" from 1 to _this do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
 
 	_vehHiveKey = format ["%1:%2", call EPOCH_fn_InstanceID,_i];
-	_response = ["Vehicle", _vehHiveKey] call EPOCH_server_hiveGETRANGE;
+	_response = ["Vehicle", _vehHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 
 	if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
 		_arr = _response select 1;
@@ -60,33 +60,18 @@ for "_i" from 1 to _this do {
 
 					_vehicle setDamage _damage;
 
-					_actualHitpoints = _vehicle call EPOCH_fnc_getHitpoints;
+					_allHitpoints = getAllHitPointsDamage _vehicle;
+					_actualHitpoints = _allHitpoints select 0;
 					_hitpoints = _arr select 3;
 
-					if ((count _actualHitpoints) == (count _hitpoints)) then {
-
-						// diag_log format["Class: %1 Damage: %2 Hitpoints: %3", _class, _damage, _hitpoints];
-
-						_temp_hitpoints = [];
-						{
-							_temp_hitpoints pushBack (_vehicle getHitPointDamage _x);
-						} forEach _actualHitpoints;
-						// diag_log format["BEFORE %1: %2 Total Damage: %3", _class, _temp_hitpoints, damage _vehicle];
-
+					if ((count _actualHitpoints) == (count _hitpoints)) then{
 						{
 							_dmg = _hitpoints select _forEachIndex;
 							if (_x in ["HitFuel", "HitEngine"]) then {
 								_dmg = _dmg min 0.9;
 							};
-							_vehicle setHitPointDamage [_x,_dmg];
+							_vehicle setHitIndex [_forEachIndex, _dmg];
 						} forEach _actualHitpoints;
-
-						_temp_hitpoints = [];
-						{
-							_temp_hitpoints pushBack(_vehicle getHitPointDamage _x);
-						} forEach _actualHitpoints;
-						// diag_log format["AFTER %1: %2 Total Damage: %3", _class, _temp_hitpoints, damage _vehicle];
-
 					};
 
 					if (_immuneVehicleSpawn) then{

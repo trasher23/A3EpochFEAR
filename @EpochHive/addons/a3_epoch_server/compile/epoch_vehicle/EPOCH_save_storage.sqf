@@ -52,18 +52,23 @@ if (!isNull _this) then {
 		_parentID = _vehicle getVariable["EPOCH_secStorParent", -1];
 		_parent = missionNamespace getVariable[format["EPOCH_BUILD_%1", _parentID], objNull];
 
+		/*
 		if (!isNull _parent) then {
 			_objSlot = _parent getVariable["BUILD_SLOT", -1];
 			if (_objSlot != -1) then {
 				_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
 				_VAL2 = [typeOf _parent, [(getposATL _parent call EPOCH_precisionPos), vectordir _parent, vectorup _parent], _vehSlot, _parent getVariable["BUILD_OWNER", "-1"], _parent getVariable["TEXTURE_SLOT", 0]];
-				["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL2] call EPOCH_server_hiveSETEX;
+
+				_parent call EPOCH_fnc_saveBuilding;
+
+				["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL2] call EPOCH_fnc_server_hiveSETEX;
 			};
 		};
+		*/
 
 		_VAL = [_class, _worldspace, _damage, _inventory, _colorSlot, _storageOwners, _storageParent];
-		["Storage", _vehHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_server_hiveSETEX;
-		//["Storage", _vehHiveKey, _VAL] call EPOCH_server_hiveSET;
+		["Storage", _vehHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
+		//["Storage", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 
 		diag_log format["STORAGE: saved to hive %1 Pos %2 Owners %3 Parent %4", _class, _worldspace, _storageOwners, _storageParent];
 	};

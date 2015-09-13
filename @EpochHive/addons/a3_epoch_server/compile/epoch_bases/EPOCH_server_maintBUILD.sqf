@@ -20,23 +20,9 @@ if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 _plyrUID = getPlayerUID _plyr;
 _counter = 0;
 
-_instanceID = call EPOCH_fn_InstanceID;
-
-_fnc_saveBuilding = {
-	if !(isNull _this) then {
-		_objSlot = _this getVariable["BUILD_SLOT", -1];
-		if (_objSlot != -1) then{
-			_objHiveKey = format["%1:%2", _instanceID, _objSlot];
-			_worldspace = [(getposATL _this call EPOCH_precisionPos), vectordir _this, vectorup _this];
-			_VAL = [typeOf _this, _worldspace, _this getVariable["EPOCH_secureStorage", "-1"], _this getVariable["BUILD_OWNER", "-1"], _this getVariable["TEXTURE_SLOT", 0], damage _this];
-			["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_server_hiveSETEX;
-		};
-	};
-};
-
 if (typeOf _object == "PlotPole_EPOCH") then {
 	// maintain pole
-	
+
 	_objSlot = _object getVariable["BUILD_SLOT", -1];
 	if (_objSlot != -1) then {
 
@@ -47,11 +33,9 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 
 		if (_current_crypto >= _maintCount) then {
 
-
-			_counter = _counter + 1;
-
 			// maintain jammer
-			_object call _fnc_saveBuilding;
+			_counter = _counter + 1;
+			_object call EPOCH_fnc_saveBuilding;
 
 			if (_maintCount > 1) then {
 				// maintain all objects within range
@@ -59,8 +43,10 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 					_object = _x;
 					_objSlot = _object getVariable["BUILD_SLOT", -1];
 					if (_objSlot != -1) then {
-						_counter = _counter + 1;
-						_object call _fnc_saveBuilding;
+						if ((damage _object) > 0) then {
+							_counter = _counter + 1;
+							_object call EPOCH_fnc_saveBuilding;
+						};
 					};
 					if (_counter >= _maintCount) exitWith{};
 				} forEach nearestObjects[_object, ["Constructions_static_F","Constructions_foundation_F"], _buildingJammerRange];

@@ -11,21 +11,11 @@ if (!(_object isKindOf "All")) then {
 
 	if (alive _object) then {
 
-		// TODO move to config
-		_payout = "Trash";
-		if (_type in [12,5]) then {
-			_payout = "TrashFood";
+		if (isNil "EPOCH_trashLootClasses") then{
+			_config = 'CfgEpochClient' call EPOCH_returnConfig;
+			EPOCH_trashLootClasses = getArray(_config >> worldname >> "TrashClasses");
 		};
-		// TODO add a2 hemp and sunflower seed harvesting
-		if (_type in[21,22]) then {
-			_payout = "PumpkinPatch";
-		};
-		if (_type in [19]) then {
-			_payout = "TrashSmall";
-		};
-		if (_type in [26]) then {
-			_payout = "TrashVehicle";
-		};
+		_payout = EPOCH_trashLootClasses param [_type, "Trash"];
 
 		_posWH = getPosATL _player;
 		_object setdamage 1;

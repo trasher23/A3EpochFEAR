@@ -101,7 +101,7 @@ while {true} do {
 
 					_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 
-					["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, EPOCH_starterTraderItems] call EPOCH_server_hiveSETEX;
+					["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, EPOCH_starterTraderItems] call EPOCH_fnc_server_hiveSETEX;
 
 					_agent addEventHandler["Killed", { _this call EPOCH_server_traderKilled; }];
 
@@ -109,7 +109,7 @@ while {true} do {
 						[_agent, _home, [_work, _schedule]] execFSM "\x\addons\a3_epoch_server\system\Trader_brain.fsm";
 					};
 
-					["AI", _objHiveKey, [_randomAIClass, _home, [_work, _schedule]]] call EPOCH_server_hiveSET;
+					["AI", _objHiveKey, [_randomAIClass, _home, [_work, _schedule]]] call EPOCH_fnc_server_hiveSET;
 
 					if (EPOCH_SHOW_TRADERS) then {
 						_marker = createMarker[str(_agent), (_pos)];

@@ -17,7 +17,7 @@ _vars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
 _current_crypto = _vars select _cIndex;
 
 // [_groupName, _leaderName, _groupSize, _modArray, _memberArray]
-_response = ["Group", _groupID] call EPOCH_server_hiveGETRANGE;
+_response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
 if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
 	_contentArray = (_response select 1);
 	_found = EPOCH_group_upgrade_lvl_SEPXVar find (_contentArray select 2);
@@ -51,7 +51,7 @@ if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then 
 			} forEach playableUnits;
 
 			// Save Group Data
-			["Group", _groupID, _contentArray] call EPOCH_server_hiveSET;
+			["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
 		};
 	};
 };

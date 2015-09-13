@@ -78,7 +78,7 @@ if not(_done) exitWith
 // Broadcast
 //_completeMsg = [["Liberated!", "Check for supplies...", format["Location: %1 @ %2", _loc select 0, mapGridPosition (_loc select 1)], ""], ""] call VEMF_fnc_broadCast;
 // send as system message instead
-_completeMsg = [[format["%1 liberated! Check for supplies...", _loc select 0],"","",""], "sys"] call VEMF_fnc_broadCast;
+_completeMsg = [[format["%1 liberated! Check for supplies...", _loc select 0],"","",""], ""] call VEMF_fnc_broadCast;
 if not(_completeMsg) then
 {
 	["DLI", 0, "fnc_broadCast returned FALSE after sending completion message..."] call VEMF_fnc_log;

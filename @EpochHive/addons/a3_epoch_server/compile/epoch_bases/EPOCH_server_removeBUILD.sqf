@@ -23,8 +23,8 @@ _vehSlot = _building getVariable["BUILD_SLOT", -1];
 _storageSlot = _building getVariable["STORAGE_SLOT", "ABORT"];
 
 if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
-		
-	_removeParts = getArray(configFile >> "CfgVehicles" >> _objType >> "removeParts");
+
+	_removeParts = getArray(('CfgBaseBuilding' call EPOCH_returnConfig) >> _objType >> "removeParts");
 	if !(_removeParts isEqualTo []) then {
 
 		_posWH = getPosATL _player;

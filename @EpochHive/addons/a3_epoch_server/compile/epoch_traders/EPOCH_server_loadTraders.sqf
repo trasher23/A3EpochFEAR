@@ -45,7 +45,7 @@ for "_i" from 0 to _this do {
 
 		_arr = [[], []];
 		_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
-		_response = ["AI_ITEMS", _objHiveKey] call EPOCH_server_hiveGETRANGE;
+		_response = ["AI_ITEMS", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 		// diag_log format ["TRADER LOAD DATA: %1", _response];
 
 		if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
@@ -82,7 +82,7 @@ for "_i" from 0 to _this do {
 	// Spawn dynamic traders
 	else {
 		_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
-		_response = ["AI", _objHiveKey] call EPOCH_server_hiveGETRANGE;
+		_response = ["AI", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 		if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY" && !((_response select 1) isEqualTo [])) then {
 			_arr = (_response select 1);
 
@@ -126,7 +126,7 @@ for "_i" from 0 to _this do {
 
 				_arr = [[],[]];
 				_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
-				_response = ["AI_ITEMS", _objHiveKey] call EPOCH_server_hiveGETRANGE;
+				_response = ["AI_ITEMS", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 				//diag_log format ["TRADER LOAD DATA: %1", _response];
 
 				if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {

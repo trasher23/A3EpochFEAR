@@ -54,7 +54,7 @@ if (_current_crypto >= _upgradePrice) then {
 		_leader setVariable ["GROUP", _groupID];
 
 		// Save Group Data
-		["Group", _groupID, _contentArray] call EPOCH_server_hiveSET;
+		["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
 		_return = true;
 
 	};

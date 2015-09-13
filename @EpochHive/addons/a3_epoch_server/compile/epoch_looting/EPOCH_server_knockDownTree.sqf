@@ -4,7 +4,7 @@ if !([_player, _this select 3] call EPOCH_server_getPToken) exitWith{};
 
 _object = _this select 0;
 if (isNull _object) exitWith{};
-if ([_player, getposATL _object] call BIS_fnc_distance2D > 6) exitWith{};
+if (_player distance2D (getposATL _object) > 6) exitWith{};
 
 if !(_object isKindOf "All") then {
 	if (alive _object) then {

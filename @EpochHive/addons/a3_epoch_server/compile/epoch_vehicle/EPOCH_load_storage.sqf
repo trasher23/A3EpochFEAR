@@ -12,7 +12,7 @@ for "_i" from 1 to _this do {
 	_storageSlotIndex = EPOCH_StorageSlots pushBack str(_i);
 
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
-	_response = ["Storage", _vehHiveKey] call EPOCH_server_hiveGETRANGE;
+	_response = ["Storage", _vehHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 
 	// diag_log format["STORAGE _response %1",_response];
 

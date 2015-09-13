@@ -28,7 +28,7 @@ if (_playerObj != _killer) then {
 		_playerName = toString (_this select 2);
 	};
 
-	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _plyrUID, name _killer, getPlayerUID _killer, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_server_hiveLog;
+	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _plyrUID, name _killer, getPlayerUID _killer, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_fnc_server_hiveLog;
 };
 
 // get vars array and current Crypto value
@@ -46,7 +46,7 @@ if (_current_crypto > 0) then{
 
 // death cost
 if (EPOCH_cloneCost > 0) then {
-	_response = ["Bank", _plyrUID] call EPOCH_server_hiveGETRANGE;
+	_response = ["Bank", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
 	if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 		_bankData = _response select 1;
 		_bankBalance = 0;
@@ -56,6 +56,6 @@ if (EPOCH_cloneCost > 0) then {
 		};
 
 		_bankBalance = _bankBalance - EPOCH_cloneCost;
-		["Bank", _plyrUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_server_hiveSETEX;
+		["Bank", _plyrUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
 	};
 };

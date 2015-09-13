@@ -25,7 +25,7 @@ switch (_this select 1) do {
 };
 
 if (_range > 0 && _move != "") then {
-	_nearBy = (getPosATL _target) nearEntities [["Epoch_Male_F","Epoch_Female_F"], _range];
+	_nearBy = _target nearEntities [["Epoch_Male_F","Epoch_Female_F"], _range];
 	{
 		[["switchMove", [_target, _move]], (owner _x)] call EPOCH_sendPublicVariableClient;
 	}forEach (_nearBy - [_target]); //_target == the caller, already plays the animation locally!

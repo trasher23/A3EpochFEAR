@@ -6,7 +6,7 @@
 "EPOCH_selectedGender_PVS"	addPublicVariableEventHandler{(_this select 1)call EPOCH_server_loadPlayer};
 "EPOCH_checkPlayer_PVS"		addPublicVariableEventHandler{(_this select 1)call EPOCH_server_checkPlayer};
 "EPOCH_respawnPlayer_PVS"	addPublicVariableEventHandler{(_this select 1)call EPOCH_server_respawnPlayer};
-"EPOCH_S_S_VEHICLES"		addPublicVariableEventHandler{(_this select 1)call EPOCH_server_save_vehicles};
+// "EPOCH_S_S_VEHICLES"		addPublicVariableEventHandler{(_this select 1)call EPOCH_server_save_vehicles};
 "EPOCH_pushPlayer_PVS"		addPublicVariableEventHandler{if([_this select 1 select 0,_this select 1 select 2]call EPOCH_server_getPToken)then{(_this select 1)call EPOCH_server_savePlayer}};
 "EPOCH_deadPlayer_PVS"		addPublicVariableEventHandler{(_this select 1)call EPOCH_server_deadPlayer};
 "EPOCH_destroyTrash"		addPublicVariableEventHandler{(_this select 1)call EPOCH_server_destroyTrash};

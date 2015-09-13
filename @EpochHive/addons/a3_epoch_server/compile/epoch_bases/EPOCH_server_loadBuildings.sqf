@@ -12,7 +12,7 @@ if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
 for "_i" from 0 to _this do {
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_i];
-	_response = ["Building", _vehHiveKey] call EPOCH_server_hiveGETTTL;
+	_response = ["Building", _vehHiveKey] call EPOCH_fnc_server_hiveGETTTL;
 
 	if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY" && !((_response select 1) isEqualTo [])) then {
 		_arr = _response select 1;
@@ -43,12 +43,10 @@ for "_i" from 0 to _this do {
 		if (_arrCount >= 5) then {
 			_textureSlot = _arr select 4;
 		};
-		
-		/*
-		if (_arrCount >= 6) then {
-			_damage = _arr select 5;			
-		};
-		*/
+
+
+
+
 
 		// experiment with damage factor based on time only for now.
 		_damage = ((1 - (_ttl / _maxTTL)) min 1) max 0;
@@ -62,7 +60,16 @@ for "_i" from 0 to _this do {
 
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1)) then {
 			_baseObj = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
+
+			_baseObj setVectorDirAndUp _worldspace;
 			_baseObj setposATL _location;
+
+			if (_arrCount >= 6) then{
+				_anims = _arr param[5, [], [[]]];
+				{
+					_baseObj animate [_x, _anims param [_forEachIndex,0], true]
+				} foreach(getArray(configFile >> "CfgVehicles" >> _class >> "persistAnimations"));
+			};
 
 			// TODO make config based
 			if (_class == "PlotPole_EPOCH") then {
@@ -87,7 +94,6 @@ for "_i" from 0 to _this do {
 				};
 			};
 
-			_baseObj setVectorDirAndUp _worldspace;
 			_baseObj setDamage _damage;
 			_baseObj call EPOCH_server_buildingInit;
 			_baseObj setVariable ["BUILD_SLOT", _i, true];

@@ -8,11 +8,7 @@ if (!isNull _this) then {
 
 		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_vehSlot];
 
-		_hitpoints = [];
-		_actualHitpoints = _vehicle call EPOCH_fnc_getHitpoints;
-		{
-			_hitpoints pushBack (_vehicle getHitPointDamage _x);
-		} forEach _actualHitpoints;
+		_hitpoints = (getAllHitPointsDamage _vehicle) select 2;
 
 		// may not be needed but should prevent <null> in DB.
 		_wepsItemsCargo = weaponsItemsCargo _vehicle;
@@ -47,7 +43,7 @@ if (!isNull _this) then {
 		_colorSlot = _vehicle getVariable ["VEHICLE_TEXTURE",0];
 
 		_VAL = [typeOf _vehicle,[(getposATL _vehicle call EPOCH_precisionPos),vectordir _vehicle,vectorup _vehicle],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,magazinesAmmo _vehicle,_colorSlot];
-		["Vehicle", _vehHiveKey, EPOCH_expiresVehicle, _VAL] call EPOCH_server_hiveSETEX;
-		//["Vehicle", _vehHiveKey, _VAL] call EPOCH_server_hiveSET;
+		["Vehicle", _vehHiveKey, EPOCH_expiresVehicle, _VAL] call EPOCH_fnc_server_hiveSETEX;
+		//["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 	};
 };

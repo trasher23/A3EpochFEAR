@@ -20,7 +20,7 @@ if (!local _plyr) then {
 
 		if (_plyr == _reviver) exitWith {
 			'epochserver' callExtension format['820|%1|EpochMod.com Autoban #R1',getPlayerUID _reviver];
-			['ahb', format['%1 (%2): Tried to Revive yourself (%3)', name _reviver, getPlayerUID _reviver, _this]] call EPOCH_server_hiveLog;
+			['ahb', format['%1 (%2): Tried to Revive yourself (%3)', name _reviver, getPlayerUID _reviver, _this]] call EPOCH_fnc_server_hiveLog;
 		};
 
 		_class = typeOf _plyr;
@@ -168,6 +168,9 @@ if (!local _plyr) then {
 								};
 								case 4:	{ // secondary
 									// removeAllSecondaryWeaponItems player; does not exist ?
+									{
+										_newPlyr removeSecondaryWeaponItem _x;
+									} forEach(secondaryWeaponItems _newPlyr);
 									{ _newPlyr addSecondaryWeaponItem _x }forEach _attachments;
 								};
 							};

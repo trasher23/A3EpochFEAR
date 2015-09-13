@@ -13,7 +13,7 @@ _modOrMember = if (_this select 3) then [{3},{4}];
 _modOrMemberRevert = if (_this select 3) then [{4},{3}];
 
 // [_groupName, _leaderName, _groupSize, _modArray, _memberArray]
-_response = ["Group", _groupID] call EPOCH_server_hiveGETRANGE;
+_response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
 if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
 	_contentArray = _response select 1;
 
@@ -104,5 +104,5 @@ if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then 
 	} count playableUnits;
 
 	// Save Group Data
-	["Group", _groupID, _contentArray] call EPOCH_server_hiveSET;
+	["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
 };

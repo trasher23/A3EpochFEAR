@@ -94,7 +94,7 @@ if (_skn_customVariablesCheck) then{
 	_skn_customVariables append(getArray(_whitelistConfig >> "epoch")); //Epoch Variables
 	_skn_customVariables append(getArray(_whitelistConfig >> "custom")); //Custom Variables
 	// Get any automatically added whitelist vars from Learning feature.
-	_response = ["AH-WhitelistVars", (call EPOCH_fn_InstanceID)] call EPOCH_server_hiveGETRANGE;
+	_response = ["AH-WhitelistVars", (call EPOCH_fn_InstanceID)] call EPOCH_fnc_server_hiveGETRANGE;
 	if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then{
 		if !((_response select 1) isEqualTo[]) then{
 			EPOCH_hiveWhitelistVarsArray = _response select 1;
@@ -636,7 +636,7 @@ call compile ("'"+_skn_doKickBan+"' addPublicVariableEventHandler {
 	_array = _this select 1;
 	_player =_array select 2;
 	if !([_player,_array select 3] call EPOCH_server_getPToken) exitWith {
-		['ahe', format['Token is different [%1,%2] %3',if (!isNull _player) then { _player getVariable ['"+_skn_AH_rndVarPlayer+"','']}else{'PlayerObj NULL'}, _array select 3, _array]] call EPOCH_server_hiveLog;
+		['ahe', format['Token is different [%1,%2] %3',if (!isNull _player) then { _player getVariable ['"+_skn_AH_rndVarPlayer+"','']}else{'PlayerObj NULL'}, _array select 3, _array]] call EPOCH_fnc_server_hiveLog;
 	};
 	_text = toString(_array select 0);
 
@@ -648,7 +648,7 @@ call compile ("'"+_skn_doKickBan+"' addPublicVariableEventHandler {
 	};
 
 	if (_mode == 0) then{
-		['ahb', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_server_hiveLog;
+		['ahb', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
 		"+_skn_pv_hackerLog+" pushBack [[0,call "+_skn_server_getRealTime+",name _player,getPlayerUID _player,_text],[1, 0, 0, 1]];
 		'epochserver' callExtension format['820|%1|"+_skn_banReason+"',getPlayerUID _player];
 	} else {
@@ -665,20 +665,20 @@ call compile ("'"+_skn_doKickBan+"' addPublicVariableEventHandler {
 
 					if !(_unknownVar in EPOCH_hiveWhitelistVarsArray) then{
 						EPOCH_hiveWhitelistVarsArray pushBack _unknownVar;
-						['AH-WhitelistVars', (call EPOCH_fn_InstanceID), EPOCH_hiveWhitelistVarsArray] call EPOCH_server_hiveSET;
+						['AH-WhitelistVars', (call EPOCH_fn_InstanceID), EPOCH_hiveWhitelistVarsArray] call EPOCH_fnc_server_hiveSET;
 					};
 
-					['ahl', format['LEARNING: %1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_server_hiveLog;
+					['ahl', format['LEARNING: %1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
 					"+_skn_pv_hackerLog+" pushBack[[1, call "+_skn_server_getRealTime+", name _player, getPlayerUID _player, format['LEARNING: %1',_text]], []];
 				} else {
-					['ahb', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_server_hiveLog;
+					['ahb', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
 					"+_skn_pv_hackerLog+" pushBack [[0,call "+_skn_server_getRealTime+",name _player,getPlayerUID _player,_text],[1, 0, 0, 1]];
 					_banID = 1;
 					'epochserver' callExtension format['820|%1|"+_skn_banReason+" #V%2',getPlayerUID _player,_banID];
 				};
 			};
 		}else {
-			['ahl', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_server_hiveLog;
+			['ahl', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
 			"+_skn_pv_hackerLog+" pushBack[[1, call "+_skn_server_getRealTime+", name _player, getPlayerUID _player, _text], []];
 		};
 	};
@@ -1040,7 +1040,7 @@ call compile ("
 		};
 		_adminUID = getPlayerUID _admin;
 		_adminNAME = "+str _skn_adminNAMEArray+" select ("+str _skn_adminUIDArray+" find _adminUID);
-		['aml', format['%1 (%2): [%4] %3',_adminNAME,_adminUID,_this select 0,_toggle]] call EPOCH_server_hiveLog;
+		['aml', format['%1 (%2): [%4] %3',_adminNAME,_adminUID,_this select 0,_toggle]] call EPOCH_fnc_server_hiveLog;
 
 		"+_skn_pv_adminLog+" pushBack [call "+_skn_server_getRealTime+",_adminNAME,_toggle,_this select 0];
 		diag_log format ['SKN2 AdminRequest %1',"+_skn_pv_adminLog+"];
@@ -1233,7 +1233,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 					};
 
 					_vehLockHiveKey = format['%1:%2', (call EPOCH_fn_InstanceID), _slot];
-					['VehicleLock', _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_server_hiveSETEX;
+					['VehicleLock', _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
 					
 					_config = (configFile >> 'CfgVehicles' >> _item >> 'availableColors');
 					if (isArray(_config)) then {
@@ -1284,7 +1284,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 		_playerObj = objectFromNetId (_content select 1);
 		_banID = 0;
 		'epochserver' callExtension format['820|%1|"+_skn_banReason+" #%2',getPlayerUID _playerObj,_banID];
-		['amb', format['%1 (%2): %3', name _playerObj, getPlayerUID _playerObj, _content select 0]] call EPOCH_server_hiveLog;
+		['amb', format['%1 (%2): %3', name _playerObj, getPlayerUID _playerObj, _content select 0]] call EPOCH_fnc_server_hiveLog;
 	};
 };");
 
@@ -1491,7 +1491,7 @@ _skn_admincode = compileFinal ("
 
 		if (EPOCH_ESP_VEHICLEPLAYER isEqualTo [] && _enable) then {
 			waitUntil {
-				EPOCH_ESP_VEHICLEPLAYER = ((getPos cameraOn) nearEntities [['Epoch_Male_F', 'Epoch_Female_F', 'LandVehicle', 'Ship', 'Air', 'Tank'], viewDistance max 1000 min 2500]) - [vehicle player];
+				EPOCH_ESP_VEHICLEPLAYER = (cameraOn nearEntities [['Epoch_Male_F', 'Epoch_Female_F', 'LandVehicle', 'Ship', 'Air', 'Tank'], viewDistance max 1000 min 2500]) - [vehicle player];
 				uiSleep 1;
 				!EPOCH_ESP_PLAYER && !EPOCH_ESP_VEHICLES
 			};
@@ -2270,7 +2270,7 @@ _skn_admincode = compileFinal ("
 "+_skn_flipVehicle+" = {
 	_target = cursorTarget;
 	if (isNull _target) then {
-		_vehicles = (getPosATL player) nearEntities[['LandVehicle', 'Ship', 'Air'], 15];
+		_vehicles = player nearEntities[['LandVehicle', 'Ship', 'Air'], 15];
 		if !(_vehicles isEqualTo []) then {
 			_target = _vehicles select 0;
 		};

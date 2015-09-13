@@ -30,11 +30,14 @@ if (_objSlot != -1) then {
 			_object setVariable["TEXTURE_SLOT", _textureSlot, true];
 
 			// save building with new color
-			_slot = "-1";
-			_worldspace = [(getposATL _object call EPOCH_precisionPos), (vectordir _object), (vectorup _object)];
-			_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
-			_VAL = [_class, _worldspace, _slot, _plyrUID, _textureSlot];
-			_return = ["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_server_hiveSETEX;
+			// _slot = "-1";
+			// _worldspace = [(getposATL _object call EPOCH_precisionPos), (vectordir _object), (vectorup _object)];
+			// _objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
+
+			_object call EPOCH_fnc_saveBuilding;
+
+			//_VAL = [_class, _worldspace, _slot, _plyrUID, _textureSlot, _animPhases];
+			//_return = ["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
 		};
 	};
 };

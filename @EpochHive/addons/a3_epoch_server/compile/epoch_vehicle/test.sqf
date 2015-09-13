@@ -1,13 +1,58 @@
-private [
-	"_spawnPositionSize","_spawnPositions","_type","_position","_range","_roads","_maxSpawnSize"
-	,"_vehicleFound","_vehClass"
-	,"_countAllowedVeh","_randomVehicleIndex","_randomVehicle","_velimit","_vehicleCount"
-	,"_isShip"
-	,"_spawnPositionIndex","_spawnPosition","_roadPosition"
-	,"_dir","_vehObj","_config"
-	,"_textureSelectionIndex","_selections","_colors","_textures","_color","_count"
-	,"_marker"
+epoch_centerMarkerPosition = getpos player;
+EPOCH_dynamicVehicleArea = 20000 / 2;
+
+EPOCH_VehicleSlots = [];
+for "_i" from 1 to 156 do {
+	EPOCH_VehicleSlots pushBack str(_i);
+};
+
+EPOCH_storedVehicleCount = 0;
+
+EPOCH_allowedVehiclesList = [
+      ["C_Offroad_01_EPOCH", 8],
+      ["C_Quadbike_01_EPOCH", 8],
+      ["C_Hatchback_01_EPOCH", 10],
+      ["C_Hatchback_02_EPOCH", 10],
+      ["C_SUV_01_EPOCH", 10],
+      ["C_Rubberboat_EPOCH", 5],
+      ["C_Rubberboat_02_EPOCH", 5],
+      ["C_Rubberboat_03_EPOCH", 5],
+      ["C_Rubberboat_04_EPOCH", 5],
+      ["C_Van_01_box_EPOCH", 8],
+      ["C_Van_01_transport_EPOCH", 9],
+      ["C_Boat_Civil_01_EPOCH", 5],
+      ["C_Boat_Civil_01_police_EPOCH", 5],
+      ["C_Boat_Civil_01_rescue_EPOCH", 5],
+      ["B_Heli_Light_01_EPOCH", 2],
+      ["B_SDV_01_EPOCH", 2],
+      ["B_MRAP_01_EPOCH", 3],
+      ["B_Truck_01_transport_EPOCH", 1],
+      ["B_Truck_01_covered_EPOCH", 2],
+      ["B_Truck_01_mover_EPOCH", 1],
+      ["B_Truck_01_box_EPOCH", 1],
+      ["O_Truck_02_covered_EPOCH", 2],
+      ["O_Truck_02_transport_EPOCH", 1],
+      ["O_Truck_03_covered_EPOCH", 1],
+      ["O_Truck_02_box_EPOCH", 1],
+      ["I_Heli_light_03_unarmed_EPOCH", 1],
+      ["O_Heli_Light_02_unarmed_EPOCH", 1],
+      ["I_Heli_Transport_02_EPOCH", 1],
+      ["O_Heli_Transport_04_EPOCH", 1],
+      ["O_Heli_Transport_04_bench_EPOCH", 1],
+      ["O_Heli_Transport_04_box_EPOCH", 1],
+      ["O_Heli_Transport_04_covered_EPOCH", 1],
+      ["B_Heli_Transport_03_unarmed_EPOCH", 1],
+      ["jetski_epoch", 7],
+      ["K01", 2],
+      ["K02", 2],
+      ["K03", 2],
+      ["K04", 2],
+      ["ebike_epoch", 7],
+      ["mosquito_epoch", 5],
+      ["C_Heli_Light_01_civil_EPOCH",5]
 ];
+
+
 
 _allowedVehiclesList = [];
 {
@@ -19,9 +64,11 @@ _allowedVehiclesList = [];
   };
 } forEach EPOCH_allowedVehiclesList;
 
-if (_allowedVehiclesList isEqualTo []) exitWith {
-	diag_log "DEBUG: No vehicles under limit";
-};
+
+
+
+
+
 
 _spawnPositionSize = [
       ["FlatAreaCity",1],
@@ -48,6 +95,10 @@ _allowedTypes = [];
 }forEach _spawnPositionSize;
 
 
+
+
+
+
 _allCitys = "getText(_x >> 'type') in _allowedTypes" configClasses (configfile >> "CfgWorlds" >> worldName >> "Names");
 _allCitysDync = [];
 
@@ -63,6 +114,7 @@ _allCitysDync = [];
         };
     };
 } forEach _allCitys;
+
 
 
 _position = [0,0,0];
@@ -103,16 +155,16 @@ _position = [0,0,0];
       if (_allCitysDync isEqualTo []) then {
         _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
       } else {
+
         _selectedCity = _allCitysDync deleteAt (floor random(count _allCitysDync));
         _cityPos = getArray(_selectedCity >> "position");
         _range = getNumber(_selectedCity >> "radiusA") * 1.3;
 
         _roads = _cityPos nearRoads _range;
-				if !(_roads isEqualTo []) then {
-					_road = _roads select(floor random(count _roads));
-	        _position = getPosATL _road;
-	        _position deleteAt 2;
-				};
+        _road = _roads select(floor random(count _roads));
+
+        _position = getPosATL _road;
+        _position deleteAt 2;
       };
     };
   };
@@ -132,13 +184,11 @@ _position = [0,0,0];
 			_vehObj = [_vehClass,_position,_direction,true,_x,"",_collide,true] call EPOCH_fnc_spawn_vehicle;
 
 
-			if (EPOCH_DEBUG_VEH) then {
-				_marker = createMarker [str(_position) , _position];
-				_marker setMarkerShape "ICON";
-				_marker setMarkerType "mil_dot";
-				_marker setMarkerText _vehClass;
-				_marker setMarkerColor "ColorBlue";
-			};
+      _marker = createMarker [str(_position) , _position];
+      _marker setMarkerShape "ICON";
+      _marker setMarkerType "mil_dot";
+      _marker setMarkerText format ["%1",_vehClass];
+      _marker setMarkerColor "ColorRed";
 
 
 			EPOCH_VehicleSlots set[_forEachIndex, "REM"];

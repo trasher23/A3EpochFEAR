@@ -43,14 +43,14 @@ if (_slot != -1) then {
 	{
 		_item = _x;
 		_itemQty = 1;
-		
+
 		if (isClass (_config >> _item)) then{
 			_itemWorth = getNumber(_config >> _item >> "price");
-			
+
 			_makeTradeIn = false;
 
 			if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") then{
-				
+
 				_vehicles = _trader nearEntities[[_item], 30];
 				if !(_vehicles isEqualTo[]) then {
 
@@ -69,7 +69,7 @@ if (_slot != -1) then {
 
 								_vehHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
 								_VAL = [];
-								["Vehicle", _vehHiveKey, _VAL] call EPOCH_server_hiveSET;
+								["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 
 								EPOCH_VehicleSlots pushBack _vehSlot;
 								EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
@@ -85,9 +85,9 @@ if (_slot != -1) then {
 			};
 
 			if (_makeTradeIn) then {
-				
+
 				_returnIn pushBack _item;
-				
+
 				_qtyIndex = _itemClasses find _item;
 				if (_qtyIndex == -1) then {
 					_itemClasses pushBack  _item;
@@ -106,13 +106,13 @@ if (_slot != -1) then {
 			};
 		};
 	} forEach _itemsIn;
-	
-	
+
+
 
 	{
 		_item = _x;
 		_itemQty = 1;
-		
+
 		// diag_log format["_item: %1", _item];
 		if (isClass (_config >> _item)) then{
 			_itemWorth = getNumber(_config >> _item >> "price");
@@ -125,7 +125,7 @@ if (_slot != -1) then {
 			_qtyIndex = _itemClasses find _item;
 			// add items to array
 			if (_qtyIndex != -1) then {
-			
+
 				_currQty = _itemQtys select _qtyIndex;
 
 				// diag_log format["_currQty: %1 >= %2", _currQty, _itemQty];
@@ -135,9 +135,9 @@ if (_slot != -1) then {
 					if (_current_crypto >= _itemWorth) then {
 
 						if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") then{
-							
+
 							if (!_vehicleBought) then {
-								
+
 								if !(EPOCH_VehicleSlots isEqualTo[])  then {
 									_position = getPosATL _plyr;
 
@@ -162,7 +162,7 @@ if (_slot != -1) then {
 													{
 														if (_objOwner == owner _x) exitWith{
 															_position = getPosATL _x;
-															_foundSmoke = true; 
+															_foundSmoke = true;
 														};
 													} forEach (units _plyr);
 												};
@@ -190,21 +190,11 @@ if (_slot != -1) then {
 									EPOCH_VehicleSlots = EPOCH_VehicleSlots - [_slot];
 									EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
 									publicVariable "EPOCH_VehicleSlotCount";
-									//place vehicle
-									_vehObj = createVehicle[_item, _position, [], 0, "NONE"];
+
+
 
 									_vehicleBought = true;
 
-									_vehObj call EPOCH_server_setVToken;
-									addToRemainsCollector[_vehObj];
-
-									_vehObj disableTIEquipment true;
-
-									clearWeaponCargoGlobal    _vehObj;
-									clearMagazineCargoGlobal  _vehObj;
-									clearBackpackCargoGlobal  _vehObj;
-									clearItemCargoGlobal	  _vehObj;
-									_vehObj lock true;
 
 									// Group access
 									_lockOwner = getPlayerUID _plyr;
@@ -213,32 +203,8 @@ if (_slot != -1) then {
 										_lockOwner = _plyrGroup;
 									};
 
-									// Lock vehicle for owner
-									_vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
-									["VehicleLock", _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_server_hiveSETEX;
-								
-									// get colors from config
-									_colorsConfig = configFile >> "CfgVehicles" >> _item >> "availableColors";
-									if (isArray(_colorsConfig)) then{
-										_textureSelectionIndex = configFile >> "CfgVehicles" >> _item >> "textureSelectionIndex";
-										_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
-										_colors = getArray(_colorsConfig);
-										_textures = _colors select 0;
-										_color = floor(random(count _textures));
-										_count = (count _colors) - 1;
-										{
-											if (_count >= _forEachIndex) then {
-												_textures = _colors select _forEachIndex;
-											};
-											_vehObj setObjectTextureGlobal[_x, (_textures select _color)];
-										} forEach _selections;
-										_vehObj setVariable["VEHICLE_TEXTURE", _color];
-									};
-									// Set slot used by vehicle
-									_vehObj setVariable["VEHICLE_SLOT", _slot, true];
-									// SAVE VEHICLE
-									_vehObj call EPOCH_server_save_vehicle;
-									_vehObj call EPOCH_server_vehicleInit;
+									_vehObj = [_item,_position,random 360,true,_slot,_lockOwner,"NONE",false] call EPOCH_fnc_spawn_vehicle;
+
 
 									_returnOut pushBack _item;
 
@@ -250,7 +216,7 @@ if (_slot != -1) then {
 							};
 						} else {
 							_returnOut pushBack _item;
-						
+
 							_itemQtys set[_qtyIndex, (_currQty - _itemQty)];
 							_tradeTotal = _tradeTotal - _itemWorth;
 							_current_crypto = _current_crypto - _itemWorth;
@@ -262,15 +228,15 @@ if (_slot != -1) then {
 			};
 		};
 	} forEach _itemsOut;
-	
+
 	if (_itemsIn isEqualTo _returnIn || _itemsOut isEqualTo _returnOut) then {
-		
+
 		// save changes to array
 		_trader setVariable["AI_ITEMS", [_itemClasses, _itemQtys], true];
 
-		// Force Save 
+		// Force Save
 		_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
-		["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, [_itemClasses, _itemQtys]] call EPOCH_server_hiveSETEX;
+		["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, [_itemClasses, _itemQtys]] call EPOCH_fnc_server_hiveSETEX;
 		// diag_log format["UPDATED DB FOR TRADER: %1 SLOT: %2 DATA: %3", _trader, _slot, [_itemClasses, _itemQtys]];
 
 		// diag_log format["ADMIN: %1 TRADETOTAL:%2", _plyr, _tradeTotal];
