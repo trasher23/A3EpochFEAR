@@ -39,7 +39,7 @@ if (_failed) then {
 
 	//these variables determine a safe location for the supply crate drops
 	//map center is based on CHERNARUS with halved values	
-	_mapCenter = [7067.50,7798.63];
+	_mapCenter = [6206.94,5920.05,0];
 	_coords = [_mapCenter,500,5000,30,0,10,0] call BIS_fnc_findSafePos;
 
 	uiSleep 5;

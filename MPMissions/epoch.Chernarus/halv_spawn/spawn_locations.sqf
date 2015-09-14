@@ -126,6 +126,20 @@ Halv_spawns = switch(toLower worldName)do{
 			[[2884.57,17167.5],1]	//Vang
 		]
 	};
+	
+	case "esseker":{
+		[
+			[[9500,5600]],	//esseker
+			[[11900,7950]],	//Novi Grad
+			[[11082,10280],2],	//Camp Spencer
+			[[2655,1269]],		//Grozna Mountain
+			[[2000,4180]],	//Krupa
+			[[6470,5445],1],	//Neptun Resort
+			[[6660,3850]],		//Plava Vrana
+			[[9950,10725]]	//Gromada Caves
+		]
+	};
+	
 /* //create new world spawns, use lower case letters only or it will not be detected (only [x,y] needed)
 	case "myworldname":{
 		[

@@ -50,7 +50,6 @@ allowedVehiclesList[] = {
 	{"C_Hatchback_01_EPOCH",10},
 	{"C_Hatchback_02_EPOCH",10},
 	{"C_SUV_01_EPOCH",10},
-
 	{"B_G_Offroad_01_F",10},
     {"I_G_Offroad_01_F",10},
     {"I_G_Offroad_01_armed_F",5},
@@ -61,8 +60,6 @@ allowedVehiclesList[] = {
 
 	// Military Wheeled
 	{"B_MRAP_01_EPOCH",2},
-
-
 	{"O_MRAP_02_F",2},
 	{"I_MRAP_03_F",2},
 	{"B_UGV_01_rcws_F",2},
@@ -88,13 +85,9 @@ allowedVehiclesList[] = {
 	{"O_Heli_Transport_04_F",2},
 	{"O_Heli_Transport_04_medevac_F",2},
 	{"I_Heli_light_03_unarmed_F",2},
-
 	{"mosquito_epoch",10},
 	{"B_Heli_Light_01_armed_F",2},
 	{"O_Heli_Attack_02_black_F",2},
-
-
-
 	{"C_Heli_Light_01_civil_F",2},
 	{"O_Heli_Light_02_v2_F",2},
 
@@ -107,9 +100,6 @@ allowedVehiclesList[] = {
 	
 	// Tanks
 	{"O_MBT_02_cannon_F",2},
-
-
-
 	{"B_MBT_01_arty_F",2},
 	{"B_MBT_01_mlrs_F",2},
 	

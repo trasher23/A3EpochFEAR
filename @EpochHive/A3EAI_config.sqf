@@ -173,11 +173,11 @@ A3EAI_enableHealing = true;
 //Affects: All AI air vehicle types (patrols/custom/reinforcement). Does not affect UAV/UGVs.
 A3EAI_removeExplosiveAmmo = true;
 
+//if enabled, AI units suffer no damage from vehicle collisions. (Default: true)
+A3EAI_noCollisionDamage = true;
+
 //If enabled, AI killed by vehicle collisions will have their gear removed (Default: true)
 A3EAI_roadKillPenalty = true;
-
-//if enabled, AI units suffer no damage from vehicle collisions. (Default: false)
-A3EAI_noCollisionDamage = false;
 
 
 /*	Static Infantry AI Spawning Settings
@@ -262,7 +262,7 @@ A3EAI_waypointBlacklistLand = [];  //Affects Air vehicles (including UGVs)
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 2;	
+A3EAI_maxHeliPatrols = 3;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
