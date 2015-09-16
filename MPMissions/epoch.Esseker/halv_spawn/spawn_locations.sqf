@@ -16,7 +16,7 @@ _jamarea = 10000;
 _spawnNearGroup = true;
 
 //adds the default spawns locations
-_adddefaultspawns = true;
+_adddefaultspawns = false;
 
 Halv_spawns = switch(toLower worldName)do{
 	case "chernarus":
@@ -55,14 +55,21 @@ Halv_spawns = switch(toLower worldName)do{
 	
 	case "esseker":{
 		[
-			[[9500,5600]],	//Esseker
-			[[11900,7950]],	//Novi Grad
 			[[11082,10280]],	//Camp Spencer
+			[[9500,5600]],		//Esseker
 			[[2655,1269]],		//Grozna Mountain
-			[[2000,4180]],	//Krupa
-			[[6470,5445]],	//Neptun Resort
-			[[6660,3850]],		//Plava Vrana
-			[[9950,10725]]	//Gromada Caves
+			[[9950,10725]],		//Gromada Caves
+			[[2000,4180]],		//Krupa
+			[[11900,7950]],		//Novi Grad
+			[[6470,5445]],		//Neptun Resort
+			[[2710,4660]],		//Kupres
+			[[5090,4700]],		//Plomino Power Station
+			[[10065,4790]],		//Adela Airfield
+			[[6680,3900]],		//Plava Vrana Military Complex
+			[[10070,9880]],		//Borosh
+			[[1170,10280]],		//Camp Spencer
+			[[4825,8070]],		//Chokory
+			[[2070,7760]]		//Rama
 		]
 	};
 	

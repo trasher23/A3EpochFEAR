@@ -48,8 +48,7 @@ if !( isServer || isDedicated ) then {
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";				// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";			// Random sound fx
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
-	
-	[] execVM "wai\remote.sqf";								// Wicked AI
+
 	[] execVM "service_point\service_point.sqf";			// http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
 	[] execVM "paintshop\paintshop.sqf";					// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
 	

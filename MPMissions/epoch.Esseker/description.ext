@@ -3,9 +3,9 @@
 #include "paintshop\paintshop.hpp"
 #include "trader\tradedialog.hpp"
 #include "trader\HSPricing.hpp"
-
 // Crafting https://github.com/GBR-Suppe/cfgCrafting-Master
 #include "cfgCrafting.hpp"
+
 author = "Epoch Mod Team";
 class Header
 {
