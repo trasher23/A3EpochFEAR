@@ -16,8 +16,8 @@ A3AI 0.9.2: https://github.com/dayzai/A3EAI
 <br/>
 VEMF 0.0720.2: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
-SDROP 1.0c: https://github.com/tdavison70/Helicopter-Supply-Drop
 <br/>
+SDROP 1.0c: https://github.com/tdavison70/Helicopter-Supply-Drop
 <br/>
 persistence v0.1.7-fix-1: https://github.com/n8m4re/A3_Epoch_PersistenceAddon
 <br/>
