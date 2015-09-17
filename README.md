@@ -33,7 +33,7 @@ paintshop: https://github.com/Halvhjearne/paintshop
 <br/>
 service_point: http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
 <br/>
-HSBlackmarket 1.5: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
+HSBlackmarket 1.6: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
 <br/>
 status_bar: https://github.com/piXm8/statusBar
 <br/>
