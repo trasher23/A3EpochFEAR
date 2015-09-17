@@ -21,7 +21,7 @@ WAI 1.0.0: https://github.com/nerdalertdk/WICKED-AI
 SDROP 1.0c: https://github.com/tdavison70/Helicopter-Supply-Drop
 <br/>
 <br/>
-persistence 0.1.7: https://github.com/n8m4re/A3_Epoch_PersistenceAddon
+persistence v0.1.7-fix-1: https://github.com/n8m4re/A3_Epoch_PersistenceAddon
 <br/>
 cmEarplugs 2.0: https://github.com/computermancer/cmEarplugs
 <br/>
