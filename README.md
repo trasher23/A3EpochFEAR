@@ -5,9 +5,9 @@ Esseker has been quarantined.  Remnants of the CDC are deploying mini-nukes to s
 
 A mish-mash of:
 <br/>
-Arma 3 1.48: http://arma3.com/
+Arma 3 1.50: http://arma3.com/
 <br/>
-Epoch 0.3.3.0: http://epochmod.com/
+Epoch 0.3.3.1: http://epochmod.com/
 <br/>
 Esseker 0.7.0.5 http://a3esseker.info/
 <br/>
@@ -15,8 +15,6 @@ Esseker 0.7.0.5 http://a3esseker.info/
 A3AI 0.9.2: https://github.com/dayzai/A3EAI
 <br/>
 VEMF 0.0720.2: https://github.com/IT07/A3_VEMF_Reloaded
-<br/>
-WAI 1.0.0: https://github.com/nerdalertdk/WICKED-AI
 <br/>
 SDROP 1.0c: https://github.com/tdavison70/Helicopter-Supply-Drop
 <br/>
