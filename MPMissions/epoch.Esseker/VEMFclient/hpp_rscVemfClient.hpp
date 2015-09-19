@@ -37,7 +37,7 @@ class txtTag: RscText
 	tooltipColorShade[] = {0,0,0,0.7};
 
 	idc = 1001;
-	text = "Recon"; //--- ToDo: Localize;
+	text = "Radio"; //--- ToDo: Localize;
 	x = 0.25 * safezoneW + safezoneX;
 	y = 0.9 * safezoneH + safezoneY;
 	w = 0.0625 * safezoneW;
