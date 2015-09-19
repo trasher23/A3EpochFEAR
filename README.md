@@ -14,7 +14,7 @@ Esseker 0.7.0.5 http://a3esseker.info/
 <br/>
 A3AI 0.9.2: https://github.com/dayzai/A3EAI
 <br/>
-VEMF 0.0720.2: https://github.com/IT07/A3_VEMF_Reloaded
+VEMF 0.0722.8: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
 <br/>
 SDROP 1.0c: https://github.com/tdavison70/Helicopter-Supply-Drop
