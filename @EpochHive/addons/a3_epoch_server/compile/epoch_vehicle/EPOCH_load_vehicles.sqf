@@ -61,17 +61,18 @@ for "_i" from 1 to _this do {
 					_vehicle setDamage _damage;
 
 					_allHitpoints = getAllHitPointsDamage _vehicle;
-					_actualHitpoints = _allHitpoints select 0;
-					_hitpoints = _arr select 3;
-
-					if ((count _actualHitpoints) == (count _hitpoints)) then{
-						{
-							_dmg = _hitpoints select _forEachIndex;
-							if (_x in ["HitFuel", "HitEngine"]) then {
-								_dmg = _dmg min 0.9;
-							};
-							_vehicle setHitIndex [_forEachIndex, _dmg];
-						} forEach _actualHitpoints;
+					if !(_allHitpoints isEqualTo []) then{
+						_actualHitpoints = _allHitpoints select 0;
+						_hitpoints = _arr select 3;
+						if ((count _actualHitpoints) == (count _hitpoints)) then{
+							{
+								_dmg = _hitpoints param [_forEachIndex,0];
+								if (_x in ["HitFuel", "HitEngine"]) then {
+									_dmg = _dmg min 0.9;
+								};
+								_vehicle setHitIndex [_forEachIndex, _dmg];
+							} forEach _actualHitpoints;
+						};
 					};
 
 					if (_immuneVehicleSpawn) then{

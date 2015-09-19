@@ -84,7 +84,7 @@ switch(toLower worldName)do{
 		];
 		_spawnarea = 7000;
 	};
-	default{_staticCoords = [];_blacklistedAreas = [[[0,0,0],0]];_spawnarea = 7000;};
+	default{_staticCoords = [];_blacklistedAreas = [[[0,0,0],0]];_spawnarea = 6000;};
 };
 
 //============================== DONT TOUCH ANYTHING BELOW THIS POINT ==============================\\

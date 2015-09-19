@@ -8,7 +8,7 @@ if (!isNull _this) then {
 
 		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_vehSlot];
 
-		_hitpoints = (getAllHitPointsDamage _vehicle) select 2;
+		_hitpoints = (getAllHitPointsDamage _vehicle) param [2,[]];
 
 		// may not be needed but should prevent <null> in DB.
 		_wepsItemsCargo = weaponsItemsCargo _vehicle;

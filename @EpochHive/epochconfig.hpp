@@ -7,7 +7,7 @@ BuildingSlotsLimit = 1500; // Max building slots allowed. Warning! Higher the nu
 // Time based
 StaticDateTime[] = {2035,6,10,12,0}; // {0,0,0,8,0} would forces the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
 timeDifference = 0; // Server uses real time this will allow you to offset just the hour.
-timeMultiplier = 4; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
+timeMultiplier = 2; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
 lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payout per Epoch loot container.
 // Events
 WeatherChangeTime = 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
@@ -134,11 +134,3 @@ hiveAsync = true; // true = asynchronous hive calls (non blocking), false = sync
 hiveAdminCmdExec = false; // true = enables extra (To Be Released) feature to allow execution of code via hive.
 hiveAdminSavePlayerList = true; // true = enables saving of playerUID array to hive value PLAYERS:#InstanceID.
 hiveAdminCmdTime = 5; // how many seconds between each command queue call.
-
-// N8M4RE Persistence
-PersistenceTablePrefix = "PERSIST";     // change will create a new table in db
-PersistenceHolder = true;               // enable/disable storing of groundholder items
-PersistenceHolderCanExpire = true;      // enable/disable expiring of holders
-PersistenceHolderExpires = "691200";    // 1day=86400, 2days=172800, 4days=345600, 8days=691200 
-PersistenceHolderLimit = 1500;          // max groundholder can stored (a groundholder can hold more than one item)
-PersistenceDayTime = true;  

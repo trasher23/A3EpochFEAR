@@ -38,7 +38,7 @@ if (_failed) then {
 	_heliSpawnPosition = _posArray call bis_fnc_selectrandom;  
 
 	//these variables determine a safe location for the supply crate drops
-	//map center is based on CHERNARUS with halved values	
+	//map center is based on Esseker with halved values	
 	_mapCenter = [6206.94,5920.05,0];
 	_coords = [_mapCenter,500,5000,30,0,10,0] call BIS_fnc_findSafePos;
 

@@ -16,7 +16,7 @@ _jamarea = 10000;
 _spawnNearGroup = true;
 
 //adds the default spawns locations
-_adddefaultspawns = false;
+_adddefaultspawns = true;
 
 Halv_spawns = switch(toLower worldName)do{
 	case "chernarus":

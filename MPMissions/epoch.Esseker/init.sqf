@@ -1,4 +1,4 @@
-if !( isServer || isDedicated ) then {	
+if (!isDedicated && hasInterface) then {
 	
 	waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
 	
@@ -48,35 +48,19 @@ if !( isServer || isDedicated ) then {
 	[] execVM "FEAR\scripts\fn_statusBar.sqf";				// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";			// Random sound fx
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
-
-	[] execVM "service_point\service_point.sqf";			// http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
 	[] execVM "paintshop\paintshop.sqf";					// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
+	[] execVM "FEAR\scripts\EtV_init.sqf";					// http://epochmod.com/forum/index.php?/topic/34576-release-attach-explosives/
 	
-	#include "A3EAI_Client\A3EAI_initclient.sqf";			// A3AI radio messages
 };
 
-[] execVM "messages\init.sqf";								// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
-[] execVM "service_point\HALV_takegive_crypto_init.sqf";	// Service point
-
+// Needs to run on both server and client
 // Halv scripts http://epochmod.com/forum/index.php?/tags/forums/Halv/
 [] execVM "halv_spawn\init.sqf";
 [] execVM "trader\init.sqf";
+[] execVM "trader\HALV_takegive_crypto_init.sqf";
 [] execVM "trader\resetvehicleammo.sqf";
+[] execVM "messages\init.sqf";								// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
 
 if (!isDedicated && hasInterface) then {
-	// http://epochmod.com/forum/index.php?/topic/34576-release-attach-explosives/
-	while {true} do
-	{
-		waitUntil {alive vehicle player};
-		Sleep 30;
-		[] execVM "FEAR\scripts\EtV.sqf";
-		waitUntil {!isNil "EtVInitialized"};
-		[player] call EtV_Actions;
-
-		waitUntil {!alive player};
-		Sleep 30;
-		[] execVM "FEAR\scripts\EtV.sqf";
-		waitUntil {!isNil "EtVInitialized"};
-		[player] call EtV_Actions;
-	};
+	#include "A3EAI_Client\A3EAI_initclient.sqf";			// A3AI radio messages
 };

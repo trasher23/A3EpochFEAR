@@ -20,7 +20,7 @@ _allowedVehiclesList = [];
 } forEach EPOCH_allowedVehiclesList;
 
 if (_allowedVehiclesList isEqualTo []) exitWith {
-	diag_log "DEBUG: No vehicles under limit";
+	diag_log "DEBUG: All vehicles over limit";
 };
 
 _spawnPositionSize = [
@@ -71,7 +71,11 @@ _position = [0,0,0];
 {
   if (count EPOCH_VehicleSlots <= EPOCH_storedVehicleCount) exitWith{};
 
-  _vehClass = _allowedVehiclesList deleteAt (floor(random(count _allowedVehiclesList)));
+  _vehCount = count _allowedVehiclesList;
+  if (_vehCount <= 0) exitWith{};
+  
+  _vehClass = _allowedVehiclesList deleteAt(floor(random(_vehCount)));
+  if (isNil "_vehClass") exitWith{};
 
   _direction = random 360;
   _position = [0,0,0];

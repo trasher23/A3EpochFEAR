@@ -6,12 +6,7 @@ class CfgCrafting
 		recipe[] = {};
 		nearby[] = {};
 	};
-
-	// items 
-	class ItemCoolerE : Default
-	{
-		// usedIn[] = { "ItemCooler0", "ItemCooler1", "ItemCooler2", "ItemCooler3", "ItemCooler4" };
-	};
+	class ItemCoolerE: Default{};
 	class ItemCooler0 : Default
 	{
 		recipe[] = { "ItemCoolerE", { "SnakeMeat_EPOCH", 2 }, "sweetcorn_epoch" };
@@ -32,10 +27,11 @@ class CfgCrafting
 	{
 		recipe[] = { "ItemCoolerE", "CookedSheep_EPOCH", "sweetcorn_epoch" };
 	};
-
-	class EnergyPack : Default
+	class EnergyPack: Default
 	{
-		usedIn[] = { "EnergyPackLg" };
+		usedIn[] = {"EnergyPackLg"};
+		nearby[] = {{ "fire",{ "ALL" },3,1,"Fire","fire" }};
+		recipe[] = {{ "CircuitParts",1 },{ "clean_water_epoch",1 }};
 	};
 	class EnergyPackLg : Default
 	{
@@ -43,9 +39,9 @@ class CfgCrafting
 		recipe[] = { { "EnergyPack", 3 }, { "CircuitParts", 1 } };
 	};
 
-	class PartOre : Default
+	class PartOre: Default
 	{
-		usedIn[] = { "ItemScraps" };
+		usedIn[] = {"ItemScraps"};
 	};
 	class ItemRock : Default
 	{
@@ -59,7 +55,7 @@ class CfgCrafting
 	class ItemKiloHemp : Default
 	{
 		usedIn[] = { "ItemRope" };
-	};	
+	};
 	class MeleeMaul : Default
 	{
 		recipe[] = { { "ItemRock", 1 }, { "ItemStick", 2 }, { "ItemRope", 1 } };
@@ -83,7 +79,6 @@ class CfgCrafting
 	};
 	
 ////// Custom Part start//////
-
 	class ItemRope : Default
 	{
 		usedIn[] = { "WoodClub", "MeleeMaul", "CrudeHatchet", "V_10_EPOCH", "V_30_EPOCH", "V_39_EPOCH" };
@@ -101,7 +96,7 @@ class CfgCrafting
 	};
 	class ItemCorrugated : Default
 	{
-		usedIn[] = {"KitShelf","ItemCorrugatedLg", "V_39_EPOCH"};
+		usedIn[] = {"KitShelf","ItemCorrugatedLg", "V_39_EPOCH", "VehicleRepairLg"};
 		nearby[] = { { "fire", { "ALL" }, 3, 1, "Fire", "fire" } };
 		recipe[] = { { "ItemScraps", 2 } };
 	};
@@ -130,9 +125,9 @@ class CfgCrafting
 	};
 	class CircuitParts : Default
 	{
-		usedIn[] = { "NVG_EPOCH", "optic_tws" };
+		usedIn[] = { "NVG_EPOCH", "optic_tws", "EnergyPack", "EnergyPackLg", "KitPlotPole"};
 	};
-		class V_10_EPOCH : Default
+	class V_10_EPOCH : Default
 	{
 		recipe[] = { {"Pelt_EPOCH",1}, {"ItemRope",1} };
 	};
@@ -146,7 +141,23 @@ class CfgCrafting
 		recipe[] = { {"Pelt_EPOCH",2}, {"ItemRope",2}, {"ItemCorrugated",1} };
 		nearby[] = { { "fire", { "ALL" }, 3, 1, "Fire", "fire" } };
 	};
-	
+	class SatchelCharge_Remote_Mag : Default
+	{
+		recipe[] = {{"HandGrenade",2}, {"ItemSilverBar",1}, {"ItemWatch",1}};
+		nearby[] = {{ "fire", {"ALL"}, 3, 1, "Fire","fire" }}; 
+	};
+	class HandGrenade : Default
+	{
+		usedIn[] = { "SatchelCharge_Remote_Mag" };
+	};
+	class ItemSilverBar : Default
+	{
+		usedIn[] = { "SatchelCharge_Remote_Mag" };
+	};
+	class ItemWatch : Default
+	{
+		usedIn[] = { "SatchelCharge_Remote_Mag" };
+	};
 ////// Custom Part end//////
 
 	class CinderBlocks : Default
@@ -161,9 +172,6 @@ class CfgCrafting
 	{
 		usedIn[] = { "CSGAS" };
 	};
-
-	
-
 	class VehicleRepair : Default
 	{
 		usedIn[] = { "VehicleRepairLg" };
@@ -172,58 +180,54 @@ class CfgCrafting
 	{
 		recipe[] = { "VehicleRepair", "ItemCorrugated" };
 	};
-
-	// radios
-
-	class EpochRadio0 : Default // Quartz
+	class EpochRadio0: Default
 	{
-		usedIn[] = { "EpochRadio1" };
+		usedIn[] = {"EpochRadio1"};
 	};
-	class EpochRadio1 : Default // Garnet
+	class EpochRadio1: Default
 	{
-		usedIn[] = { "EpochRadio2" };
-		recipe[] = { "EpochRadio0", "ItemGarnet" };
+		usedIn[] = {"EpochRadio2"};
+		recipe[] = {"EpochRadio0","ItemGarnet"};
 	};
-	class EpochRadio2 : Default // Citrine
+	class EpochRadio2: Default
 	{
-		usedIn[] = { "EpochRadio3" };
-		recipe[] = { "EpochRadio1", "ItemCitrine" };
+		usedIn[] = {"EpochRadio3"};
+		recipe[] = {"EpochRadio1","ItemCitrine"};
 	};
-	class EpochRadio3 : Default // Amethyst
+	class EpochRadio3: Default
 	{
-		usedIn[] = { "EpochRadio4" };
-		recipe[] = { "EpochRadio2", "ItemAmethyst" };
+		usedIn[] = {"EpochRadio4"};
+		recipe[] = {"EpochRadio2","ItemAmethyst"};
 	};
-	class EpochRadio4 : Default // Topaz
+	class EpochRadio4: Default
 	{
-		usedIn[] = { "EpochRadio5" };
-		recipe[] = { "EpochRadio3", "ItemTopaz" };
+		usedIn[] = {"EpochRadio5"};
+		recipe[] = {"EpochRadio3","ItemTopaz"};
 	};
-	class EpochRadio5 : Default // Sapphire
+	class EpochRadio5: Default
 	{
-		usedIn[] = { "EpochRadio6" };
-		recipe[] = { "EpochRadio4", "ItemSapphire" };
+		usedIn[] = {"EpochRadio6"};
+		recipe[] = {"EpochRadio4","ItemSapphire"};
 	};
-	class EpochRadio6 : Default // Onyx
+	class EpochRadio6: Default
 	{
-		usedIn[] = { "EpochRadio7" };
-		recipe[] = { "EpochRadio5", "ItemOnyx" };
+		usedIn[] = {"EpochRadio7"};
+		recipe[] = {"EpochRadio5","ItemOnyx"};
 	};
-	class EpochRadio7 : Default // Emerald
+	class EpochRadio7: Default
 	{
-		usedIn[] = { "EpochRadio8" };
-		recipe[] = { "EpochRadio6", "ItemEmerald" };
+		usedIn[] = {"EpochRadio8"};
+		recipe[] = {"EpochRadio6","ItemEmerald"};
 	};
-	class EpochRadio8 : Default // Ruby
+	class EpochRadio8: Default
 	{
-		usedIn[] = { "EpochRadio9" };
-		recipe[] = { "EpochRadio7", "ItemRuby" };
+		usedIn[] = {"EpochRadio9"};
+		recipe[] = {"EpochRadio7","ItemRuby"};
 	};
-	class EpochRadio9 : Default // Jade
+	class EpochRadio9: Default
 	{
-		recipe[] = { "EpochRadio8", "ItemJade" };
+		recipe[] = {"EpochRadio8","ItemJade"};
 	};
-
 	// raw meats
 	class SnakeCarcass_EPOCH : Default
 	{
@@ -288,10 +292,10 @@ class CfgCrafting
 	};
 	class clean_water_epoch : Default
 	{
-		nearby[] = { { "fire", { "ALL" }, 3, 1, "Fire", "fire" } };
-		recipe[] = { "water_epoch" };
+		usedIn[] = {"EnergyPack"};
+		nearby[] = {{ "fire",{ "ALL" },3,1,"Fire","fire" }};
+		recipe[] = {"water_epoch"};
 	};
-
 	// recipes 
 	class CSGAS : Default
 	{
@@ -299,7 +303,7 @@ class CfgCrafting
 	};
 	class ItemCorrugatedLg : Default
 	{
-		usedIn[] = { "VehicleRepairLg", "KitPlotPole" };
+		usedIn[] = { "KitPlotPole" };
 		recipe[] = { { "ItemCorrugated", 3 } };
 	};
 	class PartPlankPack : Default
@@ -346,12 +350,11 @@ class CfgCrafting
 	
 	class KitCinderWall : Default
 	{
-		recipe[] = {{"CinderBlocks",4},{"MortarBucket",2}};
+		recipe[] = {{ "CinderBlocks",2 },{ "MortarBucket",2 }};
 	};
 	class KitPlotPole : Default
 	{
 		recipe[] = {{"ItemCorrugatedLg",2}, {"CircuitParts",2} };
 	};
-
 };
 

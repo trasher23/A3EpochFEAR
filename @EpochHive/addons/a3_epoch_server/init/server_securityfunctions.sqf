@@ -855,11 +855,6 @@ _skn_code_antihack = compileFinal ("
 				publicVariableServer '"+_skn_doKickBan+"';
 				uiSleep 60;
 			};
-			if (Epoch_personalToken != _personalToken) then {
-				"+_skn_doKickBan+" = [format['personalToken Changed: %1/%2',Epoch_personalToken,_personalToken],0,player,_personalToken];
-				publicVariableServer '"+_skn_doKickBan+"';
-				uiSleep 60;
-			};
 			{
 				if (isNil _x) then {
 					[format['%1: nil',_x],0] call "+_sknBanANDSleep+";

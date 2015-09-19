@@ -22,8 +22,8 @@ antihack_customVariablesCheckMode = 1; // 0 = Ban, 1 = Log, 2 == learning mode (
 
 /*
 adminMenu_Owner[] = {
-	{"76561197969049020","Trasher"},
-	{"76561198093935187", "John Elliot"}
+	{"76561197969049020","Chris"},
+	{"76561198093935187", "K0TT0S"}
 }; 
 */
 adminMenu_Owner[] = {}; 

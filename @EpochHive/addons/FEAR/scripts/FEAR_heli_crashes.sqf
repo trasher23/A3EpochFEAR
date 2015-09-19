@@ -25,7 +25,7 @@ _loot = [
 	"meatballs_epoch","ItemSodaRbull","sardines_epoch","scam_epoch","sweetcorn_epoch","Towelette"
 ];
 
-_spawnCenter = [10088,9045,0]; //Center of your map (usually in mission.sqm)
+_spawnCenter = [6206.94,5920.05,0]; //Center of esseker
 _min = 0; // minimum distance from the center position (Number) in meters
 _max = 12000; // maximum distance from the center position (Number) in meters
 _mindist = 10; // minimum distance from the nearest object (Number) in meters, ie. spawn at least this distance away from anything within x meters..

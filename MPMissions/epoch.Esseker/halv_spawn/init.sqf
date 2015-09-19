@@ -6,11 +6,11 @@
 	Copyright (C) 2015  Halvhjearne > README.md
 */
 
-//==== Set script path if needed =====\\
+//==== Set script path if needed =====
 _scriptpath = "halv_spawn\";
 
 
-//=DONT TUOCH THIS=\\
+//DONT TUOCH THIS
 if(isServer)then{
 /*================*/
 
