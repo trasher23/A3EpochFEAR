@@ -17,11 +17,14 @@ A3AI 0.9.2: https://github.com/dayzai/A3EAI
 VEMF 0.0722.8: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
 <br/>
+HSBlackmarket 1.6: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
+<br/>
 SDROP 1.0c: https://github.com/tdavison70/Helicopter-Supply-Drop
 <br/>
 persistence v0.1.7-fix-1: https://github.com/n8m4re/A3_Epoch_PersistenceAddon
 <br/>
 cmEarplugs 2.0: https://github.com/computermancer/cmEarplugs
+<br/>
 <br/>
 spawn: https://github.com/Halvhjearne/halv_spawn
 <br/>
@@ -30,8 +33,6 @@ killfeed: https://github.com/Halvhjearne/killfeed
 paintshop: https://github.com/Halvhjearne/paintshop
 <br/>
 service_point: http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
-<br/>
-HSBlackmarket 1.6: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
 <br/>
 status_bar: https://github.com/piXm8/statusBar
 <br/>
