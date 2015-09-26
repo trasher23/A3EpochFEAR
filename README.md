@@ -27,7 +27,6 @@ persistence v0.1.7-fix-1: https://github.com/n8m4re/A3_Epoch_PersistenceAddon
 <br/>
 cmEarplugs 2.0: https://github.com/computermancer/cmEarplugs
 <br/>
-<br/>
 spawn: https://github.com/Halvhjearne/halv_spawn
 <br/>
 killfeed: https://github.com/Halvhjearne/killfeed
