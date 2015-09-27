@@ -5,6 +5,9 @@
 FEAR_fnc_nukeSiren = {
 	private ["_nukeSiren","_nukePos"];
 	
+	// Log to RPT
+	["sounding nuke siren"] call FEARserverLog;
+	
 	_nukeSiren = MISSION_directory + "FEAR\fx\" + "nukesiren.ogg";
 	_nukePos = _this select 0;
 	
@@ -13,6 +16,8 @@ FEAR_fnc_nukeSiren = {
 		playSound3D [_nukeSiren, player, false, _nukePos, 7];
 		uisleep 23; // Length of siren sample to loop
 	};
+	
+	NUKESiren = nil;
 };
 
 FEAR_fnc_nukeGeiger = {
@@ -22,6 +27,8 @@ FEAR_fnc_nukeGeiger = {
 	_nukePos = _this select 0;
 	
 	playSound3D [_nukeGeiger, player, false, _nukePos, 5];
+	
+	NUKEGeiger = nil;
 };
 
 FEAR_fnc_nukeImpact = {
@@ -170,7 +177,8 @@ FEAR_fnc_nukeImpact = {
 	sleep 900;
 	
 	// Reset colours
-	[] Call FEAR_fnc_nukeColorCorrection;
+	// Commented out, keep it gloomy
+	//[] Call FEAR_fnc_nukeColorCorrection;
 	
 	deleteVehicle _Wave;
 	deleteVehicle _cone;

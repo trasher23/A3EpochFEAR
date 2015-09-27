@@ -1,17 +1,17 @@
 private["_town","_townName","_townPos", "_msgresponse"];
 
-if !(isnil "nukeMarkerCoords") exitWith {diag_log "[nuke]: Launch aborted; one already in progress";};
+if !(isnil "nukeMarkerCoords") exitWith {diag_log "[FEAR] nuke launch aborted, one already in progress";};
 
 // Get random town
 _town = call FEAR_fnc_nukeTarget;
 _townName = text _town;
 _townPos = position _town;
 
-diag_log format ["[nuke]: Target: %1", _townName];
+diag_log format ["[FEAR] nuke target: %1", _townName];
 	
 // Inform players to get the hell out of dodge!
 // 3 minute timer till impact
-_msgresponse = [["Nuclear Strike",format ["You have %1 minutes to get %2k clear of %3.",3,1,_townName],"",""],""] call FEARBroadcast; // Use VEMF broadcast function
+_msgresponse = [format["Nuclear strike. You have %1 minutes to get %2k clear of %3.",3,1,_townName],""] call FEARBroadcast; // Use VEMF broadcast function
 
 // nukeAddMarker is a simple script that adds a marker to the location
 [_townPos] call FEAR_fnc_nukeAddMarker;
@@ -28,7 +28,7 @@ NUKESiren = "Land_HelipadEmpty_F" createVehicle _townPos;
 uisleep 120;
 
 // Give warning on 1 minute to go
-_msgresponse = [["Nuclear Strike",format ["You now have %1 minute to get %2k clear of %3.",1,1,_townName],"",""],""] call FEARBroadcast;
+_msgresponse = [format["Nuclear strike. You now have %1 minute to get %2k clear of %3.",1,1,_townName],""] call FEARBroadcast;
 
 uisleep 60;
 
@@ -42,7 +42,7 @@ NUKEImpact = "Land_HelipadEmpty_F" createVehicle _townPos;
 
 [_townPos] spawn FEAR_fnc_nukeServerDamage;
 
-diag_log "[nuke]: Cruise missile has reached its target.";
+diag_log "[FEAR] nuke has reached its target";
 
 // Remove map markers
 deleteMarker "nukeMarkerO";
@@ -53,7 +53,7 @@ deleteMarker "nukeDot";
 [] spawn FEAR_fnc_radAddMarker;
 
 // Inform players about radiation zone
-_msgresponse = [["Nuclear Strike",format ["You will need to keep clear of %1 until the radiation cloud dissipates.",_townName],"",""],""] call FEARBroadcast;
+_msgresponse = [format["Keep clear of %1 until radiation dissipates.",_townName],""] call FEARBroadcast;
 
 // Activate radiation zone
 [_townPos] spawn FEAR_fnc_nukeRadDamage;

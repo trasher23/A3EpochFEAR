@@ -1,15 +1,15 @@
 private ["_timeDiff"];
 
 // Find the min and max time
-_timeDiff = ((eqTimerMax*60) - (eqTimerMin*60));
+_timeDiff = ((EqTimerMax*60) - (EqTimerMin*60));
 
-diag_log "[earthquake]: Commencing countdown clock!";
+diag_log "[FEAR] starting earthquake timer";
 
 // Initialise loop
 while {true} do
 {
 	// Wait a Random Amount
-	uiSleep ((floor(random(_timeDiff))) + (eqTimerMin*60));
+	uiSleep ((floor(random(_timeDiff))) + (EqTimerMin*60));
 	
 	NUKEQuake = true;
 	{

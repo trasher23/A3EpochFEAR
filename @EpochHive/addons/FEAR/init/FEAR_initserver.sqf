@@ -20,32 +20,36 @@ MISSION_directory = format ["mpmissions\__cur_mp.%1\", worldName];
 publicVariable "MISSION_directory";
 
 //Report FEAR version to RPT log
-diag_log format ["[FEAR] Initializing FEAR version %1 using base path %2.",[configFile >> "CfgPatches" >> "FEAR","FEARVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,FEAR_directory];
+diag_log format ["[FEAR] Initializing FEAR version %1 using base path %2",[configFile >> "CfgPatches" >> "FEAR","FEARVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,FEAR_directory];
 
-//Load FEAR main configuration file
+//Load FEAR main configuration file & functions
 call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
-//Continue loading required FEAR script files
-call compile preprocessFileLineNumbers format ["%1\scripts\FEAR_Functions.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\scripts\FEAR_heli_crashes.sqf",FEAR_directory];
+call compile preprocessFileLineNumbers format ["%1\scripts\FEAR_functions.sqf",FEAR_directory];
 
-/*
+/* Server event handlers - called from clients
+-----------------------------------------------
+*/
+// Client to Server logging
+FEARserverLog = compile preprocessFileLineNumbers format ["%1\scripts\FEAR_serverLog.sqf",FEAR_directory];
+"ServerLog" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARserverLog};
+
+// Spawn wolfpack
+FEARwolfpackSpawn = compile preprocessFileLineNumbers format ["%1\scripts\FEAR_wolfpackSpawn.sqf",FEAR_directory];
+"WolfpackSpawn" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARwolfpackSpawn};
+
+// Spawn demon
+FEARdemonSpawn = compile preprocessFileLineNumbers format ["%1\scripts\FEAR_demonSpawn.sqf",FEAR_directory];
+"DemonSpawn" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARdemonSpawn};
+
+/* Future map addons...
 call compile preprocessFileLineNumbers format ["%1\maps\11Outposts.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\BalotaBoatYard.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\ChernoTownWithMilitary.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\DevilsCastleSlums.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\GreenMountain.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\HillTopView.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\Komarovo.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\LostHopeBase.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\NEAFBase.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\NWAFBase.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\NWAFExtraStuff.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\ScrapYard1.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\ScrapYard2.sqf",FEAR_directory];
-call compile preprocessFileLineNumbers format ["%1\maps\SkalistyBridge.sqf",FEAR_directory];
 */
 
-[] execVM format ["%1\nuke\FEAR_nuke_init.sqf",FEAR_directory];
-[] execVM format ["%1\scripts\FEAR_earthquake_timer.sqf",FEAR_directory];
+// Spawn random events
+[] execVM format ["%1\nuke\FEAR_nuke_init.sqf",FEAR_directory]; // Mini-nukes
+[] execVM format ["%1\scripts\FEAR_airCrashes.sqf",FEAR_directory]; // Air crashes
+[] execVM format ["%1\scripts\FEAR_earthquakeTimer.sqf",FEAR_directory]; // Earthquakes
+[] execVM format ["%1\scripts\FEAR_zombieTriggers.sqf",FEAR_directory]; // Zombie & Demon spawn triggers
+[] execVM format ["%1\scripts\FEAR_spawnWrecks.sqf",FEAR_directory]; // Wrecks
 
-diag_log format ["[FEAR] FEAR loading completed in %1 seconds.",(diag_tickTime - _startTime)];
+diag_log format ["[FEAR] FEAR loading completed in %1 seconds",(diag_tickTime - _startTime)];

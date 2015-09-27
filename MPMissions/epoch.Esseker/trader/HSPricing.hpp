@@ -665,22 +665,22 @@ class HSPricing
 	class K03 {price = 300;};
 	class K04 {price = 300;};
 //custom
-	class B_APC_Tracked_01_rcws_F {price = 5000;tax = 0.75;};
-	class B_APC_Tracked_01_CRV_F {price = 5000;tax = 0.75;};
-	class O_APC_Wheeled_02_rcws_F {price = 5000;tax = 0.75;};
+	class B_APC_Tracked_01_rcws_F {price = 5000;};
+	class B_APC_Tracked_01_CRV_F {price = 5000;};
+	class O_APC_Wheeled_02_rcws_F {price = 5000;};
 	class I_MRAP_03_hmg_F {price = 5000;};
 	class O_MRAP_02_hmg_F {price = 5000;};
 	class B_MRAP_01_hmg_F {price = 5000;};
-	class B_Heli_Light_01_armed_F {price = 2500;tax = 0.5;};
-	class B_Plane_CAS_01_F {price = 5000;tax = 0.75;};
-	class O_Plane_CAS_02_F {price = 5000;tax = 0.75;};
-	class I_Plane_Fighter_03_CAS_F {price = 5000;tax = 0.75;};
-	class I_Plane_Fighter_03_AA_F {price = 5000;tax = 0.75;};
+	class B_Heli_Light_01_armed_F {price = 2500;};
+	class B_Plane_CAS_01_F {price = 5000;};
+	class O_Plane_CAS_02_F {price = 5000;};
+	class I_Plane_Fighter_03_CAS_F {price = 5000;};
+	class I_Plane_Fighter_03_AA_F {price = 5000;};
 	class B_Boat_Armed_01_minigun_F {price = 2500;};
 	class O_Boat_Armed_01_hmg_F {price = 2500;};
 	class I_Boat_Armed_01_minigun_F {price = 2500;};
-	class B_Heli_Transport_01_EPOCH {price = 2500;tax = 0.5;};
-	class B_Heli_Transport_01_camo_EPOCH {price = 2500;tax = 0.5;};
+	class B_Heli_Transport_01_EPOCH {price = 2500;};
+	class B_Heli_Transport_01_camo_EPOCH {price = 2500;};
 	class jetski_epoch_blu {price = 500;};
 	class I_G_Offroad_01_armed_f {price = 3000;};
 	class O_G_Offroad_01_armed_F {price = 3000;};
@@ -688,8 +688,9 @@ class HSPricing
 	class B_G_Offroad_01_armed_F {price = 3000;};
 	class I_MRAP_03_gmg_F {price = 5000;};
 	class O_MRAP_02_gmg_F {price = 5000;};
-	class B_Heli_Transport_03_F {price = 2500;tax = 0.5;};
-	class B_Heli_Transport_03_black_F {price = 2500;tax = 0.5;};
+	class B_Heli_Transport_03_F {price = 2500;};
+	class B_Heli_Transport_03_black_F {price = 2500;};
+
 //glasses
 	class G_Diving {price = 10;};
 	class G_Combat {price = 10;};

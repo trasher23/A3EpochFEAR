@@ -1,45 +1,51 @@
-private ["_crashNum","_lootNum","_loot","_coords"];
 /////////////////////////////////////
 //      Function file for UKGZ	   //
 //        Created by: Richie       //
 //  Modded by:  Vampire & xBowBii  //
 /////////////////////////////////////
-// Number of Crashes
-_crashNum = 5;
 
-// Number of Loot Piles
-_lootNum = 5;
+private ["_crashNum","_lootNum","_loot","_spawnCrashes"];
+_crashNum = 5; // Number of Crashes
+_lootNum = 5; // Number of Loot Piles
 
 _loot = [
+	// Weapons
 	"m107_EPOCH","MultiGun","Srifle_GM6_F","Srifle_LRR_F","M14_EPOCH","srifle_EBR_F","m249_EPOCH","LMG_Mk200_F","LMG_Zafir_F",
 	"m16_EPOCH","akm_EPOCH","m4a3_EPOCH","Rollins_F","sr25_epoch","l85a2_epoch","arifle_MX_GL_F",
 	"srifle_DMR_02_ARCO_F","srifle_DMR_02_sniper_F","srifle_DMR_03_spotter_F","srifle_DMR_03_tan_AMS_LP_F","srifle_DMR_03_tan_F","srifle_DMR_03_woodland_F",
 	"srifle_DMR_04_ARCO_F","srifle_DMR_04_DMS_F","srifle_DMR_04_F","srifle_DMR_04_MRCO_F","srifle_DMR_05_blk_F","srifle_DMR_05_DMS_F","srifle_DMR_05_DMS_snds_F","srifle_DMR_05_hex_F",
 	"srifle_DMR_06_camo_F","srifle_DMR_06_camo_khs_F","srifle_DMR_06_olive_F","MMG_01_hex_ACRO_LP_F","MMG_01_hex_F","MMG_01_tan_F","MMG_02_camo_F","MMG_02_sand_F","MMG_02_sand_RCO_LP_F",
 	
+	//  Attachments
 	"optic_Nightstalker","optic_LRPS","optic_DMS","optic_Aco_smg","optic_ACO_grn_smg","optic_Holosight_smg",
 	"optic_Aco","optic_Holosight","acc_pointer_IR","Rangefinder",
 	
+	// Items
 	"EnergyPack","Repair_EPOCH","Defib_EPOCH","Heal_EPOCH","FAK","ItemWatch","CircuitParts","ItemScraps","jerrycan_epoch","VehicleRepair","CircuitParts",
 	
+	// Food
 	"meatballs_epoch","ItemSodaRbull","sardines_epoch","scam_epoch","sweetcorn_epoch","Towelette"
 ];
 
-_spawnCenter = [6206.94,5920.05,0]; //Center of esseker
-_min = 0; // minimum distance from the center position (Number) in meters
-_max = 12000; // maximum distance from the center position (Number) in meters
-_mindist = 10; // minimum distance from the nearest object (Number) in meters, ie. spawn at least this distance away from anything within x meters..
-//Low _mindist means helicrashes could spawn near towns or in forests.. higher the number it would be spawning in an open field etc
-_water = 0; // water mode 0: cannot be in water , 1: can either be in water or not , 2: must be in water
-_shoremode = 0; // 0: does not have to be at a shore , 1: must be at a shore
-
-vSpawnCrashes = {
+_spawnCrashes = {
+	private["_posOfCrash","_helicopters","_element","_vehHeli","_burnHelicopter","_crate0","_crate1","_item","_kindOf","_cAmmo","_cutter0","_cutter1"];
+	
 	for "_j" from 1 to _crashNum do {
-		_posOfCrash = [_spawnCenter,_min,_max,_mindist,_water,20,_shoremode] call BIS_fnc_findSafePos; // find a random loc
-		_helicopters = ["Land_UWreck_Heli_Attack_02_F","Land_Wreck_Heli_Attack_01_F"]; //Add Heli classnames here
+		
+		_posOfCrash = [MapCentre,0,MapRadius,10,0,20,0] call BIS_fnc_findSafePos; // find a random loc
+		
+		_helicopters = [
+			"Land_Wreck_Heli_Attack_01_F",
+			"Land_Wreck_Plane_Transport_01_F",
+			"C130J_wreck_EP1",
+			"Land_Wreck_Heli_Attack_02_F",
+			"Mi8Wreck"
+		];
+		
 		_element = _helicopters call BIS_fnc_SelectRandom;
 		_vehHeli = _element createVehicle [0,0,0];
-		_burnthefucker = "test_EmptyObjectForFireBig" createVehicle (position _vehHeli);  _burnthefucker attachto [_vehHeli, [0,0,-1]];  
+		_burnHelicopter = "test_EmptyObjectForFireBig" createVehicle (position _vehHeli);
+		_burnHelicopter attachto [_vehHeli, [0,0,-1]];  
 		_vehHeli setposATL [(_posOfCrash) select 0,(_posOfCrash) select 1,0];
 		_vehHeli setVariable ["LAST_CHECK", (diag_tickTime + 14400)];
 				
@@ -88,12 +94,10 @@ vSpawnCrashes = {
 			_cutter0 = "Land_ClutterCutter_medium_F" createVehicle (getpos _crate0);
 			_cutter1 = "Land_ClutterCutter_medium_F" createVehicle (getpos _crate1);
 			_cutter0 setVariable ["LAST_CHECK", (diag_tickTime + 14400)];
-			_cutter1 setVariable ["LAST_CHECK", (diag_tickTime + 14400)];
-
-			
+			_cutter1 setVariable ["LAST_CHECK", (diag_tickTime + 14400)];	
 		};
 	};
 };
 
-diag_log "[FEAR]: Spawning helicopter crash sites...";
-call vSpawnCrashes;
+diag_log "[FEAR] spawning air crash sites";
+call _spawnCrashes;

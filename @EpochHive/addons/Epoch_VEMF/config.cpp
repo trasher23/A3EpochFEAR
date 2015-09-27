@@ -48,14 +48,15 @@ class VEMFconfig
 	// Global AI skill settings. They affect each VEMF unit for any default VEMF mission
 	class aiSkill // Minimum: 0 | Maximum: 1
 	{
-		difficulty = "Veteran"; // Options: "Easy" "Normal" "Veteran" "Hardcore" | Default: Veteran
+		//difficulty = "Veteran"; // Options: "Easy" "Normal" "Veteran" "Hardcore" | Default: Veteran
+		difficulty = "Normal";
 		class Easy
 		{
 			accuracy = 0.4; aimingShake = 0.3; aimingSpeed = 0.3; endurance = 0.45; spotDistance = 0.65; spotTime = 0.5; courage = 1; reloadSpeed = 0.3; commanding = 0.85; general = 0.3;
 		};
 		class Normal
 		{
-			accuracy = 0.4; aimingShake = 0.3; aimingSpeed = 0.3; endurance = 0.45; spotDistance = 0.65; spotTime = 0.5; courage = 1; reloadSpeed = 0.3; commanding = 0.85; general = 0.4;
+			accuracy = 0.3; aimingShake = 0.4; aimingSpeed = 0.2; endurance = 0.3; spotDistance = 0.6; spotTime = 0.5; courage = 1; reloadSpeed = 0.3; commanding = 0.85; general = 0.4;
 		};
 		class Veteran
 		{
@@ -71,7 +72,7 @@ class VEMFconfig
 	{
 		useMarker = 1; // Use -1 to disable mission markers
 		maxInvasions = 5; // Max amount of active uncompleted invasions allowed at the same time
-		cal50s = 3; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
+		cal50s = ceil(random 3); // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
 		groupCount[] = {2,4}; // In format: {minimum, maximum}; VEMF will pick a random number between min and max. If you want the same amount always, use same numbers for minimum and maximum.
 		groupUnits[] = {4,6}; // How much units in each group. Works the same like groupCount
 		/* TIP: increase groupCount and decrease groupUnits to make it harder for players. Easier to get flanked from all sides */
@@ -110,15 +111,15 @@ class VEMFconfig
 			{"MMG_02_black_F",2},{"MMG_02_sand_F",2},{"m249_EPOCH",2},{"m249Tan_EPOCH",2},{"m16_EPOCH",2},{"m16Red_EPOCH",2},{"M14_EPOCH",2},{"M14Grn_EPOCH",2},{"m4a3_EPOCH",2},{"AKM_EPOCH",2}
 		};
 
-		maxSecondarySlots = 4; // Maximum number of secondary weapons to be in each loot crate
+		maxSecondarySlots = 6; // Maximum number of secondary weapons to be in each loot crate
 		minSecondarySlots = 2; // Minimum number of secondary weapons to be in each loot crate
 		secondaryWeaponLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"hgun_ACPC2_F",3},{"hgun_P07_F",3},{"hgun_Pistol_heavy_01_F",3},{"hgun_Pistol_heavy_02_F",3},{"hgun_Rook40_F",3},{"ruger_pistol_epoch",3},{"1911_pistol_epoch",3}
 		};
 
-		maxMagSlots = 6; // Maximum number of magazine slots in each loot crate
-		minMagSlots = 4; // Minimum number of magazine slots in each loot crate
+		maxMagSlots = 20; // Maximum number of magazine slots in each loot crate
+		minMagSlots = 5; // Minimum number of magazine slots in each loot crate
 		magazinesLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"30Rnd_556x45_Stanag",20},{"30Rnd_556x45_Stanag_Tracer_Red",20},{"30Rnd_556x45_Stanag_Tracer_Green",20},

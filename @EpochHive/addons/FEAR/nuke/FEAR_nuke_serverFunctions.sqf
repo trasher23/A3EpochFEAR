@@ -3,11 +3,10 @@
 */
 
 FEAR_fnc_nukeTarget = {
-	private ["_cnps","_towns","_town"];
+	private ["_towns","_town"];
 
-	// Get town locations in 20000 radius from centre of map
-	_cnps = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
-	_towns = nearestLocations [_cnps,["nameCity","NameCityCapital"],20000]; // Removed "NameVillage" - only towns and cities get nuked
+	// Get town locations
+	_towns = nearestLocations [MapCentre,["nameCity","NameCityCapital"],MapRadius]; // Removed "NameVillage" - only towns and cities get nuked
 
 	// Select a random town from array
 	_town = _towns call BIS_fnc_selectRandom;
@@ -21,10 +20,10 @@ FEAR_fnc_nukeServerDamage = {
 
 	// Entity damage
 	{
-		// Kill everything within groundZero (half of nukeRadius)
+		// Kill everything within GroundZero (half of NukeRadius)
 		_x setDamage 1;
 		sleep 0.125;
-	} forEach (_coords nearEntities [["All"],groundZero]);
+	} forEach (_coords nearEntities [["All"],GroundZero]);
 
 	// Object damage
 	{	
@@ -39,7 +38,7 @@ FEAR_fnc_nukeServerDamage = {
 			[_x,0,_direction] call BIS_fnc_setPitchBank;
 		};
 		
-		// % of objects that will be completely destroyed within nukeRadius, currently 80%
+		// % of objects that will be completely destroyed within NukeRadius, currently 80%
 		if (round(random 100) <= 80) then {    
 			_x setDamage 1;
 		} else {
@@ -48,7 +47,7 @@ FEAR_fnc_nukeServerDamage = {
 		};
 		
 		sleep 0.125;
-	} forEach (nearestObjects [_coords,["house","Building","LandVehicle","Air","Ship"],nukeRadius]);
+	} forEach (nearestObjects [_coords,["house","Building","LandVehicle","Air","Ship"],NukeRadius]);
 };
 
 FEAR_fnc_nukeAddMarker = {
@@ -63,14 +62,14 @@ FEAR_fnc_nukeAddMarker = {
 	"nukeMarkerO" setMarkerColor "ColorOrange";
 	"nukeMarkerO" setMarkerShape "ELLIPSE";
 	"nukeMarkerO" setMarkerBrush "Solid";
-	"nukeMarkerO" setMarkerSize [nukeRadius,nukeRadius];
+	"nukeMarkerO" setMarkerSize [NukeRadius,NukeRadius];
 
 	// Red Zone
 	_nul = createMarker ["nukeMarkerR",nukeMarkerCoords];
 	"nukeMarkerR" setMarkerColor "ColorRed";
 	"nukeMarkerR" setMarkerShape "ELLIPSE";
 	"nukeMarkerR" setMarkerBrush "Solid";
-	"nukeMarkerR" setMarkerSize [groundZero,groundZero];
+	"nukeMarkerR" setMarkerSize [GroundZero,GroundZero];
 
 	// Dot and name tag
 	_nul = createMarker ["nukeDot",nukeMarkerCoords];
@@ -89,7 +88,7 @@ FEAR_fnc_radAddMarker = {
 	"radMarkerR" setMarkerColor "ColorRed";
 	"radMarkerR" setMarkerShape "ELLIPSE";
 	"radMarkerR" setMarkerBrush "Solid";
-	"radMarkerR" setMarkerSize [nukeRadius, nukeRadius];
+	"radMarkerR" setMarkerSize [NukeRadius, NukeRadius];
 
 	_nul = createMarker ["radMarkerY",nukeMarkerCoords];
 	"radMarkerY" setMarkerShape "Icon";
@@ -115,7 +114,7 @@ FEAR_fnc_nukeRadDamage = {
 				(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
 			};
 			
-		} forEach (_coords nearEntities [["All"], nukeRadius]);
+		} forEach (_coords nearEntities [["All"], NukeRadius]);
 
 		uisleep 5;
 	};

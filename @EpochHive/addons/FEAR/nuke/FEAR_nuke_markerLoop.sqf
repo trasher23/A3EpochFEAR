@@ -18,14 +18,14 @@ while {true} do
 		"nukeMarkerO" setMarkerColor "ColorOrange";
 		"nukeMarkerO" setMarkerShape "ELLIPSE";
 		"nukeMarkerO" setMarkerBrush "Solid";
-		"nukeMarkerO" setMarkerSize [nukeRadius,nukeRadius];
+		"nukeMarkerO" setMarkerSize [NukeRadius,NukeRadius];
 		
 		// Red Zone
 		_nul = createMarker ["nukeMarkerR",nukeMarkerCoords];
 		"nukeMarkerR" setMarkerColor "ColorRed";
 		"nukeMarkerR" setMarkerShape "ELLIPSE";
 		"nukeMarkerR" setMarkerBrush "Solid";
-		"nukeMarkerR" setMarkerSize [groundZero,groundZero];
+		"nukeMarkerR" setMarkerSize [GroundZero,GroundZero];
 		
 		// Dot and name tag
 		_nul = createMarker ["nukeDot",nukeMarkerCoords];
@@ -46,7 +46,7 @@ while {true} do
 		"radMarkerR" setMarkerColor "ColorRed";
 		"radMarkerR" setMarkerShape "ELLIPSE";
 		"radMarkerR" setMarkerBrush "Solid";
-		"radMarkerR" setMarkerSize [nukeRadius,nukeRadius];
+		"radMarkerR" setMarkerSize [NukeRadius,NukeRadius];
 
 		_nul = createMarker ["radMarkerY",nukeMarkerCoords];
 		"radMarkerY" setMarkerShape "Icon";

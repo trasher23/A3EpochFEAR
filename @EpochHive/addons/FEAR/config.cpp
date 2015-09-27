@@ -2,8 +2,8 @@ class CfgPatches {
 	class FEAR {
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 0.1;
-		FEARVersion = "0.1.1 Alpha";
+		requiredVersion = 1.0;
+		FEARVersion = "1.0";
 		requiredAddons[] = {"a3_epoch_code","a3_epoch_server"};
 	};
 };

@@ -1,13 +1,10 @@
 if (!isDedicated && hasInterface) then {
 	
-	waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
-	
-	/* Nuke
+	/* Nuke event handlers
 	-----------------------------------------------------------
 	*/
 	"NUKESiren" addPublicVariableEventHandler {
 		[_this select 1] spawn FEAR_fnc_nukeSiren;
-		NUKESiren = nil;
 	};
 
 	"NUKEImpact" addPublicVariableEventHandler {
@@ -22,7 +19,6 @@ if (!isDedicated && hasInterface) then {
 	
 	"NUKEGeiger" addPublicVariableEventHandler {
 		[_this select 1] spawn FEAR_fnc_nukeGeiger;
-		NUKEGeiger = nil;
 	};
 	
 	/* 	N8M4RE Persistence https://github.com/n8m4re/A3_Epoch_PersistenceAddon
@@ -38,6 +34,27 @@ if (!isDedicated && hasInterface) then {
 		publicVariableServer "N8M4RE_PERSISTENCE_TAKE";
 	}];
 	
+	/* Public client functions
+	---------------------------------
+	*/
+	// Client to Server logging
+	FEARserverLog = {
+		ServerLog = _this select 0;
+		publicVariableServer "ServerLog";
+	};
+	
+	// Spawn wolfpack
+	FEARwolfpackSpawn = {
+		WolfpackSpawn = _this select 0;
+		publicVariableServer "WolfpackSpawn";
+	};
+	
+	// Spawn demon
+	FEARdemonSpawn = {
+		DemonSpawn = _this select 0;
+		publicVariableServer "DemonSpawn";
+	};
+	
 	/* Load other scripts
 	-----------------------------------------------------------
 	*/
@@ -45,7 +62,7 @@ if (!isDedicated && hasInterface) then {
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nuke_clientFunctions.sqf";
 	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
 	
-	[] execVM "FEAR\scripts\fn_statusBar.sqf";				// Status bar lower screen
+	[] execVM "FEAR\scripts\FEAR_statusBar.sqf";			// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";			// Random sound fx
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
 	[] execVM "paintshop\paintshop.sqf";					// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
@@ -64,3 +81,9 @@ if (!isDedicated && hasInterface) then {
 if (!isDedicated && hasInterface) then {
 	#include "A3EAI_Client\A3EAI_initclient.sqf";			// A3AI radio messages
 };
+
+waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
+
+// Start with apocalyptic environment
+[] Call FEAR_fnc_nukeFlash;
+[] Call FEAR_fnc_nukeAsh;

@@ -1,25 +1,31 @@
 /*
   FEAR Configuration file
 */
-diag_log "[FEAR] Reading FEAR configuration file.";
+
+diag_log "[FEAR] reading FEAR configuration file";
+
+/* Assign map centre and radius to global for use in scripts
+-------------------------------------------------------------
+*/
+MapCentre = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"); // [6206.94,5920.05,0]; //Center of esseker
+MapRadius = 12000; // Esseker radius
 
 /* Nuke settings
 --------------------------------------------------
 */
 // The minimum time in seconds before a cruise missile launch.
-nukeTimerMin = 30; // minutes
+NukeTimerMin = 30; // minutes
 // Maximum time in seconds before a cruise missile launch.
-nukeTimerMax = 90;
+NukeTimerMax = 90;
 // Blast radius in km
-nukeRadius = 1000;
+NukeRadius = 1000;
 // Ground zero - total annihilation
-groundZero = (nukeRadius / 2);
+GroundZero = (NukeRadius / 2);
 
 /* Earthquake settings
 --------------------------------------------------
 */
-eqTimerMin = 5;
-eqTimerMax = 30;
+EqTimerMin = 5;
+EqTimerMax = 30;
 
-//NOTHING TO EDIT BEYOND THIS POINT
-diag_log "[FEAR] FEAR configuration file loaded.";
+diag_log "[FEAR] configuration file loaded";

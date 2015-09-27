@@ -1,23 +1,23 @@
 private["_timeDiff"];
 
 // Find the Min and Max time
-_timeDiff = ((nukeTimerMax*60) - (nukeTimerMin*60));
+_timeDiff = ((NukeTimerMax*60) - (NukeTimerMin*60));
 
 // Default nukeMarkerCoords to nil
 nukeMarkerCoords = nil;
 
-diag_log "[nuke]: Commencing countdown clock!";
+diag_log "[FEAR] starting nuke timer";
 
 // Initialise loop
 while {true} do
 {
 	// Wait a Random Amount
-	uiSleep ((floor(random(_timeDiff))) + (nukeTimerMin*60));
+	uiSleep ((floor(random(_timeDiff))) + (NukeTimerMin*60));
 	
 	// Initiate countdown if players on server
 	if ((count playableUnits) >= 1) then 
 	{
 		[] execVM format ["%1\nuke\FEAR_nuke_launch.sqf",FEAR_directory];
-		diag_log "[nuke]: Cruise Missile Launched!";
+		diag_log "[FEAR] nuke launch";
 	};
 };
