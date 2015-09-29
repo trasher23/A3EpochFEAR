@@ -1,3 +1,9 @@
+/*
+	FEAR_nuke_timer.sqf
+*/
+
+if (!isDedicated) exitWith {};
+
 private["_timeDiff"];
 
 // Find the Min and Max time

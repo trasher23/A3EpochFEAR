@@ -114,6 +114,15 @@ for "_i" from 1 to _numberOfWrecks do {
 		_wreck = _landWrecks call BIS_fnc_selectRandom;
 		_wreckObj = createVehicle [_wreck, _position, [], 0, _collide];
 		
+		/*
+		http://killzonekid.com/arma-scripting-tutorials-how-to-make-a-wreck/
+		If the wreck needed as a map object/obstacle/cover, I would suggest creating vehicle for it with createVehicleLocal and then disabling simulation. 
+		This way it will be the same on all clients and will not need any network sync.
+		*/
+		//_wreckObj = _wreck createVehicleLocal _position;
+		//_wreckObj setPosATL _position;
+		//_wreckObj enablesimulation false;
+		
 		diag_log format["[FEAR] wreck %1 created at %2", _wreck, _position];
 	};
 };

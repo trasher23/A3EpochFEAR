@@ -2,6 +2,8 @@
 	Purpose: Returns a random city/town as target site for the nuke blast.
 */
 
+if (!isDedicated) exitWith {};
+
 FEAR_fnc_nukeTarget = {
 	private ["_towns","_town"];
 

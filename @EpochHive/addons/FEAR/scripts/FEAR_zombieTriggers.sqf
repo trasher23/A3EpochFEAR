@@ -52,34 +52,34 @@ _fnc_getRandomBuildingPos = {
 };
 
 _fnc_createTriggers = {
-	private["_triggerIndex","_trigName","_trig_cond","_trig_act_stmnt","_trig_deact_stmnt"];
+	private["_zombiePos","_triggerIndex","_trigName","_trig_cond","_trig_act_stmnt","_trig_deact_stmnt"];
 	
 	_triggerIndex = _this select 0;
 	
 	// Debug position - test in Zupres supermarket
-	//ZombiePos = [2673, 4471, 0];
-	ZombiePos = call _fnc_getRandomBuildingPos; // Public var so can be used in FEAR_spawnZombies.sqf
+	//_zombiePos = [2673, 4471, 0];
+	_zombiePos = call _fnc_getRandomBuildingPos;
 	
 	// Create trigger to spawn patrol
 	_trigName = format ["herdTrig%1", _triggerIndex];
-	_this = createTrigger ["EmptyDetector", ZombiePos]; 
+	_this = createTrigger ["EmptyDetector", _zombiePos]; 
 	_this setTriggerArea [5, 5, 0, false];
 	_this setTriggerActivation ["ANY", "PRESENT", false];
 	
 	// Assign trigger conditions
 	_trig_cond = "{isPlayer _x} count thisList > 0"; // Trigger if any player is in range
-	_trig_act_stmnt = format["execVM ""%1\scripts\FEAR_spawnZombies.sqf""",FEAR_directory];
+	_trig_act_stmnt = format["[%1] execVM ""%2\scripts\FEAR_spawnZombies.sqf""",_zombiePos,FEAR_directory];
 	_trig_deact_stmnt = format ["deleteVehicle %1", _trigName]; // Delete trigger once activated
 	
 	_this setTriggerStatements [_trig_cond, _trig_act_stmnt, _trig_deact_stmnt];
 	
-	diag_log format ["[FEAR] zombie trigger created at %1", ZombiePos];
+	diag_log format ["[FEAR] zombie trigger created at %1",_zombiePos];
 };
 
 if (isDedicated) then {
 	private["_numberOfTriggers","_center","_zombieLogic"];
 	
-	_numberOfTriggers = 20; // total triggers to create on map
+	_numberOfTriggers = 30; // total triggers to create on map
 	
 	_center = createCenter sideLogic;
 	ZombieGroup = createGroup _center; // Public var so can be used in FEAR_spawnZombies.sqf
@@ -87,6 +87,7 @@ if (isDedicated) then {
 	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogiceasy", [1,1,1], [], 0, "NONE"]; // Zombie setting easy (hard is too hard)
 	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow", [1,1,1], [], 0, "NONE"]; // Zombie throw cars
 	_zombieLogic = ZombieGroup createUnit["ryanzombiesjump", [1,1,1], [], 0, "NONE"]; // Zombie jumping
+	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicroam", [1,1,1], [], 0, "NONE"]; // Zombie roam
 	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicdelete", [1,1,1], [], 0, "NONE"]; // Zombie delete dead bodies
 
 	for "_i" from 1 to _numberOfTriggers do {

@@ -56,6 +56,7 @@ _spawnCrashes = {
 			_item = _loot call BIS_fnc_selectRandom;
 			switch (true) do
 			{
+				
 				case (isClass (configFile >> "CfgWeapons" >> _item)): {
 					_kindOf = [(configFile >> "CfgWeapons" >> _item),true] call BIS_fnc_returnParents;
 					if ("ItemCore" in _kindOf) then {
@@ -76,17 +77,21 @@ _spawnCrashes = {
 						} forEach _cAmmo;
 					};
 				};
+				
 				case (isClass (configFile >> "cfgMagazines" >> _item)): {
 					// Min 1, Max 3
 					_crate0 addMagazineCargoGlobal [_item,(floor(random(3)))+1];
 					_crate1 addMagazineCargoGlobal [_item,(floor(random(3)))+1];
 				};
+				
 				case ((getText(configFile >> "cfgVehicles" >> _item >>  "vehicleClass")) == "Backpacks"): {
 					// One Bag
 					_crate0 addBackpackCargoGlobal [_item,1];
 					_crate1 addBackpackCargoGlobal [_item,1];
 				};
+				
 			};
+			
 			_crate0 setPos [(getPos _crate0 select 0) +5, (getPos _crate0 select 1), 0];
 			_crate1 setPos [(getPos _crate1 select 0) -10, (getPos _crate1 select 1), 0];
 			_crate0 setVariable ["LAST_CHECK", (diag_tickTime + 14400)];

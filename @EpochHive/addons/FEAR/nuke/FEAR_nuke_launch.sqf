@@ -1,3 +1,5 @@
+if (!isDedicated) exitWith {};
+
 private["_town","_townName","_townPos", "_msgresponse"];
 
 if !(isnil "nukeMarkerCoords") exitWith {diag_log "[FEAR] nuke launch aborted, one already in progress";};

@@ -1,5 +1,9 @@
-/* Reset markers
-Checks if a cruise missile has been launched and resets the marker for JIPs */
+/* 
+	Reset markers
+	Checks if a cruise missile has been launched and resets the marker for JIPs 
+*/
+
+if (!isDedicated) exitWith {};
 
 // Start the timer
 while {true} do

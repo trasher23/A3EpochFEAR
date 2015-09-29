@@ -95,17 +95,17 @@ A3EAI_dynamicWeaponBlacklist = [];
 /*	A3EAI Client Addon features. These features require the A3EAI client addon to be installed in order to work.
 --------------------------------------------------------------------------------------------------------------------*/	
 
-//Enable or disable radio message receiving. Players with radios (Radio Quartz) will be able to intercept some AI communications. (Default: false)
+//Enable or disable radio message receiving. Players with radios (Radio Quartz) or at least one group member with a radio will be able to see messages. (Default: false)
 A3EAI_radioMsgs = true;
 
-//Enable or disable AI death messages. Messages will be sent only to player responsible for killing the unit. Messages will be sent in System chat in the format "(Unit name) was killed." (Default: false)
+//Enable or disable AI death messages. Messages will be visible to player responsible for killing the AI unit as well as all group players." (Default: false)
 A3EAI_deathMessages = true;	
 
 
 /*	Shared AI Unit Settings. These settings affect all AI spawned unless noted otherwise.
 --------------------------------------------------------------------------------------------------------------------*/	
 
-//Number of online players required for maximum (or minimum) AI spawn chance. Affects Static, Dynamic, Random AI spawns. (Default: 20)	
+//Number of online players required for maximum (or minimum) AI spawn chance. Affects Static, Dynamic, Random AI spawns. (Default: 10)	
 A3EAI_playerCountThreshold = 2;
 
 //true: Spawn chance multiplier scales upwards from value defined by A3EAI_chanceScalingThreshold to 1.00. false: Spawn chance multiplier scales downwards from 1.00 to A3EAI_chanceScalingThreshold.
@@ -134,7 +134,7 @@ A3EAI_spawnChance_capitalCity = 0.70; //0.70
 
 //(Static/Dynamic/Random Spawns) minAI: Minimum number of units. addAI: maximum number of additional units. unitLevel: Unit level (0-3)
 A3EAI_minAI_remoteArea = 1; //1
-A3EAI_addAI_remoteArea = 1; //1
+A3EAI_addAI_remoteArea = 2; //2
 A3EAI_unitLevel_remoteArea = 2; //2
 A3EAI_spawnChance_remoteArea = 0.80; //0.80
 
@@ -157,7 +157,7 @@ A3EAI_tempNVGs = false;
 A3EAI_GLRequirement = 1;	
 
 //Minimum AI unit level requirement to use launcher weapons. Set to -1 to disable completely. (Default: -1)
-A3EAI_launcherLevelReq = 2;	
+A3EAI_launcherLevelReq = 1;
 
 //List of launcher-type weapons that AI can use.
 A3EAI_launcherTypes = ["launch_NLAW_F","launch_RPG32_F","launch_B_Titan_F","launch_I_Titan_F","launch_O_Titan_F","launch_B_Titan_short_F","launch_I_Titan_short_F","launch_O_Titan_short_F"];	
@@ -177,7 +177,7 @@ A3EAI_removeExplosiveAmmo = true;
 A3EAI_noCollisionDamage = true;
 
 //If enabled, AI killed by vehicle collisions will have their gear removed (Default: true)
-A3EAI_roadKillPenalty = true;
+A3EAI_roadKillPenalty = false;
 
 
 /*	Static Infantry AI Spawning Settings
@@ -250,7 +250,7 @@ A3EAI_minRandSpawnDist = 0;
 //Add name of location as displayed on map prevent AI vehicle patrols from travelling to these locations. Location names are case-sensitive. (Example: ["Aggelochori","Panochori","Zaros"])
 //Note: Vehicles may still pass through these areas, but will become non-hostile towards players until they travel 600m away from the area.
 A3EAI_waypointBlacklistAir = []; //Affects Air vehicles (including UAVs)
-A3EAI_waypointBlacklistLand = [];  //Affects Air vehicles (including UGVs)
+A3EAI_waypointBlacklistLand = [];  //Affects Land vehicles (including UGVs)
 
 
 /*	AI Air Vehicle patrol settings. 
@@ -262,7 +262,7 @@ A3EAI_waypointBlacklistLand = [];  //Affects Air vehicles (including UGVs)
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-A3EAI_maxHeliPatrols = 3;	
+A3EAI_maxHeliPatrols = 2;	
 
 //Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 A3EAI_levelChancesAir = [0.00,0.50,0.35,0.15];	
@@ -607,16 +607,7 @@ A3EAI_miscLootCount2 = 1;
 //Chance to add a single First Aid Kit to group loot pool per unit (Default: 0.25)
 A3EAI_chanceFirstAidKit = 0.25;
 
-//Chance to add each edible item to group loot pool per unit (Default: 0.40)								
-A3EAI_chanceFoodLoot = 0.40;
-
-//Chance to add each generic loot item to group loot pool per unit (Default: 0.40)									
-A3EAI_chancemiscLoot1 = 0.40;
-
-//Chance to add each large generic loot item to group loot pool per unit (Default: 0.30)								
-A3EAI_chancemiscLoot2 = 0.30;
-
-//Probability to successfully pull a random item from loot pool for level 0-3 AI. Influences the rate at which loot items are added to units.
+//Probability to successfully pull a random item from loot pool for level 0-3 AI. Loot has a chance to be added about twice per minute.
 A3EAI_lootPullChance0 = 0.20; //Default for level 0 AI: 0.20
 A3EAI_lootPullChance1 = 0.40; //Default for level 1 AI: 0.40
 A3EAI_lootPullChance2 = 0.60; //Default for level 2 AI: 0.60

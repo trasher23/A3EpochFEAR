@@ -1,3 +1,5 @@
+if (!isDedicated) exitWith {};
+
 // Load functions
 call compileFinal preprocessFileLineNumbers format ["%1\nuke\FEAR_nuke_serverFunctions.sqf",FEAR_directory];
 

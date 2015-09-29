@@ -1,3 +1,7 @@
+/*
+	Earthquake timer
+*/
+
 private ["_timeDiff"];
 
 // Find the min and max time
