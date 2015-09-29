@@ -33,8 +33,6 @@ killfeed: https://github.com/Halvhjearne/killfeed
 <br/>
 paintshop: https://github.com/Halvhjearne/paintshop
 <br/>
-service_point: http://epochmod.com/forum/index.php?/topic/34454-repair-rearming-script/
-<br/>
 status_bar: https://github.com/piXm8/statusBar
 <br/>
 EtV: https://github.com/DarthRogue/EtV
