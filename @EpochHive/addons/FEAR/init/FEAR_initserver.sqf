@@ -55,6 +55,5 @@ Spawn random events
 [] execVM format["%1\scripts\FEAR_earthquakeTimer.sqf",FEAR_directory]; // Earthquakes
 [] execVM format["%1\scripts\FEAR_zombieTriggers.sqf",FEAR_directory]; // Zombie & Demon spawn triggers
 [] execVM format["%1\scripts\FEAR_spawnWrecks.sqf",FEAR_directory]; // Wrecks
-[] execVM format["%1\scripts\FEAR_spawnExplodingBarrel.sqf",FEAR_directory]; // Exploding barrels
 
 diag_log format["[FEAR] FEAR loading completed in %1 seconds",(diag_tickTime - _startTime)];

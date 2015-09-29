@@ -11,5 +11,5 @@ _demonPos = nil;
 // Spawn demon	
 diag_log format["[FEAR] spawning demon at %1",_spawnPos];
 			
-_demonPos = [_spawnPos,[5,10],random 360] call SHK_pos; // Random spawn position for each wolf	
+_demonPos = [_spawnPos,[5,10],random 360] call A3EAI_SHK_pos; // Random spawn position for each wolf	
 _demon = ZombieGroup createUnit["RyanZombieSpider1", _demonPos, [], 0, "NONE"];

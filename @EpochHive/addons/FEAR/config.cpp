@@ -27,7 +27,8 @@ class CfgFunctions
 
 
 class CfgAmmo 
-{
+{	
+	// Exploding barrel
 	class RocketBase;
 	class R_PG32V_F: RocketBase {};
 	class R_TBG32V_F: R_PG32V_F

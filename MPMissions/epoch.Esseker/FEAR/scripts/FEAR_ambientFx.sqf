@@ -28,13 +28,13 @@ playSoundFx = {
 	_soundSource = "Land_HelipadEmpty_F" createVehicle _randomPos;
 	
 	// Spawn wolfpack if wolf howl
-	if (_sound == MISSION_directory + "FEAR\fx\wolfhowl1.ogg") then { [_randomPos] call FEARwolfpackSpawn; };
+	if (_sound == MISSION_directory + "FEAR\fx\wolfhowl1.ogg") then { [_randomPos] spawn FEARwolfpackSpawn; };
 	// Spawn demon if scream or zombienoise
-	if ((_sound == MISSION_directory + "FEAR\fx\girlscreaming.ogg") || (_sound == MISSION_directory + "FEAR\fx\zombienoise1.ogg")) then { [_randomPos] call FEARdemonSpawn; };
+	if ((_sound == MISSION_directory + "FEAR\fx\girlscreaming.ogg") || (_sound == MISSION_directory + "FEAR\fx\zombienoise1.ogg")) then { [_randomPos] spawn FEARdemonSpawn; };
 	// Flash screen if eeriewind
 	if (_sound == MISSION_directory + "FEAR\fx\eeriewind.ogg") then {
-		[] Call FEAR_fnc_nukeFlash;
-		[] Call FEAR_fnc_nukeAsh;
+		[] spawn FEAR_fnc_nukeFlash;
+		[] spawn FEAR_fnc_nukeAsh;
 	};
 	
 	playSound3D [_sound, player, false, _soundSource, 2];

@@ -36,7 +36,7 @@ _packSize = 3 + floor(random 5); // Wolfpack size
 diag_log format["[FEAR] spawning wolfpack at %1",_spawnPos];
 
 for "_i" from 1 to _packSize do {			
-	_wolfPos = [_spawnPos,[5,10],random 360] call SHK_pos; // Random spawn position for each wolf
+	_wolfPos = [_spawnPos,[5,10],random 360] call A3EAI_SHK_pos; // Random spawn position for each wolf
 	_wolf = createAgent["Alsatian_Random_EPOCH", _wolfPos, [], 5, "NONE"];
 	_wolf setVariable["BIS_fnc_animalBehaviour_disable", true];
 	

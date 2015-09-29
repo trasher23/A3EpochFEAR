@@ -1,54 +1,36 @@
 /*
-	Lifted from Vampires' original VEMF code
-	Idea was to consolidate all messages to player using same method, for consistency
-	Still uses VEMFChatMsg to broadcast in IT07's revised code (in mission PBO)
+	Consolidate all messages to player
+	Uses VEMFChatMsg to broadcast (in mission PBO)
 */
 
-// Alerts Players With a Random Radio Type
+// Broadcasts message to players who have a radio
 FEARBroadcast = {
-	private ["_msg","_mode","_eRads","_allUnits","_curRad","_send","_sent"];
+	private ["_msg","_mode","_sent","_allPlayers","_player"];
 	
 	_msg = _this select 0;
 	_mode = _this select 1;
-	_sent = false;
 	
-	_eRads = ["EpochRadio0","EpochRadio1","EpochRadio2","EpochRadio3","EpochRadio4","EpochRadio5","EpochRadio6","EpochRadio7","EpochRadio8","EpochRadio9"] call BIS_fnc_arrayShuffle;
-	
-	// Broadcast to Each Player
-	_allUnits = allUnits;
-	
-	// Remove Non-Players
-	{ if !(isPlayer _x) then {_allUnits = _allUnits - [_x];}; } forEach _allUnits;
-	
-	_curRad = 0;
-	_send = false;
-	// Find a Radio to Broadcast To
-	while {true} do {
-		{
-			if ((_eRads select _curRad) in (assignedItems _x)) exitWith {
-				_send = true;
-			};
-			if (_forEachIndex == ((count _allUnits)-1)) then {
-				_curRad = _curRad + 1;
-			};
-		} forEach _allUnits;
-		
-		if (_send) exitWith {};
-		if (_curRad > ((count _eRads)-1)) exitWith
-		{
-			/* No Radios */
+	// Get list of player-controlled units
+	_allPlayers = [];
+	{
+		if (isPlayer _x) then {
+			_allPlayers pushBack _x;
 		};
-	};
-	
-	if (_send) then {
-		{
-			if ((_eRads select _curRad) in (assignedItems _x)) then {
+	} forEach playableUnits;
+
+	// Players radio check
+	{
+		_player = _x;
+		{			
+			if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _x)) == "ItemRadio") exitWith {
+				// If player has radio, send message
 				VEMFChatMsg = [_msg, _mode];
-				(owner (vehicle _x)) publicVariableClient "VEMFChatMsg";
+				(owner (vehicle _player)) publicVariableClient "VEMFChatMsg";
 			};
-		} forEach _allUnits;
-	};
-	// Send regardless of whether player has radio
+		} forEach assignedItems _player;
+	} forEach _allPlayers;
+	
+	// Message was still sent, regardless of whether player has radio to receive it
 	_sent = true;
 	_sent
 };

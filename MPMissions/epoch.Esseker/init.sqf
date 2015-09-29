@@ -67,7 +67,7 @@ if (!isDedicated && hasInterface) then {
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
 	[] execVM "paintshop\paintshop.sqf";					// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
 	[] execVM "FEAR\scripts\EtV_init.sqf";					// http://epochmod.com/forum/index.php?/topic/34576-release-attach-explosives/
-	
+	[] execVM "FEAR\scripts\FEAR_spawnExplodingBarrel.sqf"; // Exploding barrel spawner
 };
 
 // Needs to run on both server and client
