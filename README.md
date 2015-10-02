@@ -33,7 +33,5 @@ paintshop: https://github.com/Halvhjearne/paintshop
 <br/>
 status_bar: https://github.com/piXm8/statusBar
 <br/>
-EtV: https://github.com/DarthRogue/EtV
-<br/>
 <br/>
 Thank you all.
