@@ -21,8 +21,6 @@ Ryan's Zombies & Demons 2.6: http://www.armaholic.com/page.php?id=28958
 <br/>
 HSBlackmarket 1.6: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
 <br/>
-SDROP 1.0c: https://github.com/tdavison70/Helicopter-Supply-Drop
-<br/>
 persistence v0.1.7-fix-1: https://github.com/n8m4re/A3_Epoch_PersistenceAddon
 <br/>
 cmEarplugs 2.0: https://github.com/computermancer/cmEarplugs
