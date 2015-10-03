@@ -81,14 +81,17 @@ if (isDedicated) then {
 	
 	_numberOfTriggers = 30; // total triggers to create on map
 	
+	// Create zombie logic
 	_center = createCenter sideLogic;
 	ZombieGroup = createGroup _center; // Public var so can be used in FEAR_spawnZombies.sqf
-	_zombieLogic = ZombieGroup createUnit["LOGIC", [1,1,1], [], 0, "NONE"]; // Zombie game logic
-	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogiceasy", [1,1,1], [], 0, "NONE"]; // Zombie setting easy (hard is too hard)
-	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow", [1,1,1], [], 0, "NONE"]; // Zombie throw cars
-	_zombieLogic = ZombieGroup createUnit["ryanzombiesjump", [1,1,1], [], 0, "NONE"]; // Zombie jumping
-	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicroam", [1,1,1], [], 0, "NONE"]; // Zombie roam
-	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicdelete", [1,1,1], [], 0, "NONE"]; // Zombie delete dead bodies
+	_zombieLogic = ZombieGroup createUnit["LOGIC", [0,0,0], [], 0, "NONE"]; // Zombie game logic
+	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogiceasy", [0,0,0], [], 0, "NONE"]; // Zombie setting easy (hard is too hard)
+	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow25", [0,0,0], [], 0, "NONE"]; // Zombie throw cars 25 meters
+	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrowtank25", [0,0,0], [], 0, "NONE"]; // Zombie throw tanks 25 meters
+	_zombieLogic = ZombieGroup createUnit["ryanzombiesjump", [0,0,0], [], 0, "NONE"]; // Zombie jumping
+	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicroam", [0,0,0], [], 0, "NONE"]; // Zombie roam
+	_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicdelete", [0,0,0], [], 0, "NONE"]; // Zombie delete dead bodies
+	_zombieLogic = ZombieGroup createUnit["Ryanzombieslimit", [0,0,0], [], 0, "NONE"]; // Limit zombies
 
 	for "_i" from 1 to _numberOfTriggers do {
 		[_i] call _fnc_createTriggers;

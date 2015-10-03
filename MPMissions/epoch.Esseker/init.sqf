@@ -1,8 +1,9 @@
 if (!isDedicated && hasInterface) then {
 	
-	/* Nuke event handlers
+	/* Server to Client functions
 	-----------------------------------------------------------
 	*/
+	// Nuke event handlers
 	"NUKESiren" addPublicVariableEventHandler {
 		[_this select 1] spawn FEAR_fnc_nukeSiren;
 	};
@@ -20,19 +21,6 @@ if (!isDedicated && hasInterface) then {
 	"NUKEGeiger" addPublicVariableEventHandler {
 		[_this select 1] spawn FEAR_fnc_nukeGeiger;
 	};
-	
-	/* 	N8M4RE Persistence https://github.com/n8m4re/A3_Epoch_PersistenceAddon
-	-----------------------------------------------------------
-	*/
-	player addEventHandler ["Put",{ 
-		N8M4RE_PERSISTENCE_PUT =_this;
-		publicVariableServer "N8M4RE_PERSISTENCE_PUT";
-	}];
-
-	player addEventHandler ["Take",{ 
-		N8M4RE_PERSISTENCE_TAKE = _this;
-		publicVariableServer "N8M4RE_PERSISTENCE_TAKE";
-	}];
 	
 	/* Public client functions
 	---------------------------------
@@ -55,6 +43,18 @@ if (!isDedicated && hasInterface) then {
 		publicVariableServer "DemonSpawn";
 	};
 	
+	// Spawn exploding barrel
+	FEARspawnExplodingBarrel = {
+		SpawnExplodingBarrel = _this select 0;
+		publicVariableServer "SpawnExplodingBarrel";
+	};
+	
+	// Spawn zombies
+	FEARspawnZombies = {
+		SpawnZombies = _this select 0;
+		publicVariableServer "SpawnZombies";
+	};
+	
 	/* Load other scripts
 	-----------------------------------------------------------
 	*/
@@ -66,8 +66,7 @@ if (!isDedicated && hasInterface) then {
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";			// Random sound fx
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";			// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
 	[] execVM "paintshop\paintshop.sqf";					// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
-	[] execVM "FEAR\scripts\EtV_init.sqf";					// http://epochmod.com/forum/index.php?/topic/34576-release-attach-explosives/
-	[] execVM "FEAR\scripts\FEAR_spawnExplodingBarrel.sqf"; // Exploding barrel spawner
+	[] execVM "FEAR\scripts\FEAR_masterLoop.sqf"; 			// FEAR master loop - currently spawns exploding barrels
 };
 
 // Needs to run on both server and client
@@ -78,6 +77,7 @@ if (!isDedicated && hasInterface) then {
 [] execVM "trader\resetvehicleammo.sqf";
 [] execVM "messages\init.sqf";								// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
 
+// At bottom of script, causes problems otherwise
 if (!isDedicated && hasInterface) then {
 	#include "A3EAI_Client\A3EAI_initclient.sqf";			// A3AI radio messages
 };

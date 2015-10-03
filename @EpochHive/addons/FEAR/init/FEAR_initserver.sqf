@@ -23,7 +23,8 @@ publicVariable "MISSION_directory";
 diag_log format["[FEAR] Initializing FEAR version %1 using base path %2",[configFile >> "CfgPatches" >> "FEAR","FEARVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,FEAR_directory];
 
 //Load FEAR main configuration file & functions
-call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
+//call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
+call compile preprocessFileLineNumbers format["%1\FEAR_config.sqf",FEAR_directory];
 call compile preprocessFileLineNumbers format["%1\scripts\FEAR_functions.sqf",FEAR_directory];
 
 /* Server event handlers - called from clients
@@ -41,13 +42,20 @@ FEARwolfpackSpawn = compile preprocessFileLineNumbers format["%1\scripts\FEAR_wo
 FEARdemonSpawn = compile preprocessFileLineNumbers format["%1\scripts\FEAR_demonSpawn.sqf",FEAR_directory];
 "DemonSpawn" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARdemonSpawn};
 
+// Spawn exploding barrel
+FEARspawnExplodingBarrel = compile preprocessFileLineNumbers format["%1\scripts\FEAR_spawnExplodingBarrel.sqf",FEAR_directory];
+"SpawnExplodingBarrel" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARspawnExplodingBarrel};
+
+// Spawn zombies
+FEARspawnZombies = compile preprocessFileLineNumbers format["%1\scripts\FEAR_spawnZombies.sqf",FEAR_directory];
+"SpawnZombies" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARspawnZombies};
+
 /* Map addons
 --------------------
 */
 //call compile preprocessFileLineNumbers format["%1\map\FEAR_mapAddons.sqf",FEAR_directory];
 
-/*
-Spawn random events
+/* Spawn random events
 ---------------------------
 */
 [] execVM format["%1\nuke\FEAR_nuke_init.sqf",FEAR_directory]; // Mini-nukes

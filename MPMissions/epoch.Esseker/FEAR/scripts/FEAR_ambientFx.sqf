@@ -31,11 +31,6 @@ playSoundFx = {
 	if (_sound == MISSION_directory + "FEAR\fx\wolfhowl1.ogg") then { [_randomPos] spawn FEARwolfpackSpawn; };
 	// Spawn demon if scream or zombienoise
 	if ((_sound == MISSION_directory + "FEAR\fx\girlscreaming.ogg") || (_sound == MISSION_directory + "FEAR\fx\zombienoise1.ogg")) then { [_randomPos] spawn FEARdemonSpawn; };
-	// Flash screen if eeriewind
-	if (_sound == MISSION_directory + "FEAR\fx\eeriewind.ogg") then {
-		[] spawn FEAR_fnc_nukeFlash;
-		[] spawn FEAR_fnc_nukeAsh;
-	};
 	
 	playSound3D [_sound, player, false, _soundSource, 2];
 };
@@ -43,7 +38,7 @@ playSoundFx = {
 private ["_timeDiff","_maxTime","_minTime"];
 
 _minTime = 3; // minutes
-_maxTime = 10; 
+_maxTime = 15; 
 
 // Find the min and max time
 _timeDiff = ((_maxTime*60) - (_minTime*60));

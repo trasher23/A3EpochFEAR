@@ -34,12 +34,12 @@ if (_reportDirectoryName) then {
 diag_log format ["[A3EAI] Initializing A3EAI version %1 using base path %2.",[configFile >> "CfgPatches" >> "A3EAI","A3EAIVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,A3EAI_directory];
 
 //Load A3EAI main configuration file
-call compile preprocessFileLineNumbers format ["%1\A3EAI_config.sqf",A3EAI_EpochHiveDir];
+call compile preprocessFileLineNumbers format ["%1\A3EAI_config.sqf",A3EAI_directory];
 
 call compile preprocessFileLineNumbers format ["%1\scripts\verifySettings.sqf",A3EAI_directory];
 
 //Load custom A3EAI settings file.
-if (_readOverrideFile) then {call compile preprocessFileLineNumbers format ["%1\A3EAI_settings_override.sqf",A3EAI_EpochHiveDir]};
+if (_readOverrideFile) then {call compile preprocessFileLineNumbers format ["%1\A3EAI_settings_override.sqf",A3EAI_directory]};
 
 //Load A3EAI functions
 call compile preprocessFileLineNumbers format ["%1\init\A3EAI_functions.sqf",A3EAI_directory];
