@@ -394,5 +394,3 @@ if(hasInterface)then{
 	call compile preprocessFileLineNumbers "trader\tradermenu.sqf";
 	diag_log "[HSBlackmarket]: Client Done ...";
 };
-
-

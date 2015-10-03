@@ -4,7 +4,7 @@
 	Calls server side code via public variable
 */
 
-lootBubble = {
+urbanLootBubble = {
 	private["_buildings","_pos","_others","_travelDir","_lootDist","_xPos","_yPos","_lootLoc","_playerPos","_distanceTraveled","_config","_return"];
 	
 	_buildings = [
@@ -69,8 +69,11 @@ lootBubble = {
 				// No other players nearby
 				_others = _building nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15];
 				if (_others isEqualTo[]) then {
+					
 					// random position from original building _pos, this should place it outside
-					_pos = [_pos,[10,20],random 360] call SHK_pos;
+					[[player,_pos,5,10]] call FEARgetRandomPosition;
+					if (isNil "RandomPosition") exitWith {};
+					_pos = RandomPosition;
 					
 					// If not water...
 					if !(surfaceIsWater _pos) then { 
@@ -105,7 +108,7 @@ _FEAR_masterLoop = {
 
 			_FEAR_30 = _tickTime;
 
-			_pos = call lootBubble;
+			_pos = call urbanLootBubble;
 			If !(isNil "_pos") then {
 				// 33% chance of potential barrel spawn
 				if (33 > random 100) then {

@@ -357,4 +357,3 @@ class CfgCrafting
 		recipe[] = {{"ItemCorrugatedLg",2}, {"CircuitParts",2} };
 	};
 };
-

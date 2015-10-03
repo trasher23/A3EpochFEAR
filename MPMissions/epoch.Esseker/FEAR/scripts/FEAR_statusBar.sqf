@@ -1,5 +1,3 @@
-waitUntil {!(isNull (findDisplay 46))};
-disableSerialization;
 /*
 	File: fn_statusBar.sqf
 	Author: Osef (Ported to EpochMod by piX)
@@ -8,6 +6,9 @@ disableSerialization;
 	
 	PLEASE KEEP CREDITS - THEY ARE DUE TO THOSE WHO PUT IN THE EFFORT!
 */
+waitUntil {!(isNull (findDisplay 46))};
+disableSerialization;
+
 _rscLayer = "osefStatusBar" call BIS_fnc_rscLayer;
 _rscLayer cutRsc["osefStatusBar","PLAIN"];
 [] spawn {

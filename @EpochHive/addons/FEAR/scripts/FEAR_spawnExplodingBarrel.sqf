@@ -35,7 +35,7 @@ _explodingBarrel = {
 	_direction = [0,90] call BIS_fnc_selectRandom;
 	[_b,0,_direction] call BIS_fnc_setPitchBank;
 			
-	//_b setDamage 0.99;
+	_b setDamage 0.99;
 	_b allowDamage false;
 	_b addEventHandler ["Hit", {
 		_b = _this select 0;

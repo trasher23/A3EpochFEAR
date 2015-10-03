@@ -143,4 +143,3 @@ if !(_message isEqualTo "")then{
 		[_HALV_KillFeedtitleText,["titleText", [_message, "PLAIN DOWN"]]]
 	];
 };
-

@@ -50,6 +50,10 @@ FEARspawnExplodingBarrel = compile preprocessFileLineNumbers format["%1\scripts\
 FEARspawnZombies = compile preprocessFileLineNumbers format["%1\scripts\FEAR_spawnZombies.sqf",FEAR_directory];
 "SpawnZombies" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARspawnZombies};
 
+// Return random position from A3AI SHK_pos code
+FEARrandomPosition = compile preprocessFileLineNumbers format["%1\scripts\FEAR_randomPosition.sqf",FEAR_directory];
+"GetRandomPosition" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARrandomPosition};
+
 /* Map addons
 --------------------
 */

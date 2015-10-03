@@ -1,12 +1,9 @@
 // Halv scripts http://epochmod.com/forum/index.php?/tags/forums/Halv/
 #include "halv_spawn\spawndialog.hpp"
-#include "paintshop\paintshop.hpp"
-// Halv trader
 #include "trader\tradedialog.hpp"
 #include "trader\HSPricing.hpp"
-
 // Crafting https://github.com/GBR-Suppe/cfgCrafting-Master
-#include "cfgCrafting.hpp"
+#include "FEAR\scripts\cfgCrafting.hpp"
 
 author = "Epoch Mod Team";
 class Header
@@ -126,7 +123,6 @@ class CfgEpochCloak
 
 class RscTitles
 {
-	#include "FEAR\dialog\statusBar.hpp"
+	#include "FEAR\scripts\statusBar.hpp"
 	#include "VEMFclient\hpp_mainVemfClient.hpp"
 };
-

@@ -19,8 +19,7 @@
 			
 	Installation:
 		Copy into your scripts folder, add this line to your init.sqf, execVM \"scripts\OX3_GetInProtect.sqf";
-	
-		
+
 	PLEASE KEEP CREDITS - THEY ARE DUE TO THOSE WHO PUT IN THE EFFORT!	
 */
 
@@ -52,7 +51,6 @@ fn_handleLocal = {
 diag_log "[OX3] - Vehicle get in pilot protection";
 while {true} do 
 {
-	
 	{	
 		if (!(_x getVariable ["added_EHProtect",false])) then {
 			_x addEventHandler ["GetIn", {_this call fn_handleGetIn;}];

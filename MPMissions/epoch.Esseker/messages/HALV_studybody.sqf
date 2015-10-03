@@ -6,7 +6,6 @@
 */
 
 _body = _this select 3;
-
 _info = _body getVariable ["HALV_STUDY",[]];
 
 if(_info isEqualTo [])exitWith{
@@ -19,8 +18,6 @@ _TOD = _info select 2;
 _pic = _info select 3;
 _txt = _info select 4;
 //_hint = _info select 5;
-
-
 
 _timeofdeath = serverTime - _TOD;
 _timetxt = switch (true)do{
@@ -40,7 +37,6 @@ _COD = switch(true)do{
 };
 
 //hintSilent _hint;
-
 if (_killerName isEqualTo _victimName)then{
 	titleText [format["The Name was %1\nCause of death: Suicide",_victimName],"PLAIN DOWN"];
 }else{

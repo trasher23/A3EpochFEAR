@@ -5,7 +5,12 @@
 getSoundFx = {
 	private["_soundArray","_sound"];
 	
-	_soundArray = ["sapper_alert1.ogg","wolfhowl1.ogg","eeriewind.ogg","sapper_groan3.ogg","girlscreaming.ogg","sapper_groan2.ogg","zombienoise1.ogg","sapper_groan4.ogg","babycry1.ogg"];
+	_soundArray = [
+		"wolfhowl1.ogg",
+		"eeriewind.ogg",
+		"girlscreaming.ogg",
+		"babycry1.ogg"
+	];
 
 	// Pick a sound from array	
 	_sound = _soundArray call BIS_fnc_selectRandom;
@@ -23,16 +28,20 @@ playSoundFx = {
 	private["_sound","_randomPos","_soundSource"];
 	
 	_sound = call getSoundFx;
+	
 	// Get random position between 25 & 150m, around player in 360 degrees for sound source
-	_randomPos = [player,[25,150],random 360] call SHK_pos;
+	[[player,position player,25,150]] call FEARgetRandomPosition;
+	if (isNil "RandomPosition") exitWith {};
+	_randomPos = RandomPosition;
+	
 	_soundSource = "Land_HelipadEmpty_F" createVehicle _randomPos;
 	
 	// Spawn wolfpack if wolf howl
 	if (_sound == MISSION_directory + "FEAR\fx\wolfhowl1.ogg") then { [_randomPos] spawn FEARwolfpackSpawn; };
 	// Spawn demon if scream or zombienoise
-	if ((_sound == MISSION_directory + "FEAR\fx\girlscreaming.ogg") || (_sound == MISSION_directory + "FEAR\fx\zombienoise1.ogg")) then { [_randomPos] spawn FEARdemonSpawn; };
+	if ((_sound == MISSION_directory + "FEAR\fx\girlscreaming.ogg")) then { [_randomPos] spawn FEARdemonSpawn; };
 	
-	playSound3D [_sound, player, false, _soundSource, 2];
+	playSound3D [_sound,player,false,_soundSource, 2];
 };
 
 private ["_timeDiff","_maxTime","_minTime"];

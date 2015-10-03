@@ -36,6 +36,11 @@ FEAR_fnc_nukeImpact = {
 	
 	_nukePos = _this select 0;
 	
+	// Flash
+	[] spawn FEAR_fnc_nukeFlash;
+	
+	sleep 2;
+	
 	// Nuke blast sound fx
 	_nukeBlast = MISSION_directory + "FEAR\fx\" + "nuke.ogg";
 	playSound3D [_nukeBlast, player, false, _nukePos, 10];
@@ -91,12 +96,9 @@ FEAR_fnc_nukeImpact = {
 		EPOCH_playerToxicity = 85;
 		EPOCH_playerSoiled = 85;
 	};
-	
-	// Flash
-	[] Call FEAR_fnc_nukeFlash;
 
 	// Ash
-	[] Call FEAR_fnc_nukeAsh;
+	//[] spawn FEAR_fnc_nukeAsh;
 
 	_Wave setDropInterval 0.001;
 	deletevehicle _top;
@@ -173,7 +175,9 @@ FEAR_fnc_nukeImpact = {
 	_smoke setDropInterval 0.012;
 	_Cone setDropInterval 0.02;
 	_Wave setDropInterval 0.01;
-
+	
+	NUKEImpact = nil;
+	
 	sleep 900;
 	
 	// Reset colours
@@ -183,6 +187,42 @@ FEAR_fnc_nukeImpact = {
 	deleteVehicle _Wave;
 	deleteVehicle _cone;
 	deleteVehicle _smoke;
+};
+
+FEAR_fnc_nukeAsh = {
+	private["_pos","_parray","_snow"];
+	//sleep 20;
+	_pos = position player;
+	_parray = [
+	/* 00 */		["A3\Data_F\ParticleEffects\Universal\Universal", 16, 12, 8, 1],//"A3\Data_F\cl_water",
+	/* 01 */		"",
+	/* 02 */		"Billboard",
+	/* 03 */		1,
+	/* 04 */		4,
+	/* 05 */		[0,0,0],
+	/* 06 */		[0,0,0],
+	/* 07 */		1,
+	/* 08 */		0.000001,
+	/* 09 */		0,
+	/* 10 */		1.4,
+	/* 11 */		[0.05,0.05],
+	/* 12 */		[[0.1,0.1,0.1,1]],
+	/* 13 */		[0,1],
+	/* 14 */		0.2,
+	/* 15 */		1.2,
+	/* 16 */		"",
+	/* 17 */		"",
+	/* 18 */		vehicle player
+	];
+	_snow = "#particlesource" createVehicleLocal _pos;  
+	_snow setParticleParams _parray;
+	_snow setParticleRandom [0, [10, 10, 7], [0, 0, 0], 0, 0.01, [0, 0, 0, 0.1], 0, 0];
+	_snow setParticleCircle [0.0, [0, 0, 0]];
+	_snow setDropInterval 0.01;
+	
+	// Delete Ash after 5 min
+	//sleep 300;
+	//deleteVehicle _snow;
 };
 
 FEAR_fnc_nukeFlash = {
@@ -199,8 +239,7 @@ FEAR_fnc_nukeFlash = {
 	0 setOvercast 0;
 	sleep 0.1;
 
-	_xHandle = []spawn
-	{
+	_xHandle = [] spawn {
 		Sleep 1;
 		"colorCorrections" ppEffectAdjust [1.0, 0.5, 0, [0.5, 0.5, 0.5, 0], [1.0, 1.0, 0.8, 0.4],[0.3, 0.3, 0.3, 0.1]];
 		"colorCorrections" ppEffectCommit 2;
@@ -221,24 +260,6 @@ FEAR_fnc_nukeFlash = {
 	"dynamicBlur" ppEffectCommit 1;
 };
 
-FEAR_fnc_nukeAsh = {
-	sleep 20;
-	//--- Ash
-	[] spawn {
-		private ["_pos","_parray","_snow"];
-		_pos = position player;
-		_parray = [["A3\Data_F\ParticleEffects\Universal\Universal", 16, 12, 8, 1],"","Billboard",1,4,[0,0,0],[0,0,0],1,0.000001,0,1.4,[0.05,0.05],[[0.1,0.1,0.1,1]],[0,1],0.2,1.2,"","",vehicle player];
-		_snow = "#particlesource" createVehicleLocal _pos;  
-		_snow setParticleParams _parray;
-		_snow setParticleRandom [0, [10, 10, 7], [0, 0, 0], 0, 0.01, [0, 0, 0, 0.1], 0, 0];
-		_snow setParticleCircle [0.0, [0, 0, 0]];
-		_snow setDropInterval 0.01;
-		// Delete Ash after 5 min
-		sleep 300;
-		deleteVehicle _snow;
-	};
-};
-
 FEAR_fnc_nukeColorCorrection = {
 	"colorCorrections" ppEffectAdjust [2, 30, 0, [0.0, 0.0, 0.0, 0.0], [0.8*2, 0.5*2, 0.0, 0.7], [0.9, 0.9, 0.9, 0.0]];
 	"colorCorrections" ppEffectCommit 0;
@@ -248,7 +269,4 @@ FEAR_fnc_nukeColorCorrection = {
 	"filmGrain" ppEffectEnable true; 
 	"filmGrain" ppEffectAdjust [0.02, 1, 1, 0.1, 1, false];
 	"filmGrain" ppEffectCommit 5;
-	sleep 100; // time to reset colours
-	"colorCorrections" ppEffectEnable false;
-	"filmGrain" ppEffectEnable false; 
 };
