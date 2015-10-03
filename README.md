@@ -21,15 +21,11 @@ Ryan's Zombies & Demons 2.6: http://www.armaholic.com/page.php?id=28958
 <br/>
 HSBlackmarket 1.6: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
 <br/>
-persistence v0.1.7-fix-1: https://github.com/n8m4re/A3_Epoch_PersistenceAddon
-<br/>
 cmEarplugs 2.0: https://github.com/computermancer/cmEarplugs
 <br/>
 spawn: https://github.com/Halvhjearne/halv_spawn
 <br/>
 killfeed: https://github.com/Halvhjearne/killfeed
-<br/>
-paintshop: https://github.com/Halvhjearne/paintshop
 <br/>
 status_bar: https://github.com/piXm8/statusBar
 <br/>
