@@ -5,60 +5,52 @@
 	
 	Copyright (C) 2015  Halvhjearne > README.md
 */
-
 //==== Set script path if needed =====
 _scriptpath = "halv_spawn\";
 
-
-//DONT TUOCH THIS
+//DONT TOUCH THIS
 if(isServer)then{
-/*================*/
-
-
-//if _deletedefaultteleporters is true, it deletes all default teleporter objects and replaces them with new ones forcing players to select spawn from the dialog
-//if you want to use the default teleporters instead, set this to false ... however the default teleporters will always have the default teleport scroll action attached
+	//if _deletedefaultteleporters is true, it deletes all default teleporter objects and replaces them with new ones forcing players to select spawn from the dialog
+	//if you want to use the default teleporters instead, set this to false ... however the default teleporters will always have the default teleport scroll action attached
 	_deletedefaultteleporters = true;
-//new teleporter object, this is if you want a diffrent object than the default console i set
+	//new teleporter object, this is if you want a diffrent object than the default console i set
 	_newteleClass = "Land_InfoStand_V2_F";
-//set object texture (full path), also accepts colour defs like "#(argb,8,8,3)color(0.123,1,0.3,0.3)", "" for nothing/default
+	//set object texture (full path), also accepts colour defs like "#(argb,8,8,3)color(0.123,1,0.3,0.3)", "" for nothing/default
 	_objecttexture = "halv_spawn\HAND.jpg";
-//sides to set object texture to, [] for none
+	//sides to set object texture to, [] for none
 	_objecttexturesides = [1];
-
-//This is the teleporterobjects to search for, if you want them deleted
+	//This is the teleporterobjects to search for, if you want them deleted
 	_teleobjs = ["Transport_C_EPOCH","Transport_W_EPOCH","Transport_E_EPOCH","Transport_S_EPOCH","Transport_N_EPOCH","Transport_EPOCH"];
-
 	_pic1 = [
-//North wall
-//build this picture/texture? (true / false)
+		//North wall
+		//build this picture/texture? (true / false)
 		true,
-//Change to your picture/path here
+		//Change to your picture/path here
 		"halv_spawn\fearloadscrn.jpg"
 	];
 	_pic2 = [
-	//East wall
-//build this picture/texture? (true / false)
+		//East wall
+		//build this picture/texture? (true / false)
 		false,
-//Change to your picture/path here
-		"custom\dkflag.jpg"
+		//Change to your picture/path here
+		""
 	];
 	_pic3 = [
-	//South wall
-//build this picture/texture? (true / false)
+		//South wall
+		//build this picture/texture? (true / false)
 		false,
-//Change to your picture/path here
-		"custom\loadscreen.jpg"
+		//Change to your picture/path here
+		""
 	];
 	_pic4 = [
-	//West wall
-//build this picture/texture? (true / false)
+		//West wall
+		//build this picture/texture? (true / false)
 		false,
-//Change to your picture/path here
-		"fearloadscrn.jpg"
+		//Change to your picture/path here
+		""
 	];
 
-//==================================== Dont Touch anything below this point ====================================\\
-
+	//==================================== Dont Touch anything below this point ====================================
 	_respawnwest = getMarkerPos "respawn_west";
 	_HALV_deftele = getArray(configFile >> "CfgEpoch" >> worldname >> "telePos");
 	_deftelepos = [];
@@ -116,7 +108,6 @@ if(isServer)then{
 			_obj setPos _rPos;
 			_obj enableSimulation false;
 			_obj setObjectTextureGlobal [0,_pic];
-//			diag_log format["[DebugPic]: build texture @ %1 [%2,%3] texture '%4'",worldName,_obj,_rPos,_rDir];
 			_pics = _pics + 1;
 		};
 	}forEach _alltextures;

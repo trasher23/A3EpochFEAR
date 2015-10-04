@@ -72,7 +72,7 @@ urbanLootBubble = {
 					
 					// random position from original building _pos, this should place it outside
 					[[player,_pos,5,10]] call FEARgetRandomPosition;
-					if (isNil "RandomPosition") exitWith {};
+					waitUntil {!(isNil "RandomPosition")};
 					_pos = RandomPosition;
 					
 					// If not water...

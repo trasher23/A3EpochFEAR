@@ -5,7 +5,7 @@
 
 //Return array of human players
 FEARGetPlayers = {
-	private["_allPlayers"];
+	private "_allPlayers";
 	
 	// Get list of player-controlled units
 	_allPlayers = [];
@@ -20,7 +20,7 @@ FEARGetPlayers = {
 
 // Broadcasts message to players who have a radio
 FEARBroadcast = {
-	private ["_msg","_mode","_sent","_allPlayers","_player"];
+	private["_msg","_mode","_sent","_allPlayers","_player"];
 	
 	_msg = _this select 0;
 	_mode = _this select 1;
@@ -34,7 +34,7 @@ FEARBroadcast = {
 		{			
 			if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _x)) == "ItemRadio") exitWith {
 				// If player has radio, send message
-				VEMFChatMsg = [_msg, _mode];
+				VEMFChatMsg = [_msg,_mode];
 				(owner (vehicle _player)) publicVariableClient "VEMFChatMsg";
 			};
 		}forEach assignedItems _player;

@@ -2,7 +2,6 @@
 	Spawn wolf pack
 	Called from client FEAR_ambientFX.sqf
 */
-
 private["_getTarget","_spawnPos","_wolfPos","_packSize","_wolf","_target","_id"];
 
 _getTarget = {
@@ -11,7 +10,7 @@ _getTarget = {
 	_range = 200;
 	_nrstTrgt = objNull;
 	
-	_nrTrgts = getPosATL _wolf nearEntities [["Epoch_Man_Base_F","Epoch_Female_base_F"], _range];
+	_nrTrgts = getPosATL _wolf nearEntities[["Epoch_Man_Base_F","Epoch_Female_base_F"],_range];
 	_lowDist = _range;
 
 	{

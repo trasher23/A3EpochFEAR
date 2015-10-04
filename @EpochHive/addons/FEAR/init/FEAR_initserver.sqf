@@ -3,10 +3,10 @@
 	
 	Description: Handles startup process for FEAR. Does not contain any values intended for modification.
 */
+private ["_startTime","_directoryAsArray"];
+
 if (hasInterface || !isNil "FEAR_isActive") exitWith {};
 FEAR_isActive = true;
-
-private ["_startTime","_directoryAsArray"];
 
 _startTime = diag_tickTime;
 
@@ -20,14 +20,13 @@ MISSION_directory = format["mpmissions\__cur_mp.%1\", worldName];
 publicVariable "MISSION_directory";
 
 //Report FEAR version to RPT log
-diag_log format["[FEAR] Initializing FEAR version %1 using base path %2",[configFile >> "CfgPatches" >> "FEAR","FEARVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,FEAR_directory];
+diag_log format["[FEAR] initializing FEAR version %1 using base path %2",[configFile >> "CfgPatches" >> "FEAR","FEARVersion","error - unknown version"] call BIS_fnc_returnConfigEntry,FEAR_directory];
 
 //Load FEAR main configuration file & functions
-//call compile preprocessFileLineNumbers "@EpochHive\FEAR_config.sqf";
 call compile preprocessFileLineNumbers format["%1\FEAR_config.sqf",FEAR_directory];
 call compile preprocessFileLineNumbers format["%1\scripts\FEAR_functions.sqf",FEAR_directory];
 
-/* Server event handlers - called from clients
+/* Client to Server event handlers
 -----------------------------------------------
 */
 // Client to Server logging
@@ -35,12 +34,8 @@ FEARserverLog = compile preprocessFileLineNumbers format["%1\scripts\FEAR_server
 "ServerLog" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARserverLog};
 
 // Spawn wolfpack
-FEARwolfpackSpawn = compile preprocessFileLineNumbers format["%1\scripts\FEAR_wolfpackSpawn.sqf",FEAR_directory];
-"WolfpackSpawn" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARwolfpackSpawn};
-
-// Spawn demon
-FEARdemonSpawn = compile preprocessFileLineNumbers format["%1\scripts\FEAR_demonSpawn.sqf",FEAR_directory];
-"DemonSpawn" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARdemonSpawn};
+FEARspawnWolfpack = compile preprocessFileLineNumbers format["%1\scripts\FEAR_spawnWolfpack.sqf",FEAR_directory];
+"SpawnWolfpack" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARspawnWolfpack};
 
 // Spawn exploding barrel
 FEARspawnExplodingBarrel = compile preprocessFileLineNumbers format["%1\scripts\FEAR_spawnExplodingBarrel.sqf",FEAR_directory];
@@ -51,8 +46,8 @@ FEARspawnZombies = compile preprocessFileLineNumbers format["%1\scripts\FEAR_spa
 "SpawnZombies" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARspawnZombies};
 
 // Return random position from A3AI SHK_pos code
-FEARrandomPosition = compile preprocessFileLineNumbers format["%1\scripts\FEAR_randomPosition.sqf",FEAR_directory];
-"GetRandomPosition" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARrandomPosition};
+FEARgetRandomPosition = compile preprocessFileLineNumbers format["%1\scripts\FEAR_getRandomPosition.sqf",FEAR_directory];
+"GetRandomPosition" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARgetRandomPosition};
 
 /* Map addons
 --------------------

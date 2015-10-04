@@ -1,20 +1,21 @@
-if(isServer)exitWith{};
 /*
 	Simple Credits script
 	by Halv
 	
 	Copyright (C) 2015  Halvhjearne > README.md
 */
-sleep 2.5; // sleep before the welcome message starts (in seconds)
+if(isServer)exitWith{};
+
+sleep 2.5; // Sleep before the welcome message starts (in seconds)
 
 _alltext = [
 	[
-		//Title
+		// Title
 		"Epoch F.E.A.R.",
-		//Title Color
-		"#71C700", //green light
+		// Title Color
+		"#71C700", // light green
 		[
-			//Sub Text(s)
+			// Sub Text
 			"No bullshit PVP/PVE",
 			"AI is a bitch",
 			"Fuck Everything and RUN!"
@@ -33,5 +34,5 @@ _alltext = [
 	_onScreenTime = (count _memberNames) * 0.5;
 	if(_onScreenTime < 6)then{_onScreenTime = 5};
 	[_finalText,[safezoneX + safezoneW - 0.5,0.35],[safezoneY + safezoneH - 0.8,0.7],_onScreenTime,0.5] spawn BIS_fnc_dynamicText;
-	sleep (_onScreenTime);
-} forEach _alltext;
+	sleep _onScreenTime;
+}forEach _alltext;

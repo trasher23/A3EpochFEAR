@@ -4,7 +4,7 @@
 //  Modded by:  Vampire & xBowBii  //
 /////////////////////////////////////
 
-private ["_crashNum","_lootNum","_loot","_spawnCrashes"];
+private["_crashNum","_lootNum","_loot","_spawnCrashes"];
 _crashNum = 5; // Number of Crashes
 _lootNum = 5; // Number of Loot Piles
 
@@ -45,13 +45,13 @@ _spawnCrashes = {
 		_element = _helicopters call BIS_fnc_SelectRandom;
 		_vehHeli = _element createVehicle [0,0,0];
 		_burnHelicopter = "test_EmptyObjectForFireBig" createVehicle (position _vehHeli);
-		_burnHelicopter attachto [_vehHeli, [0,0,-1]];  
-		_vehHeli setposATL [(_posOfCrash) select 0,(_posOfCrash) select 1,0];
-		_vehHeli setVariable ["LAST_CHECK", (diag_tickTime + 14400)];
+		_burnHelicopter attachto[_vehHeli, [0,0,-1]];  
+		_vehHeli setposATL[(_posOfCrash) select 0,(_posOfCrash) select 1,0];
+		_vehHeli setVariable["LAST_CHECK", (diag_tickTime + 14400)];
 				
 		for "_i" from 1 to _lootNum do {
-			_crate0 = createVehicle ["weaponHolderSimulated", _vehHeli modelToWorld [(random 10) - 3, (random 10) - 4, 0], [], 0, "CAN_COLLIDE"];
-			_crate1 = createVehicle ["weaponHolderSimulated", _vehHeli modelToWorld [(random 10) - 3, (random 10) - 4, 0], [], 0, "CAN_COLLIDE"];
+			_crate0 = createVehicle["weaponHolderSimulated",_vehHeli modelToWorld[(random 10) - 3,(random 10) - 4, 0],[],0,"CAN_COLLIDE"];
+			_crate1 = createVehicle["weaponHolderSimulated",_vehHeli modelToWorld[(random 10) - 3,(random 10) - 4, 0],[],0,"CAN_COLLIDE"];
 			
 			_item = _loot call BIS_fnc_selectRandom;
 			switch (true) do
@@ -61,18 +61,18 @@ _spawnCrashes = {
 					_kindOf = [(configFile >> "CfgWeapons" >> _item),true] call BIS_fnc_returnParents;
 					if ("ItemCore" in _kindOf) then {
 						// Min 1, Max 2
-						_crate0 addItemCargoGlobal [_item,(floor(random(2)))+1];
-						_crate1 addItemCargoGlobal [_item,(floor(random(2)))+1];
+						_crate0 addItemCargoGlobal[_item,(floor(random(2)))+1];
+						_crate1 addItemCargoGlobal[_item,(floor(random(2)))+1];
 					} else {
 						// One Weapon, Three Mags
-						_crate0 addWeaponCargoGlobal [_item,1];
-						_crate1 addWeaponCargoGlobal [_item,1];
+						_crate0 addWeaponCargoGlobal[_item,1];
+						_crate1 addWeaponCargoGlobal[_item,1];
 						
-						_cAmmo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+						_cAmmo = [] + getArray(configFile >> "cfgWeapons" >> _item >> "magazines");
 						{
 							if (isClass(configFile >> "CfgPricing" >> _x)) exitWith {
-								_crate0 addMagazineCargoGlobal [_x,3];
-								_crate1 addMagazineCargoGlobal [_x,3];
+								_crate0 addMagazineCargoGlobal[_x,3];
+								_crate1 addMagazineCargoGlobal[_x,3];
 							};
 						} forEach _cAmmo;
 					};
@@ -80,26 +80,26 @@ _spawnCrashes = {
 				
 				case (isClass (configFile >> "cfgMagazines" >> _item)): {
 					// Min 1, Max 3
-					_crate0 addMagazineCargoGlobal [_item,(floor(random(3)))+1];
-					_crate1 addMagazineCargoGlobal [_item,(floor(random(3)))+1];
+					_crate0 addMagazineCargoGlobal[_item,(floor(random(3)))+1];
+					_crate1 addMagazineCargoGlobal[_item,(floor(random(3)))+1];
 				};
 				
 				case ((getText(configFile >> "cfgVehicles" >> _item >>  "vehicleClass")) == "Backpacks"): {
 					// One Bag
-					_crate0 addBackpackCargoGlobal [_item,1];
-					_crate1 addBackpackCargoGlobal [_item,1];
+					_crate0 addBackpackCargoGlobal[_item,1];
+					_crate1 addBackpackCargoGlobal[_item,1];
 				};
 				
 			};
 			
-			_crate0 setPos [(getPos _crate0 select 0) +5, (getPos _crate0 select 1), 0];
-			_crate1 setPos [(getPos _crate1 select 0) -10, (getPos _crate1 select 1), 0];
-			_crate0 setVariable ["LAST_CHECK", (diag_tickTime + 14400)];
-			_crate1 setVariable ["LAST_CHECK", (diag_tickTime + 14400)];
+			_crate0 setPos[(getPos _crate0 select 0) +5,(getPos _crate0 select 1),0];
+			_crate1 setPos[(getPos _crate1 select 0) -10,(getPos _crate1 select 1),0];
+			_crate0 setVariable["LAST_CHECK",(diag_tickTime + 14400)];
+			_crate1 setVariable["LAST_CHECK",(diag_tickTime + 14400)];
 			_cutter0 = "Land_ClutterCutter_medium_F" createVehicle (getpos _crate0);
 			_cutter1 = "Land_ClutterCutter_medium_F" createVehicle (getpos _crate1);
-			_cutter0 setVariable ["LAST_CHECK", (diag_tickTime + 14400)];
-			_cutter1 setVariable ["LAST_CHECK", (diag_tickTime + 14400)];	
+			_cutter0 setVariable["LAST_CHECK",(diag_tickTime + 14400)];
+			_cutter1 setVariable["LAST_CHECK",(diag_tickTime + 14400)];	
 		};
 	};
 };

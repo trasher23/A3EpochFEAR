@@ -17,7 +17,7 @@ getSoundFx = {
 	//_sound = "wolfhowl1.ogg";
 	
 	// Log to RPT
-	[format["playing soundfx: %1", _sound]] call FEARserverLog;
+	[format["playing soundfx: %1",_sound]] call FEARserverLog;
 	
 	// Assign mission path
 	_sound = MISSION_directory + "FEAR\fx\" + _sound;
@@ -31,17 +31,15 @@ playSoundFx = {
 	
 	// Get random position between 25 & 150m, around player in 360 degrees for sound source
 	[[player,position player,25,150]] call FEARgetRandomPosition;
-	if (isNil "RandomPosition") exitWith {};
+	waitUntil {!(isNil "RandomPosition")};
 	_randomPos = RandomPosition;
 	
 	_soundSource = "Land_HelipadEmpty_F" createVehicle _randomPos;
 	
-	// Spawn wolfpack if wolf howl
-	if (_sound == MISSION_directory + "FEAR\fx\wolfhowl1.ogg") then { [_randomPos] spawn FEARwolfpackSpawn; };
-	// Spawn demon if scream or zombienoise
-	if ((_sound == MISSION_directory + "FEAR\fx\girlscreaming.ogg")) then { [_randomPos] spawn FEARdemonSpawn; };
+	// Spawn wolfpack if wolfhowl.ogg
+	if (_sound == MISSION_directory + "FEAR\fx\wolfhowl1.ogg") then { [_randomPos] spawn FEARspawnWolfpack; };
 	
-	playSound3D [_sound,player,false,_soundSource, 2];
+	playSound3D [_sound,player,false,_soundSource,2];
 };
 
 private ["_timeDiff","_maxTime","_minTime"];
@@ -57,5 +55,5 @@ while {true} do {
 	uiSleep ((floor(random(_timeDiff))) + (_minTime*60));
 
 	// Not in a vehicle
-	if (vehicle player == player) then { [] spawn playSoundFx; };
+	if (vehicle player == player) then {[] spawn playSoundFx};
 };

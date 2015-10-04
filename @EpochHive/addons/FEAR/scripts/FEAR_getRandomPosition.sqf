@@ -1,7 +1,7 @@
 /*
 	Find random position from original_pos, within _min/_max range
 */
-private["_player","_pos","_min","_max"];
+private["_arr","_player","_pos","_min","_max"];
 
 _arr = _this;
 _player = _arr select 0;

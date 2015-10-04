@@ -30,15 +30,9 @@ if (!isDedicated && hasInterface) then {
 	};
 	
 	// Spawn wolfpack
-	FEARwolfpackSpawn = {
-		WolfpackSpawn = _this select 0;
-		publicVariableServer "WolfpackSpawn";
-	};
-	
-	// Spawn demon
-	FEARdemonSpawn = {
-		DemonSpawn = _this select 0;
-		publicVariableServer "DemonSpawn";
+	FEARspawnWolfpack = {
+		SpawnWolfpack = _this select 0;
+		publicVariableServer "SpawnWolfpack";
 	};
 	
 	// Spawn exploding barrel

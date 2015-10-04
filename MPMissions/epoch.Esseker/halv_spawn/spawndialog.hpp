@@ -1,62 +1,114 @@
 /*
 	spawn dialog
 	By Halv
-	
 	Copyright (C) 2015  Halvhjearne > README.md
 */
-
-// Control types
 #define CT_MAP_MAIN 101
-#define CT_TREE 12
-// Static styles
 #define ST_PICTURE 0x30
-#define ST_MULTI 16
-// Listbox styles
-#define ST_LEFT 0x00
-#define LB_TEXTURES 0x10
 
-// Base Classes
-
-class HALV_IGUIBack
-{
+class HALV_IGUIBack {
 	type = 0;
 	idc = -1;
 	style = 80;
 	text = "";
-	colorText[] = {.1,.1,.1,.6};
-	font = "PuristaMedium";
+	colorText[] = {0,0,0,1};
+	font = "PuristaSemibold";
 	sizeEx = 0;
 	shadow = 0;
 	x = 0.1;
 	y = 0.1;
 	w = 0.1;
 	h = 0.1;
-	colorbackground[] = {.1,.1,.1,.6};
+	colorbackground[] = {0,0,0,1};
 };
 
-class HALV_RscFrame
-{
+class HALV_RscFrame {
 	type = 0;
 	idc = -1;
 	style = 64;
 	shadow = 2;
-	colorBackground[] = {0,.5,1,.8};
-	colorText[] = {0,.5,1,.8};
-	font = "PuristaLight";
+	colorBackground[] = {0,0,0,1};
+	colorText[] = {0,0,0,1};
+	font = "PuristaSemibold";
 	sizeEx = 0.02;
 	text = "";
 };
 
-class HALV_RscMapControl
-{
+class HALV_RscListBox {
+	access = 0;
+	type = 5;
+	w = 0.4;
+	h = 0.4;
+	rowHeight = 0;
+	colorText[] = {0.34,0.98,0.34,1};
+	colorDisabled[] = {0.34,0.98,0.34,0.25};
+	colorScrollbar[] = {1,0,0,0};
+	colorSelect[] = {0,0,0,1};
+	colorSelect2[] = {0,0,0,1};
+	colorSelectBackground[] = {0.95,0.95,0.95,1};
+	colorSelectBackground2[] = {1,1,1,0.5};
+	colorBackground[] = {0,0,0,1};
+	pictureColor[] = {1,1,1,1}; // Picture color
+	pictureColorSelect[] = {1,1,1,1}; // Selected picture color
+	pictureColorDisabled[] = {1,1,1,0.5}; // Disabled picture color
+	soundSelect[] = {"\A3\ui_f\data\sound\RscListbox\soundSelect", 0.09, 1};
+	arrowEmpty = "#(argb,8,8,3)color(1,1,1,1)";
+	arrowFull = "#(argb,8,8,3)color(1,1,1,1)";
+	
+	class ListScrollBar {
+		color[] = {1,1,1,0.6};
+		colorActive[] = {1,1,1,1};
+		colorDisabled[] = {1,1,1,0.3};
+		shadow = 0;
+		thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+		arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+		arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+		border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+	};
+	
+	style = 16;
+	font = "PuristaSemibold";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	shadow = 0;
+	colorShadow[] = {0,0,0,0.5};
+	color[] = {0.34,0.98,0.34,1};
+	period = 1.2;
+	maxHistoryDelay = 1;
+	autoScrollSpeed = -1;
+	autoScrollDelay = 5;
+	autoScrollRewind = 0;
+};
+
+class HALV_RscCheckbox {
+	idc = -1;
+	type = 7;
+	style = 2;
+	x = "LINE_X(XVAL)";
+	y = "LINE_Y";
+	w = "LINE_W(WVAL)";
+	h = 0.029412;
+	colorText[] = {0,0.5,1,1};
+	color[] = {1,1,1,1};
+	colorBackground[] = {0,0,0,1};
+	colorTextSelect[] = {0, 0.8, 0,0.8};
+	colorSelectedBg[] = {0.1,0.1,0.1,0.6};
+	colorSelect[] = {0.7,0.7,0.7,0.5};
+	colorTextDisable[] = {0,0.5,1,1};
+	colorDisable[] = {0,0.8,0,0.8};
+	font = "PuristaSemibold";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	rows = 1;
+	columns = 1;
+};
+
+class HALV_RscMapControl {
 	type = CT_MAP_MAIN;
 	style = ST_PICTURE;
 	idc = -1;
-	colorBackground[] = {0.969, 0.957, 0.949, 1};
-	colorOutside[] = {0, 0, 0, 1};
-	colorText[] = {0, 0, 0, 1};
-	font = "TahomaB";
-//	sizeEx = 0.04;
+	colorBackground[] = {0,0,0,1};
+	colorOutside[] = {0,0,0,1};
+	colorText[] = {0,0,0,1};
+	font = "PuristaSemibold";
 	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.04)";
 	colorSea[] = {0.467, 0.631, 0.851, 0.5};
 	colorForest[] = {0.624, 0.78, 0.388, 0.5};
@@ -104,17 +156,17 @@ class HALV_RscMapControl
 	maxSatelliteAlpha = 0.85;
 	alphaFadeStartScale = 2;
 	alphaFadeEndScale = 2;
-	fontLabel = "PuristaMedium";
+	fontLabel = "PuristaSemibold";
 	sizeExLabel = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
-	fontGrid = "TahomaB";
+	fontGrid = "PuristaSemibold";
 	sizeExGrid = 0.02;
-	fontUnits = "TahomaB";
+	fontUnits = "PuristaSemibold";
 	sizeExUnits = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
-	fontNames = "EtelkaNarrowMediumPro";
+	fontNames = "PuristaSemibold";
 	sizeExNames = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8) * 2";
-	fontInfo = "PuristaMedium";
+	fontInfo = "PuristaSemibold";
 	sizeExInfo = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
-	fontLevel = "TahomaB";
+	fontLevel = "PuristaSemibold";
 	sizeExLevel = 0.02;
 	text = "#(argb,8,8,3)color(1,1,1,1)";
 	onMouseMoving = "mouseX = (_this Select 1);mouseY = (_this Select 2)";
@@ -127,7 +179,7 @@ class HALV_RscMapControl
 		y = "SafeZoneY + safezoneH - 4.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		w = "10 * (((safezoneW / safezoneH) min 1.2) / 40)";
 		h = "3.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-		font = "PuristaMedium";
+		font = "PuristaSemibold";
 		sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 	};
 	class ActiveMarker {
@@ -390,133 +442,19 @@ class HALV_RscMapControl
 		coefMax = 1;
 		color[] = {0, 0, 0, 1};
 	};
-};
-
-class HALV_RscListBox
-{
-	access = 0;
-	type = 5;
-	w = 0.4;
-	h = 0.4;
-	rowHeight = 0;
-	colorText[] = {1, 1, 1, 1};
-	colorDisabled[] = {1, 1, 1, 0.25};
-	colorScrollbar[] = {1, 0, 0, 0};
-	colorSelect[] = {0, 0, 0, 1};
-	colorSelect2[] = {0, 0, 0, 1};
-	colorSelectBackground[] = {0.95, 0.95, 0.95, 1};
-	colorSelectBackground2[] = {1, 1, 1, 0.5};
-	colorBackground[] = {0.2,0.2,0.2,0.6};
-	pictureColor[] = {1,1,1,1}; // Picture color
-	pictureColorSelect[] = {1,1,1,1}; // Selected picture color
-	pictureColorDisabled[] = {1,1,1,0.5}; // Disabled picture color
-	soundSelect[] = {"\A3\ui_f\data\sound\RscListbox\soundSelect", 0.09, 1};
-	arrowEmpty = "#(argb,8,8,3)color(1,1,1,1)";
-	arrowFull = "#(argb,8,8,3)color(1,1,1,1)";
-	class ListScrollBar
-	{
-		color[] = {1, 1, 1, 0.6};
-		colorActive[] = {1, 1, 1, 1};
-		colorDisabled[] = {1, 1, 1, 0.3};
-		shadow = 0;
-		thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
-		arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
-		arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
-		border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
-	};
-	style = 16;
-	font = "PuristaMedium";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-	shadow = 0;
-	colorShadow[] = {0, 0, 0, 0.5};
-	color[] = {1, 1, 1, 1};
-	period = 1.2;
-	maxHistoryDelay = 1;
-	autoScrollSpeed = -1;
-	autoScrollDelay = 5;
-	autoScrollRewind = 0;
-};
-
-class HALV_CT_TREE
-{
-	access = 0; // Control access (0 - ReadAndWrite, 1 - ReadAndCreate, 2 - ReadOnly, 3 - ReadOnlyVerified)
-	type = CT_TREE; // Type is 12
-	style = ST_LEFT; // Style
-	x = 0.35567 * safezoneW + safezoneX;
-	y = 0.137091 * safezoneH + safezoneY;
-	w = 0.438144 * safezoneW;
-	h = 0.725818 * safezoneH;
-	colorBorder[] = {0,.5,1,.8}; // Frame color
-	colorBackground[] = {0.2,0.2,0.2,0.6}; // Fill color
-	colorSelect[] = {1,0.5,0,1}; // Selected item fill color (when multiselectEnabled is 0)
-	colorMarked[] = {1,0.5,0,0.5}; // Marked item fill color (when multiselectEnabled is 1)
-	colorMarkedSelected[] = {1,0.5,0,1}; // Selected item fill color (when multiselectEnabled is 1)
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";// Text size
-	font = "EtelkaMonospacePro"; // Font from CfgFontFamilies
-	shadow = 1; // Shadow (0 - none, 1 - N/A, 2 - black outline)
-	colorText[] = {1,1,1,1}; // Text color
-	colorSelectText[] = {1,1,1,1}; // Selected text color (when multiselectEnabled is 0)
-	colorMarkedText[] = {1,1,1,1}; // Selected text color (when multiselectEnabled is 1)
-	tooltip = "$STR_HALV_SELECT_GEAR"; // Tooltip text
-	tooltipColorShade[] = {0,0,0,1}; // Tooltip background color
-	tooltipColorText[] = {1,1,1,1}; // Tooltip text color
-	tooltipColorBox[] = {1,1,1,1}; // Tooltip frame color
-	multiselectEnabled = 0; // Allow selecting multiple items while holding Ctrl or Shift
-	expandOnDoubleclick = 1; // Expand/collapse item upon double-click
-	hiddenTexture = "A3\ui_f\data\gui\rsccommon\rsctree\hiddenTexture_ca.paa"; // Expand icon
-	expandedTexture = "A3\ui_f\data\gui\rsccommon\rsctree\expandedTexture_ca.paa"; // Collapse icon
-	maxHistoryDelay = 1; // Time since last keyboard type search to reset it
-	// Scrollbar configuration
-	class ScrollBar
-	{
-		width = 0; // width of ScrollBar
-		height = 0; // height of ScrollBar
-//		scrollSpeed = 0.01; // scroll speed of ScrollBar
-		arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa"; // Arrow
-		arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa"; // Arrow when clicked on
-		border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa"; // Slider background (stretched vertically)
-		thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa"; // Dragging element (stretched vertically)
-		color[] = {1,1,1,1}; // Scrollbar color
-	};
-	colorDisabled[] = {0,0,0,0}; // Does nothing, but must be present, otherwise an error is shown
-	colorArrow[] = {0,0,0,0}; // Does nothing, but must be present, otherwise an error is shown
-};
-
-class HALV_RscCheckbox
-{
-	idc = -1;
-	type = 7;
-	style = 2;
-	x = "LINE_X(XVAL)";
-	y = "LINE_Y";
-	w = "LINE_W(WVAL)";
-	h = 0.029412;
-	colorText[] = {0,0.5,1,1};
-	color[] = {1,1,1,1};
-	colorBackground[] = {0.2,0.2,0.2,1};
-	colorTextSelect[] = {0, 0.8, 0,0.8};
-	colorSelectedBg[] = {0.1,0.1,0.1,0.6};
-	colorSelect[] = {0.7,0.7,0.7,0.5};
-	colorTextDisable[] = {0,0.5,1,1};
-	colorDisable[] = {0, 0.8, 0,0.8};
-	font = "PuristaMedium";
-	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-	rows = 1;
-	columns = 1;
-};
-
-class HALV_RscStructuredText
-{
+};	
+	
+class HALV_RscStructuredText {
 	access = 0;
 	type = 13;
 	idc = -1;
 	style = 0;
-	colorText[] = {1,1,1,1};
-	colorBackground[] = {.2,.2,.2,.6};
+	colorText[] = {0.34,0.98,0.34,1};
+	colorBackground[] = {0,0,0,1};
 	class Attributes
 	{
-		font = "PuristaMedium";
-		color = "#ffffff";
+		font = "PuristaSemibold";
+		color = "#58FA58";
 		align = "center";
 		shadow = 1;
 	};
@@ -529,8 +467,7 @@ class HALV_RscStructuredText
 	shadow = 1;
 };
 
-class Halv_spawn_dialog
-{
+class Halv_spawn_dialog {
 	idd=7777;
 	moveingenabled=false;
 	class controls
@@ -603,14 +540,6 @@ class Halv_spawn_dialog
 			onLBSelChanged = "if(HALV_SELECTSPAWN)then{_this call Halv_moveMap}; false";
 			onLBDblClick = "if(HALV_SELECTSPAWN)then{_this call Halv_spawn_player}else{_this call HALV_player_removelisteditem;}; false";
 		};
-		class HALV_spawn_haloframe: HALV_RscFrame
-		{
-			idc = -1;
-			x = 0.195876 * safezoneW + safezoneX;
-			y = 0.137091 * safezoneH + safezoneY;
-			w = 0.0773196 * safezoneW;
-			h = 0.043989 * safezoneH;
-		};
 		class HALV_spawn_butframe: HALV_RscFrame
 		{
 			idc = -1;
@@ -618,34 +547,6 @@ class Halv_spawn_dialog
 			y = 0.137091 * safezoneH + safezoneY;
 			w = 0.0824742 * safezoneW;
 			h = 0.043989 * safezoneH;
-		};
-		class HALV_spawn_butselectspawn: HALV_RscCheckbox
-		{
-			idc = 7781;
-			x = 0.273196 * safezoneW + safezoneX;
-			y = 0.137091 * safezoneH + safezoneY;
-			w = 0.0824742 * safezoneW;
-			h = 0.043989 * safezoneH;
-//\A3\Air_F_Beta\Parachute_01\Data\UI\Portrait_Parachute_01_CA.paa
-			strings[] = {"$STR_HALV_HALO"};
-//\a3\soft_f_beta\Truck_01\Data\UI\Truck_01_covered_CA.paa
-			checked_strings[] = {"$STR_HALV_GROUND"};
-			onCheckBoxesSelChanged = "if(_this select 2 == 0)then{HALV_HALO = true;systemChat localize """";}else{HALV_HALO = false;systemChat localize """";};false";
-			//tooltip = "$STR_HALV_PRESSSELECT_HALO_OR_GROUND";
-			colorTextSelect[] = {0.6,0.298,0,1};
-		};//102,51,0 - 0.4,0.2,0 //153,76,0 - 0.6,0.298,0
-		class HALV_spawn_halocheck: HALV_RscCheckbox
-		{
-			idc = 7780;
-			x = 0.195876 * safezoneW + safezoneX;
-			y = 0.137091 * safezoneH + safezoneY;
-			w = 0.0773196 * safezoneW;
-			h = 0.043989 * safezoneH;
-			strings[] = {"$STR_HALV_SELECT_GEAR"};
-			checked_strings[] = {"$STR_HALV_SELECT_SPAWN"};
-			onCheckBoxesSelChanged = "_this call HALV_switch_spawngear;false";
-			colorText[] = {0.8,0,0,0.8};
-			tooltip = "$STR_HALV_SELECT_GEAR_OR_SPAWN";
 		};
 		class HALV_spawn_text: HALV_RscStructuredText
 		{
@@ -655,17 +556,6 @@ class Halv_spawn_dialog
 			y = 0.840914 * safezoneH + safezoneY;
 			w = 0.159794 * safezoneW;
 			h = 0.0219945 * safezoneH;
-		};
-
-		class HALV_gear_list: HALV_CT_TREE
-		{
-			idc = 7779;
-			x = 0.35567 * safezoneW + safezoneX;
-			y = 0.137091 * safezoneH + safezoneY;
-			w = 0.438144 * safezoneW;
-			h = 0.725818 * safezoneH;
-			onTreeDblClick = "_this call Halv_ontreedoubleclick; false";
-			onTreeSelChanged = "_this call Halv_ontreeselected; false";
 		};
 	};
 };

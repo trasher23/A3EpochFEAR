@@ -65,7 +65,7 @@ _allCitysDync = [];
 {
     _cityPos = getArray(_x >> "position");
     _range = getNumber(_x >> "radiusA") * 1.3;
-    _nearBy = count(_cityPos nearEntities[["LandVehicle", "Ship", "Air", "Tank"], _range]);
+    _nearBy = count(_cityPos nearEntities[["LandVehicle","Ship","Air","Tank"],_range]);
     _find = _allowedTypes find (getText(_x >> "type"));
     if (_find > -1) then{
         _limit = _spawnPositionSize select _find select 1;
@@ -73,16 +73,16 @@ _allCitysDync = [];
           _allCitysDync pushBack _x;
         };
     };
-} forEach _allCitys;
+}forEach _allCitys;
 
 _getRandomPos = false;
 _numberOfWrecks = 50;
-for "_i" from 1 to _numberOfWrecks do {
+for "_i" from 1 to _numberOfWrecks do{
 	
 	_direction = random 360;
 	_position = [0,0,0];
 
-	if (_allCitysDync isEqualTo []) then {
+	if (_allCitysDync isEqualTo []) then{
 		_position = [MapCentre, 0, MapRadius, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
 	} else {
 		_selectedCity = _allCitysDync deleteAt (floor random(count _allCitysDync));
