@@ -12,7 +12,7 @@ Epoch 0.3.3.1: http://epochmod.com/
 Esseker 0.7.0.5 http://a3esseker.info/
 <br/>
 <br/>
-A3AI 0.9.3.2: https://github.com/dayzai/A3EAI
+A3AI 1.0.0b: https://github.com/dayzai/A3EAI
 <br/>
 VEMF 0.0722.8: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
