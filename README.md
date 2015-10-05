@@ -5,7 +5,7 @@ Esseker has been quarantined.  Remnants of the CDC are deploying mini-nukes to s
 
 A mish-mash of:
 <br/>
-Arma 3 1.50: http://arma3.com/
+Arma 3 1.52: http://arma3.com/
 <br/>
 Epoch 0.3.3.1: http://epochmod.com/
 <br/>
