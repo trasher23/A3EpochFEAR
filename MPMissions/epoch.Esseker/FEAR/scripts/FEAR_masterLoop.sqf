@@ -109,7 +109,7 @@ _FEAR_masterLoop = {
 			
 			_pos = call urbanLootBubble;
 			If !(isNil "_pos") then {
-				// 33% chance of potential barrel spawn
+				// 33% chance
 				if (33 > random 100) then {
 					// Spawn exploding barrel at position
 					[_pos] spawn FEARspawnExplodingBarrel;
