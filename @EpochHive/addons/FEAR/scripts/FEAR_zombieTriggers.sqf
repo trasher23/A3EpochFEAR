@@ -69,7 +69,7 @@ _fnc_createTriggers = {
 	
 	// Assign trigger conditions
 	_trig_cond = "{isPlayer _x} count thisList > 0"; // Trigger if any player is in range
-	_trig_act_stmnt = format["[[%1,%2]] execVM ""%3\scripts\FEAR_spawnZombies.sqf""",_zombiePos,_zombieHordeSize,FEAR_directory];
+	_trig_act_stmnt = format["[%1,%2] execVM ""%3\scripts\FEAR_spawnZombies.sqf""",_zombiePos,_zombieHordeSize,FEAR_directory];
 	_trig_deact_stmnt = format["deleteVehicle %1",_trigName]; // Delete trigger once activated
 	
 	_this setTriggerStatements[_trig_cond,_trig_act_stmnt,_trig_deact_stmnt];

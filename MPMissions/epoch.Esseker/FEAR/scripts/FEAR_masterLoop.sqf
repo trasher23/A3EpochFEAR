@@ -125,7 +125,8 @@ _FEAR_masterLoop = {
 
 			_pos = [getPos player,[25,100],random 360] call SHK_pos;
 			// If pos and player not in vehicle
-			If !(isNil "_pos" && (vehicle player == player)) then {
+			If (!(isNil "_pos") && (vehicle player == player)) then {
+				// 33% chance
 				if (33 > random 100) then {
 					// Spawn zombies!
 					_zombieCount = 1 + random 4;
@@ -140,6 +141,6 @@ _FEAR_masterLoop = {
 };
 
 // Debug
-//[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
+[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
 
 [] spawn _FEAR_masterLoop;

@@ -19,8 +19,8 @@ class osefStatusBar {
 			w = 1.25;
 			h = 0.04;
 			shadow = 1;
-			colorBackground[] = { 1, 0.3, 0, 0.0 };
-			font = "PuristaSemibold";
+			colorBackground[] = {1,0.3,0,0.0};
+			font = "PuristaMedium";
 			size = 0.03;
 			type = 13;
 			style = 0;
