@@ -54,6 +54,7 @@ urbanLootBubble = {
 		_yPos = (_playerPos select 1) + (_lootDist * cos(_travelDir));
 		_lootLoc = [_xPos, _yPos, 0];
 		
+		// Is listed building nearby?
 		_objects = nearestObjects[_lootLoc, _buildings, 30];
 		if !(_objects isEqualTo[]) then {
 			// Is jammer in range?
@@ -61,19 +62,17 @@ urbanLootBubble = {
 			_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
 			if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 			_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH"], _buildingJammerRange];
-			// If jammer not in range and building in list is near...
+			// If jammer not in range and building in list nearby...
 			if (_jammer isEqualTo[]) then {
 				// Choose random building from list
 				_building = _objects select(floor(random(count _objects)));				
 				_pos = getPosATL _building;
-				// No other players nearby
+				// Check no other players nearby
 				_others = _building nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15];
 				if (_others isEqualTo[]) then {
 					
 					// random position from original building _pos, this should place it outside
-					[[player,_pos,5,10]] call FEARgetRandomPosition;
-					waitUntil {!(isNil "RandomPosition")};
-					_pos = RandomPosition;
+					_pos = [_pos,[10,20],random 360] call SHK_pos;
 					
 					// If not water...
 					if !(surfaceIsWater _pos) then { 
@@ -89,12 +88,12 @@ urbanLootBubble = {
 };
 
 _FEAR_masterLoop = {
-	private["_FEAR_30","_FEAR_60","_tickTime","_pos"];
+	private["_FEAR_30","_FEAR_60","_tickTime","_pos","_zombieCount"];
 	
 	["masterloop initialised"] call FEARserverLog;
 	
 	_FEAR_30 = diag_tickTime;
-	_FEAR_60 = _FEAR_30; // Get current time from already assigned var
+	_FEAR_60 = diag_tickTime;
 	_pos = nil;
 	
 	FEAR_lastPlayerPos = getPosATL vehicle player;
@@ -105,27 +104,35 @@ _FEAR_masterLoop = {
 		
 		// Every 30 seconds
 		if ((_tickTime - _FEAR_30) > 30) then {
-
+			
 			_FEAR_30 = _tickTime;
-
+			
 			_pos = call urbanLootBubble;
 			If !(isNil "_pos") then {
 				// 33% chance of potential barrel spawn
 				if (33 > random 100) then {
 					// Spawn exploding barrel at position
 					[_pos] spawn FEARspawnExplodingBarrel;
+					_pos = nil;
 				};
-				
-				// Spawn zombie trigger
-				//[_pos] spawn FEARspawnZombies;
 			};
 		};
 		
 		// Every 60 seconds
 		if ((_tickTime - _FEAR_60) > 60) then {
-
-			_FEAR_60 = _tickTime;
 			
+			_FEAR_60 = _tickTime;
+
+			_pos = [getPos player,[25,100],random 360] call SHK_pos;
+			// If pos and player not in vehicle
+			If !(isNil "_pos" && (vehicle player == player)) then {
+				if (33 > random 100) then {
+					// Spawn zombies!
+					_zombieCount = 1 + random 4;
+					[[_pos,_zombieCount]] spawn FEARspawnZombies;
+					_pos = nil;
+				};
+			};
 		};
 		
 		uiSleep 0.1;

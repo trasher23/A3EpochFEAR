@@ -47,15 +47,10 @@ if (!isDedicated && hasInterface) then {
 		publicVariableServer "SpawnZombies";
 	};
 	
-	// Get random position around initial position with a determined range
-	FEARgetRandomPosition = {
-		GetRandomPosition = _this select 0;
-		publicVariableServer "GetRandomPosition";
-	};
-	
 	/* Load functions
 	-----------------------------------------------------------
 	*/
+	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
 	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nukeClientFunctions.sqf";
 	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
 	
@@ -67,6 +62,8 @@ if (!isDedicated && hasInterface) then {
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";		// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
 	[] execVM "paintshop\paintshop.sqf";				// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
+	
+	(vehicle player) switchCamera "EXTERNAL"; 			// Start in 3rd person view
 };
 
 /*

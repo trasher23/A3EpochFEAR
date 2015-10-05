@@ -50,7 +50,7 @@ _explodingBarrel = {
 			(getPosASL _b) distance (_b getVariable "#PosASL") > 0.1
 		) then {_b call Barrel_BOOM};
 	}];
-	_b addEventHandler["Killed", {_this select 0 call Barrel_BOOM}];
+	_b addEventHandler["Killed", {[_this select 0] call Barrel_BOOM}];
 	_b allowDamage true;
 };
 

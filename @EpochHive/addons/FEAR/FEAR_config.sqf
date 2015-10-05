@@ -1,14 +1,15 @@
 /*
   FEAR Configuration file
 */
+private "_zombieLogic";
 
 diag_log "[FEAR] reading FEAR configuration file";
 
 /* Assign map centre and radius to global for use in scripts
 -------------------------------------------------------------
 */
-MapCentre = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"); // [6206.94,5920.05,0]; //Center of esseker
-MapRadius = 12000; // Esseker radius
+MapCentre = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+MapRadius = 10000;
 
 /* Nuke settings
 --------------------------------------------------
@@ -27,5 +28,21 @@ GroundZero = (NukeRadius / 2);
 */
 EqTimerMin = 5;
 EqTimerMax = 30;
+
+/* Zombie settings
+--------------------------------------------------
+*/
+ZombieGroup = createGroup resistance;
+_zombieLogic = ZombieGroup createUnit["LOGIC",[0,0,0],[],0,"NONE"];
+_zombieLogic = ZombieGroup createUnit["Ryanzombieslogiceasy",[0,0,0],[],0,"NONE"]; // Zombie setting easy
+_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow25",[0,0,0],[],0,"NONE"]; // Zombie throw cars 25 meters
+_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrowtank25",[0,0,0],[],0,"NONE"]; // Zombie throw tanks 25 meters
+_zombieLogic = ZombieGroup createUnit["ryanzombiesjump",[0,0,0],[],0,"NONE"]; // Zombie jumping
+_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicroam",[0,0,0],[],0,"NONE"]; // Zombie roam
+//_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicdelete",[0,0,0],[],0,"NONE"]; // Zombie delete dead bodies
+//_zombieLogic = ZombieGroup createUnit["Ryanzombieslimit",[0,0,0],[],0,"NONE"]; // Limit zombies
+
+ZombieMax = 50; // Max number of zombies on map
+ZombieTotal = 0; // Zombie counter
 
 diag_log "[FEAR] configuration file loaded";

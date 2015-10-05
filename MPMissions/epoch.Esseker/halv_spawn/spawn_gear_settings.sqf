@@ -42,11 +42,14 @@ _geararr = [
 	[
 		[
 			// Magazines
+			""
+			/*
 			"Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue","EnergyPack","SmokeShellOrange","SmokeShellBlue","SmokeShellPurple","SmokeShellYellow",
 			"SmokeShellGreen","SmokeShellRed","SmokeShell","lighter_epoch","ItemSodaRbull","meatballs_epoch","WhiskeyNoodle","ItemSodaOrangeSherbet","sweetcorn_epoch",
 			"scam_epoch","HeatPack","ColdPack","SheepCarcass_EPOCH","GoatCarcass_EPOCH","Pelt_EPOCH","ChickenCarcass_EPOCH","RabbitCarcass_EPOCH","Venom_EPOCH",
 			"SnakeCarcass_EPOCH","ItemKiloHemp","ItemScraps","ItemCoolerE","ItemSodaPurple","ItemSodaMocha","ItemSodaBurst","FoodWalkNSons","honey_epoch",
 			"emptyjar_epoch","FoodBioMeat","sardines_epoch","FoodSnooter","Towelette"
+			*/
 		],
 		// Magazines number
 		4

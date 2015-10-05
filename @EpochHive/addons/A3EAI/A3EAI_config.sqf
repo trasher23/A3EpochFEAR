@@ -148,7 +148,7 @@ A3EAI_spawnChance_wilderness = 0.50; //0.50
 A3EAI_tempBlacklistTime = 1200;
 
 //If enabled, AI group will attempt to track down player responsible for killing a group member. (Default: true)
-A3EAI_findKiller = true;	
+A3EAI_findKiller = false;	
 
 //If normal probability check for spawning NVGs fails, then give AI temporary NVGs during night hours. Temporary NVGs are unlootable and will be removed at death (Default: false).									
 A3EAI_tempNVGs = false;	

@@ -1,29 +1,45 @@
 /*
 	spawndialog
 	by Halv
-	
 	Copyright (C) 2015  Halvhjearne > README.md
 */
-
 #include "spawn_gear_settings.sqf";
 _scriptpath = _this select 0;
 _rspawnw = getMarkerPos "respawn_west";
 HALV_Center = getMarkerPos "center";
-// Makes the script start when player is ingame
+
+// Wait until player ingame
 waitUntil{!isNil "HALV_senddeftele"};
 waitUntil{!isNil "Epoch_my_GroupUID"};
 
-//exit if player is not near a spawn
-if(player distance _rspawnw > 35)exitWith{Halv_moveMap = nil;Halv_fill_spawn = nil;Halv_near_cityname = nil;Halv_spawn_player = nil;Halv_spawns = nil;HALV_Center = nil;HALV_senddeftele = nil;HALV_SELECTSPAWN = nil;HALV_fill_gear = nil;HALV_fnc_returnnameandpic = nil;HALV_fill_gear = nil;Halv_ontreedoubleclick = nil;Halv_ontreeselected = nil;HALV_GEAR_TOADD = nil;HALV_player_removelisteditem = nil;HALV_addiweaponwithammo = nil;HALV_playeraddcolours = nil;diag_log "Spawn Menu Aborted...";};
+// Exit if player not near spawn
+if(player distance _rspawnw > 35)exitWith{
+	call Halv_clear_vars;
+	diag_log "Spawn Menu Aborted...";
+};
+
 diag_log format["[halv_spawn] waiting for new teleports to be build in %1 ...",worldName];
-{_x addAction ["<img size='1.5'image='\a3\Ui_f\data\IGUI\Cfg\Actions\ico_cpt_start_on_ca.paa'/> <t color='#0096ff'>Select</t><t > </t><t color='#00CC00'>Spawn</t>",(_scriptpath+"opendialog.sqf"),_x, -9, true, true, "", "player distance _target < 5"];}forEach (HALV_senddeftele select 0);
+
+{
+	_x addAction [
+		"<img size='1.5'image='\a3\Ui_f\data\IGUI\Cfg\Actions\ico_cpt_start_on_ca.paa'/> <t color='#0096ff'>Select</t><t > </t><t color='#00CC00'>Spawn</t>",
+		(_scriptpath+"opendialog.sqf"),
+		_x,
+		-9,
+		true,
+		true,
+		"",
+		"player distance _target < 5"
+	];
+}forEach (HALV_senddeftele select 0);
+
 diag_log format["[halv_spawn] addAction added to %1",HALV_senddeftele];
 waitUntil {!dialog};
 
 _diagTiackTime = diag_tickTime;
 diag_log format["Loading Spawn Menu ... %1",_diagTiackTime];
 
-_pregearcheck = profileNamespace getVariable ["HALVSPAWNLASTGEAR",[[],[],[],[],[],[],[],[],[],[]]];
+_pregearcheck = profileNamespace getVariable["HALVSPAWNLASTGEAR",[[],[],[],[],[],[],[],[],[],[]]];
 if !(_pregearcheck isEqualTo [[],[],[],[],[],[],[],[],[],[]])then{
 	_gchanged = false;
 	_PID = getPlayerUID player;
@@ -124,7 +140,6 @@ Halv_spawn_player = {
 	_index = _this select 1;
 	_value = _lb lbValue _index;
 	if(_value isEqualTo -1)exitWith{};
-	if(_value isEqualTo -2)exitWith{systemChat (localize "STR_HALV_CANTSPAWNNEARBODY")};
 	if(_value isEqualTo -3)then{
 		_spawn = (Halv_spawns call BIS_fnc_selectRandom) select 0;
 		_val= 0 ;
@@ -278,7 +293,7 @@ Halv_spawn_player = {
 		(_addedgear select 1) pushBack ((HALV_GEAR_TOADD select 1)select 0);
 	};
 	diag_log str['_addedgear:',_addedgear];
-	player addWeapon "ItemMap";
+	player addWeapon "ItemMap"; // Add map as default item
 
 	_spawn set [2,0];
 	_position = [0,0,0];
@@ -303,8 +318,11 @@ Halv_spawn_player = {
 	
 	[] execVM "halv_spawn\credits.sqf";
 	
-	Halv_moveMap = nil;Halv_fill_spawn = nil;Halv_near_cityname = nil;Halv_spawn_player = nil;Halv_spawns = nil;HALV_Center = nil;HALV_senddeftele = nil;HALV_SELECTSPAWN = nil;HALV_fill_gear = nil;
-	HALV_fill_gear = nil;Halv_ontreedoubleclick = nil;Halv_ontreeselected = nil;HALV_GEAR_TOADD = nil;HALV_player_removelisteditem = nil;HALV_addiweaponwithammo = nil;
+	call Halv_clear_vars;
+};
+
+Halv_clear_vars = {
+	Halv_moveMap = nil;Halv_fill_spawn = nil;Halv_near_cityname = nil;Halv_spawn_player = nil;Halv_spawns = nil;HALV_Center = nil;HALV_senddeftele = nil;HALV_SELECTSPAWN = nil;HALV_fill_gear = nil;HALV_fill_gear = nil;HALV_GEAR_TOADD = nil;HALV_player_removelisteditem = nil;HALV_addiweaponwithammo = nil;
 };
 
 Halv_fill_spawn = {
@@ -339,9 +357,6 @@ Halv_fill_spawn = {
 		_ctrl lbSetTooltip [_index, localize "STR_HALV_DOUBLECLICKTOSPAWN"];
 
 		switch (_lvl) do{
-			case 1:{};
-			case 2:{};
-			case 5:{};
 			case 6:{
 				_ctrl lbSetColor [_index,[0,0.5,1,.7]];
 				_ctrl lbSetPicture [_index,"\A3\ui_f\data\gui\Rsc\RscDisplayMultiplayer\sessions_star_ca.paa"];

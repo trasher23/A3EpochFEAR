@@ -4,12 +4,15 @@
 
 private["_airWrecks","_landWrecks","_spawnPositionSize","_allowedTypes","_allCitys","_allCitysDync","_cityPos","_range","_nearBy","_find","_limit","_numberOfWrecks","_direction","_position","_selectedCity","_roads","_road","_collide","_wreck","_wreckObj"];
 
-_landWrecks = [
+_airWrecks = [
 	"Land_Wreck_Heli_Attack_01_F",
 	"Land_Wreck_Plane_Transport_01_F",
     "C130J_wreck_EP1",
 	"Land_Wreck_Heli_Attack_02_F",
-    "Mi8Wreck",
+    "Mi8Wreck"
+];
+
+_landWrecks = [
 	"Land_Wreck_HMMWV_F",
     "BMP2Wreck",
     "Land_Wreck_BMP2_F",
@@ -83,7 +86,7 @@ for "_i" from 1 to _numberOfWrecks do{
 	_position = [0,0,0];
 
 	if (_allCitysDync isEqualTo []) then{
-		_position = [MapCentre, 0, MapRadius, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
+		_position = [MapCentre,0,MapRadius,10,0,1000,0] call BIS_fnc_findSafePos;
 	} else {
 		_selectedCity = _allCitysDync deleteAt (floor random(count _allCitysDync));
 		_cityPos = getArray(_selectedCity >> "position");
@@ -108,15 +111,22 @@ for "_i" from 1 to _numberOfWrecks do{
 			};
 		};
 		
-		_wreck = _landWrecks call BIS_fnc_selectRandom;
-		_wreckObj = createVehicle [_wreck, _position, [], 0, _collide];
-		
-		// Select random direction for flip
-		// 0 = no flip
-		// 90 = side
-		// 180 = roof
-		_direction = [0,90,180] call BIS_fnc_selectRandom;
-		[_wreckObj,0,_direction] call BIS_fnc_setPitchBank;
+		// 77% chance of land wreck
+		if (77 > random 100) then{
+			_wreck = _landWrecks call BIS_fnc_selectRandom;
+			_wreckObj = createVehicle [_wreck,_position,[],0,_collide];
+			
+			// Select random direction for flip
+			// 0 = no flip
+			// 90 = side
+			// 180 = roof
+			_direction = [0,90,180] call BIS_fnc_selectRandom;
+			[_wreckObj,0,_direction] call BIS_fnc_setPitchBank;
+		}else{
+			_wreck = _airWrecks call BIS_fnc_selectRandom;
+			_wreckObj = createVehicle [_wreck,_position,[],0,_collide];
+			// Dont flip airwrecks, they look stupid!
+		};
 		
 		/*
 		http://killzonekid.com/arma-scripting-tutorials-how-to-make-a-wreck/

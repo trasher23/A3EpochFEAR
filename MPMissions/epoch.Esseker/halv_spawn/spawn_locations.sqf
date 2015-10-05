@@ -1,7 +1,6 @@
 /*
 	spawn dialog location settings
 	By Halv
-	
 	Copyright (C) 2015  Halvhjearne > README.md
 */
 Halv_spawns = switch(toLower worldName)do{

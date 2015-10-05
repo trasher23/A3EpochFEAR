@@ -49,3 +49,13 @@ class CfgAmmo
 		};
 	};
 };
+
+class CfgEnvSounds
+{
+	class Meadows
+	{
+		name = "NAM meadows";
+		sound[] = {"",0,1};
+		volume = "meadow*(1-rain)*(1-night)";
+	};
+};

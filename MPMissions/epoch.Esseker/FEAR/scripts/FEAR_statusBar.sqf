@@ -12,7 +12,7 @@ disableSerialization;
 _rscLayer = "osefStatusBar" call BIS_fnc_rscLayer;
 _rscLayer cutRsc["osefStatusBar","PLAIN"];
 [] spawn {
-	private["_damage"];
+	private "_damage";
 	
 	while {true} do
 	{

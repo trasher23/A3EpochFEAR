@@ -52,13 +52,14 @@ _fnc_getRandomBuildingPos = {
 };
 
 _fnc_createTriggers = {
-	private["_zombiePos","_triggerIndex","_trigName","_trig_cond","_trig_act_stmnt","_trig_deact_stmnt"];
+	private["_zombiePos","_zombieHordeSize","_triggerIndex","_trigName","_trig_cond","_trig_act_stmnt","_trig_deact_stmnt"];
 	
 	_triggerIndex = _this select 0;
 	
 	// Debug position - test in Zupres supermarket
 	//_zombiePos = [2673, 4471, 0];
 	_zombiePos = call _fnc_getRandomBuildingPos;
+	_zombieHordeSize = 1 + random 20;
 	
 	// Create trigger to spawn patrol
 	_trigName = format["herdTrig%1",_triggerIndex];
@@ -68,7 +69,7 @@ _fnc_createTriggers = {
 	
 	// Assign trigger conditions
 	_trig_cond = "{isPlayer _x} count thisList > 0"; // Trigger if any player is in range
-	_trig_act_stmnt = format["[%1] execVM ""%2\scripts\FEAR_spawnZombies.sqf""",_zombiePos,FEAR_directory];
+	_trig_act_stmnt = format["[[%1,%2]] execVM ""%3\scripts\FEAR_spawnZombies.sqf""",_zombiePos,_zombieHordeSize,FEAR_directory];
 	_trig_deact_stmnt = format["deleteVehicle %1",_trigName]; // Delete trigger once activated
 	
 	_this setTriggerStatements[_trig_cond,_trig_act_stmnt,_trig_deact_stmnt];
@@ -79,7 +80,7 @@ _fnc_createTriggers = {
 if (isDedicated) then {
 	private "_numberOfTriggers";
 	
-	_numberOfTriggers = 20; // total triggers to create on map
+	_numberOfTriggers = 20;
 	
 	for "_i" from 1 to _numberOfTriggers do{
 		[_i] call _fnc_createTriggers;
