@@ -37,6 +37,6 @@ _restrictedvehicles = [
 		["B_Heli_Light_01_armed_F",["missiles_DAR"]]
 ];
 //this is to set vehicle ammo amount, range from 0 to 1 - 0 is empty, 1 is full ammo
-_setVehicleAmmo = 0;
+_setVehicleAmmo = 1;
 //this is how vehicles spawn, 0 = player gets menu to decide, 1 = only allow saved vehicles, 2 = only allow rentals
 _vehiclespawnmode = 0;

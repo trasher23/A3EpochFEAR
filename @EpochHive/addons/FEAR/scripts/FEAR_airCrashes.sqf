@@ -42,7 +42,7 @@ _spawnCrashes = {
 			"Mi8Wreck"
 		];
 		
-		_element = _helicopters call BIS_fnc_SelectRandom;
+		_element = _helicopters select(floor(random(count _helicopters)));
 		_vehHeli = _element createVehicle [0,0,0];
 		_burnHelicopter = "test_EmptyObjectForFireBig" createVehicle (position _vehHeli);
 		_burnHelicopter attachto[_vehHeli, [0,0,-1]];  
@@ -53,7 +53,7 @@ _spawnCrashes = {
 			_crate0 = createVehicle["weaponHolderSimulated",_vehHeli modelToWorld[(random 10) - 3,(random 10) - 4, 0],[],0,"CAN_COLLIDE"];
 			_crate1 = createVehicle["weaponHolderSimulated",_vehHeli modelToWorld[(random 10) - 3,(random 10) - 4, 0],[],0,"CAN_COLLIDE"];
 			
-			_item = _loot call BIS_fnc_selectRandom;
+			_item = _loot select(floor(random(count _loot)));
 			switch (true) do
 			{
 				

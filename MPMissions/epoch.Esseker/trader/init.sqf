@@ -28,7 +28,7 @@ _dist2roadMax = 350;
 //_tradercount = round(random 4)+6;
 _tradercount = 1;
 //min distance from other traders in meters, dont go to higher than _spawnarea/(_tradercount+1) or script will just revert back to this amount to avoid problems 
-_mindist = 4000;
+_mindist = 2000;
 //marker text for traders. "" for no name(only the dot)
 _markertext = "";  
 //texture on the flag (has to be 200x200), "" to disable
@@ -39,38 +39,6 @@ _sigtexture = "trader\trader.jpg";
 //if _staticCoords are set here, there will be a trader at that exact position and direction,
 //_blacklistedAreas is where random blackmarkets cannot spawn
 switch(toLower worldName)do{
-	case "altis":{
-		_staticCoords = [
-/*
-			[traderposition,direction,createmarker,props[classname,position,direction]]
-			//"full" array
-			[[0,0,0],0,true,[["classname1",[1,1,1],1],["classname2",[2,2,2],2]]]
-			//minimal array
-			[[0,0,0],0]
-*/
-			[[18459.1,14259.2,0],340.199,false], //trader by mine
-			[[13319,14523.9,0],143.067,false], //trader by stavros
-			[[6193.02,16828.7,0],1.52142,false] //trader by kore
-		];
-		_blacklistedAreas = [
-							/*[position,area]*/
-			[[18451.9, 14278.1, 0],500],
-			[[13326.5, 14515.2, 0],500],
-			[[6192.46, 16834, 0],500]
-		];
-		//distance to search for trader positions
-		_spawnarea = 12500;
-	};
-	case "stratis":{_staticCoords = [];_blacklistedAreas = [[[4089.82, 4597.71, 0],500]];_spawnarea = 6000;};
-	case "bornholm":{
-		_staticCoords = [];
-		_blacklistedAreas = [
-			[[14121.2,11331.5,0],500],
-			[[1322.18,8733.92,0],500],
-			[[15639.3,191.995,0],500]
-		];
-		_spawnarea = 12500;
-	};
 	case "chernarus":{
 		_staticCoords = [
 			[[4584.02,4521.47,0],180.729,false],//trader by Kozlovka
@@ -84,7 +52,7 @@ switch(toLower worldName)do{
 		];
 		_spawnarea = 7000;
 	};
-	default{_staticCoords = [];_blacklistedAreas = [[[0,0,0],0]];_spawnarea = 6000;};
+	default{_staticCoords = [];_blacklistedAreas = [[[0,0,0],0]];_spawnarea = 5700;};
 };
 
 //============================== DONT TOUCH ANYTHING BELOW THIS POINT ==============================\\

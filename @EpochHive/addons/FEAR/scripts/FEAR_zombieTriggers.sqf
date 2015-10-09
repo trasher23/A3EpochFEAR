@@ -47,7 +47,7 @@ _fnc_getRandomBuildingPos = {
     _triggerLocations = nearestObjects[MapCentre,_buildings,MapRadius];
 	
 	// Select a random location from array
-	_triggerLocation = getPosATL(_triggerLocations call BIS_fnc_selectRandom);
+	_triggerLocation = getPosATL(_triggerLocations select(floor(random(count _triggerLocations))));
 	_triggerLocation
 };
 

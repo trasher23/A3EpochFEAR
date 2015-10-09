@@ -36,14 +36,11 @@ diag_log format["[FEAR] spawning wolfpack at %1",_spawnPos];
 
 for "_i" from 1 to _packSize do {			
 	_wolfPos = [_spawnPos,[5,10],random 360] call A3EAI_SHK_pos; // Random spawn position for each wolf
-	_wolf = createAgent["Alsatian_Random_EPOCH", _wolfPos, [], 5, "NONE"];
-	_wolf setVariable["BIS_fnc_animalBehaviour_disable", true];
-	
-	EPOCH_TEMPOBJ_PVS = _wolf;
-	publicVariableServer "EPOCH_TEMPOBJ_PVS";
+	_wolf = createAgent["Alsatian_Random_EPOCH",_wolfPos,[],5,"NONE"];
+	_wolf setVariable["BIS_fnc_animalBehaviour_disable",true];
 	
 	_target = [_wolf] call _getTarget;
-	_id = [_wolf, _target] execFSM format["%1\scripts\ai_dog.fsm",FEAR_directory];
+	_id = [_wolf,_target] execFSM format["%1\scripts\ai_dog.fsm",FEAR_directory];
 
 	diag_log format["[FEAR] spawned wolf at %1", _wolfPos];
 	diag_log format["[FEAR] target: %1", _target];

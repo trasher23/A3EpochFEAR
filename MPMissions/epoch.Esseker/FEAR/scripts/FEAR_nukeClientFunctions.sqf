@@ -13,7 +13,7 @@ FEAR_fnc_nukeSiren = {
 	
 	// 8 iterations is roughly 3 minutes
 	for "_x" from 1 to 8 do {
-		playSound3D [_nukeSiren, player, false, _nukePos, 7];
+		playSound3D [_nukeSiren, player, false, _nukePos, 4];
 		uisleep 23; // Length of siren sample to loop
 	};
 	
@@ -26,7 +26,7 @@ FEAR_fnc_nukeGeiger = {
 	_nukeGeiger = MISSION_directory + "FEAR\fx\" + "geiger.ogg";
 	_nukePos = _this select 0;
 	
-	playSound3D [_nukeGeiger, player, false, _nukePos, 5];
+	playSound3D [_nukeGeiger, player, false, _nukePos, 4];
 	
 	NUKEGeiger = nil;
 };

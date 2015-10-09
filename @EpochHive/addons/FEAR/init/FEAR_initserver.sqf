@@ -29,6 +29,7 @@ call compileFinal preprocessFileLineNumbers format["%1\FEAR_config.sqf",FEAR_dir
 FEARGetPlayers = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_getPlayers.sqf",FEAR_directory];
 FEARBroadcast = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_broadcast.sqf",FEAR_directory];
 FEARZombieKilled = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_zombieKilled.sqf",FEAR_directory];
+FEARQuarantineZone = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_quarantineZone.sqf",FEAR_directory];
 
 /* Client to Server event handlers
 -----------------------------------------------
@@ -62,5 +63,6 @@ FEARspawnZombies = compileFinal preprocessFileLineNumbers format["%1\scripts\FEA
 [] execVM format["%1\scripts\FEAR_earthquakeTimer.sqf",FEAR_directory]; // Earthquakes
 [] execVM format["%1\scripts\FEAR_zombieTriggers.sqf",FEAR_directory]; // Zombie & Demon spawn triggers
 [] execVM format["%1\scripts\FEAR_spawnWrecks.sqf",FEAR_directory]; // Wrecks
+[] execVM format["%1\map\FEAR_mapAddons.sqf",FEAR_directory]; // Map addons
 
 diag_log format["[FEAR] FEAR loading completed in %1 seconds",(diag_tickTime - _startTime)];

@@ -50,12 +50,41 @@ class CfgAmmo
 	};
 };
 
-class CfgEnvSounds
+class CfgEnvSounds;
+class EnvSounds: CfgEnvSounds
 {
-	class Meadows
+	class Meadows // default - no trees, no sea, no hills ...
 	{
-		name = "NAM meadows";
-		sound[] = {"",0,1};
-		volume = "meadow*(1-rain)*(1-night)";
+		name = "Meadows";
+		sound[]={"",0,1};
+		soundNight[]={"",0,1};
+	};
+	class MeadowsNight // default - no trees, no sea, no hills ...
+	{
+		name = "Meadows Night";
+		sound[]={"",0,1};
+	};
+	class Trees // trees
+	{
+		name = "Trees";
+		sound[]={"",0,1};
+		soundNight[]={"",0,1};
+	};
+	class TreesNight // trees
+	{
+		name = "Trees Night";
+		sound[]={"",0,1};
+	};
+	class Hills
+	{
+		name = "Hills";
+		sound[] = {"", 0, 1};
+	};
+
+	class HillsNight
+	{
+		name = "HillsNight";
+		sound[] = {"", 0, 1};
+		soundNight[] = {"", 0, 1};
 	};
 };

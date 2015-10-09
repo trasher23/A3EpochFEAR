@@ -9,7 +9,7 @@ diag_log "[FEAR] reading FEAR configuration file";
 -------------------------------------------------------------
 */
 MapCentre = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
-MapRadius = 10000;
+MapRadius = 5700;
 
 /* Nuke settings
 --------------------------------------------------
@@ -39,8 +39,6 @@ _zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow25",[0,0,0],[],0,"NO
 _zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrowtank25",[0,0,0],[],0,"NONE"]; // Zombie throw tanks 25 meters
 _zombieLogic = ZombieGroup createUnit["ryanzombiesjump",[0,0,0],[],0,"NONE"]; // Zombie jumping
 _zombieLogic = ZombieGroup createUnit["Ryanzombieslogicroam",[0,0,0],[],0,"NONE"]; // Zombie roam
-//_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicdelete",[0,0,0],[],0,"NONE"]; // Zombie delete dead bodies
-//_zombieLogic = ZombieGroup createUnit["Ryanzombieslimit",[0,0,0],[],0,"NONE"]; // Limit zombies
 
 ZombieMax = 50; // Max number of zombies on map
 ZombieTotal = 0; // Zombie counter

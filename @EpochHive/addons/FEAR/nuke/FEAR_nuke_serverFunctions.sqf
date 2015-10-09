@@ -2,16 +2,20 @@
 	Purpose: Returns a random city/town as target site for the nuke blast.
 */
 
-if (!isDedicated) exitWith {};
+if(!isDedicated)exitWith{};
 
 FEAR_fnc_nukeTarget = {
-	private ["_towns","_town"];
-
-	// Get town locations
-	_towns = nearestLocations [MapCentre,["nameCity","NameCityCapital"],MapRadius]; // Removed "NameVillage" - only towns and cities get nuked
-
+	private ["_allPlayers","_selectedPlayer","_towns","_town"];
+	// Get players
+	_allPlayers = call FEARGetPlayers;
+	// Select random player
+	_selectedPlayer = _allPlayers select(floor(random(count _allPlayers)));
+	// Get town locations nearest selected player
+	_towns = nearestLocations[getPosATL _selectedPlayer,["NameVillage","nameCity","NameCityCapital"],NukeRadius];
+	// If no town selected, default to random choice
+	if(_towns isEqualTo[])then{_towns = nearestLocations [MapCentre,["NameVillage","nameCity","NameCityCapital"],MapRadius]};
 	// Select a random town from array
-	_town = _towns call BIS_fnc_selectRandom;
+	_town = _towns select(floor(random(count _towns)));
 	_town
 };
 

@@ -124,6 +124,7 @@ A3EAI_getUnitLevel = compileFinal preprocessFileLineNumbers format ["%1\compile\
 A3EAI_getWeapon = compileFinal preprocessFileLineNumbers format ["%1\compile\A3EAI_utilities\A3EAI_getWeapon.sqf",A3EAI_directory];
 A3EAI_hasLOS = compileFinal preprocessFileLineNumbers format ["%1\compile\A3EAI_utilities\A3EAI_hasLOS.sqf",A3EAI_directory];
 A3EAI_initializeTrigger = compileFinal preprocessFileLineNumbers format ["%1\compile\A3EAI_utilities\A3EAI_initializeTrigger.sqf",A3EAI_directory];
+A3EAI_initNoAggroStatus = compileFinal preprocessFileLineNumbers format ["%1\compile\A3EAI_utilities\A3EAI_initNoAggroStatus.sqf",A3EAI_directory];
 A3EAI_initUVGroup = compileFinal preprocessFileLineNumbers format ["%1\compile\A3EAI_utilities\A3EAI_initUVGroup.sqf",A3EAI_directory];
 A3EAI_moveToPosAndDeleteWP = compileFinal preprocessFileLineNumbers format ["%1\compile\A3EAI_utilities\A3EAI_moveToPosAndDeleteWP.sqf",A3EAI_directory];
 A3EAI_moveToPosAndPatrol = compileFinal preprocessFileLineNumbers format ["%1\compile\A3EAI_utilities\A3EAI_moveToPosAndPatrol.sqf",A3EAI_directory];

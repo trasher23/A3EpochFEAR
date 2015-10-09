@@ -113,8 +113,8 @@ for "_i" from 1 to _numberOfWrecks do{
 		
 		// 77% chance of land wreck
 		if (77 > random 100) then{
-			_wreck = _landWrecks call BIS_fnc_selectRandom;
-			_wreckObj = createVehicle [_wreck,_position,[],0,_collide];
+			_wreck = _landWrecks select(floor(random(count _landWrecks)));
+			_wreckObj = createVehicle[_wreck,_position,[],0,_collide];
 			
 			// Select random direction for flip
 			// 0 = no flip
@@ -123,7 +123,7 @@ for "_i" from 1 to _numberOfWrecks do{
 			_direction = [0,90,180] call BIS_fnc_selectRandom;
 			[_wreckObj,0,_direction] call BIS_fnc_setPitchBank;
 		}else{
-			_wreck = _airWrecks call BIS_fnc_selectRandom;
+			_wreck = _airWrecks select(floor(random(count _airWrecks)));
 			_wreckObj = createVehicle [_wreck,_position,[],0,_collide];
 			// Dont flip airwrecks, they look stupid!
 		};

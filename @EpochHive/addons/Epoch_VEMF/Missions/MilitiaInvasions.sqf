@@ -27,12 +27,16 @@ if (VEMF_invasCount < _maxInvasions) then
 	if (typeName _loc isEqualTo "ARRAY") then
 	{
 		_locName = _loc select 0;
+		
+		// Setup quarantine parameter
+		_loc spawn FEARQuarantineZone;
+		
 		if (_locName isEqualTo "") then { _locName = "Area" };
 		["MI", 1, format["Invading %1...", _locName]] call VEMF_fnc_log;
 		VEMF_invasCount = VEMF_invasCount + 1;
 		// Send message to all players
 		//_newMissionMsg = [format["Militia have invaded %1%2 near %3", if (_locName isEqualTo "Area") then {"an " } else {""}, _locName, mapGridPosition (_loc select 1)], ""] call VEMF_fnc_broadCast;
-		_newMissionMsg = [format["The CDC have quarantined %1%2 near %3", if (_locName isEqualTo "Area") then {"an " } else {""}, _locName, mapGridPosition (_loc select 1)], ""] call FEARBroadcast;
+		_newMissionMsg = [format["Remnants of the CDC have quarantined %1%2, near %3", if (_locName isEqualTo "Area") then {"an " } else {""}, _locName, mapGridPosition (_loc select 1)], ""] call FEARBroadcast;
 		if _newMissionMsg then
 		{
 			if (_useMissionMarker isEqualTo 1) then

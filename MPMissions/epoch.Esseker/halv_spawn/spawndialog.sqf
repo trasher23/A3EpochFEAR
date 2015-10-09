@@ -18,8 +18,11 @@ if(player distance _rspawnw > 35)exitWith{
 	diag_log "Spawn Menu Aborted...";
 };
 
+enableEnvironment false;
+
 diag_log format["[halv_spawn] waiting for new teleports to be build in %1 ...",worldName];
 
+// Add action for teleport: open dialog
 {
 	_x addAction [
 		"<img size='1.5'image='\a3\Ui_f\data\IGUI\Cfg\Actions\ico_cpt_start_on_ca.paa'/> <t color='#0096ff'>Select</t><t > </t><t color='#00CC00'>Spawn</t>",
@@ -31,10 +34,10 @@ diag_log format["[halv_spawn] waiting for new teleports to be build in %1 ...",w
 		"",
 		"player distance _target < 5"
 	];
-}forEach (HALV_senddeftele select 0);
+}forEach(HALV_senddeftele select 0);
 
 diag_log format["[halv_spawn] addAction added to %1",HALV_senddeftele];
-waitUntil {!dialog};
+waitUntil{!dialog};
 
 _diagTiackTime = diag_tickTime;
 diag_log format["Loading Spawn Menu ... %1",_diagTiackTime];
@@ -164,51 +167,28 @@ Halv_spawn_player = {
 	diag_log str['HALV_GEAR_TOADD',HALV_GEAR_TOADD];
 	
 	// Add player gear
-	_addedgear = [[],[],[],[],[],[],[],[],[],[]];;
-	if(count (HALV_GEAR_TOADD select 9) < 1)then{
-		_item = (_geararr select 9) call BIS_fnc_selectRandom;
-		player addbackpack _item;
-		(_addedgear select 9) pushBack ['random',_item];
-	}else{
-		player addbackpack ((HALV_GEAR_TOADD select 9)select 0);
-		(_addedgear select 9) pushBack ((HALV_GEAR_TOADD select 9)select 0);
-	};
+	_addedgear = [[],[],[],[],[],[],[],[],[],[]];
+	
+	_item = (_geararr select 9) call BIS_fnc_selectRandom;
+	player addbackpack _item;
+	(_addedgear select 9) pushBack ['random',_item];
 
-	if(count (HALV_GEAR_TOADD select 8) < 1)then{
-		_item = (_geararr select 8) call BIS_fnc_selectRandom;
-		player addgoggles _item;
-		(_addedgear select 8) pushBack ['random',_item];
-	}else{
-		player addgoggles ((HALV_GEAR_TOADD select 8)select 0);
-		(_addedgear select 8) pushBack ((HALV_GEAR_TOADD select 8)select 0);
-	};
+	_item = (_geararr select 8) call BIS_fnc_selectRandom;
+	player addgoggles _item;
+	(_addedgear select 8) pushBack ['random',_item];
+
 	_sel = if((typeOf player) isEqualTo "Epoch_Female_F")then{1}else{0};
-	if(count (HALV_GEAR_TOADD select 7) < 1)then{
-		_item = ((_geararr select 7) select _sel) call BIS_fnc_selectRandom;
-		player forceAddUniform _item;
-		(_addedgear select 7) pushBack ['random',_item];
-	}else{
-		player forceAddUniform ((HALV_GEAR_TOADD select 7)select 0);
-		(_addedgear select 7) pushBack ((HALV_GEAR_TOADD select 7)select 0);
-	};
+	_item = ((_geararr select 7) select _sel) call BIS_fnc_selectRandom;
+	player forceAddUniform _item;
+	(_addedgear select 7) pushBack ['random',_item];
 
-	if(count (HALV_GEAR_TOADD select 6) < 1)then{
-		_item = (_geararr select 6) call BIS_fnc_selectRandom;
-		player addVest _item;
-		(_addedgear select 6) pushBack ['random',_item];
-	}else{
-		player addVest ((HALV_GEAR_TOADD select 6)select 0);
-		(_addedgear select 6) pushBack ((HALV_GEAR_TOADD select 6)select 0);
-	};
+	_item = (_geararr select 6) call BIS_fnc_selectRandom;
+	player addVest _item;
+	(_addedgear select 6) pushBack ['random',_item];
 
-	if(count (HALV_GEAR_TOADD select 5) < 1)then{
-		_item = (_geararr select 5) call BIS_fnc_selectRandom;
-		player addheadgear _item;
-		(_addedgear select 5) pushBack ['random',_item];
-	}else{
-		player addheadgear ((HALV_GEAR_TOADD select 5)select 0);
-		(_addedgear select 5) pushBack ((HALV_GEAR_TOADD select 5)select 0);
-	};
+	_item = (_geararr select 5) call BIS_fnc_selectRandom;
+	player addheadgear _item;
+	(_addedgear select 5) pushBack ['random',_item];
 
 	if(count (HALV_GEAR_TOADD select 4) < (_geararr select 4) select 1)then{
 		_missing = ((_geararr select 4) select 1) - (count (HALV_GEAR_TOADD select 4));
@@ -275,26 +255,20 @@ Halv_spawn_player = {
 		{player addItem _x;(_addedgear select 2) pushBack _x;}forEach (HALV_GEAR_TOADD select 2);
 	};
 
-	if(count (HALV_GEAR_TOADD select 0) < 1)then{
-		_item = ((_geararr select 0) select 0) call BIS_fnc_selectRandom;
-		_item call HALV_addiweaponwithammo;
-		(_addedgear select 0) pushBack ['random',_item];
-	}else{
-		((HALV_GEAR_TOADD select 0)select 0) call HALV_addiweaponwithammo;
-		(_addedgear select 0) pushBack ((HALV_GEAR_TOADD select 0)select 0);
-	};
-
-	if(count (HALV_GEAR_TOADD select 1) < 1)then{
-		_item = ((_geararr select 1) select 0) call BIS_fnc_selectRandom;
-		_item call HALV_addiweaponwithammo;
-		(_addedgear select 1) pushBack ['random',_item];
-	}else{
-		((HALV_GEAR_TOADD select 1)select 0) call HALV_addiweaponwithammo;
-		(_addedgear select 1) pushBack ((HALV_GEAR_TOADD select 1)select 0);
-	};
-	diag_log str['_addedgear:',_addedgear];
+	// Add Weapons
+	_item = ((_geararr select 0) select 0) call BIS_fnc_selectRandom;
+	_item call HALV_addiweaponwithammo;
+	(_addedgear select 0) pushBack ['random',_item];
+	
+	_item = ((_geararr select 1) select 0) call BIS_fnc_selectRandom;
+	_item call HALV_addiweaponwithammo;
+	(_addedgear select 1) pushBack ['random',_item];
+	
 	player addWeapon "ItemMap"; // Add map as default item
-
+	player addPrimaryWeaponItem "acc_flashlight"; // Add flashlight
+	
+	diag_log str['_addedgear:',_addedgear];
+	
 	_spawn set [2,0];
 	_position = [0,0,0];
 	_t = diag_tickTime;

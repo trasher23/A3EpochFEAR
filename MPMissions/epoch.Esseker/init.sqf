@@ -57,7 +57,6 @@ if (!isDedicated && hasInterface) then {
 	/* Load scripts
 	-----------------------------------------------------------
 	*/
-	[] execVM "FEAR\scripts\FEAR_masterLoop.sqf"; 		// FEAR master loop
 	[] execVM "FEAR\scripts\FEAR_statusBar.sqf";		// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";		// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
@@ -83,6 +82,6 @@ if (!isDedicated && hasInterface) then {
 
 waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
 
-// Start with apocalyptic environment
-[] spawn FEAR_fnc_nukeFlash;
-[] spawn FEAR_fnc_nukeAsh;
+if (!isDedicated && hasInterface) then {
+	[] execVM "FEAR\scripts\FEAR_masterLoop.sqf"; 		// FEAR master loop
+};

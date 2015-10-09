@@ -10,6 +10,7 @@ class Mission
 		"aia_buildings_config",
 		"ryanzombies",
 		"Esseker",
+		"cabuildings_misc",
 		"a3_epoch_config",
 		"A3_Soft_F_Car",
 		"A3_Soft_F_Quadbike",
@@ -30,7 +31,7 @@ class Mission
 	};
 	addOnsAuto[]=
 	{
-		"a3_epoch_config","Esseker","ryanzombies","aia_misc3_config","aia_misc_config","aia_misc_e_config","sar_ru_architecture","aia_buildings_config"
+		"a3_epoch_config","Esseker","ryanzombies","aia_misc3_config","aia_misc_config","aia_misc_e_config","sar_ru_architecture","aia_buildings_config","cabuildings_misc"
 	};
 	randomSeed=7213714;
 	class Intel
@@ -2091,7 +2092,8 @@ class Intro
 		"aia_buildings_config",
 		"ryanzombies",
 		"Esseker",
-		"aia_chernarus_config"
+		"aia_chernarus_config",
+		"cabuildings_misc"
 	};
 	addOnsAuto[]=
 	{
@@ -2103,7 +2105,8 @@ class Intro
 		"sar_ru_architecture",
 		"aia_buildings_config",
 		"ryanzombies",
-		"Esseker"
+		"Esseker",
+		"cabuildings_misc"
 	};
 	randomSeed=2993082;
 	class Intel
@@ -2134,7 +2137,8 @@ class OutroWin
 		"aia_buildings_config",
 		"ryanzombies",
 		"Esseker",
-		"aia_chernarus_config"
+		"aia_chernarus_config",
+		"cabuildings_misc"
 	};
 	addOnsAuto[]=
 	{
@@ -2144,7 +2148,8 @@ class OutroWin
 		"sar_ru_architecture",
 		"aia_buildings_config",
 		"ryanzombies",
-		"Esseker"
+		"Esseker",
+		"cabuildings_misc"
 	};
 	randomSeed=9072554;
 	class Intel
@@ -2175,7 +2180,8 @@ class OutroLoose
 		"aia_buildings_config",
 		"ryanzombies",
 		"Esseker",
-		"aia_chernarus_config"
+		"aia_chernarus_config",
+		"cabuildings_misc"
 	};
 	addOnsAuto[]=
 	{
@@ -2185,7 +2191,8 @@ class OutroLoose
 		"sar_ru_architecture",
 		"aia_buildings_config",
 		"ryanzombies",
-		"Esseker"
+		"Esseker",
+		"cabuildings_misc"
 	};
 	randomSeed=10033491;
 	class Intel

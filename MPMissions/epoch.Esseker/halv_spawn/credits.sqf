@@ -5,6 +5,13 @@
 */
 if(isServer)exitWith{};
 
+// Start with apocalyptic environment
+_sound = MISSION_directory + "FEAR\fx\dimensionfold.ogg";
+playSound3D [_sound,player];
+[] spawn FEAR_fnc_nukeFlash;
+[] spawn FEAR_fnc_nukeAsh;
+enableEnvironment true;
+
 sleep 3; // Wait for client to load
 
 _alltext = [

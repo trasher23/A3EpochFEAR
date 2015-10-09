@@ -13,7 +13,7 @@ getSoundFx = {
 	];
 
 	// Pick a sound from array	
-	_sound = _soundArray call BIS_fnc_selectRandom;
+	_sound = _soundArray select(floor(random(count _soundArray)));
 	//_sound = "wolfhowl1.ogg";
 	
 	// Log to RPT
@@ -34,7 +34,7 @@ playSoundFx = {
 	_soundSource = "Land_HelipadEmpty_F" createVehicle _pos;
 	
 	// Spawn wolfpack if wolfhowl.ogg
-	//if (_sound == MISSION_directory + "FEAR\fx\wolfhowl1.ogg") then { [_pos] spawn FEARspawnWolfpack; };
+	if (_sound == MISSION_directory + "FEAR\fx\wolfhowl1.ogg") then { [_pos] spawn FEARspawnWolfpack; };
 	
 	playSound3D [_sound,player,false,_soundSource,2];
 };

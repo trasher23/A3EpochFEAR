@@ -7,11 +7,10 @@ _geararr = [
 	[
 		// Secondary weapons
 		[
-			"hgun_ACPC2_F","ruger_pistol_epoch","1911_pistol_epoch","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F",
-			"hgun_Pistol_Signal_F","Hatchet"//,"ChainSaw"
+			"hgun_ACPC2_F","ruger_pistol_epoch","1911_pistol_epoch","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F","Hatchet"
 		],
 		// Ammo
-		4
+		6
 	],
 	
 	[
@@ -21,14 +20,14 @@ _geararr = [
 			"l85a2_epoch","l85a2_pink_epoch","l85a2_ugl_epoch"
 		],
 		// Ammo
-		3
+		4
 	],
 	
 	[
 		[
-			"FAK","Heal_EPOCH","Defib_EPOCH","Repair_EPOCH"
+			"FAK" //,"Heal_EPOCH","Defib_EPOCH","Repair_EPOCH"
 		],
-		2
+		1
 	],
 		// Tools
 	[
