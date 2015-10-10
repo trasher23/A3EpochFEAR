@@ -59,7 +59,7 @@ _fnc_createTriggers = {
 	// Debug position - test in Zupres supermarket
 	//_zombiePos = [2673, 4471, 0];
 	_zombiePos = call _fnc_getRandomBuildingPos;
-	_zombieHordeSize = 1 + random 20;
+	_zombieHordeSize = 1 + random 9;
 	
 	// Create trigger to spawn patrol
 	_trigName = format["herdTrig%1",_triggerIndex];
@@ -80,7 +80,7 @@ _fnc_createTriggers = {
 if (isDedicated) then {
 	private "_numberOfTriggers";
 	
-	_numberOfTriggers = 20;
+	_numberOfTriggers = 15;
 	
 	for "_i" from 1 to _numberOfTriggers do{
 		[_i] call _fnc_createTriggers;

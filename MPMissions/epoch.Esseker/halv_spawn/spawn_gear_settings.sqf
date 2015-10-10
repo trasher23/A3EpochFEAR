@@ -7,7 +7,7 @@ _geararr = [
 	[
 		// Secondary weapons
 		[
-			"hgun_ACPC2_F","ruger_pistol_epoch","1911_pistol_epoch","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F","Hatchet"
+			"hgun_ACPC2_F","ruger_pistol_epoch","1911_pistol_epoch","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F"
 		],
 		// Ammo
 		6

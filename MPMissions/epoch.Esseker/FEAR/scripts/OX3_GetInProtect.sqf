@@ -59,13 +59,13 @@ while {true} do
 		 };
 		
 		if( (_x getVariable["GotIn",false])) then{
-		 	sleep 3;
+		 	uiSleep 3;
 			_x allowDamage true;
 			_x setVariable ["GotIn",false];
 		};
 		
 		if( (_x getVariable["LocalChanged",false])) then{
-		 	sleep 3;
+		 	uiSleep 3;
 			_x allowDamage true;
 			_x setVariable ["LocalChanged",false];
 		};

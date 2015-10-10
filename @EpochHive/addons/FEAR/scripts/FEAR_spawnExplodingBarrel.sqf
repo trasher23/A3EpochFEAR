@@ -41,7 +41,7 @@ _explodingBarrel = {
 		if (alive _b) then {_b setDamage 0.99};
 	}];
 	
-	sleep 0.1;
+	uiSleep 0.1;
 	
 	_b setVariable["#PosASL", getPosASL _b];
 	_b addEventHandler["EpeContact", {

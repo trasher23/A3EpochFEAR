@@ -13,7 +13,7 @@ diag_log format ["[FEAR] nuke target: %1", _townName];
 	
 // Inform players to get the hell out of dodge!
 // 3 minute timer till impact
-_msgresponse = [format["Nuclear strike. You have %1 minutes to get %2k clear of %3.",3,1,_townName],""] call FEARBroadcast; // Use VEMF broadcast function
+_msgresponse = [format["Nuclear strike. You have %1 minutes to get %2k clear of %3.",3,500,_townName],""] call FEARBroadcast; // Use VEMF broadcast function
 
 // nukeAddMarker is a simple script that adds a marker to the location
 [_townPos] call FEAR_fnc_nukeAddMarker;
@@ -30,7 +30,7 @@ NUKESiren = "Land_HelipadEmpty_F" createVehicle _townPos;
 uisleep 120;
 
 // Give warning on 1 minute to go
-_msgresponse = [format["Nuclear strike. You now have %1 minute to get %2k clear of %3.",1,1,_townName],""] call FEARBroadcast;
+_msgresponse = [format["Nuclear strike. You now have %1 minute to get %2m clear of %3.",1,500,_townName],""] call FEARBroadcast;
 
 uisleep 60;
 
@@ -60,8 +60,8 @@ _msgresponse = [format["Keep clear of %1 until radiation dissipates.",_townName]
 // Activate radiation zone
 [_townPos] spawn FEAR_fnc_nukeRadDamage;
 
-// Sleep 15 minutes
-uisleep 900;
+// uiSleep 10 minutes
+uisleep 600;
 
 // Remove RadZone map markers
 deleteMarker "RADMarkerR";

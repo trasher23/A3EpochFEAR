@@ -12,7 +12,7 @@ playSound3D [_sound,player];
 [] spawn FEAR_fnc_nukeAsh;
 enableEnvironment true;
 
-sleep 3; // Wait for client to load
+uiSleep 5; // Wait for client to load
 
 _alltext = [
 	[
@@ -28,7 +28,7 @@ _alltext = [
 ];
 
 {
-	sleep 2; // Wait between texts
+	uiSleep 5; // Wait between texts
 	
 	_memberFunction = _x select 0;
 	_memberNames = _x select 1;
@@ -44,5 +44,5 @@ _alltext = [
 	_onScreenTime = (count _memberNames) * 0.5;
 	if(_onScreenTime < 6)then{_onScreenTime = 5};
 	[_finalText,[safezoneX + safezoneW - 0.5,0.35],[safezoneY + safezoneH - 0.8,0.7],_onScreenTime,0.5] spawn BIS_fnc_dynamicText;
-	sleep _onScreenTime;
+	uiSleep _onScreenTime;
 }forEach _alltext;

@@ -20,7 +20,7 @@ FEAR_fnc_nukeTarget = {
 };
 
 FEAR_fnc_nukeServerDamage = {
-	private["_coords","_isCar","_direction"];
+	private["_coords","_isCar","_direction","_burnObj"];
 
 	_coords = _this select 0;
 
@@ -28,7 +28,7 @@ FEAR_fnc_nukeServerDamage = {
 	{
 		// Kill everything within GroundZero (half of NukeRadius)
 		_x setDamage 1;
-		sleep 0.125;
+		uiSleep 0.125;
 	} forEach (_coords nearEntities [["All"],GroundZero]);
 
 	// Object damage
@@ -50,9 +50,11 @@ FEAR_fnc_nukeServerDamage = {
 		} else {
 			// The rest are set on fire
 			//[_x,10,time,false,true] spawn BIS_Effects_Burn;
+			_burnObj = "test_EmptyObjectForFireBig" createVehicle (position _x);
+			_burnObj attachto[_x, [0,0,-1]];  
 		};
 		
-		sleep 0.125;
+		uiSleep 0.125;
 	} forEach (nearestObjects [_coords,["house","Building","LandVehicle","Air","Ship"],NukeRadius]);
 };
 
@@ -109,7 +111,7 @@ FEAR_fnc_nukeRadDamage = {
 	_coords = _this select 0;
 	NUKEGeiger = "Land_HelipadEmpty_F" createVehicle _coords;
 	
-	// Endurance of Radiation in air = 15 minutes = (180 mins * sleep 5)
+	// Endurance of Radiation in air = 15 minutes = (180 mins * uiSleep 5)
 	for [{_x = 0},{_x < 180},{_x = _x + 1}] do {
 		{	
 			// Damage

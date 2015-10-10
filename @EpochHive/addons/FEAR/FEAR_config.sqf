@@ -19,7 +19,7 @@ NukeTimerMin = 30; // minutes
 // Maximum time in seconds before a cruise missile launch.
 NukeTimerMax = 90;
 // Blast radius in km
-NukeRadius = 1000;
+NukeRadius = 500;
 // Ground zero - total annihilation
 GroundZero = (NukeRadius / 2);
 

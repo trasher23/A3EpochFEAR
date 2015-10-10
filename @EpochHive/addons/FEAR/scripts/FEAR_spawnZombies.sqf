@@ -20,8 +20,10 @@ for "_x" from 1 to _zombieHordeSize do{
 	// Create zombie unit
 	_zombieType = _zombieClass select(floor(random(count _zombieClass)));
 	_zombie = ZombieGroup createUnit[_zombieType,_zombiePos,[],0,"NONE"];
+	
 	// Add event handler for zombie death
 	_zombie addMPEventHandler ["mpkilled","if(isDedicated)then{[_this select 0,_this select 1] spawn FEARZombieKilled}"];
+	_zombie setVariable["LAST_CHECK", (diag_tickTime + 600)]; // Epoch Server_Monitor, delete after 600s if no players near
 	
 	_zombieCount = _zombieCount + 1;
 };

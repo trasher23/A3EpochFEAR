@@ -10,8 +10,9 @@ JammerInRange = {
 	
 	// Is jammer in range?
 	_config = 'CfgEpochClient' call EPOCH_returnConfig;
-	_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
-	if (_buildingJammerRange == 0) then {_buildingJammerRange = 75};
+	//_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
+	//if (_buildingJammerRange == 0) then {_buildingJammerRange = 75};
+	_buildingJammerRange = 500; // Increase range of jammer
 	_jammer = nearestObjects[_pos,["PlotPole_EPOCH"],_buildingJammerRange];
 	if (_jammer isEqualTo[]) then {
 		ret=false;
@@ -120,9 +121,9 @@ _FEAR_masterLoop = {
 			
 			_pos = call UrbanLootBubble;
 			// If pos exists, player not in vehicle and not near respawn box
-			If ((!isNil "_pos") && (vehicle player == player) && (player distance _rspawnw > 35)) then {
-				// 33% chance
-				if (33 > random 100) then {
+			If ((!isNil "_pos") && (vehicle player == player) && (player distance _rspawnw > 500)) then {
+				// 40% chance
+				if (40 > random 100) then {
 					// Spawn exploding barrel at position
 					[_pos] spawn FEARspawnExplodingBarrel;
 					_pos = nil;
@@ -140,12 +141,12 @@ _FEAR_masterLoop = {
 			// If Jammer not in range, player not in vehicle and not near respawn box
 			_posPlayer = getPos Player;
 			_result = [_posPlayer] call JammerInRange;
-			If (!(_result) && (vehicle player == player) && (player distance _rspawnw > 35)) then {
-				_pos = [_posPlayer,[25,100],random 360] call SHK_pos;
+			If (!(_result) && (vehicle player == player) && (player distance _rspawnw > 500)) then {
+				_pos = [_posPlayer,[40,100],random 360] call SHK_pos; // spawn within a 40-100m range from any direction
 				// If pos 
 				If (!isNil "_pos") then {
-					// 33% chance
-					if (33 > random 100) then {
+					// 18% chance - 33% had them appearing too much!
+					if (18 > random 100) then {
 						// Spawn zombies!
 						_zombieCount = 1 + random 4;
 						[[_pos,_zombieCount]] spawn FEARspawnZombies;

@@ -22,7 +22,7 @@ if not isNull _target then{
 	
 	diag_log format["[FEAR] remaining zombies: %1",ZombieTotal];
 	
-	sleep 300; // Wait 3 minutes, then delete
+	uiSleep 300; // Wait 3 minutes, then delete
 	_target hideObjectGlobal true;
 	deleteVehicle _target;
 };

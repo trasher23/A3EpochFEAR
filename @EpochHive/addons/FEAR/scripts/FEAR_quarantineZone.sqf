@@ -9,7 +9,7 @@ if(!isServer)exitWith{};
 private["_quarantineZone"];
 
 _quarantineZone = {
-	private ["_trigger","_trigger_pos","_trigger_area","_angle","_radius","_distance","_count","_step","_pic","_signs","ret"];
+	private ["_trigger","_trigger_pos","_trigger_area","_angle","_radius","_distance","_count","_step","_pic","_signs"];
 	
 	_trigger = _this;
 	_trigger_pos = getPos _trigger;
@@ -41,7 +41,8 @@ _quarantineZone = {
 		_sign setObjectTextureGlobal[0,_pic];
 		_sign setDir([_pos,_trigger_pos] call BIS_fnc_DirTo);
 		
-		// Add to global array, can use to delete later
+		// Add to array.
+		// Use to delete later
 		_signs pushBack _sign;
 	};
 	
