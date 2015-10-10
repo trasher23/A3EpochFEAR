@@ -145,8 +145,8 @@ _FEAR_masterLoop = {
 				_pos = [_posPlayer,[40,100],random 360] call SHK_pos; // spawn within a 40-100m range from any direction
 				// If pos 
 				If (!isNil "_pos") then {
-					// 18% chance - 33% had them appearing too much!
-					if (18 > random 100) then {
+					// 25% chance - 33% had them appearing too much!
+					if (25 > random 100) then {
 						// Spawn zombies!
 						_zombieCount = 1 + random 4;
 						[[_pos,_zombieCount]] spawn FEARspawnZombies;
