@@ -59,7 +59,7 @@ _fnc_createTriggers = {
 	// Debug position - test in Zupres supermarket
 	//_zombiePos = [2673, 4471, 0];
 	_zombiePos = call _fnc_getRandomBuildingPos;
-	_zombieHordeSize = 1 + random 9;
+	_zombieHordeSize = 1 + random 7;
 	
 	// Create trigger to spawn patrol
 	_trigName = format["herdTrig%1",_triggerIndex];

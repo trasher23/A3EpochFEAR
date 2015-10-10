@@ -36,7 +36,7 @@ if (VEMF_invasCount < _maxInvasions) then
 		VEMF_invasCount = VEMF_invasCount + 1;
 		// Send message to all players
 		//_newMissionMsg = [format["Militia have invaded %1%2 near %3", if (_locName isEqualTo "Area") then {"an " } else {""}, _locName, mapGridPosition (_loc select 1)], ""] call VEMF_fnc_broadCast;
-		_newMissionMsg = [format["Remnants of the CDC have quarantined %1%2, near %3", if (_locName isEqualTo "Area") then {"an " } else {""}, _locName, mapGridPosition (_loc select 1)], ""] call FEARBroadcast;
+		_newMissionMsg = [format["The CDC have quarantined %1%2, near %3", if (_locName isEqualTo "Area") then {"an " } else {""}, _locName, mapGridPosition (_loc select 1)], ""] call FEARBroadcast;
 		if _newMissionMsg then
 		{
 			if (_useMissionMarker isEqualTo 1) then
