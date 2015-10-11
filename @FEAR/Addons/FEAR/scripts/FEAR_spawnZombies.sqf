@@ -74,7 +74,7 @@ for "_x" from 1 to _zombieHordeSize do{
 	// Add loot
 	_zombie addVest _zBag; 
 	_zombie addItemToVest _zLoot; 
-	if (20 > random 100) then {_zombie addItemToVest "FAK"}; // 20% chance of First Aid Kit
+	if (10 > random 100) then {_zombie addItemToVest "FAK"}; // 10% chance of First Aid Kit
 	
 	//_zombie disableAI "FSM";
 	//_zombie disableAI "AUTOTARGET";

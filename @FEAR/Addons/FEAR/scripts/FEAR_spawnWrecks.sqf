@@ -57,11 +57,13 @@ _spawnPositionSize = [
 	["Airport",5]
 ];
 
+// Fill array of allowed typs
 _allowedTypes = [];
 {
   _allowedTypes pushBack (_x select 0)
 }forEach _spawnPositionSize;
 
+// Use array to get variables
 _allCitys = "getText(_x >> 'type') in _allowedTypes" configClasses (configfile >> "CfgWorlds" >> worldName >> "Names");
 _allCitysDync = [];
 

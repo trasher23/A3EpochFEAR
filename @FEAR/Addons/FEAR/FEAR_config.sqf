@@ -44,3 +44,5 @@ ZombieMax = 50; // Max number of zombies on map
 ZombieTotal = 0; // Zombie counter
 
 diag_log "[FEAR] configuration file loaded";
+
+true

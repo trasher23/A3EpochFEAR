@@ -7,10 +7,9 @@
 */
 
 if (hasInterface || !isDedicated ||!isNil "A3EAI_isActive") exitWith {};
+A3EAI_isActive = true;
 
 _startTime = diag_tickTime;
-
-A3EAI_isActive = true;
 
 private ["_startTime","_worldname","_allUnits","_configCheck","_functionsCheck","_readOverrideFile","_reportDirectoryName","_configVersion","_coreVersion","_compatibleVersions"];
 
