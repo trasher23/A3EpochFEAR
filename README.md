@@ -18,6 +18,10 @@ VEMF 0.0722.8: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
 Ryan's Zombies & Demons 2.6: http://www.armaholic.com/page.php?id=28958
 <br/>
+MAS Weapons: http://www.armaholic.com/page.php?id=21912
+<br/>
+MAS Vehicles: http://www.armaholic.com/page.php?id=27652
+<br/>
 <br/>
 HSBlackmarket 1.6: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
 <br/>
