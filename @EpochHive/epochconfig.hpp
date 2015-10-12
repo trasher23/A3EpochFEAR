@@ -39,7 +39,6 @@ allowedVehiclesList[] = {
 	{"C_Rubberboat_04_EPOCH",1},
 	{"C_Boat_Civil_01_EPOCH",1},
 	{"jetski_epoch",1},
-	{"B_Boat_Armed_02_Minigun_F",1},
 
 	// Bikes
 	{"C_Quadbike_01_EPOCH",10},
@@ -105,7 +104,42 @@ allowedVehiclesList[] = {
 	
 	// Planes
 	{"B_Plane_CAS_01_F",2},
-	{"O_Plane_CAS_02_F",2}
+	{"O_Plane_CAS_02_F",2},
+	
+	/* MAS
+	----------------
+	*/
+	// Landrovers
+	{"B_mas_cars_LR_Unarmed",5},
+	{"B_mas_cars_LR_Med",5},
+	{"B_mas_cars_LR_M2",2},
+	{"B_mas_cars_LR_Mk19",2},
+	{"B_mas_cars_LR_TOW",2},
+	{"B_mas_cars_LR_Stinger",2},
+	{"B_mas_cars_LR_SPG9",2},
+	{"I_mas_cars_LR_soft_Unarmed",5},
+	{"I_mas_cars_LR_soft_Med",5},
+	{"I_mas_cars_LR_soft_M2",2},
+	{"I_mas_cars_LR_soft_Mk19",2},
+	{"I_mas_cars_LR_soft_TOW",2},
+	{"I_mas_cars_LR_soft_Stinger",2},
+	{"I_mas_cars_LR_soft_SPG9",2},
+	
+	// Helicopters
+	{"I_mas_MI8",2},
+	{"I_mas_MI8MTV",2},
+	{"O_mas_MI8",2},
+	{"O_mas_MI8MTV",2},
+	{"I_mas_MI24V",2},
+	{"O_mas_MI24V",2},
+	{"B_mas_CH_47F",2},
+	{"B_mas_UH1Y_F",2},
+	{"B_mas_UH1Y_UNA_F",2},
+	{"B_mas_UH1Y_MEV_F",2},
+	{"B_mas_UH60M",2},
+	{"B_mas_UH60M_SF",2},
+	{"B_mas_UH60M_MEV",2}
+	
 };
 
 // Traders

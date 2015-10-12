@@ -672,13 +672,23 @@ class CfgLootTable
 				{ { "SniperRiflem107", "CfgLootTable" }, 8 },
 				
 				// Marksman DLC
-				{ { "SniperRifleMarkDLC", "CfgLootTable" }, 10 },
+				{ { "SniperRifleMarkDLC", "CfgLootTable" }, 5 },
 
 				{ { "srifle_LRR_F", "weapon" }, 11 },
-				{ { "srifle_GM6_F", "weapon" }, 16 },
-				{ { "srifle_DMR_01_F", "weapon" }, 17 },
-				{ { "SniperRifleM14", "CfgLootTable" }, 18 },
-				{ { "srifle_EBR_F", "weapon" }, 20 }
+				{ { "srifle_GM6_F", "weapon" }, 11 },
+				{ { "srifle_DMR_01_F", "weapon" }, 7 },
+				{ { "SniperRifleM14", "CfgLootTable" }, 13 },
+				{ { "srifle_EBR_F", "weapon" }, 5 },
+				
+				// MAS
+				{ { "srifle_mas_hk417", "weapon" }, 5 },
+				{ { "srifle_mas_sr25", "weapon" }, 5 },
+				{ { "srifle_mas_mk17s", "weapon" }, 5 },
+				{ { "srifle_mas_hk417", "weapon" }, 5 },
+				{ { "srifle_mas_ebr", "weapon" }, 5 },
+				{ { "srifle_mas_m24", "weapon" }, 5 },
+				{ { "srifle_mas_m107", "weapon" }, 5 },
+				{ { "srifle_mas_lrr", "weapon" }, 5 }
 		};
 	};
 	// All Marksman DLC weapons without attachments
@@ -726,7 +736,13 @@ class CfgLootTable
 				{ { "10Rnd_762x54_Mag", "magazine" }, 1 },
 				{ { "10Rnd_338_Mag", "magazine" }, 1 },
 				{ { "10Rnd_93x64_DMR_05_Mag", "magazine" }, 1 },
-				{ { "10Rnd_127x54_Mag", "magazine" }, 1 }
+				{ { "10Rnd_127x54_Mag", "magazine" }, 1 },
+				
+				// MAS
+				{ { "20Rnd_mas_762x51_Stanag", "magazine" }, 1 },
+				{ { "5Rnd_mas_762x51_Stanag", "magazine" }, 1 },
+				{ { "5Rnd_mas_127x99_Stanag", "magazine" }, 1 },
+				{ { "10Rnd_mas_338_Stanag", "magazine" }, 1 }
 				
 		};
 	};
@@ -867,18 +883,32 @@ class CfgLootTable
 		items[] = {
 				{ { "AKM_EPOCH", "weapon" }, 3 },
 				{ { "sr25_epoch", "weapon" }, 4 },
-				{ { "Rifle_arifle_Katiba_F", "CfgLootTable" }, 5 },
-				{ { "Rifle_arifle_MX_GL_F", "CfgLootTable" }, 6 },
-				{ { "Rifle_l85a2_epoch", "CfgLootTable" }, 6 },
-				{ { "m4a3_EPOCH", "weapon" }, 7 },
-				{ { "Rifle_m16_EPOCH", "CfgLootTable" }, 7 },
-				{ { "Rifle_arifle_Mk20_F", "CfgLootTable" }, 8 },
-				{ { "Rifle_arifle_TRG21_F", "CfgLootTable" }, 8 },
-				{ { "arifle_SDAR_F", "weapon" }, 9 },
-				{ { "Rollins_F", "weapon" }, 9 },
-				{ { "SMG_01_F", "weapon" }, 9 },
-				{ { "SMG_02_F", "weapon" }, 9 },
-				{ { "hgun_PDW2000_F", "weapon" }, 10 }
+				{ { "Rifle_arifle_Katiba_F", "CfgLootTable" }, 4 },
+				{ { "Rifle_arifle_MX_GL_F", "CfgLootTable" }, 4 },
+				{ { "Rifle_l85a2_epoch", "CfgLootTable" }, 4 },
+				{ { "m4a3_EPOCH", "weapon" }, 4 },
+				{ { "Rifle_m16_EPOCH", "CfgLootTable" }, 4 },
+				{ { "Rifle_arifle_Mk20_F", "CfgLootTable" }, 4 },
+				{ { "Rifle_arifle_TRG21_F", "CfgLootTable" }, 4 },
+				{ { "arifle_SDAR_F", "weapon" }, 3 },
+				{ { "Rollins_F", "weapon" }, 4 },
+				{ { "SMG_01_F", "weapon" }, 4 },
+				{ { "SMG_02_F", "weapon" }, 3 },
+				{ { "hgun_PDW2000_F", "weapon" }, 3 },
+				
+				// MAS
+				{ { "arifle_mas_m4", "weapon" }, 4 },
+				{ { "arifle_mas_hk416", "weapon" }, 4 },
+				{ { "arifle_mas_m27", "weapon" }, 4 },
+				{ { "arifle_mas_g36c", "weapon" }, 4 },
+				{ { "arifle_mas_l119", "weapon" }, 4 },
+				{ { "arifle_mas_hk417c", "weapon" }, 4 },
+				{ { "arifle_mas_mk16", "weapon" }, 4 },
+				{ { "arifle_mas_mk17", "weapon" }, 4 },
+				{ { "arifle_mas_arx", "weapon" }, 4 },
+				{ { "arifle_mas_m16", "weapon" }, 4 },
+				{ { "arifle_mas_g3", "weapon" }, 4 },
+				{ { "arifle_mas_fal", "weapon" }, 4 }
 		};
 	};
 
