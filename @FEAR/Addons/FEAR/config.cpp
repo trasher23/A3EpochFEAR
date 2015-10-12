@@ -88,11 +88,5 @@ class cfgWorlds
 				soundNight[] = {"", 0, 1};
 			};
 		};
-		
-		class CfgLootTable;
-		class LootTable: CfgLootTable
-		{
-			
-		};
 	};
 };
