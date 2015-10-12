@@ -216,7 +216,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/		
 	
 	//Upper limit of dynamic spawns on map at once. Set to 0 to disable dynamic spawns (Default: 15)
-	maxDynamicSpawns = 15;
+	maxDynamicSpawns = 10;
 	
 	//Minimum time (in seconds) that must pass between dynamic spawns for each player (Default: 900)
 	timePerDynamicSpawn = 900;
@@ -266,7 +266,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/		
 
 	//Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-	maxAirPatrols = 2;
+	maxAirPatrols = 1;
 	
 	//Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 	levelChancesAir[] = {0.00,0.50,0.35,0.15};
@@ -312,7 +312,7 @@ class CfgA3EAISettings {
 
 	
 	//Global maximum number of active AI land vehicle patrols. Set at 0 to disable (Default: 0).	
-	maxLandPatrols = 10;
+	maxLandPatrols = 5;
 	
 	//Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
 	levelChancesLand[] = {0.00,0.50,0.35,0.15};
@@ -392,7 +392,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Global maximum number of active UAV patrols. Set at 0 to disable (Default: 0).	
-	maxUAVPatrols = 2;
+	maxUAVPatrols = 1;
 	
 	//Classnames of UAV types to use, with the maximum amount of each type to spawn.
 	UAVList[] = {
@@ -430,7 +430,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Global maximum number of active UGV patrols. Set at 0 to disable (Default: 0).	
-	maxUGVPatrols = 5;
+	maxUGVPatrols = 3;
 	
 	//Classnames of UGV types to use, with the maximum amount of each type to spawn.
 	UGVList[] = {
