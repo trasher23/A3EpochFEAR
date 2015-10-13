@@ -29,7 +29,8 @@ if (hasInterface) then
 								};
 								default
 								{
-									playSound "RadioAmbient6";
+									//playSound "RadioAmbient6";
+									playSound [format ["UAV_0%1",(floor (random 5) + 1)],false]; // Used from A3AI client
 									[_msg] spawn VEMF_fnc_vemfClientMessage;
 								};
 							};

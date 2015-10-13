@@ -674,7 +674,7 @@ class CfgLootTable
 				// Marksman DLC
 				{ { "SniperRifleMarkDLC", "CfgLootTable" }, 5 },
 
-				{ { "srifle_LRR_F", "weapon" }, 11 },
+				{ { "srifle_LRR_F", "weapon" }, 6 },
 				{ { "srifle_GM6_F", "weapon" }, 11 },
 				{ { "srifle_DMR_01_F", "weapon" }, 7 },
 				{ { "SniperRifleM14", "CfgLootTable" }, 13 },
@@ -684,11 +684,11 @@ class CfgLootTable
 				{ { "srifle_mas_hk417", "weapon" }, 5 },
 				{ { "srifle_mas_sr25", "weapon" }, 5 },
 				{ { "srifle_mas_mk17s", "weapon" }, 5 },
-				{ { "srifle_mas_hk417", "weapon" }, 5 },
-				{ { "srifle_mas_ebr", "weapon" }, 5 },
-				{ { "srifle_mas_m24", "weapon" }, 5 },
-				{ { "srifle_mas_m107", "weapon" }, 5 },
-				{ { "srifle_mas_lrr", "weapon" }, 5 }
+				{ { "srifle_mas_ebr", "weapon" }, 6 },
+				{ { "srifle_mas_m24", "weapon" }, 6 },
+				{ { "srifle_mas_m107", "weapon" }, 6 },
+				{ { "srifle_mas_lrr", "weapon" }, 6 },
+				{ { "srifle_mas_m91", "weapon" }, 6 }
 		};
 	};
 	// All Marksman DLC weapons without attachments
@@ -742,7 +742,8 @@ class CfgLootTable
 				{ { "20Rnd_mas_762x51_Stanag", "magazine" }, 1 },
 				{ { "5Rnd_mas_762x51_Stanag", "magazine" }, 1 },
 				{ { "5Rnd_mas_127x99_Stanag", "magazine" }, 1 },
-				{ { "10Rnd_mas_338_Stanag", "magazine" }, 1 }
+				{ { "10Rnd_mas_338_Stanag", "magazine" }, 1 },
+				{ { "10Rnd_mas_762x54_mag", "magazine" }, 1 }
 				
 		};
 	};
@@ -897,18 +898,29 @@ class CfgLootTable
 				{ { "hgun_PDW2000_F", "weapon" }, 3 },
 				
 				// MAS
-				{ { "arifle_mas_m4", "weapon" }, 4 },
-				{ { "arifle_mas_hk416", "weapon" }, 4 },
-				{ { "arifle_mas_m27", "weapon" }, 4 },
-				{ { "arifle_mas_g36c", "weapon" }, 4 },
-				{ { "arifle_mas_l119", "weapon" }, 4 },
-				{ { "arifle_mas_hk417c", "weapon" }, 4 },
-				{ { "arifle_mas_mk16", "weapon" }, 4 },
-				{ { "arifle_mas_mk17", "weapon" }, 4 },
-				{ { "arifle_mas_arx", "weapon" }, 4 },
-				{ { "arifle_mas_m16", "weapon" }, 4 },
-				{ { "arifle_mas_g3", "weapon" }, 4 },
-				{ { "arifle_mas_fal", "weapon" }, 4 }
+				{ { "arifle_mas_m4", "weapon" }, 2 },
+				{ { "arifle_mas_hk416", "weapon" }, 2 },
+				{ { "arifle_mas_m27", "weapon" }, 2 },
+				{ { "arifle_mas_g36c", "weapon" }, 2 },
+				{ { "arifle_mas_l119", "weapon" }, 2 },
+				{ { "arifle_mas_hk417c", "weapon" }, 2 },
+				{ { "arifle_mas_mk16", "weapon" }, 2 },
+				{ { "arifle_mas_mk17", "weapon" }, 2 },
+				{ { "arifle_mas_arx", "weapon" }, 2 },
+				{ { "arifle_mas_m16", "weapon" }, 2 },
+				{ { "arifle_mas_g3", "weapon" }, 2 },
+				{ { "arifle_mas_fal", "weapon" }, 4 },
+				{ { "arifle_mas_m14", "weapon" }, 2 },
+				{ { "arifle_mas_lee", "weapon" }, 2 },
+				{ { "srifle_mas_hk417", "weapon" }, 2 },
+				{ { "arifle_mas_mp5", "weapon" }, 2 },
+				{ { "arifle_mas_m1014", "weapon" }, 2 },
+				{ { "arifle_mas_aa12", "weapon" }, 2 },
+				{ { "arifle_mas_mp40", "weapon" }, 2 },
+				{ { "arifle_mas_ak_74m", "weapon" }, 2 },
+				{ { "arifle_mas_ak_74m_sf", "weapon" }, 2 },
+				{ { "arifle_mas_ak12_sf", "weapon" }, 2 },
+				{ { "arifle_mas_akms", "weapon" }, 2 }
 		};
 	};
 
@@ -1001,11 +1013,19 @@ class CfgLootTable
 		items[] = {
 				{ { "30Rnd_762x39_Mag", "magazine" }, 8 },
 				{ { "RifleAmmo_30Rnd_65x39_caseless_mag", "CfgLootTable" }, 14 },
-				{ { "20Rnd_556x45_UW_mag", "magazine" }, 12 },
+				{ { "20Rnd_556x45_UW_mag", "magazine" }, 7 },
 				{ { "RifleAmmo_30Rnd_556x45_Stanag", "CfgLootTable" }, 13 },
 				{ { "RifleAmmo_30Rnd_45ACP_Mag_SMG_01", "CfgLootTable" }, 16 },
-				{ { "30Rnd_9x21_Mag", "magazine" }, 17 },
-				{ { "5Rnd_rollins_mag", "magazine" }, 20 }
+				{ { "30Rnd_9x21_Mag", "magazine" }, 7 },
+				{ { "5Rnd_rollins_mag", "magazine" }, 5 },
+				
+				// MAS
+				{ { "7Rnd_mas_12Gauge_Slug", "magazine" }, 5 },
+				{ { "7Rnd_mas_12Gauge_Pellets", "magazine" }, 5 },
+				{ { "20Rnd_mas_12Gauge_Slug", "magazine" }, 5 },
+				{ { "20Rnd_mas_12Gauge_Pellets", "magazine" }, 5 },
+				{ { "30Rnd_mas_545x39_mag", "magazine" }, 5 },
+				{ { "30Rnd_mas_762x39_mag", "magazine" }, 5 }
 		};
 	};
 
@@ -1093,9 +1113,12 @@ class CfgLootTable
 		items[] = {
 				{ { "LMG_Zafir_F", "weapon" }, 1 },
 				{ { "Machinegun_arifle_MX_SW_F", "CfgLootTable" }, 2 },
-				{ { "LMG_Mk200_F", "weapon" }, 3 },
+				{ { "LMG_Mk200_F", "weapon" }, 2 },
 				{ { "Machinegun_m249_EPOCH", "CfgLootTable" }, 3 },
-				{ { "MMG_MarkDLC_EPOCH", "CfgLootTable" }, 1 }
+				{ { "MMG_MarkDLC_EPOCH", "CfgLootTable" }, 1 },
+				
+				// MAS
+				{ { "LMG_mas_Mk200_F", "weapon" }, 1 }
 		};
 	};
 
@@ -1189,15 +1212,26 @@ class CfgLootTable
 	class Pistols
 	{
 		items[] = {
-				{ { "Hgun_Pistol_Signal_F", "weapon" }, 4 },
+				{ { "Hgun_Pistol_Signal_F", "weapon" }, 5 },
 				{ { "MultiGun", "weapon" }, 5 },
-				{ { "hgun_Pistol_heavy_01_F", "weapon" }, 9 },
-				{ { "hgun_P07_F", "weapon" }, 10 },
-				{ { "hgun_Rook40_F", "weapon" }, 11 },
-				{ { "hgun_Pistol_heavy_02_F", "weapon" }, 13 },
-				{ { "1911_pistol_epoch", "weapon" }, 14 },
-				{ { "hgun_ACPC2_F", "weapon" }, 16 },
-				{ { "ruger_pistol_epoch", "weapon" }, 18 }
+				{ { "hgun_Pistol_heavy_01_F", "weapon" }, 5 },
+				{ { "hgun_P07_F", "weapon" }, 5 },
+				{ { "hgun_Rook40_F", "weapon" }, 6 },
+				{ { "hgun_Pistol_heavy_02_F", "weapon" }, 8 },
+				{ { "1911_pistol_epoch", "weapon" }, 5 },
+				{ { "hgun_ACPC2_F", "weapon" }, 6 },
+				{ { "ruger_pistol_epoch", "weapon" }, 5 },
+				
+				// MAS
+				{ { "hgun_mas_mp7p_F", "weapon" }, 5 },
+				{ { "hgun_mas_uzi_F", "weapon" }, 5 },
+				{ { "hgun_mas_m9_F", "weapon" }, 5 },
+				{ { "hgun_mas_bhp_F", "weapon" }, 5 },
+				{ { "hgun_mas_glock_F", "weapon" }, 5 },
+				{ { "hgun_mas_p226_F", "weapon" }, 5 },
+				{ { "hgun_mas_acp_F", "weapon" }, 5 },
+				{ { "hgun_mas_usp_F", "weapon" }, 5 },
+				{ { "hgun_mas_glocksf_F", "weapon" }, 5 }
 		};
 	};
 	class PistolAmmo
@@ -1211,8 +1245,14 @@ class CfgLootTable
 				{ { "16Rnd_9x21_Mag", "magazine" }, 11 },
 				{ { "11Rnd_45ACP_Mag", "magazine" }, 12 },
 				{ { "9Rnd_45ACP_Mag", "magazine" }, 16 },
-				{ { "9rnd_45X88_magazine", "magazine" }, 16 },
-				{ { "10rnd_22X44_magazine", "magazine" }, 16 }
+				{ { "9rnd_45X88_magazine", "magazine" }, 8 },
+				{ { "10rnd_22X44_magazine", "magazine" }, 8 },
+				
+				// MAS
+				{ { "40Rnd_mas_46x30_Mag", "magazine" }, 4 },
+				{ { "25Rnd_mas_9x19_Mag", "magazine" }, 4 },
+				{ { "17Rnd_mas_9x21_Mag", "magazine" }, 4 },
+				{ { "12Rnd_mas_45acp_Mag", "magazine" }, 4 }
 		};
 	};
 	class Scopes
