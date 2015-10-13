@@ -51,7 +51,7 @@ if (!isDedicated && hasInterface) then {
 	-----------------------------------------------------------
 	*/
 	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
-	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nukeClientFunctions.sqf";
+	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_clientFunctions.sqf";
 	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
 	
 	/* Load scripts

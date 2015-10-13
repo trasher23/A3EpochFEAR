@@ -40,7 +40,7 @@ NUKEImpact = "Land_HelipadEmpty_F" createVehicle _townPos;
 	if (isPlayer _x) then {
 		(owner (vehicle _x)) publicVariableClient "NUKEImpact";
 	};
-} forEach playableUnits;
+}forEach playableUnits;
 
 [_townPos] spawn FEAR_fnc_nukeServerDamage;
 

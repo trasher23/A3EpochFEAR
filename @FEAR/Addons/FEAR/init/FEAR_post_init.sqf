@@ -3,9 +3,6 @@
 	Description: Handles post-initialization tasks
 */
 
-/* Spawn random events
----------------------------
-*/
 [] execVM format["%1\nuke\FEAR_nuke_init.sqf",FEAR_directory]; // Mini-nukes
 [] execVM format["%1\scripts\FEAR_airCrashes.sqf",FEAR_directory]; // Air crashes
 [] execVM format["%1\scripts\FEAR_earthquakeTimer.sqf",FEAR_directory]; // Earthquakes
