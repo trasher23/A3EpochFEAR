@@ -7,16 +7,16 @@ A mish-mash of:
 <br/>
 Arma 3 1.52: http://arma3.com/
 <br/>
-Epoch 0.3.3.1: http://epochmod.com/
+Epoch 0.3.4.0: http://epochmod.com/
 <br/>
 Esseker 0.7.0.5 http://a3esseker.info/
 <br/>
 <br/>
-A3AI 1.0.0d: https://github.com/dayzai/A3EAI
+A3AI 1.0.1: https://github.com/dayzai/A3EAI
 <br/>
 VEMF 0.0722.8: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
-Ryan's Zombies & Demons 2.6: http://www.armaholic.com/page.php?id=28958
+Ryan's Zombies & Demons 2.8: http://www.armaholic.com/page.php?id=28958
 <br/>
 MAS Weapons 1.10: http://www.armaholic.com/page.php?id=21912
 <br/>
