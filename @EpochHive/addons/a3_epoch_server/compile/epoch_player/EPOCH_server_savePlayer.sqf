@@ -63,9 +63,15 @@ if (typeName _vars == "ARRAY") then {
 			_pos = getPosATL _plyr;
 
 			if (vehicle _plyr != _plyr) then {
-				_closest = [EPOCH_staticTraderLocations, [], { _plyr distance _x }, "ASCEND"] call BIS_fnc_sortBy;
-				if !(_closest isEqualTo []) then{
-					_pos = _closest select 0;
+				
+				_staticTraderLocationsDistances = [];
+				{
+					_staticTraderLocationsDistances pushBack [_x distance player, _x]
+				} forEach EPOCH_staticTraderLocations;
+
+				if !(_staticTraderLocationsDistances isEqualTo []) then{
+					_staticTraderLocationsDistances sort true;
+					_pos = _staticTraderLocationsDistances select 0 select 1;
 					_pos set[2, 0];
 				};
 			};

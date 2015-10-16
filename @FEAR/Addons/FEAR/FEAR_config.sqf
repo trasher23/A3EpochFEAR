@@ -39,6 +39,8 @@ _zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow25",[0,0,0],[],0,"NO
 _zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrowtank25",[0,0,0],[],0,"NONE"]; // Zombie throw tanks 25 meters
 _zombieLogic = ZombieGroup createUnit["ryanzombiesjump",[0,0,0],[],0,"NONE"]; // Zombie jumping
 _zombieLogic = ZombieGroup createUnit["Ryanzombieslogicroam",[0,0,0],[],0,"NONE"]; // Zombie roam
+_zombieLogic = ZombieGroup createUnit["ryanzombiesfeed",[0,0,0],[],0,"NONE"]; // Zombie feed
+_zombieLogic = ZombieGroup createUnit["ryanzombiescivilianattacks",[0,0,0],[],0,"NONE"]; // Zombie civilian attack
 
 ZombieMax = 50; // Max number of zombies on map
 ZombieTotal = 0; // Zombie counter

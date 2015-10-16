@@ -7,7 +7,8 @@ _geararr = [
 	[
 		// Secondary weapons
 		[
-			"hgun_ACPC2_F","ruger_pistol_epoch","1911_pistol_epoch","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F"
+			"hgun_ACPC2_F","ruger_pistol_epoch","1911_pistol_epoch","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F",
+			"hgun_mas_mp7p_F"
 		],
 		// Ammo
 		6
@@ -17,7 +18,7 @@ _geararr = [
 		// Primary weapons
 		[
 			"SMG_01_F","SMG_02_F","hgun_PDW2000_F","Rollins_F","m16_EPOCH","m16Red_EPOCH","AKM_EPOCH","sr25_epoch",
-			"l85a2_epoch","l85a2_pink_epoch","l85a2_ugl_epoch"
+			"l85a2_epoch","l85a2_pink_epoch","l85a2_ugl_epoch","arifle_mas_m1014"
 		],
 		// Ammo
 		4
@@ -62,7 +63,7 @@ _geararr = [
 		"H_69_EPOCH","H_70_EPOCH","H_74_EPOCH","H_75_EPOCH","H_76_EPOCH","H_77_EPOCH","H_78_EPOCH","H_79_EPOCH","H_80_EPOCH","H_81_EPOCH",
 		"H_82_EPOCH","H_83_EPOCH","H_84_EPOCH","H_85_EPOCH","H_86_EPOCH","H_87_EPOCH","H_88_EPOCH","H_89_EPOCH","H_90_EPOCH","H_91_EPOCH",
 		"H_92_EPOCH","H_11_EPOCH","H_28_EPOCH","H_34_EPOCH","H_71_EPOCH","H_72_EPOCH","H_73_EPOCH","H_104_EPOCH",
-		"wolf_mask_epoch","pkin_mask_epoch"
+		"wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch"
 	],
 	
 	[

@@ -78,10 +78,13 @@ WEST setFriend[EAST, 1];
 
 diag_log format["Epoch: Setup World Settings for %1",worldName];
 //World Settings
-_worldSize = 12000;
+_worldSize = worldSize;
 _epochWorldPath = configfile >> "CfgEpoch" >> worldName;
-if (isClass _epochWorldPath && isNumber(_epochWorldPath >> "worldSize")) then {
-    _worldSize = getNumber(_epochWorldPath >> "worldSize");
+if (isClass _epochWorldPath) then {
+    _configSize = getNumber(_epochWorldPath >> "worldSize");
+    if (_configSize > 0) then {
+      _worldSize = _configSize;
+    };
 };
 epoch_centerMarkerPosition = getMarkerPos "center";
 if (epoch_centerMarkerPosition isEqualTo [0,0,0]) then {
@@ -107,40 +110,40 @@ _startTime spawn {
 
     diag_log "Epoch: Loading buildings";
     _workload1 = EPOCH_BuildingSlotsLimit call EPOCH_server_loadBuildings;
-    
+
 
     // Underground and teleports
     diag_log "Epoch: Loading teleports and static props";
     _workload8 = [] call EPOCH_server_createTeleport;
-    
+
 
     // Traders
     diag_log "Epoch: Loading NPC traders";
     _workload4 = EPOCH_NPCSlotsLimit call EPOCH_server_loadTraders;
-    
+
 
     diag_log "Epoch: Spawning NPC traders";
     _workload5 = [] call EPOCH_server_spawnTraders;
-    
+
 
     // Vehicles
     diag_log "Epoch: Loading vehicles";
     _workload2 = EPOCH_VehicleSlotsLimit call EPOCH_load_vehicles;
-    
+
 
     diag_log "Epoch: Spawning vehicles";
     _workload3 = [] call EPOCH_spawn_vehicles;
-    
+
 
     // Storage
     diag_log "Epoch: Loading storage";
     _workload6 = EPOCH_StorageSlotsLimit call EPOCH_load_storage;
-    
+
 
     // Loot
     diag_log "Epoch: Loading static loot";
     _workload9 = [] call EPOCH_server_spawnBoatLoot;
-    
+
 
     [] execFSM "\x\addons\a3_epoch_server\system\server_monitor.fsm";
 

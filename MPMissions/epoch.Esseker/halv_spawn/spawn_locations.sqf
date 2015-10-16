@@ -49,7 +49,10 @@ Halv_spawns = switch(toLower worldName)do{
 			[[10070,9880]],		//Borosh
 			[[1170,10280]],		//Camp Spencer
 			[[4825,8070]],		//Chokory
-			[[2070,7760]]		//Rama
+			[[2070,7760]],		//Rama
+			[[7654,6893]],		//Posestra
+			[[3104,6156]],		//Danilov Grad
+			[[2799,11262]]		//DoubleTap Gun Range
 		]
 	};
 	

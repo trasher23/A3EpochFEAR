@@ -294,7 +294,7 @@ if (typename _this == "ARRAY") then {
 					};
 					
 					// may not be needed, just here to see if we can force the data to sync quicker
-					_plyr setPosATL _location;
+					// _plyr setPosATL _location;
 
 					_newPlyr setVariable["SETUP", true];
 					_newPlyr setVariable["PUID", _plyrUID];

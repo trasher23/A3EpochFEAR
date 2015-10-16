@@ -49,6 +49,7 @@ allowedVehiclesList[] = {
 	{"C_Hatchback_01_EPOCH",10},
 	{"C_Hatchback_02_EPOCH",10},
 	{"C_SUV_01_EPOCH",10},
+
 	{"B_G_Offroad_01_F",10},
     {"I_G_Offroad_01_F",10},
     {"I_G_Offroad_01_armed_F",5},
@@ -62,6 +63,7 @@ allowedVehiclesList[] = {
 	{"O_MRAP_02_F",2},
 	{"I_MRAP_03_F",2},
 	{"B_UGV_01_rcws_F",2},
+	{"I_MRAP_03_EPOCH",2},
 	
 	// Military Trucks
 	{"B_Truck_01_transport_EPOCH",2},
@@ -87,6 +89,9 @@ allowedVehiclesList[] = {
 	{"mosquito_epoch",10},
 	{"B_Heli_Light_01_armed_F",2},
 	{"O_Heli_Attack_02_black_F",2},
+	{"C_Heli_Light_01_civil_EPOCH",5},
+
+
 	{"C_Heli_Light_01_civil_F",2},
 	{"O_Heli_Light_02_v2_F",2},
 
@@ -100,6 +105,9 @@ allowedVehiclesList[] = {
 	// Tanks
 	{"O_MBT_02_cannon_F",2},
 	{"B_MBT_01_arty_F",2},
+
+
+
 	{"B_MBT_01_mlrs_F",2},
 	
 	// Planes
@@ -139,7 +147,6 @@ allowedVehiclesList[] = {
 	{"B_mas_UH60M",2},
 	{"B_mas_UH60M_SF",2},
 	{"B_mas_UH60M_MEV",2}
-	
 };
 
 // Traders

@@ -672,14 +672,13 @@ class CfgLootTable
 				{ { "SniperRiflem107", "CfgLootTable" }, 8 },
 				
 				// Marksman DLC
-				{ { "SniperRifleMarkDLC", "CfgLootTable" }, 5 },
+				{ { "SniperRifleMarkDLC", "CfgLootTable" }, 10 },
 
-				{ { "srifle_LRR_F", "weapon" }, 6 },
-				{ { "srifle_GM6_F", "weapon" }, 11 },
-				{ { "srifle_DMR_01_F", "weapon" }, 7 },
-				{ { "SniperRifleM14", "CfgLootTable" }, 13 },
-				{ { "srifle_EBR_F", "weapon" }, 5 },
-				
+				{ { "srifle_LRR_F", "weapon" }, 11 },
+				{ { "srifle_GM6_F", "weapon" }, 16 },
+				{ { "srifle_DMR_01_F", "weapon" }, 17 },
+				{ { "SniperRifleM14", "CfgLootTable" }, 18 },
+				{ { "srifle_EBR_F", "weapon" }, 20 },
 				// MAS
 				{ { "srifle_mas_hk417", "weapon" }, 5 },
 				{ { "srifle_mas_sr25", "weapon" }, 5 },
@@ -744,7 +743,6 @@ class CfgLootTable
 				{ { "5Rnd_mas_127x99_Stanag", "magazine" }, 1 },
 				{ { "10Rnd_mas_338_Stanag", "magazine" }, 1 },
 				{ { "10Rnd_mas_762x54_mag", "magazine" }, 1 }
-				
 		};
 	};
 
@@ -807,7 +805,9 @@ class CfgLootTable
 				{ { "scam_epoch", "magazine" }, 15 },
 				{ { "sweetcorn_epoch", "magazine" }, 15 },
 				{ { "FoodSnooter", "magazine" }, 9 },
-				{ { "TacticalBacon", "magazine" }, 5 }
+				{ { "TacticalBacon", "magazine" }, 5 },
+				{ { "FoodMeeps", "magazine" }, 1 }
+				
 				
 		};
 	};
@@ -848,25 +848,28 @@ class CfgLootTable
 	class GenericLarge
 	{
 		items[] = {
-				{ { "MortarBucket", "magazine" }, 17 },
+				{ { "MortarBucket", "magazine" }, 16 },
 				{ { "CinderBlocks", "magazine" }, 17 },
 				{ { "VehicleRepair", "magazine" }, 17 },
 				{ { "CircuitParts", "magazine" }, 17 },
 				{ { "ItemCorrugated", "magazine" }, 17 },
 				{ { "ItemSolar", "magazine" }, 5 },
 				{ { "ItemBattery", "magazine" }, 5 },
-				{ { "ItemCables", "magazine" }, 5 }
+				{ { "ItemCables", "magazine" }, 5 },
+				{ { "ItemSafe", "magazine" }, 1 }
+				
 		};
 	};
 
 	class GenericAuto
 	{
 		items[] = {
+				{ { "ItemSafe", "magazine" }, 1 },
 				{ { "ItemLockbox", "magazine" }, 4 },
 				{ { "jerrycan_epoch", "magazine" }, 5 },
 				{ { "CircuitParts", "magazine" }, 6 },
 				{ { "MortarBucket", "magazine" }, 9 },
-				{ { "VehicleRepair", "magazine" }, 11 },
+				{ { "VehicleRepair", "magazine" }, 10 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
 				{ { "CinderBlocks", "magazine" }, 12 },
 				{ { "JackKit", "magazine" }, 9 },
@@ -884,19 +887,18 @@ class CfgLootTable
 		items[] = {
 				{ { "AKM_EPOCH", "weapon" }, 3 },
 				{ { "sr25_epoch", "weapon" }, 4 },
-				{ { "Rifle_arifle_Katiba_F", "CfgLootTable" }, 4 },
-				{ { "Rifle_arifle_MX_GL_F", "CfgLootTable" }, 4 },
-				{ { "Rifle_l85a2_epoch", "CfgLootTable" }, 4 },
-				{ { "m4a3_EPOCH", "weapon" }, 4 },
-				{ { "Rifle_m16_EPOCH", "CfgLootTable" }, 4 },
-				{ { "Rifle_arifle_Mk20_F", "CfgLootTable" }, 4 },
-				{ { "Rifle_arifle_TRG21_F", "CfgLootTable" }, 4 },
-				{ { "arifle_SDAR_F", "weapon" }, 3 },
-				{ { "Rollins_F", "weapon" }, 4 },
-				{ { "SMG_01_F", "weapon" }, 4 },
-				{ { "SMG_02_F", "weapon" }, 3 },
-				{ { "hgun_PDW2000_F", "weapon" }, 3 },
-				
+				{ { "Rifle_arifle_Katiba_F", "CfgLootTable" }, 5 },
+				{ { "Rifle_arifle_MX_GL_F", "CfgLootTable" }, 6 },
+				{ { "Rifle_l85a2_epoch", "CfgLootTable" }, 6 },
+				{ { "m4a3_EPOCH", "weapon" }, 7 },
+				{ { "Rifle_m16_EPOCH", "CfgLootTable" }, 7 },
+				{ { "Rifle_arifle_Mk20_F", "CfgLootTable" }, 8 },
+				{ { "Rifle_arifle_TRG21_F", "CfgLootTable" }, 8 },
+				{ { "arifle_SDAR_F", "weapon" }, 9 },
+				{ { "Rollins_F", "weapon" }, 9 },
+				{ { "SMG_01_F", "weapon" }, 9 },
+				{ { "SMG_02_F", "weapon" }, 9 },
+				{ { "hgun_PDW2000_F", "weapon" }, 10 },
 				// MAS
 				{ { "arifle_mas_m4", "weapon" }, 2 },
 				{ { "arifle_mas_hk416", "weapon" }, 2 },
@@ -1013,12 +1015,11 @@ class CfgLootTable
 		items[] = {
 				{ { "30Rnd_762x39_Mag", "magazine" }, 8 },
 				{ { "RifleAmmo_30Rnd_65x39_caseless_mag", "CfgLootTable" }, 14 },
-				{ { "20Rnd_556x45_UW_mag", "magazine" }, 7 },
+				{ { "20Rnd_556x45_UW_mag", "magazine" }, 12 },
 				{ { "RifleAmmo_30Rnd_556x45_Stanag", "CfgLootTable" }, 13 },
 				{ { "RifleAmmo_30Rnd_45ACP_Mag_SMG_01", "CfgLootTable" }, 16 },
-				{ { "30Rnd_9x21_Mag", "magazine" }, 7 },
-				{ { "5Rnd_rollins_mag", "magazine" }, 5 },
-				
+				{ { "30Rnd_9x21_Mag", "magazine" }, 17 },
+				{ { "5Rnd_rollins_mag", "magazine" }, 20 },
 				// MAS
 				{ { "7Rnd_mas_12Gauge_Slug", "magazine" }, 5 },
 				{ { "7Rnd_mas_12Gauge_Pellets", "magazine" }, 5 },
@@ -1113,10 +1114,9 @@ class CfgLootTable
 		items[] = {
 				{ { "LMG_Zafir_F", "weapon" }, 1 },
 				{ { "Machinegun_arifle_MX_SW_F", "CfgLootTable" }, 2 },
-				{ { "LMG_Mk200_F", "weapon" }, 2 },
+				{ { "LMG_Mk200_F", "weapon" }, 3 },
 				{ { "Machinegun_m249_EPOCH", "CfgLootTable" }, 3 },
 				{ { "MMG_MarkDLC_EPOCH", "CfgLootTable" }, 1 },
-				
 				// MAS
 				{ { "LMG_mas_Mk200_F", "weapon" }, 1 }
 		};
@@ -1201,10 +1201,12 @@ class CfgLootTable
 	class Tools
 	{
 		items[] = {
-				{ { "Hatchet", "weapon" }, 65 },
+				{ { "Hatchet", "weapon" }, 62 },
 				{ { "MeleeSledge", "weapon" }, 20 },
 				{ { "ChainSaw", "weapon" }, 10 },
 				{ { "Plunger", "weapon" }, 4 },
+				{ { "MeleeSword", "weapon" }, 1 },
+				{ { "MeleeRod", "weapon" }, 2 },
 				{ { "lighter_epoch", "magazine" }, 1 }
 		};
 	};
@@ -1212,16 +1214,15 @@ class CfgLootTable
 	class Pistols
 	{
 		items[] = {
-				{ { "Hgun_Pistol_Signal_F", "weapon" }, 5 },
+				{ { "Hgun_Pistol_Signal_F", "weapon" }, 4 },
 				{ { "MultiGun", "weapon" }, 5 },
-				{ { "hgun_Pistol_heavy_01_F", "weapon" }, 5 },
-				{ { "hgun_P07_F", "weapon" }, 5 },
-				{ { "hgun_Rook40_F", "weapon" }, 6 },
-				{ { "hgun_Pistol_heavy_02_F", "weapon" }, 8 },
-				{ { "1911_pistol_epoch", "weapon" }, 5 },
-				{ { "hgun_ACPC2_F", "weapon" }, 6 },
-				{ { "ruger_pistol_epoch", "weapon" }, 5 },
-				
+				{ { "hgun_Pistol_heavy_01_F", "weapon" }, 9 },
+				{ { "hgun_P07_F", "weapon" }, 10 },
+				{ { "hgun_Rook40_F", "weapon" }, 11 },
+				{ { "hgun_Pistol_heavy_02_F", "weapon" }, 13 },
+				{ { "1911_pistol_epoch", "weapon" }, 14 },
+				{ { "hgun_ACPC2_F", "weapon" }, 16 },
+				{ { "ruger_pistol_epoch", "weapon" }, 18 },
 				// MAS
 				{ { "hgun_mas_mp7p_F", "weapon" }, 5 },
 				{ { "hgun_mas_uzi_F", "weapon" }, 5 },
@@ -1245,9 +1246,8 @@ class CfgLootTable
 				{ { "16Rnd_9x21_Mag", "magazine" }, 11 },
 				{ { "11Rnd_45ACP_Mag", "magazine" }, 12 },
 				{ { "9Rnd_45ACP_Mag", "magazine" }, 16 },
-				{ { "9rnd_45X88_magazine", "magazine" }, 8 },
-				{ { "10rnd_22X44_magazine", "magazine" }, 8 },
-				
+				{ { "9rnd_45X88_magazine", "magazine" }, 16 },
+				{ { "10rnd_22X44_magazine", "magazine" }, 16 },
 				// MAS
 				{ { "40Rnd_mas_46x30_Mag", "magazine" }, 4 },
 				{ { "25Rnd_mas_9x19_Mag", "magazine" }, 4 },
@@ -1419,7 +1419,8 @@ class CfgLootTable
 				{ { "KitPlotPole", "magazine" }, 5 },
 				{ { "KitSolarGen", "magazine" }, 2 },
 				{ { "KitStudWall", "magazine" }, 13 },
-				{ { "KitShelf", "magazine" }, 11 },
+				{ { "KitShelf", "magazine" }, 9 },
+				{ { "KitWorkbench", "magazine" }, 2 },
 				{ { "KitWoodFloor", "magazine" }, 12 },
 				{ { "KitWoodStairs", "magazine" }, 10 },
 				{ { "KitWoodTower", "magazine" }, 5 },
@@ -1428,7 +1429,8 @@ class CfgLootTable
 				{ { "KitFirePlace", "magazine" }, 8 },
 				{ { "KitCinderWall", "magazine" }, 5 },
 				{ { "KitFoundation", "magazine" }, 5 },
-				{ { "KitWoodFoundation", "magazine" }, 14 }
+				{ { "KitWoodFoundation", "magazine" }, 14 },
+				{ { "ItemSafe", "magazine" }, 1 }
 		};
 	};
 	
@@ -1439,8 +1441,9 @@ class CfgLootTable
 				{ { "Sodas", "CfgLootTable" }, 6 },
 				{ { "CanFood", "CfgLootTable" }, 8 },
 				{ { "BaseBuilding", "CfgLootTable" }, 20 },
-				{ { "GenericLarge", "CfgLootTable" }, 25 },
+				{ { "GenericLarge", "CfgLootTable" }, 24 },
 				{ { "ItemLockbox", "magazine" }, 4 },
+				{ { "ItemSafe", "magazine" }, 1 },
 				{ { "Generic", "CfgLootTable" }, 10 },
 				{ { "Tools", "CfgLootTable" }, 19 }
 		};
@@ -1904,9 +1907,11 @@ class CfgLootTable
 				{ { "H_90_EPOCH", "item" }, 1 },
 				{ { "H_91_EPOCH", "item" }, 1 },
 				{ { "H_92_EPOCH", "item" }, 1 },
-				{ { "H_104_EPOCH", "item" }, 1 }
-				// { { "wolf_mask_epoch", "item" }, 1 },
-				// { { "pkin_mask_epoch", "item" }, 1 }
+				{ { "H_104_EPOCH", "item" }, 1 },
+				{ { "wolf_mask_epoch", "item" }, 1 },
+				{ { "pkin_mask_epoch", "item" }, 1 },
+				{ { "clown_mask_epoch", "item" }, 1 }
+				
 		};
 	};
 };

@@ -3,6 +3,7 @@ class Mission
 {
 	addOns[]=
 	{
+		"esseker",
 		"a3_epoch_config",
 		"A3_Soft_F_Car",
 		"A3_Soft_F_Quadbike",
@@ -20,7 +21,6 @@ class Mission
 		"A3_Modules_F_Curator_Curator",
 		"a3_characters_f",
 		"A3_Data_F_Curator_Virtual",
-		"esseker",
 		"aia_misc3_config",
 		"aia_misc_config",
 		"aia_misc_e_config",
