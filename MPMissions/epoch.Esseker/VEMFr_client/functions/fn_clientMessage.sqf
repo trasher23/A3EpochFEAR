@@ -2,7 +2,7 @@
 	Author: IT07
 
 	Description:
-	shows VEMF messages
+	shows VEMF_Reloaded messages
 
 	Params:
 	_this select 0: STRING - the message to display
@@ -15,7 +15,7 @@ _txt = toUpper ([_this, 0, "", [""]] call BIS_fnc_param);
 if not(_txt isEqualTo "") then
 {
 	disableSerialization;
-	_dsp = uiNamespace getVariable "vemfClientDsp";
+	_dsp = uiNamespace getVariable "RscDisplayVEMFrClient";
 	_show =
 	{
 		private ["_txt","_ctrl"];
@@ -52,7 +52,7 @@ if not(_txt isEqualTo "") then
 				uiSleep 0.04;
 			};
 		};
-		_qeue = uiNamespace getVariable "vemfClientMsgQeue";
+		_qeue = uiNamespace getVariable "VEMFrClientMsgQeue";
 		if not isNil"_qeue" then
 		{
 			if (typeName _qeue isEqualTo "ARRAY") then
@@ -64,25 +64,38 @@ if not(_txt isEqualTo "") then
 				};
 			};
 		};
-		(["vemfClientMsg"] call BIS_fnc_rscLayer) cutFadeOut 1;
+		_ctrlBg ctrlSetPosition [(ctrlPosition _ctrlBg) select 0, (ctrlPosition _ctrlBg) select 1, 0 * safezoneW, (ctrlPosition _ctrlbG) select 3];
+		_ctrlBg ctrlCommit 0.4;
+		uiSleep 0.5;
+		_ctrlTag ctrlSetPosition [(ctrlPosition _ctrlTag) select 0, (ctrlPosition _ctrlTag) select 1, 0 * safezoneW, (ctrlPosition _ctrlTag) select 3];
+		_ctrlTag ctrlCommit 0.25;
+		_ctrlTag ctrlSetText "";
+		(["RscDisplayVEMFrClient"] call BIS_fnc_rscLayer) cutFadeOut 1;
 	};
 	if isNil"_dsp" then
 	{
-		(["vemfClientMsg"] call BIS_fnc_rscLayer) cutRsc["vemfClientMsg", "PLAIN", 0, true];
-		_dsp = uiNamespace getVariable "vemfClientDsp";
+		_dsp = uiNamespace setVariable ["RscDisplayVEMFrClient", displayNull];
 	};
 	if not isNil"_dsp" then
 	{
-		_qeue = uiNamespace getVariable "vemfClientMsgQeue";
+		_qeue = uiNamespace getVariable "VEMFrClientMsgQeue";
 		if not isNil"_qeue" then
 		{
 			if (typeName _qeue isEqualTo "ARRAY") then
 			{
 				_qeue pushBack _txt;
 				if not(isNull _dsp) then { waitUntil { uiSleep 2; isNull _dsp; (_qeue select 0) isEqualTo _txt } };
-				(["vemfClientMsg"] call BIS_fnc_rscLayer) cutRsc["vemfClientMsg", "PLAIN", 0, true];
-				_dsp = uiNamespace getVariable "vemfClientDsp";
+				(["RscDisplayVEMFrClient"] call BIS_fnc_rscLayer) cutRsc["RscDisplayVEMFrClient", "PLAIN", 0, true];
+				_dsp = uiNamespace getVariable "RscDisplayVEMFrClient";
+				_ctrlTag = _dsp displayCtrl 1001;
+			    _ctrlTag ctrlSetPosition [(ctrlPosition _ctrlTag) select 0, (ctrlPosition _ctrlTag) select 1, 0.0625 * safezoneW, (ctrlPosition _ctrlTag) select 3];
+			    _ctrlTag ctrlCommit 0.25;
+			    uiSleep 0.5;
+			    _ctrlBg = _dsp displayCtrl 2200;
+			    _ctrlBg ctrlSetPosition [(ctrlPosition _ctrlBg) select 0, (ctrlPosition _ctrlBg) select 1, 0.4375 * safezoneW, (ctrlPosition _ctrlbG) select 3];
+			    _ctrlBg ctrlCommit 0.4;
 				_ctrl = _dsp displayCtrl 1000;
+				uiSleep 0.5;
 				[_ctrl, _txt] call _show;
 			};
 		};

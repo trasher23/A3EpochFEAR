@@ -66,3 +66,7 @@ _trigger setTriggerActivation["ANY","PRESENT",true];
 _trigger setTriggerType "SWITCH";
 
 _trigger spawn _quarantineZone;
+
+// Add to existing public array and broadcast location to clients
+FEARQuarantineLocs pushBack _pos;
+publicVariable "FEARQuarantineLocs";

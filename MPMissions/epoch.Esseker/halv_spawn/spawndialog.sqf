@@ -12,10 +12,12 @@ HALV_Center = getMarkerPos "center";
 waitUntil{!isNil "HALV_senddeftele"};
 waitUntil{!isNil "Epoch_my_GroupUID"};
 
+[format["player distance from spawn: %1",player distance _rspawnw]] call FEARserverLog;
+
 // Exit if player not near spawn
-if(player distance _rspawnw > 35)exitWith{
+if(player distance _rspawnw > 1500)exitWith{
 	call Halv_clear_vars;
-	diag_log "Spawn Menu Aborted...";
+	["Spawn Menu Aborted..."] call FEARserverLog;
 };
 
 enableEnvironment false;
@@ -264,6 +266,7 @@ Halv_spawn_player = {
 	_item call HALV_addiweaponwithammo;
 	(_addedgear select 1) pushBack ['random',_item];
 	
+	player addWeapon "NVG_EPOCH";
 	player addWeapon "ItemMap"; // Add map as default item
 	player addPrimaryWeaponItem "acc_flashlight"; // Add flashlight
 	
@@ -296,7 +299,8 @@ Halv_spawn_player = {
 };
 
 Halv_clear_vars = {
-	Halv_moveMap = nil;Halv_fill_spawn = nil;Halv_near_cityname = nil;Halv_spawn_player = nil;Halv_spawns = nil;HALV_Center = nil;HALV_senddeftele = nil;HALV_SELECTSPAWN = nil;HALV_fill_gear = nil;HALV_fill_gear = nil;HALV_GEAR_TOADD = nil;HALV_player_removelisteditem = nil;HALV_addiweaponwithammo = nil;
+	//HALV_senddeftele = nil
+	Halv_moveMap = nil;Halv_fill_spawn = nil;Halv_near_cityname = nil;Halv_spawn_player = nil;Halv_spawns = nil;HALV_Center = nil;HALV_SELECTSPAWN = nil;HALV_fill_gear = nil;HALV_GEAR_TOADD = nil;HALV_player_removelisteditem = nil;HALV_addiweaponwithammo = nil;
 };
 
 Halv_fill_spawn = {

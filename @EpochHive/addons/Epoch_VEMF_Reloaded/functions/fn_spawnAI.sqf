@@ -1,5 +1,5 @@
 /*
-	Author: original by Vampire, completely rewritten by IT07
+	Author: IT07
 
 	Description:
 	spawns AI using given _pos and unit/group count.
@@ -15,11 +15,11 @@
 
 private // Make sure that the vars in this function do not interfere with vars in the calling script
 [
-	"_pos","_locName","_grpCount","_unitsPerGrp","_sldrClass","_groups","_settings","_hc","_skills","_newPos","_return","_waypoints","_wp","_cyc","_units",
+	"_pos","_locName","_grpCount","_unitsPerGrp","_sldrClass","_groups","_settings","_hc","_skills","_newPos","_return","_waypoints","_wp","_cyc","_spawned",
 	"_accuracy","_aimShake","_aimSpeed","_stamina","_spotDist","_spotTime","_courage","_reloadSpd","_commanding","_general","_loadInv","_noHouses"
 ];
 
-_units = [];
+_spawned = [[],[]];
 _pos = [_this, 0, [], [[]]] call BIS_fnc_param;
 if (count _pos isEqualTo 3) then
 {
@@ -34,9 +34,9 @@ if (count _pos isEqualTo 3) then
 			{
 				_sldrClass = "I_Soldier_EPOCH";
 				_groups = [];
-				_hc = "allowHeadLessClient" call VEMF_fnc_getSetting;
-				_aiDifficulty = [[["aiSkill"],["difficulty"]] call VEMF_fnc_getSetting, 0, "Veteran", [""]] call BIS_fnc_param;
-				_skills = [["aiSkill", _aiDifficulty],["accuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"]] call VEMF_fnc_getSetting;
+				_hc = "allowHeadLessClient" call VEMFr_fnc_getSetting;
+				_aiDifficulty = [[["aiSkill"],["difficulty"]] call VEMFr_fnc_getSetting, 0, "Veteran", [""]] call BIS_fnc_param;
+				_skills = [["aiSkill", _aiDifficulty],["accuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"]] call VEMFr_fnc_getSetting;
 				_accuracy = _skills select 0;
 				_aimShake = _skills select 1;
 				_aimSpeed = _skills select 2;
@@ -65,15 +65,22 @@ if (count _pos isEqualTo 3) then
 				} forEach _houseFilter;
 				_houses = _houses call BIS_fnc_arrayShuffle;
 				_noHouses = false;
-				if (count _houses < _grpCount) then
+				if (count _houses < 1) then
 				{
 					_noHouses = true;
 				};
 
-				_cal50s = [[["MI"],["cal50s"]] call VEMF_fnc_getSetting, 0, 3, [0]] call BIS_fnc_param;
+				_cal50s = [[["MI"],["cal50s"]] call VEMFr_fnc_getSetting, 0, 3, [0]] call BIS_fnc_param;
 				_units = []; // Define units array. the for loops below will fill it with units
 				for "_g" from 1 to _grpCount do // Spawn Groups near Position
 				{
+					if not _noHouses then
+					{
+						if (count _houses < 1) then
+						{
+							_noHouses = true
+						};
+					};
 					private ["_grp","_unit"];
 					_grp = createGroup independent;
 					if not _noHouses then
@@ -86,19 +93,18 @@ if (count _pos isEqualTo 3) then
 					private ["_house","_housePositions"];
 					if not _noHouses then
 					{
-						_house = _houses call VEMF_fnc_random;
+						_house = _houses call VEMFr_fnc_random;
 						_houseID = _houses find _house;
 						_houses deleteAt _houseID;
 						_housePositions = [_house] call BIS_fnc_buildingPositions;
 					};
-
 					_placed50 = false;
 					for "_u" from 1 to _unitsPerGrp do
 					{
 						private ["_spawnPos","_hmg"];
 						if not _noHouses then
 						{
-							_spawnPos = _housePositions call VEMF_fnc_random;
+							_spawnPos = _housePositions call VEMFr_fnc_random;
 							if not _placed50 then
 							{
 								_placed50 = true;
@@ -106,6 +112,7 @@ if (count _pos isEqualTo 3) then
 								{
 									_hmg = createVehicle ["O_HMG_01_high_F", _spawnPos, [], 0, "CAN_COLLIDE"];
 									_hmg setVehicleLock "LOCKEDPLAYER";
+									(_spawned select 1) pushBack _hmg;
 								};
 							};
 						};
@@ -135,8 +142,8 @@ if (count _pos isEqualTo 3) then
 							_housePositions deleteAt _houseIndex;
 						};
 
-						_unit addMPEventHandler ["mpkilled","if (isDedicated) then { [_this select 0, _this select 1] spawn VEMF_fnc_aiKilled }"];
-						_units pushBack _unit;
+						_unit addMPEventHandler ["mpkilled","if (isDedicated) then { [_this select 0, _this select 1] spawn VEMFr_fnc_aiKilled }"];
+						(_spawned select 0) pushBack _unit;
 						// Set skills
 						_unit setSkill ["aimingAccuracy", _accuracy];
 						_unit setSkill ["aimingShake", _aimShake];
@@ -154,10 +161,10 @@ if (count _pos isEqualTo 3) then
 					_groups pushBack _grp; // Push it into the _groups array
 				};
 
-				_invLoaded = [_units,"Invasion"] call VEMF_fnc_loadInv; // Load the AI's inventory
+				_invLoaded = [_spawned select 0,"Invasion"] call VEMFr_fnc_loadInv; // Load the AI's inventory
 				if isNil"_invLoaded" then
 				{
-					["fn_spawnAI", 0, "failed to load AI's inventory..."] call VEMF_fnc_log;
+					["fn_spawnAI", 0, "failed to load AI's inventory..."] call VEMFr_fnc_log;
 				};
 
 				if (count _groups isEqualTo _grpCount) then
@@ -165,7 +172,7 @@ if (count _pos isEqualTo 3) then
 					if not _noHouses then
 					{
 						{
-							[_x] spawn VEMF_fnc_signAI;
+							[_x] spawn VEMFr_fnc_signAI;
 						} forEach _groups;
 					};
 					if _noHouses then
@@ -187,7 +194,7 @@ if (count _pos isEqualTo 3) then
 							_cyc = _x addWaypoint [_pos,10];
 							_cyc setWaypointType "CYCLE";
 							_cyc setWaypointCompletionRadius 20;
-							[_x] spawn VEMF_fnc_signAI;
+							[_x] spawn VEMFr_fnc_signAI;
 						} forEach _groups;
 					};
 				};
@@ -195,4 +202,4 @@ if (count _pos isEqualTo 3) then
 		};
 	};
 };
-_units
+_spawned

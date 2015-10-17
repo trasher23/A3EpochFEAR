@@ -11,11 +11,11 @@
     nothing
 */
 
-_validateLoot = if ("validateLoot" call VEMF_fnc_getSetting isEqualTo 1) then { true } else { false };
+_validateLoot = if ("validateLoot" call VEMFr_fnc_getSetting isEqualTo 1) then { true } else { false };
 if _validateLoot then
 {
     // _validateLoot is enabled, go ahead...
-    ["fn_launchVEMF", 1, "Validating loot tables..."] call VEMF_fnc_log;
+    ["fn_launchVEMF", 1, "Validating loot tables..."] call VEMFr_fnc_log;
     _invalidClasses = [];
 
     _mags = [];
@@ -30,7 +30,7 @@ if _validateLoot then
         _bags pushBack (configName _x);
     } forEach _cfgBags;
 
-    _aiGear = [["aiGear"],["aiHeadGear","aiUniforms","aiVests","aiRifles","aiBackpacks","aiLaunchers","aiPistols"]] call VEMF_fnc_getSetting;
+    _aiGear = [["aiGear"],["aiHeadGear","aiUniforms","aiVests","aiRifles","aiBackpacks","aiLaunchers","aiPistols"]] call VEMFr_fnc_getSetting;
     {
         {
             if not((_x in _mags) OR (_x in _weapons) OR (_x in _bags)) then
@@ -40,7 +40,7 @@ if _validateLoot then
         } forEach _x;
     } forEach _aiGear;
 
-    _loot = [["crateLoot"],["primaryWeaponLoot","secondaryWeaponLoot","magazinesLoot","attachmentsLoot","itemsLoot","vestsLoot","headGearLoot","backpacksLoot"]] call VEMF_fnc_getSetting;
+    _loot = [["crateLoot"],["primaryWeaponLoot","secondaryWeaponLoot","magazinesLoot","attachmentsLoot","itemsLoot","vestsLoot","headGearLoot","backpacksLoot"]] call VEMFr_fnc_getSetting;
     {
         {
             _class = _x select 0;
@@ -56,11 +56,11 @@ if _validateLoot then
     {
         case true:
         {
-            ["fn_launchVEMF", 0, format["Invalid classes found in loot! | %1", _invalidClasses]] call VEMF_fnc_log;
+            ["fn_launchVEMF", 0, format["Invalid classes found in loot! | %1", _invalidClasses]] call VEMFr_fnc_log;
         };
         case false:
         {
-            ["fn_launchVEMF", 1, "Loot tables are all valid :)"] call VEMF_fnc_log;
+            ["fn_launchVEMF", 1, "Loot tables are all valid :)"] call VEMFr_fnc_log;
         };
     };
 };

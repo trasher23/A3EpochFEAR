@@ -60,9 +60,6 @@ if (!isDedicated && hasInterface) then {
 	[] execVM "FEAR\scripts\FEAR_statusBar.sqf";		// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
 	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";		// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
-	[] execVM "paintshop\paintshop.sqf";				// http://epochmod.com/forum/index.php?/topic/35945-painshop-paintset-custom-textures-on-backpack-uniforms-and-vehicles/
-	
-	(vehicle player) switchCamera "EXTERNAL"; 			// Start in 3rd person view
 };
 
 /*
@@ -83,5 +80,6 @@ if (!isDedicated && hasInterface) then {
 waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
 
 if (!isDedicated && hasInterface) then {
+	(vehicle player) switchCamera "EXTERNAL"; 			// Start in 3rd person view
 	[] execVM "FEAR\scripts\FEAR_masterLoop.sqf"; 		// FEAR master loop
 };

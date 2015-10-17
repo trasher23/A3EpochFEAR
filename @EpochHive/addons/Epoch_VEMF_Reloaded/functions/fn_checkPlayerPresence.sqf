@@ -24,7 +24,7 @@ if (count _pos isEqualTo 3) then
         {
             if not _found then
             {
-                if (([1] call VEMF_fnc_playerCount) AND (speed _x) < 200) then // Ignore fast moving players
+                if (([1] call VEMFr_fnc_playerCount) AND (speed _x) < 200) then // Ignore fast moving players
                 {
                     _isClose = if (((position _x) distance _pos) < _rad) then { true } else { false };
                     if _isClose then { _found = true };

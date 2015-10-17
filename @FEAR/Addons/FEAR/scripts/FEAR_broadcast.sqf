@@ -10,8 +10,8 @@ _allPlayers = call FEARGetPlayers;
 	{			
 		if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _x)) == "ItemRadio") exitWith {
 			// If player has radio, send message
-			VEMFChatMsg = [_msg,_mode];
-			(owner (vehicle _player)) publicVariableClient "VEMFChatMsg";
+			VEMFrClientMsg = [_msg,_mode];
+			(owner (vehicle _player)) publicVariableClient "VEMFrClientMsg";
 		};
 	}forEach assignedItems _player;
 }forEach _allPlayers;

@@ -11,11 +11,11 @@
     OBJECT - the headless client
 */
 
-_hcEnabled = if(("allowHeadLessClient" call VEMF_fnc_getSetting) < 1) then { false } else { true };
+_hcEnabled = if(("allowHeadLessClient" call VEMFr_fnc_getSetting) < 1) then { false } else { true };
 if _hcEnabled then
 {
     // Ok, Headless Clients enabled. let us continue
-    _hcList = "hcUIDs" call VEMF_fnc_getSetting;
+    _hcList = "hcUIDs" call VEMFr_fnc_getSetting;
     // We have the names now, check if any of them is actually ingame
     _ingameHCs = [];
     {
@@ -27,7 +27,7 @@ if _hcEnabled then
     if (count _ingameHCs > 0) then
     {
         // At least 1 of given headless clients is ingame, lets check their load
-        _globalLoad = uiNamespace getVariable "vemfHcLoad";
+        _globalLoad = uiNamespace getVariable "VEMFrHcLoad";
         _lowestLoad = 99999;
         _hasLowest = "";
         { // Find the lowest load number

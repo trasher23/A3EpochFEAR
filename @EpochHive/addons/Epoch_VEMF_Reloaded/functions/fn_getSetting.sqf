@@ -43,7 +43,7 @@ _check =
 
 if (typeName _this isEqualTo "STRING") then
 {
-	_cfg = configFile >> "VEMFconfig" >> _this;
+	_cfg = configFile >> "CfgVemfReloaded" >> _this;
 	call _check;
 	if not(isNil"_v") then
 	{
@@ -55,7 +55,7 @@ if (typeName _this isEqualTo "ARRAY") then
 {
 	if (count _this isEqualTo 2) then
 	{
-		_cfg = configFile >> "VEMFconfig";
+		_cfg = configFile >> "CfgVemfReloaded";
 		_path = _cfg;
 		{
 			_path = _path >> _x; // Build the config path
@@ -69,7 +69,7 @@ if (typeName _this isEqualTo "ARRAY") then
 	if (count _this isEqualTo 1) then
 	{
 		{
-			_cfg = configFile >> "VEMFconfig" >> _x;
+			_cfg = configFile >> "CfgVemfReloaded" >> _x;
 			call _check;
 			_r pushBack _v;
 		} forEach (_this select 0);

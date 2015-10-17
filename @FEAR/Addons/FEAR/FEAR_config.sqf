@@ -47,4 +47,11 @@ ZombieTotal = 0; // Zombie counter
 
 diag_log "[FEAR] configuration file loaded";
 
-true
+/*
+VEMF mission radius gets sent to clients for increased zombie spawn
+Needs array to store position for more than one mission
+*/
+FEARQuarantineLocs = [];
+publicVariable "FEARQuarantineLocs";
+
+true // Config file run, return true

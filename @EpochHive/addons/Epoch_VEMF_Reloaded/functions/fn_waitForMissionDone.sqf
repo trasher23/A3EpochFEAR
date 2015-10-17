@@ -1,5 +1,5 @@
 /*
-	Author: VAMPIRE, rebooted by IT07
+	Author: IT07
 
 	Description:
 	fn_waitForMissionDone - waits for mission to be done
@@ -23,7 +23,7 @@ if (count _pos isEqualTo 3) then
 	{
 		_unitCount = count _unitArr;
 		_killed = [];
-		_killToComplete = round(("killPercentage" call VEMF_fnc_getSetting)/100*_unitCount);
+		_killToComplete = round(("killPercentage" call VEMFr_fnc_getSetting)/100*_unitCount);
 		_rad = [_this, 2, 0, [0]] call BIS_fnc_param;
 		if (_rad > 0) then
 		{
@@ -31,7 +31,7 @@ if (count _pos isEqualTo 3) then
 			{
 				// First check for a player
 				if not _complete then { uiSleep 1; };
-				_playerNear = [_pos, _rad] call VEMF_fnc_checkPlayerPresence;
+				_playerNear = [_pos, _rad] call VEMFr_fnc_checkPlayerPresence;
 				if (_playerNear) then
 				{
 					{
@@ -52,7 +52,7 @@ if (count _pos isEqualTo 3) then
 				if (((count _killed) isEqualTo _killToComplete) OR ((count _killed) > _killToComplete)) then { _complete = true };
 				if not _complete then { uiSleep 1 };
 			};
-			["fn_waitForMissionDone", 1, "mission complete!"] call VEMF_fnc_log;
+			["fn_waitForMissionDone", 1, "mission complete!"] call VEMFr_fnc_log;
 		};
 	};
 };

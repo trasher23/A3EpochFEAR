@@ -16,7 +16,7 @@ _target = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 if not isNull _target then
 {
 	_target removeAllEventHandlers "MPKilled";
-	_settings = [["keepLaunchers","keepAIbodies"]] call VEMF_fnc_getSetting;
+	_settings = [["keepLaunchers","keepAIbodies"]] call VEMFr_fnc_getSetting;
 	_keepLaunchers = [_settings, 0, -1, [0]] call BIS_fnc_param;
 	if (_keepLaunchers isEqualTo -1) then
 	{
@@ -39,9 +39,9 @@ if not isNull _target then
 	{
 		if (vehicle _killer isEqualTo _killer) then // No roadkills please
 		{
-			if ("useCryptoReward" call VEMF_fnc_getSetting isEqualTo 1) then
+			if ("useCryptoReward" call VEMFr_fnc_getSetting isEqualTo 1) then
 			{ // Give the player money for killing an AI
-				_maxReward = "maxCryptoReward" call VEMF_fnc_getSetting;
+				_maxReward = "maxCryptoReward" call VEMFr_fnc_getSetting;
 				_calcReward =
 				{
 					private ["_reward","_dist","_maxReward"];
@@ -62,7 +62,7 @@ if not isNull _target then
 				_vars set[_varIndex,_newcrypt];
 				_killer setVariable ["VARS", _vars];
 			};
-			if ("sayKilled" call VEMF_fnc_getSetting isEqualTo 1) then // Send kill message if enabled
+			if ("sayKilled" call VEMFr_fnc_getSetting isEqualTo 1) then // Send kill message if enabled
 			{
 				_dist = _target distance _killer;
 				if (_dist > -1) then
@@ -70,22 +70,22 @@ if not isNull _target then
 					if (isPlayer _killer) then // Should prevent Error:NoUnit
 					{
 						_curWeapon = currentWeapon _killer;
-						_kMsg = format["%1: AI kill from %2m with %3", name _killer, round _dist, getText(configFile >> "CfgWeapons" >> _curWeapon >> "DisplayName")];
-						_sent = [_kMsg, "sys"] call VEMF_fnc_broadCast;
+						_kMsg = format["[VEMF] %1: AI kill from %2m with %3", name _killer, round _dist, getText(configFile >> "CfgWeapons" >> _curWeapon >> "DisplayName")];
+						_sent = [_kMsg, "sys"] call VEMFr_fnc_broadCast;
 					};
 				};
 			};
 		};
 		if not (vehicle _killer isEqualTo _killer) then
 		{ // Send kill message if enabled
-			if (("sayKilled" call VEMF_fnc_getSetting) isEqualTo 1) then
+			if (("sayKilled" call VEMFr_fnc_getSetting) isEqualTo 1) then
 			{
 				if ((_target distance _killer) < 5) then
 				{
 					if (isPlayer _killer) then // Should prevent Error:NoUnit
 					{
-						_kMsg = format["%1: AI road-kill with %2", name _killer, getText(configFile >> "CfgVehicles" >> typeOf(vehicle _killer) >> "DisplayName")];
-						_sent = [_kMsg, "sys"] call VEMF_fnc_broadCast;
+						_kMsg = format["[VEMF] %1: AI road-kill with %2", name _killer, getText(configFile >> "CfgVehicles" >> typeOf(vehicle _killer) >> "DisplayName")];
+						_sent = [_kMsg, "sys"] call VEMFr_fnc_broadCast;
 					};
 				};
 			};

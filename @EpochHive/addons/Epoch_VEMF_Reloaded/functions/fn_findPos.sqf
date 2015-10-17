@@ -1,5 +1,5 @@
 /*
-	Author: VAMPIRE, rewritten by IT07
+	Author: IT07
 
 	Description:
 	can find a location or pos randomly on the map where there are no players
@@ -21,10 +21,11 @@ private ["_settings","_locPos","_loc","_locName","_ret","_continue","_settings",
 
 _ret = false;
 // Define settings
-_settings = [["locationBlackList","allowSmall","noMissionPos"]] call VEMF_fnc_getSetting;
+_settings = [["locationBlackList","allowSmall","noMissionPos","missionDistance"]] call VEMFr_fnc_getSetting;
 _blackList = [_settings, 0, [], [[]]] call BIS_fnc_param;
 _allowSmall = [_settings, 1, 1, [0]] call BIS_fnc_param;
 _blackPos = [_settings, 2, [], [[]]] call BIS_fnc_param;
+_missionDistance = [_settings, 3, 3000, [0]] call BIS_fnc_param;
 _checkBlackPos = false;
 if (count _blackPos > 0) then
 {
@@ -56,10 +57,10 @@ if not(_mode isEqualTo "") then
 							_locs = nearestLocations [_cntr, ["Area","BorderCrossing","CityCenter","Hill","fakeTown","Name","RockArea","Strategic","StrongpointArea","ViewPoint","NameVillage","NameCity","NameCityCapital",if(_allowSmall isEqualTo 1)then{"nameLocal"}], _rad];
 							if (count _locs > 0) then
 							{
-								_usedLocs = uiNamespace getVariable "vemfUsedLocs";
+								_usedLocs = uiNamespace getVariable "VEMFrUsedLocs";
 								_remLocs = [];
 								{ // Check _locs for invalid locations (too close, hasPlayers or inBlacklist)
-									_hasPlayers = [locationPosition _x, _playerCheck] call VEMF_fnc_checkPlayerPresence;
+									_hasPlayers = [locationPosition _x, _playerCheck] call VEMFr_fnc_checkPlayerPresence;
 									if _hasPlayers then
 									{
 										_remLocs pushBack _x;
@@ -86,7 +87,7 @@ if not(_mode isEqualTo "") then
 												};
 												if not(count _x isEqualTo 2) then
 												{
-													["fn_findPos", 0, format["found invalid entry in mission blacklist: %1", _x]] call VEMF_fnc_log;
+													["fn_findPos", 0, format["found invalid entry in mission blacklist: %1", _x]] call VEMFr_fnc_log;
 												};
 											} forEach _blackPos;
 										};
@@ -107,6 +108,17 @@ if not(_mode isEqualTo "") then
 													_remLocs pushBack _x;
 												};
 											};
+										};
+										if (count _usedLocs > 0) then
+										{
+											private ["_loc"];
+											_loc = _x;
+											{
+												if (((locationPosition _loc) distance (_x select 1)) < _missionDistance) then
+												{
+													_remLocs pushBack _loc;
+												};
+											} forEach _usedLocs;
 										};
 									};
 								} forEach _locs;
@@ -151,7 +163,7 @@ if not(_mode isEqualTo "") then
 								{
 									// Return Name and POS
 									_ret = [text _loc, locationPosition _loc];
-									(uiNamespace getVariable "vemfUsedLocs") pushBack _ret;
+									(uiNamespace getVariable "VEMFrUsedLocs") pushBack _ret;
 								};
 							};
 						};
@@ -182,7 +194,7 @@ if not(_mode isEqualTo "") then
 												_pos = position (_closest select 0);
 											};
 										};
-										_hasPlayers = [_pos, _playerCheck] call VEMF_fnc_checkPlayerPresence;
+										_hasPlayers = [_pos, _playerCheck] call VEMFr_fnc_checkPlayerPresence;
 										if not(_hasPlayers) then
 										{
 											_ret = _pos;

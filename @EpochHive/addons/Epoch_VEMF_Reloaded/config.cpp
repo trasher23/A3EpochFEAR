@@ -2,32 +2,22 @@
    	Author: IT07
 
    	Description:
-   	hpp config file for Vampire's Epoch Mission Framework (a.k.a. VEMF)
-
-	Little back story:
-	VEMF is originally made by Vampire but he kind of gave up on the project.
-	Now, I (IT07) am carrying on with the project.
-	Please keep in mind that some of VEMF's code is still left-over from before I took over VEMF.
-	Want to report an issue? Then either PM me on the Epochmod.com forums or reply to the VEMF forum post.
-	Do you like and appreciate my work? Please leave a like or a nice comment for me on the forums :)
+   	contains configuration for VEMF_Reloaded
 */
 
-class VEMFconfig
+class CfgVemfReloaded
 {
-	/////////////////////////////
-	VEMF_version = 0.0722.8; /// Do NOT change
-	/////////////////////////////
-	/////// Configure VEMF here ///////
 	// Global settings
 	allowHeadLessClient = -1; // HC support is currently broken // Set to 1 if you have (a) headless client(s) | -1 = DISABLED
 	minServerFPS = 20; // Missions will not spawn if server's FPS is below this number
-	validateLoot = -1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
+	validateLoot = 1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
 	minPlayers = 1; // Missions will not start until player count reaches this number OR when player count goes below this amount
-	maxGlobalMissions = 3; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
+	maxGlobalMissions = 5; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
  	timeOutTime = 20; // In minutes. Use -1 to disable mission timeout; Minimal: 5
-	minNew = 3; // Minimum time before new mission can run
+	minNew = 5; // Minimum time before new mission can run
 	maxNew = 15; // Maximum time before new mission can run
 	missionList[] = {"MilitiaInvasions"}; // Speaks for itself, right?
+	missionDistance = 3000; // Minimum distance between missions
 	addons[] = {}; // Not used for now
 	noMissionPos[] = {{{18452.8,14279.5,0.00128174},500}}; // Format: {{position},radius} | Default: Altis East spawn
 	locationBlackList[] = {"Sagonisi","Monisi","Fournos","Savri","Atsalis","Polemista","Cap Makrinos","Pyrgi","Makrynisi","Chelonisi","Almyra","Surf Club"};
@@ -37,8 +27,8 @@ class VEMFconfig
 	useLaunchers = 1; // Set to -1 to prevent AI from having anti-tank launchers
 		launcherChance = 50; // In percentage
 		keepLaunchers = 1; // Set to 1 if you want the AI to keep their launchers when they are killed
-	keepAIbodies = 1; // Set to -1 if you want the AI's body to stay after they are killed
-	useCryptoReward = 1; // Use 1 to ENABLE player crypto reward for killing an AI
+	keepAIbodies = 1; // Set to -1 if you want the AI's body to be deleted after they are killed
+	useCryptoReward = -1; // Use 1 to ENABLE player crypto reward for killing an AI
 		maxCryptoReward = 50; // Amount of crypto to give (minimum) | amount is being scaled upwards depending on kill skill
 
 	/////// Debugging/learning mode ///////
@@ -48,15 +38,14 @@ class VEMFconfig
 	// Global AI skill settings. They affect each VEMF unit for any default VEMF mission
 	class aiSkill // Minimum: 0 | Maximum: 1
 	{
-		//difficulty = "Veteran"; // Options: "Easy" "Normal" "Veteran" "Hardcore" | Default: Veteran
-		difficulty = "Normal";
+		difficulty = "Easy"; // Options: "Easy" "Normal" "Veteran" "Hardcore" | Default: Veteran
 		class Easy
 		{
 			accuracy = 0.4; aimingShake = 0.3; aimingSpeed = 0.3; endurance = 0.45; spotDistance = 0.65; spotTime = 0.5; courage = 1; reloadSpeed = 0.3; commanding = 0.85; general = 0.3;
 		};
 		class Normal
 		{
-			accuracy = 0.3; aimingShake = 0.4; aimingSpeed = 0.2; endurance = 0.3; spotDistance = 0.6; spotTime = 0.5; courage = 1; reloadSpeed = 0.3; commanding = 0.85; general = 0.4;
+			accuracy = 0.4; aimingShake = 0.3; aimingSpeed = 0.3; endurance = 0.45; spotDistance = 0.65; spotTime = 0.5; courage = 1; reloadSpeed = 0.3; commanding = 0.85; general = 0.4;
 		};
 		class Veteran
 		{
@@ -70,9 +59,12 @@ class VEMFconfig
 
 	class MI // Militia Invasions settings
 	{
+		useAnnouncements = 1; // Use -1 to disable mission announcements
 		useMarker = 1; // Use -1 to disable mission markers
 		maxInvasions = 5; // Max amount of active uncompleted invasions allowed at the same time
-		cal50s = ceil(random 3); // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
+		cal50s = 2; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
+			keep50s = 1; // Set to -1 to enable the removal of all 50s created by MI
+			cal50delMode = 1; // 1 is delete, 2 is destroy
 		groupCount[] = {2,4}; // In format: {minimum, maximum}; VEMF will pick a random number between min and max. If you want the same amount always, use same numbers for minimum and maximum.
 		groupUnits[] = {4,6}; // How much units in each group. Works the same like groupCount
 		/* TIP: increase groupCount and decrease groupUnits to make it harder for players. Easier to get flanked from all sides */
@@ -82,10 +74,10 @@ class VEMFconfig
 		distanceTooClose = 2500; // Mission will not spawn closer to random player than this distance in meters
 		distanceMaxPrefered = 4500; // Mission will prefer locations closer than this distance (in meters) to random player
 		parachuteCrate = 1; // Use -1 to disable the crate parachuting in
-			crateAltitude = 150; // Crate with parachute(!) will spawn at this altitude (meters)
+			crateAltitude = 200; // Crate with parachute(!) will spawn at this altitude (meters) (originally 150)
 		crateMapMarker = 1; // Use -1 if you do not want a marker to be placed on the crate
 		crateVisualMarker = 1; // Use -1 to disable chemlight/smoke on crate
-		crateSpawnSound = -1; // Use -1 to disable a spawn sound when crate spawns (only if parachuteCrate = 1)
+		crateSpawnSound = 1; // Use -1 to disable a spawn sound when crate spawns (only if parachuteCrate = 1)
 		crateTypes[] = {"I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F","I_supplyCrate_F","Box_East_AmmoVeh_F","Box_NATO_AmmoVeh_F"};
 		smokeTypes[] = {"SmokeShell","SmokeShellBlue","SmokeShellGreen","SmokeShellOrange","SmokeShellRed","SmokeShellYellow"};
 		flairTypes[] = {"Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"};
@@ -111,15 +103,15 @@ class VEMFconfig
 			{"MMG_02_black_F",2},{"MMG_02_sand_F",2},{"m249_EPOCH",2},{"m249Tan_EPOCH",2},{"m16_EPOCH",2},{"m16Red_EPOCH",2},{"M14_EPOCH",2},{"M14Grn_EPOCH",2},{"m4a3_EPOCH",2},{"AKM_EPOCH",2}
 		};
 
-		maxSecondarySlots = 6; // Maximum number of secondary weapons to be in each loot crate
+		maxSecondarySlots = 4; // Maximum number of secondary weapons to be in each loot crate
 		minSecondarySlots = 2; // Minimum number of secondary weapons to be in each loot crate
 		secondaryWeaponLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"hgun_ACPC2_F",3},{"hgun_P07_F",3},{"hgun_Pistol_heavy_01_F",3},{"hgun_Pistol_heavy_02_F",3},{"hgun_Rook40_F",3},{"ruger_pistol_epoch",3},{"1911_pistol_epoch",3}
 		};
 
-		maxMagSlots = 20; // Maximum number of magazine slots in each loot crate
-		minMagSlots = 5; // Minimum number of magazine slots in each loot crate
+		maxMagSlots = 6; // Maximum number of magazine slots in each loot crate
+		minMagSlots = 4; // Minimum number of magazine slots in each loot crate
 		magazinesLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
 			{"30Rnd_556x45_Stanag",20},{"30Rnd_556x45_Stanag_Tracer_Red",20},{"30Rnd_556x45_Stanag_Tracer_Green",20},
@@ -261,25 +253,28 @@ class VEMFconfig
 		};
 	};
 };
+
 class CfgPatches
 {
-	class Epoch_VEMF
+	class Epoch_VEMF_Reloaded
 	{
 		units[] = {"I_Soldier_EPOCH"};
 		requiredAddons[] = {};
-		fileName = "Epoch_VEMF.pbo";
+		fileName = "Epoch_VEMF_Reloaded.pbo";
 		requiredVersion = 1.50;
-		author[]= {"Vampire","IT07"}; // Original author: Vampire. Permission to continue/remake VEMF given to IT07
+		version = 0.0724.3; // Do NOT change
+		author[]= {"IT07"};
 	};
 };
-class cfgFunctions
+
+class CfgFunctions
 {
-	class VEMF
+	class Epoch_VEMF_Reloaded
 	{
-		tag = "VEMF";
-		class functions
+		tag = "VEMFr";
+		class serverFunctions
 		{
-			file = "Epoch_VEMF\functions_VEMF";
+			file = "Epoch_VEMF_Reloaded\functions";
 			class random {};
 			class log {};
 			class getSetting {};
@@ -299,7 +294,7 @@ class cfgFunctions
 			class waitForMissionDone {};
 			class checkLoot {};
 			class missionTimer {};
-			class launchVEMF { postInit = 1; };
+			class launch { postInit = 1; };
 			class REMOTEguard { postInit = 1; };
 		};
 	};

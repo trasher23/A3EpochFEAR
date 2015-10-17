@@ -3,27 +3,36 @@
 	Reused code from  Epoch/Sources/epoch_code/compile/setup/EPOCH_masterLoop.sqf
 	Calls server side code via public variable
 */
-JammerInRange = {
-	private["_config","_buildingJammerRange","_jammer","_pos","ret"];
-	
+InJammerRange = {
+	private["_config","_buildingJammerRange","_jammer","_pos","_ret"];
 	_pos = _this select 0;
-	
+	_ret = false;
 	// Is jammer in range?
-	_config = 'CfgEpochClient' call EPOCH_returnConfig;
+	//_config = 'CfgEpochClient' call EPOCH_returnConfig;
 	//_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
 	//if (_buildingJammerRange == 0) then {_buildingJammerRange = 75};
 	_buildingJammerRange = 500; // Increase range of jammer
 	_jammer = nearestObjects[_pos,["PlotPole_EPOCH"],_buildingJammerRange];
-	if (_jammer isEqualTo[]) then {
-		ret=false;
-	} else {
-		ret=true;
-	};
-	ret
+	if (_jammer isEqualTo[]) then {_ret = true};
+	_ret
+};
+
+InQuarantineRange = {
+	private["_pos","_ret"];
+	_pos = _this select 0;
+	_ret = false;
+	[format["FEARQuarantineLocs: %1",FEARQuarantineLocs]] call FEARserverLog;
+	if (FEARQuarantineLocs isEqualTo[]) exitWith {}; // No quarantine zones, exit
+	{
+		if (_pos distance _x < 300) then {
+			_ret = true
+		};
+	}forEach FEARQuarantineLocs;
+	_ret
 };
 
 UrbanLootBubble = {
-	private["_buildings","_pos","_others","_result","_travelDir","_lootDist","_xPos","_yPos","_lootLoc","_playerPos","_distanceTraveled","_return"];
+	private["_buildings","_pos","_others","_result","_travelDir","_lootDist","_xPos","_yPos","_lootLoc","_playerPos","_distanceTraveled","_ret"];
 	
 	_buildings = [
 		"Land_A_GeneralStore_01",
@@ -76,7 +85,7 @@ UrbanLootBubble = {
 		_objects = nearestObjects[_lootLoc,_buildings,30];
 		if !(_objects isEqualTo[]) then {
 			// If jammer not in range and building in list nearby...
-			_result = [_lootLoc] call JammerInRange;
+			_result = [_lootLoc] call InJammerRange;
 			if !(_result) then {
 				// Choose random building from list
 				_building = _objects select(floor(random(count _objects)));				
@@ -88,7 +97,7 @@ UrbanLootBubble = {
 					_pos = [_pos,[10,20],random 360] call SHK_pos;
 					// If not water...
 					if !(surfaceIsWater _pos) then { 
-						_return = _pos;
+						_ret = _pos;
 					};
 				};
 			};
@@ -96,11 +105,11 @@ UrbanLootBubble = {
 	};
 	
 	FEAR_lastPlayerPos = getPosATL vehicle player;
-	_return
+	_ret
 };
 
 _FEAR_masterLoop = {
-	private["_FEAR_30","_FEAR_60","_tickTime","_pos","_posPlayer","_zombieCount","_result","_rspawnw"];
+	private["_FEAR_30","_FEAR_60","_tickTime","_pos","_posPlayer","_zombieCount","_result","_rspawnw","_spawnChance"];
 	
 	["masterloop initialised"] call FEARserverLog;
 	
@@ -134,19 +143,28 @@ _FEAR_masterLoop = {
 		// Every 60 seconds
 		if ((_tickTime - _FEAR_60) > 60) then {
 			
-			["master loop 60 sec timer"] call FEARserverLog;
-			
 			_FEAR_60 = _tickTime;
+			_posPlayer = getPos Player;
+			
+			// Increase zombie spawn chance if in VEMF quarantine zone
+			_result = [_posPlayer] call InQuarantineRange;
+			if !(_result) then {
+				_spawnChance = 25; // 25% chance - 33% had them appearing too much!
+			} else {
+				_spawnChance = 40; // Zombie infection!
+			};
 			
 			// If Jammer not in range, player not in vehicle and not near respawn box
-			_posPlayer = getPos Player;
-			_result = [_posPlayer] call JammerInRange;
+			_result = [_posPlayer] call InJammerRange;
+			
+			[format["InJammerRange: %1",_result]] call FEARserverLog;
+			
 			If (!(_result) && (vehicle player == player) && (player distance _rspawnw > 500)) then {
 				_pos = [_posPlayer,[40,100],random 360] call SHK_pos; // spawn within a 40-100m range from any direction
 				// If pos 
 				If (!isNil "_pos") then {
-					// 20% chance - 33% had them appearing too much!
-					if (20 > random 100) then {
+					[format["spawn chance: %1",_spawnChance]] call FEARserverLog;
+					if (_spawnChance > random 100) then {
 						// Spawn zombies!
 						_zombieCount = 1 + random 4;
 						[[_pos,_zombieCount]] spawn FEARspawnZombies;
@@ -160,5 +178,5 @@ _FEAR_masterLoop = {
 };
 
 // Debug
-//[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
+[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
 [] spawn _FEAR_masterLoop;

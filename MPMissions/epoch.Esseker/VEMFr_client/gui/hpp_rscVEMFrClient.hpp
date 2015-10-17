@@ -15,8 +15,8 @@ class bg: IGUIBack
 	idc = 2200;
 	x = 0.3125 * safezoneW + safezoneX;
 	y = 0.9 * safezoneH + safezoneY;
-	w = 0.4375 * safezoneW;
-	h = 0.04 * safezoneH;
+	w = 0 * safezoneW;
+	h = 0.03 * safezoneH;
 	colorBackground[] = {0.071,0.078,0.094,0.5};
 };
 class txtTag: RscText
@@ -24,8 +24,8 @@ class txtTag: RscText
 	shadow = 0;
 	deletable = 0;
 	fade = 0;
-	sizeEx = 0.05;
-	font = "PuristaBold";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.2)";
+	font = "PuristaMedium";
 	style = 2;
 	access = 0;
 	type = 0;
@@ -37,11 +37,11 @@ class txtTag: RscText
 	tooltipColorShade[] = {0,0,0,0.7};
 
 	idc = 1001;
-	text = "Radio"; //--- ToDo: Localize;
+	text = "[VEMF]"; //--- ToDo: Localize;
 	x = 0.25 * safezoneW + safezoneX;
 	y = 0.9 * safezoneH + safezoneY;
-	w = 0.0625 * safezoneW;
-	h = 0.04 * safezoneH;
+	w = 0 * safezoneW;
+	h = 0.03 * safezoneH;
 	colorText[] = {0.22,0.745,0.882,1};
 	colorBackground[] = {0.071,0.078,0.094,1};
 };
@@ -50,8 +50,8 @@ class txt: RscText
 	deletable = 0;
 	shadow = 0;
 	access = 0;
-	sizeEx = 0.035;
-	font = "PuristaMedium";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	font = "PuristaLight";
 	style = 0;
 	fade = 0;
 	type = 0;
@@ -67,7 +67,7 @@ class txt: RscText
 	x = 0.325 * safezoneW + safezoneX;
 	y = 0.9 * safezoneH + safezoneY;
 	w = 0.425 * safezoneW;
-	h = 0.04 * safezoneH;
+	h = 0.03 * safezoneH;
 	colorText[] = {1,1,1,0.9};
 	colorBackground[] = {0,0,0,0};
 };

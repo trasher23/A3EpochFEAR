@@ -15,7 +15,7 @@
 */
 
 private ["_param","_prefix","_mode","_logThis","_logModesAllowed","_loggingEnabled"];
-_loggingEnabled = "enableDebug" call VEMF_fnc_getSetting;
+_loggingEnabled = "enableDebug" call VEMFr_fnc_getSetting;
 if (_loggingEnabled > -1) then
 {
     _logModesAllowed = [3];

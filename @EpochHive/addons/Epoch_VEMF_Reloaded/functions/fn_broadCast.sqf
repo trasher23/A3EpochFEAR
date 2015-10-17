@@ -1,5 +1,5 @@
 /*
-	Author: VAMPIRE, rebooted by IT07
+	Author: IT07
 
 	Description:
 	will alert players
@@ -25,8 +25,8 @@ if not(_msg isEqualTo format[""]) then
 			{
 				if (side _x isEqualTo EAST) then
 				{
-					VEMFChatMsg = [_msg, _mode];
-					(owner _x) publicVariableClient "VEMFChatMsg";
+					VEMFrClientMsg = [_msg, _mode];
+					(owner _x) publicVariableClient "VEMFrClientMsg";
 				};
 			};
 		} forEach playableUnits;

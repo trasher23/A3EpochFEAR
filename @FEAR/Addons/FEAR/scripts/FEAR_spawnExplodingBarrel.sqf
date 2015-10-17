@@ -29,13 +29,14 @@ _explodingBarrel = {
 	];
 	_b setDir(random 360);
 	_b setPosASL _pos;
+	_b setVariable["LAST_CHECK", (diag_tickTime + 600)]; // Epoch Server_Monitor, delete after 600s if no players near
 	
 	// Position barrel upright or on side
 	_direction = [0,90] call BIS_fnc_selectRandom;
 	[_b,0,_direction] call BIS_fnc_setPitchBank;
 			
-	//_b setDamage 0.99;
-	//_b allowDamage false;
+	_b setDamage 0.99;
+	_b allowDamage false;
 	_b addEventHandler ["Hit", {
 		_b = _this select 0;
 		if (alive _b) then {_b setDamage 0.99};

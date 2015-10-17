@@ -18,7 +18,7 @@ _toTransfer = [_this, 0, grpNull, [grpNull]] call BIS_fnc_param;
 if not isNull _toTransfer then
 {
     // Check if HC is enabled
-    _hcEnabled = "allowHeadLessClient" call VEMF_fnc_getSetting;
+    _hcEnabled = "allowHeadLessClient" call VEMFr_fnc_getSetting;
     _forceClients = uiNamespace getVariable "VEMF_forceAItoClients";
     if not(isNil"_forceClients") then
     {
@@ -38,7 +38,7 @@ if not isNull _toTransfer then
         } forEach playableUnits;
         if (count _hcClients > 0) then
         {
-            _to = call VEMF_fnc_headLessClient; // Select a random hc
+            _to = call VEMFr_fnc_headLessClient; // Select a random hc
         };
         if (count _hcClients isEqualTo 0) then
         {
@@ -47,7 +47,7 @@ if not isNull _toTransfer then
     };
     if (_hcEnabled < 1) then
     {
-        if ([1] call VEMF_fnc_playerCount) then
+        if ([1] call VEMFr_fnc_playerCount) then
         {
             _closest = [0,0,0];
             {

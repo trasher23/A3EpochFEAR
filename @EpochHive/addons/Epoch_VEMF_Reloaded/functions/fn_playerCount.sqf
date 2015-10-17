@@ -16,7 +16,7 @@ _ok = false;
 _minimum = [_this, 0, 1, [0]] call BIS_fnc_param;
 _players = 0;
 {
-    if ((isPlayer _x) AND ((side _x) isEqualTo EAST)) then
+    if (isPlayer _x AND side _x isEqualTo EAST) then
     {
         _players = _players + 1;
     };

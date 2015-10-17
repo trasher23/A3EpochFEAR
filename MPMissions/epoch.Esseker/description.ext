@@ -61,14 +61,14 @@ class cfgFunctions
 			};
 		};
 	};
-	class VEMF
+	class VEMF_Reloaded
 	{
-		tag = "VEMF";
+		tag = "VEMFr";
 		class VEMFclient
 		{
-			file = "VEMFclient";
-			class vemfClientMessage {};
-			class vemfClientInit { postInit = 1; };
+			file = "VEMFr_client\functions";
+			class clientMessage {};
+			class clientInit { postInit = 1; };
 		};
 	};
 };
@@ -123,5 +123,5 @@ class CfgEpochCloak
 class RscTitles
 {
 	#include "FEAR\scripts\statusBar.hpp"
-	#include "VEMFclient\hpp_mainVemfClient.hpp"
+	#include "VEMFr_client\gui\hpp_mainVEMFrClient.hpp"
 };

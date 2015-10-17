@@ -14,7 +14,7 @@
 
 [] spawn
 {
-    uiNamespace setVariable ["vemfHcLoad", []];
+    uiNamespace setVariable ["VEMFrHcLoad", []];
     uiNamespace setVariable ["vemfGroups", []];
     while {true} do
     {
@@ -30,7 +30,7 @@
                 if (count (units _x) > 0) then
                 {
                     // Group still has units, check if there is anyone that can be the owner
-                    [_x] call VEMF_fnc_transferOwner;
+                    [_x] call VEMFr_fnc_transferOwner;
                 };
             };
         } forEach _groups;
