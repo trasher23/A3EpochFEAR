@@ -18,7 +18,7 @@ MAS Weapons 1.10: http://www.armaholic.com/page.php?id=21912
 <br/>
 MAS Vehicles 1.3: http://www.armaholic.com/page.php?id=27652
 <br/>
-TRYK's Multi-Play Uniforms: http://www.armaholic.com/page.php?id=26661
+TRYK's Multi-Play Uniforms 0.9.4 beta: http://www.armaholic.com/page.php?id=26661
 <br/>
 <br/>
 A3AI 1.0.1a: https://github.com/dayzai/A3EAI
