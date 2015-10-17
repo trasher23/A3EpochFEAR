@@ -7,12 +7,8 @@ Esseker has been quarantined.  Remnants of the CDC are deploying mini-nukes to s
 
 A mish-mash of:
 <br/>
-<b>Game</b>
-<br/>
 Arma 3 1.52: http://arma3.com/
 <br/>
-<br/>
-<b>Mods</b>
 <br/>
 Epoch 0.3.4.0: http://epochmod.com/
 <br/>
@@ -26,8 +22,6 @@ MAS Vehicles 1.3: http://www.armaholic.com/page.php?id=27652
 <br/>
 TRYK's Multi-Play Uniforms 0.9.4 beta: http://www.armaholic.com/page.php?id=26661
 <br/>
-<br/>
-<b>Scripts</b>
 <br/>
 A3AI 1.0.1a: https://github.com/dayzai/A3EAI
 <br/>
