@@ -31,7 +31,7 @@ TRYK's Multi-Play Uniforms 0.9.4 beta: http://www.armaholic.com/page.php?id=2666
 <br/>
 A3AI 1.0.1a: https://github.com/dayzai/A3EAI
 <br/>
-VEMF 0.0722.8: https://github.com/IT07/A3_VEMF_Reloaded
+VEMF 0724.4: https://github.com/IT07/A3_VEMF_Reloaded
 <br/>
 HSBlackmarket 1.6: https://github.com/GBR-Suppe/a3_epoch_HSBlackmarket
 <br/>
