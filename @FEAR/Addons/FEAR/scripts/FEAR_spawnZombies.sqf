@@ -78,16 +78,16 @@ for "_x" from 1 to _zombieHordeSize do{
 	
 	// Add loot
 	_zombie addVest _zBag; 
-	if (40 > random 100) then {_zombie addItemToVest _zLoot}; // 40% chance of ammo 
+	if (50 > random 100) then {_zombie addItemToVest _zLoot}; // 50% chance of ammo 
 	if (10 > random 100) then {_zombie addItemToVest "FAK"}; // 10% chance of FAK
 	
-	_zombie disableAI "FSM";
-	_zombie disableAI "AUTOTARGET";
-	_zombie disableAI "TARGET";
-	_zombie setBehaviour "CARELESS";
+	//_zombie disableAI "FSM";
+	//_zombie disableAI "AUTOTARGET";
+	//_zombie disableAI "TARGET";
+	//_zombie setBehaviour "CARELESS";
 	_zombie disableConversation true;
 	//_zombie addRating -10000;
-	_zombie setCaptive false;
+	//_zombie setCaptive false;
 				
 	// Add event handler for zombie death
 	_zombie addMPEventHandler["mpkilled","if(isDedicated)then{[_this select 0,_this select 1] spawn FEARZombieKilled}"];

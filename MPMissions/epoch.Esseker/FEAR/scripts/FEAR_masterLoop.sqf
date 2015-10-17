@@ -4,16 +4,11 @@
 	Calls server side code via public variable
 */
 InJammerRange = {
-	private["_config","_buildingJammerRange","_jammer","_pos","_ret"];
+	private["_jammer","_pos","_ret"];
 	_pos = _this select 0;
 	_ret = false;
-	// Is jammer in range?
-	//_config = 'CfgEpochClient' call EPOCH_returnConfig;
-	//_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
-	//if (_buildingJammerRange == 0) then {_buildingJammerRange = 75};
-	_buildingJammerRange = 500; // Increase range of jammer
-	_jammer = nearestObjects[_pos,["PlotPole_EPOCH"],_buildingJammerRange];
-	if (_jammer isEqualTo[]) then {_ret = true};
+	_jammer = nearestObjects[_pos,["PlotPole_EPOCH"],500];
+	if !(_jammer isEqualTo[]) then {_ret = true};
 	_ret
 };
 
@@ -22,11 +17,8 @@ InQuarantineRange = {
 	_pos = _this select 0;
 	_ret = false;
 	[format["FEARQuarantineLocs: %1",FEARQuarantineLocs]] call FEARserverLog;
-	if (FEARQuarantineLocs isEqualTo[]) exitWith {}; // No quarantine zones, exit
 	{
-		if (_pos distance _x < 300) then {
-			_ret = true
-		};
+		if (_pos distance _x < 300) then {_ret = true};
 	}forEach FEARQuarantineLocs;
 	_ret
 };
@@ -155,15 +147,11 @@ _FEAR_masterLoop = {
 			};
 			
 			// If Jammer not in range, player not in vehicle and not near respawn box
-			_result = [_posPlayer] call InJammerRange;
-			
-			[format["InJammerRange: %1",_result]] call FEARserverLog;
-			
+			_result = [_posPlayer] call InJammerRange;			
 			If (!(_result) && (vehicle player == player) && (player distance _rspawnw > 500)) then {
 				_pos = [_posPlayer,[40,100],random 360] call SHK_pos; // spawn within a 40-100m range from any direction
 				// If pos 
 				If (!isNil "_pos") then {
-					[format["spawn chance: %1",_spawnChance]] call FEARserverLog;
 					if (_spawnChance > random 100) then {
 						// Spawn zombies!
 						_zombieCount = 1 + random 4;

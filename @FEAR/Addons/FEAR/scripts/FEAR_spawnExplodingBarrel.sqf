@@ -29,7 +29,7 @@ _explodingBarrel = {
 	];
 	_b setDir(random 360);
 	_b setPosASL _pos;
-	_b setVariable["LAST_CHECK", (diag_tickTime + 600)]; // Epoch Server_Monitor, delete after 600s if no players near
+	_b setVariable["LAST_CHECK",600]; // Epoch Server_Monitor, delete after 600s if no players near
 	
 	// Position barrel upright or on side
 	_direction = [0,90] call BIS_fnc_selectRandom;

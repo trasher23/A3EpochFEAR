@@ -12,7 +12,7 @@ if not isNull _killer then{
 		if (isPlayer _killer) then{ // Should prevent Error:NoUnit
 			_curWeapon = currentWeapon _killer;
 			_kMsg = format["%1: zombie kill from %2m with %3",name _killer,round _dist,getText(configFile >> "CfgWeapons" >> _curWeapon >> "DisplayName")];
-			_sent = [_kMsg, "sys"] call VEMF_fnc_broadCast;
+			_sent = [_kMsg, "sys"] call VEMFr_fnc_broadCast;
 		};
 	};
 };

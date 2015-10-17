@@ -10,7 +10,7 @@ class CfgVemfReloaded
 	// Global settings
 	allowHeadLessClient = -1; // HC support is currently broken // Set to 1 if you have (a) headless client(s) | -1 = DISABLED
 	minServerFPS = 20; // Missions will not spawn if server's FPS is below this number
-	validateLoot = 1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
+	validateLoot = -1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
 	minPlayers = 1; // Missions will not start until player count reaches this number OR when player count goes below this amount
 	maxGlobalMissions = 5; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
  	timeOutTime = 20; // In minutes. Use -1 to disable mission timeout; Minimal: 5
@@ -141,7 +141,7 @@ class CfgVemfReloaded
 		minItemSlots = 2; // Minimum number of attachment slots in each loot crate
 		itemsLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
-			{"FAK",15},{"EnergyPack",10},{"EnergyPackLg",6}
+			{"FAK",5},{"EnergyPack",5},{"EnergyPackLg",2}
 		};
 
 		maxVestSlots = 4; // Maximum number of vest slots in each loot crate
