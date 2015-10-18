@@ -270,3 +270,12 @@ FEAR_fnc_nukeColorCorrection = {
 	"filmGrain" ppEffectAdjust [0.02, 1, 1, 0.1, 1, false];
 	"filmGrain" ppEffectCommit 5;
 };
+
+FEAR_fnc_hasGasMask = {
+	private["_ret"];
+	_ret = false;
+	if (goggles player == "Mask_M50" or goggles player == "Mask_M40" or goggles player == "Mask_M40_OD" or goggles player == "G_mas_wpn_gasmask") then {
+		_ret = true;
+	};
+	_ret
+};

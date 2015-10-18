@@ -106,7 +106,7 @@ FEAR_fnc_radAddMarker = {
 };
 
 FEAR_fnc_nukeRadDamage = {	
-	private["_coords"];
+	private["_coords","_result"];
 	
 	_coords = _this select 0;
 	NUKEGeiger = "Land_HelipadEmpty_F" createVehicle _coords;
@@ -115,17 +115,28 @@ FEAR_fnc_nukeRadDamage = {
 	for [{_x = 0},{_x < 180},{_x = _x + 1}] do {
 		{	
 			// Damage
-			_x setDammage (getDammage _x + 0.01); // original value: 0.03
-			
-			// Geiger counter sound within radius
 			if (isPlayer _x) then {
-				(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
+				_result = [_x] call FEAR_fnc_hasGasMask}; // Wearing gas mask?
+				(owner (vehicle _x)) publicVariableClient "NUKEGeiger"; // Geiger counter sound within radius
+			if !(_result) then {
+				// No damage
+			} else {
+				_x setDammage (getDammage _x + 0.01);
 			};
 			
-		} forEach (_coords nearEntities [["All"], NukeRadius]);
+		}forEach (_coords nearEntities [["All"], NukeRadius]);
 
 		uisleep 5;
 	};
 };
 
+FEAR_fnc_hasGasMask = {
+	private["_ret"];
+	_player = select 0;
+	_ret = false;
+	if (goggles _player == "Mask_M50" or goggles _player == "Mask_M40" or goggles _player == "Mask_M40_OD" or goggles _player == "G_mas_wpn_gasmask") then {
+		_ret = true;
+	};
+	_ret
+};
 

@@ -65,8 +65,8 @@ class CfgVemfReloaded
 		cal50s = 2; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
 			keep50s = 1; // Set to -1 to enable the removal of all 50s created by MI
 			cal50delMode = 1; // 1 is delete, 2 is destroy
-		groupCount[] = {2,4}; // In format: {minimum, maximum}; VEMF will pick a random number between min and max. If you want the same amount always, use same numbers for minimum and maximum.
-		groupUnits[] = {4,6}; // How much units in each group. Works the same like groupCount
+		groupCount[] = {1,3}; // In format: {minimum, maximum}; VEMF will pick a random number between min and max. If you want the same amount always, use same numbers for minimum and maximum.
+		groupUnits[] = {2,4}; // How much units in each group. Works the same like groupCount
 		/* TIP: increase groupCount and decrease groupUnits to make it harder for players. Easier to get flanked from all sides */
 		playerCheck = 800; // If player(s) within this range of location, location gets skipped. Distance in m (meters)
 		distanceCheck = 15000; // Check for locations around random player within this distance in m (meters)

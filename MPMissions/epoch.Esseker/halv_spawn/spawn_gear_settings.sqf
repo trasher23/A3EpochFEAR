@@ -41,7 +41,8 @@ _geararr = [
 	[
 		[
 			// Magazines
-			""
+			"ItemSodaRbull","EnergyPack"
+			
 			/*
 			"Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue","EnergyPack","SmokeShellOrange","SmokeShellBlue","SmokeShellPurple","SmokeShellYellow",
 			"SmokeShellGreen","SmokeShellRed","SmokeShell","lighter_epoch","ItemSodaRbull","meatballs_epoch","WhiskeyNoodle","ItemSodaOrangeSherbet","sweetcorn_epoch",
@@ -51,7 +52,7 @@ _geararr = [
 			*/
 		],
 		// Magazines number
-		4
+		1
 	],
 	
 	[
@@ -89,8 +90,11 @@ _geararr = [
 	
 	[
 		// Goggles
-		"G_Tactical_Clear","G_Shades_Black","G_Shades_Blue","G_Sport_Blackred","G_Spectacles","G_Spectacles_Tinted","G_Lowprofile","G_Shades_Green","G_Shades_Red",
-		"G_Squares","G_Squares_Tinted","G_Sport_BlackWhite","G_Sport_Blackyellow","G_Sport_Greenblack","G_Sport_Checkered","G_Sport_Red","G_Tactical_Black"
+		"G_mas_wpn_gasmask","Mask_M50","Mask_M40_OD","Mask_M40" // Gasmasks only!
+		/*
+		"G_Tactical_Clear","G_Shades_Black","G_Spectacles","G_Spectacles_Tinted","G_Lowprofile",
+		"G_Squares","G_Squares_Tinted","G_Tactical_Black"
+		*/
 	],
 	[
 		// Backpacks

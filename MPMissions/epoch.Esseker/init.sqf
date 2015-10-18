@@ -51,7 +51,7 @@ if (!isDedicated && hasInterface) then {
 	-----------------------------------------------------------
 	*/
 	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
-	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_clientFunctions.sqf";
+	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nukeClientFunctions.sqf";
 	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
 	
 	/* Load scripts
@@ -81,5 +81,6 @@ waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDon
 
 if (!isDedicated && hasInterface) then {
 	(vehicle player) switchCamera "EXTERNAL"; 			// Start in 3rd person view
+	player addGoggles "G_mas_wpn_gasmask";
 	[] execVM "FEAR\scripts\FEAR_masterLoop.sqf"; 		// FEAR master loop
 };

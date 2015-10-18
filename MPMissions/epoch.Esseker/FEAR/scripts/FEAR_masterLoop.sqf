@@ -101,10 +101,11 @@ UrbanLootBubble = {
 };
 
 _FEAR_masterLoop = {
-	private["_FEAR_30","_FEAR_60","_tickTime","_pos","_posPlayer","_zombieCount","_result","_rspawnw","_spawnChance"];
+	private["_FEAR_05","_FEAR_30","_FEAR_60","_tickTime","_pos","_posPlayer","_zombieCount","_result","_rspawnw","_spawnChance"];
 	
 	["masterloop initialised"] call FEARserverLog;
 	
+	_FEAR_05 = diag_tickTime;
 	_FEAR_30 = diag_tickTime;
 	_FEAR_60 = diag_tickTime;
 	_pos = nil;
@@ -114,6 +115,16 @@ _FEAR_masterLoop = {
 	
 	while {alive player} do {
 		_tickTime = diag_tickTime;
+		
+		// Every 5 seconds
+		if ((_tickTime - _FEAR_05) > 5) then {
+			
+			_FEAR_05 = _tickTime;
+			
+			// Gasmask breath sound
+			_result = call FEAR_fnc_hasGasMask;
+			if (_result) then {playsound3d ["A3\sounds_f\characters\human-sfx\other\diver-breath-2.wss",player,false,getposASL player,0.5,0.5,15]};
+		};
 		
 		// Every 30 seconds
 		if ((_tickTime - _FEAR_30) > 30) then {
