@@ -5,7 +5,7 @@
 */
 _geararr = [
 	[
-		// Secondary weapons
+		// 0: Secondary weapons
 		[
 			"hgun_ACPC2_F","ruger_pistol_epoch","1911_pistol_epoch","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F",
 			"hgun_mas_mp7p_F","hgun_mas_p226_F_sd","hgun_mas_glock_F_sd","hgun_mas_m9_F_sd"
@@ -15,7 +15,7 @@ _geararr = [
 	],
 	
 	[
-		// Primary weapons
+		// 1: Primary weapons
 		[
 			"SMG_01_F","Rollins_F","arifle_mas_m16","arifle_mas_akms","srifle_mas_sr25_h","arifle_mas_m1014","arifle_mas_mp5","arifle_mas_m14","arifle_mas_lee_l","srifle_mas_ebr_sd"
 		],
@@ -24,13 +24,15 @@ _geararr = [
 	],
 	
 	[
+		// 2: Items
 		[
 			"FAK" //,"Heal_EPOCH","Defib_EPOCH","Repair_EPOCH"
 		],
 		1
 	],
-		// Tools
+		
 	[
+		// 3: Tools
 		[
 			"EpochRadio0","ItemCompass","ItemWatch","Binocular","ItemGPS"
 		],
@@ -39,8 +41,8 @@ _geararr = [
 	],
 	
 	[
+		// 4: Magazines
 		[
-			// Magazines
 			"ItemSodaRbull","EnergyPack"
 			
 			/*
@@ -51,12 +53,12 @@ _geararr = [
 			"emptyjar_epoch","FoodBioMeat","sardines_epoch","FoodSnooter","Towelette"
 			*/
 		],
-		// Magazines number
+		// Number of magazines
 		1
 	],
 	
 	[
-		// Headgear
+		// 5: Headgear
 		"H_39_EPOCH","H_40_EPOCH","H_41_EPOCH","H_42_EPOCH","H_43_EPOCH","H_44_EPOCH","H_45_EPOCH","H_46_EPOCH","H_47_EPOCH","H_48_EPOCH",
 		"H_49_EPOCH","H_50_EPOCH","H_51_EPOCH","H_52_EPOCH","H_53_EPOCH","H_54_EPOCH","H_55_EPOCH","H_56_EPOCH","H_57_EPOCH","H_58_EPOCH",
 		"H_59_EPOCH","H_60_EPOCH","H_61_EPOCH","H_62_EPOCH","H_63_EPOCH","H_64_EPOCH","H_65_EPOCH","H_66_EPOCH","H_67_EPOCH","H_68_EPOCH",
@@ -67,13 +69,14 @@ _geararr = [
 	],
 	
 	[
-		// Vests
+		// 6: Vests
  		"V_1_EPOCH","V_2_EPOCH","V_3_EPOCH","V_4_EPOCH","V_5_EPOCH","V_6_EPOCH","V_13_EPOCH","V_14_EPOCH","V_15_EPOCH","V_16_EPOCH","V_17_EPOCH",
 		"V_18_EPOCH","V_19_EPOCH","V_20_EPOCH","V_21_EPOCH","V_22_EPOCH","V_25_EPOCH","V_26_EPOCH","V_27_EPOCH","V_28_EPOCH","V_29_EPOCH","V_30_EPOCH",
 		"V_31_EPOCH","V_32_EPOCH","V_36_EPOCH","V_40_EPOCH"
 	],
 	
 	[
+		// 7: Uniforms
 		[
 			// Male Uniforms
 			"U_O_CombatUniform_ocamo","U_B_Survival_Uniform",
@@ -89,15 +92,16 @@ _geararr = [
 	],
 	
 	[
-		// Goggles
-		"G_mas_wpn_gasmask","Mask_M50","Mask_M40_OD","Mask_M40" // Gasmasks only!
+		// 8: Goggles
+		"G_mas_wpn_gasmask" // Gasmasks only!
 		/*
 		"G_Tactical_Clear","G_Shades_Black","G_Spectacles","G_Spectacles_Tinted","G_Lowprofile",
 		"G_Squares","G_Squares_Tinted","G_Tactical_Black"
 		*/
 	],
+	
 	[
-		// Backpacks
+		// 9: Backpacks
 		"B_AssaultPack_cbr","B_AssaultPack_dgtl","B_AssaultPack_khk","B_AssaultPack_mcamo","B_AssaultPack_ocamo","B_AssaultPack_rgr","B_AssaultPack_sgg",
 		"smallbackpack_red_epoch","smallbackpack_green_epoch","smallbackpack_teal_epoch","smallbackpack_pink_epoch"
 	]

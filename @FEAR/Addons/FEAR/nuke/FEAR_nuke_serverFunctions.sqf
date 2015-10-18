@@ -13,7 +13,7 @@ FEAR_fnc_nukeTarget = {
 	// Get town locations nearest selected player
 	_towns = nearestLocations[getPosATL _selectedPlayer,["NameVillage","nameCity","NameCityCapital"],NukeRadius];
 	// If no town selected, default to random choice
-	if(_towns isEqualTo[])then{_towns = nearestLocations [MapCentre,["NameVillage","nameCity","NameCityCapital"],MapRadius]};
+	if (_towns isEqualTo[]) then {_towns = nearestLocations [MapCentre,["NameVillage","nameCity","NameCityCapital"],MapRadius]};
 	// Select a random town from array
 	_town = _towns select(floor(random(count _towns)));
 	_town
@@ -28,8 +28,8 @@ FEAR_fnc_nukeServerDamage = {
 	{
 		// Kill everything within GroundZero (half of NukeRadius)
 		_x setDamage 1;
-		uiSleep 0.125;
-	} forEach (_coords nearEntities [["All"],GroundZero]);
+		uiSleep 0.1;
+	}forEach (_coords nearEntities [["All"],GroundZero]);
 
 	// Object damage
 	{	
@@ -44,18 +44,17 @@ FEAR_fnc_nukeServerDamage = {
 			[_x,0,_direction] call BIS_fnc_setPitchBank;
 		};
 		
-		// % of objects that will be completely destroyed within NukeRadius, currently 80%
-		if (round(random 100) <= 80) then {    
+		// 80% of objects that will be completely destroyed within NukeRadius
+		if (80 > random 100) then {    
 			_x setDamage 1;
 		} else {
 			// The rest are set on fire
-			//[_x,10,time,false,true] spawn BIS_Effects_Burn;
 			_burnObj = "test_EmptyObjectForFireBig" createVehicle (position _x);
-			_burnObj attachto[_x, [0,0,-1]];  
+			_burnObj attachto[_x,[0,0,-1]];  
 		};
 		
-		uiSleep 0.125;
-	} forEach (nearestObjects [_coords,["house","Building","LandVehicle","Air","Ship"],NukeRadius]);
+		uiSleep 0.1;
+	}forEach (nearestObjects [_coords,["house","Building","LandVehicle","Air","Ship"],NukeRadius]);
 };
 
 FEAR_fnc_nukeAddMarker = {
@@ -110,21 +109,25 @@ FEAR_fnc_nukeRadDamage = {
 	
 	_coords = _this select 0;
 	NUKEGeiger = "Land_HelipadEmpty_F" createVehicle _coords;
+	_result = false;
 	
 	// Endurance of Radiation in air = 15 minutes = (180 mins * uiSleep 5)
 	for [{_x = 0},{_x < 180},{_x = _x + 1}] do {
 		{	
 			// Damage
 			if (isPlayer _x) then {
-				_result = [_x] call FEAR_fnc_hasGasMask}; // Wearing gas mask?
+				_result = [_x] call FEAR_fnc_hasGasMask; // Wearing gas mask?
 				(owner (vehicle _x)) publicVariableClient "NUKEGeiger"; // Geiger counter sound within radius
-			if !(_result) then {
+			};
+			
+			if (_result) then {
 				// No damage
+				_result = false;
 			} else {
 				_x setDammage (getDammage _x + 0.01);
 			};
 			
-		}forEach (_coords nearEntities [["All"], NukeRadius]);
+		}forEach (_coords nearEntities [["All"],NukeRadius]);
 
 		uisleep 5;
 	};
@@ -132,11 +135,10 @@ FEAR_fnc_nukeRadDamage = {
 
 FEAR_fnc_hasGasMask = {
 	private["_ret"];
-	_player = select 0;
+	_player = _this select 0;
 	_ret = false;
 	if (goggles _player == "Mask_M50" or goggles _player == "Mask_M40" or goggles _player == "Mask_M40_OD" or goggles _player == "G_mas_wpn_gasmask") then {
 		_ret = true;
 	};
 	_ret
 };
-

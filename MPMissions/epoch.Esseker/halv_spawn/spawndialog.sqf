@@ -12,17 +12,17 @@ HALV_Center = getMarkerPos "center";
 waitUntil{!isNil "HALV_senddeftele"};
 waitUntil{!isNil "Epoch_my_GroupUID"};
 
-[format["player distance from spawn: %1",player distance _rspawnw]] call FEARserverLog;
+//diag_log format["player distance from spawn: %1",player distance _rspawnw];
 
 // Exit if player not near spawn
 if(player distance _rspawnw > 1500)exitWith{
 	call Halv_clear_vars;
-	["Spawn Menu Aborted..."] call FEARserverLog;
+	diag_log "Spawn Menu Aborted...";
 };
 
 enableEnvironment false;
 
-diag_log format["[halv_spawn] waiting for new teleports to be build in %1 ...",worldName];
+//diag_log format["[halv_spawn] waiting for new teleports to be build in %1 ...",worldName];
 
 // Add action for teleport: open dialog
 {
@@ -38,10 +38,10 @@ diag_log format["[halv_spawn] waiting for new teleports to be build in %1 ...",w
 	];
 }forEach(HALV_senddeftele select 0);
 
-diag_log format["[halv_spawn] addAction added to %1",HALV_senddeftele];
+//diag_log format["[halv_spawn] addAction added to %1",HALV_senddeftele];
 waitUntil{!dialog};
 
-_diagTiackTime = diag_tickTime;
+//_diagTiackTime = diag_tickTime;
 diag_log format["Loading Spawn Menu ... %1",_diagTiackTime];
 
 _pregearcheck = profileNamespace getVariable["HALVSPAWNLASTGEAR",[[],[],[],[],[],[],[],[],[],[]]];
@@ -91,7 +91,7 @@ Halv_near_cityname = {
 {
 	if((_x getVariable ["BUILD_OWNER", "-1"]) in [getPlayerUID player, Epoch_my_GroupUID])exitWith{
 		_jamvar = getPos _x;
-		diag_log format["[halv_spawn] found a player jammer @ %1",_jamvar];
+		//diag_log format["[halv_spawn] found a player jammer @ %1",_jamvar];
 		_name = _jamvar call Halv_near_cityname;
 		Halv_spawns pushBack [_jamvar,6,format["%1 (%2)",_name,localize "STR_HALV_NEAR_JAMMER"]];
 	}; 
@@ -166,32 +166,38 @@ Halv_spawn_player = {
 	if (!(HALV_GEAR_TOADD isEqualTo [[],[],[],[],[],[],[],[],[],[]]) && !(HALV_GEAR_TOADD isEqualTo (profileNamespace getVariable ["HALVSPAWNLASTGEAR",[[],[],[],[],[],[],[],[],[],[]]])))then{
 		profileNamespace setVariable ["HALVSPAWNLASTGEAR",HALV_GEAR_TOADD];
 	};
-	diag_log str['HALV_GEAR_TOADD',HALV_GEAR_TOADD];
+	//diag_log str['HALV_GEAR_TOADD',HALV_GEAR_TOADD];
 	
 	// Add player gear
 	_addedgear = [[],[],[],[],[],[],[],[],[],[]];
 	
+	// Backpacks
 	_item = (_geararr select 9) call BIS_fnc_selectRandom;
 	player addbackpack _item;
 	(_addedgear select 9) pushBack ['random',_item];
-
+	
+	// Goggles
 	_item = (_geararr select 8) call BIS_fnc_selectRandom;
 	player addgoggles _item;
 	(_addedgear select 8) pushBack ['random',_item];
-
+	
+	// Uniforms
 	_sel = if((typeOf player) isEqualTo "Epoch_Female_F")then{1}else{0};
 	_item = ((_geararr select 7) select _sel) call BIS_fnc_selectRandom;
 	player forceAddUniform _item;
 	(_addedgear select 7) pushBack ['random',_item];
-
+	
+	// Vests
 	_item = (_geararr select 6) call BIS_fnc_selectRandom;
 	player addVest _item;
 	(_addedgear select 6) pushBack ['random',_item];
 
+	// Headgear
 	_item = (_geararr select 5) call BIS_fnc_selectRandom;
 	player addheadgear _item;
 	(_addedgear select 5) pushBack ['random',_item];
-
+	
+	// Magazines
 	if(count (HALV_GEAR_TOADD select 4) < (_geararr select 4) select 1)then{
 		_missing = ((_geararr select 4) select 1) - (count (HALV_GEAR_TOADD select 4));
 		for "_i" from 1 to _missing do {
@@ -204,6 +210,7 @@ Halv_spawn_player = {
 		{player addMagazine _x;(_addedgear select 4) pushBack _x;}forEach (HALV_GEAR_TOADD select 4);
 	};
 
+	// Tools
 	if(count (HALV_GEAR_TOADD select 3) < (_geararr select 3) select 1)then{
 		_missing = ((_geararr select 3) select 1) - (count (HALV_GEAR_TOADD select 3));
 		for "_i" from 1 to _missing do {
@@ -244,7 +251,8 @@ Halv_spawn_player = {
 		}forEach (HALV_GEAR_TOADD select 3);
 		
 	};
-
+	
+	// Items
 	if(count (HALV_GEAR_TOADD select 2) < (_geararr select 2) select 1)then{
 		_missing = ((_geararr select 2) select 1) - (count (HALV_GEAR_TOADD select 2));
 		for "_i" from 1 to _missing do {
@@ -257,20 +265,22 @@ Halv_spawn_player = {
 		{player addItem _x;(_addedgear select 2) pushBack _x;}forEach (HALV_GEAR_TOADD select 2);
 	};
 
-	// Add Weapons
+	// Secondary weapons
 	_item = ((_geararr select 0) select 0) call BIS_fnc_selectRandom;
 	_item call HALV_addiweaponwithammo;
 	(_addedgear select 0) pushBack ['random',_item];
 	
+	// Primary weapons
 	_item = ((_geararr select 1) select 0) call BIS_fnc_selectRandom;
 	_item call HALV_addiweaponwithammo;
 	(_addedgear select 1) pushBack ['random',_item];
 	
+	// Mandatory FEAR loadout: NVG, Map and Flashlight
 	player addWeapon "NVG_EPOCH";
 	player addWeapon "ItemMap"; // Add map as default item
 	player addPrimaryWeaponItem "acc_flashlight"; // Add flashlight
 	
-	diag_log str['_addedgear:',_addedgear];
+	//diag_log format["%1 gear added: %2",name player,_addedgear];
 	
 	_spawn set [2,0];
 	_position = [0,0,0];
@@ -286,7 +296,7 @@ Halv_spawn_player = {
 	if(_try isEqualTo 100)then{
 		_failtxt = "[halv_spawn] BIS_fnc_findSafePos Failed to find position in 100 try's ... reverted to exact position!";
 		systemChat _failtxt;
-		diag_log format["%1 %2",_failtxt,_spawn];
+		//diag_log format["%1 %2",_failtxt,_spawn];
 	};
 
 	// Spawn player on ground
@@ -380,4 +390,4 @@ HALV_player_removelisteditem = {
 	};
 };
 
-diag_log format["Spawn Menu Loaded ... %1 - %2",diag_tickTime,diag_tickTime - _diagTiackTime];
+//diag_log format["Spawn Menu Loaded ... %1 - %2",diag_tickTime,diag_tickTime - _diagTiackTime];

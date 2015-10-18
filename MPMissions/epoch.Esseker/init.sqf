@@ -81,6 +81,6 @@ waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDon
 
 if (!isDedicated && hasInterface) then {
 	(vehicle player) switchCamera "EXTERNAL"; 			// Start in 3rd person view
-	player addGoggles "G_mas_wpn_gasmask";
+	//player addGoggles "G_mas_wpn_gasmask";
 	[] execVM "FEAR\scripts\FEAR_masterLoop.sqf"; 		// FEAR master loop
 };

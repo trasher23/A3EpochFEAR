@@ -28,7 +28,7 @@ class CfgA3EAISettings {
 	verifySettings = 1;
 	
 	//Minimum seconds to pass until each dead AI body or destroyed vehicle can be cleaned up by A3EAI's task scheduler. A3EAI will not clean up a body/vehicle if there is a player close by (Default: 900).									
-	cleanupDelay = 900;
+	cleanupDelay = 600;
 	
 	//Enabled: A3EAI will load custom spawn/blacklist definitions file on startup (A3EAI_config.pbo >> custom_defs.sqf) (Default: 0)
 	loadCustomFile = 0;
@@ -216,7 +216,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/		
 	
 	//Upper limit of dynamic spawns on map at once. Set to 0 to disable dynamic spawns (Default: 15)
-	maxDynamicSpawns = 10;
+	maxDynamicSpawns = 5;
 	
 	//Minimum time (in seconds) that must pass between dynamic spawns for each player (Default: 900)
 	timePerDynamicSpawn = 900;
@@ -357,7 +357,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Maximum allowed number of simultaneous active reinforcements (Default: 5)
-	maxAirReinforcements = 5;
+	maxAirReinforcements = 2;
 	
 	//Air vehicles to use as reinforcement vehicles. Default: {"B_Heli_Transport_01_F","B_Heli_Light_01_armed_F"}
 	//Armed air vehicles will detect and engage players within reinforcement area. Unarmed air vehicles will deploy an AI paradrop group.
@@ -430,7 +430,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Global maximum number of active UGV patrols. Set at 0 to disable (Default: 0).	
-	maxUGVPatrols = 3;
+	maxUGVPatrols = 2;
 	
 	//Classnames of UGV types to use, with the maximum amount of each type to spawn.
 	UGVList[] = {

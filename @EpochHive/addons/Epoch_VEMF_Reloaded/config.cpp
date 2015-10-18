@@ -12,7 +12,7 @@ class CfgVemfReloaded
 	minServerFPS = 20; // Missions will not spawn if server's FPS is below this number
 	validateLoot = -1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
 	minPlayers = 1; // Missions will not start until player count reaches this number OR when player count goes below this amount
-	maxGlobalMissions = 5; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
+	maxGlobalMissions = 2; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
  	timeOutTime = 20; // In minutes. Use -1 to disable mission timeout; Minimal: 5
 	minNew = 5; // Minimum time before new mission can run
 	maxNew = 15; // Maximum time before new mission can run
@@ -61,7 +61,7 @@ class CfgVemfReloaded
 	{
 		useAnnouncements = 1; // Use -1 to disable mission announcements
 		useMarker = 1; // Use -1 to disable mission markers
-		maxInvasions = 5; // Max amount of active uncompleted invasions allowed at the same time
+		maxInvasions = 2; // Max amount of active uncompleted invasions allowed at the same time
 		cal50s = 2; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
 			keep50s = 1; // Set to -1 to enable the removal of all 50s created by MI
 			cal50delMode = 1; // 1 is delete, 2 is destroy

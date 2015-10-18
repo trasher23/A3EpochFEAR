@@ -81,7 +81,7 @@ _allCitysDync = [];
 }forEach _allCitys;
 
 _getRandomPos = false;
-_numberOfWrecks = 50;
+_numberOfWrecks = 20;
 for "_i" from 1 to _numberOfWrecks do{
 	
 	_direction = random 360;

@@ -16,45 +16,19 @@ _zBags = [
 
 // Ammo loot on zombies, you'll need it!
 _zLoots = [
-	"30Rnd_556x45_Stanag_Tracer_Red",
-	"30Rnd_65x39_caseless_mag_Tracer",
-	"30Rnd_556x45_Stanag_Tracer_Yellow",
 	"16Rnd_9x21_Mag",
-	"20Rnd_556x45_UW_mag",
-	"20Rnd_762x51_Mag",
-	"30Rnd_45ACP_Mag_SMG_01",
-	"30Rnd_556x45_Stanag",
 	"30Rnd_9x21_Mag",
+	"20Rnd_762x51_Mag",
 	"9Rnd_45ACP_Mag",
-	"16Rnd_9x21_Mag",
-	"1Rnd_HE_Grenade_shell",
-	"20Rnd_556x45_UW_mag",
-	"20Rnd_762x51_Mag",
 	"30Rnd_45ACP_Mag_SMG_01",
+	"20Rnd_556x45_UW_mag",
 	"30Rnd_556x45_Stanag",
-	"30Rnd_556x45_Stanag_Tracer_Green",
-	"30Rnd_556x45_Stanag_Tracer_Red",
-	"30Rnd_556x45_Stanag_Tracer_Yellow",
-	"30Rnd_65x39_caseless_green",
-	"30Rnd_65x39_caseless_green_mag_Tracer",
 	"30Rnd_65x39_caseless_mag",
-	"30Rnd_65x39_caseless_mag_Tracer",
-	"30Rnd_9x21_Mag",
+	"1Rnd_HE_Grenade_shell",
 	"3Rnd_HE_Grenade_shell",
 	"5Rnd_127x108_Mag",
 	"7Rnd_408_Mag",
-	"9Rnd_45ACP_Mag",
-	"20Rnd_556x45_UW_mag",
-	"30Rnd_45ACP_Mag_SMG_01",
-	"30Rnd_556x45_Stanag",
-	"30Rnd_556x45_Stanag_Tracer_Green",
-	"30Rnd_556x45_Stanag_Tracer_Red",
-	"30Rnd_556x45_Stanag_Tracer_Yellow",
-	"30Rnd_65x39_caseless_green",
 	"30Rnd_65x39_caseless_green_mag_Tracr",
-	"30Rnd_65x39_caseless_mag",
-	"30Rnd_65x39_caseless_mag_Tracer",
-	"30Rnd_9x21_Mag",
 	"wolf_mask_epoch",
 	"pkin_mask_epoch"
 ];
@@ -91,7 +65,7 @@ for "_x" from 1 to _zombieHordeSize do{
 				
 	// Add event handler for zombie death
 	_zombie addMPEventHandler["mpkilled","if(isDedicated)then{[_this select 0,_this select 1] spawn FEARZombieKilled}"];
-	_zombie setVariable["LAST_CHECK", (diag_tickTime + 600)]; // Epoch Server_Monitor, delete after 600s if no players near
+	_zombie setVariable["LAST_CHECK", 300]; // Epoch Server_Monitor, delete after 3min if no players near
 	
 	_zombieCount = _zombieCount + 1;
 };

@@ -33,7 +33,7 @@ fn_handleGetIn = {
 	if(_seat == "driver")then{
 		_vehicle setVariable ["GotIn",true];
 		_vehicle allowDamage false;
-		diag_log "[OX3] - Vehicle getin handled";
+		["vehicle getin handled"] call FEARserverLog;
 	};
 };
 
@@ -44,11 +44,11 @@ fn_handleLocal = {
 	_local = _this select 1;
 	_vehicle setVariable ["LocalChanged",true];
 	_vehicle allowDamage false;
-	diag_log "[OX3] - Vehicle local handled";
+	["vehicle local handled"] call FEARserverLog;
 	
 };
 
-diag_log "[OX3] - Vehicle get in pilot protection";
+["vehicle get in pilot protection"] call FEARserverLog;
 while {true} do 
 {
 	{	

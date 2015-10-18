@@ -103,8 +103,6 @@ UrbanLootBubble = {
 _FEAR_masterLoop = {
 	private["_FEAR_05","_FEAR_30","_FEAR_60","_tickTime","_pos","_posPlayer","_zombieCount","_result","_rspawnw","_spawnChance"];
 	
-	["masterloop initialised"] call FEARserverLog;
-	
 	_FEAR_05 = diag_tickTime;
 	_FEAR_30 = diag_tickTime;
 	_FEAR_60 = diag_tickTime;
@@ -112,7 +110,7 @@ _FEAR_masterLoop = {
 	
 	FEAR_lastPlayerPos = getPosATL vehicle player;
 	_rspawnw = getMarkerPos "respawn_west";
-	
+		
 	while {alive player} do {
 		_tickTime = diag_tickTime;
 		
@@ -123,7 +121,7 @@ _FEAR_masterLoop = {
 			
 			// Gasmask breath sound
 			_result = call FEAR_fnc_hasGasMask;
-			if (_result) then {playsound3d ["A3\sounds_f\characters\human-sfx\other\diver-breath-2.wss",player,false,getposASL player,0.5,0.5,15]};
+			if (_result) then {playsound3d ["A3\sounds_f\characters\human-sfx\other\diver-breath-2.wss",player,false,getposASL player,0.4,0.5,15]};
 		};
 		
 		// Every 30 seconds
@@ -152,9 +150,9 @@ _FEAR_masterLoop = {
 			// Increase zombie spawn chance if in VEMF quarantine zone
 			_result = [_posPlayer] call InQuarantineRange;
 			if !(_result) then {
-				_spawnChance = 25; // 25% chance - 33% had them appearing too much!
+				_spawnChance = 20;
 			} else {
-				_spawnChance = 40; // Zombie infection!
+				_spawnChance = 35; // Zombie infection!
 			};
 			
 			// If Jammer not in range, player not in vehicle and not near respawn box
@@ -177,5 +175,6 @@ _FEAR_masterLoop = {
 };
 
 // Debug
-[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
+//[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
 [] spawn _FEAR_masterLoop;
+["masterloop initialised"] call FEARserverLog;
