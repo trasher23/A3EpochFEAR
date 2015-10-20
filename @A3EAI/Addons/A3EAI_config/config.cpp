@@ -266,7 +266,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/		
 
 	//Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-	maxAirPatrols = 1;
+	maxAirPatrols = 2;
 	
 	//Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 	levelChancesAir[] = {0.00,0.50,0.35,0.15};
@@ -357,7 +357,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Maximum allowed number of simultaneous active reinforcements (Default: 5)
-	maxAirReinforcements = 2;
+	maxAirReinforcements = 3;
 	
 	//Air vehicles to use as reinforcement vehicles. Default: {"B_Heli_Transport_01_F","B_Heli_Light_01_armed_F"}
 	//Armed air vehicles will detect and engage players within reinforcement area. Unarmed air vehicles will deploy an AI paradrop group.
@@ -392,7 +392,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Global maximum number of active UAV patrols. Set at 0 to disable (Default: 0).	
-	maxUAVPatrols = 1;
+	maxUAVPatrols = 2;
 	
 	//Classnames of UAV types to use, with the maximum amount of each type to spawn.
 	UAVList[] = {
@@ -430,7 +430,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Global maximum number of active UGV patrols. Set at 0 to disable (Default: 0).	
-	maxUGVPatrols = 2;
+	maxUGVPatrols = 3;
 	
 	//Classnames of UGV types to use, with the maximum amount of each type to spawn.
 	UGVList[] = {

@@ -3,7 +3,7 @@ Params:
 _this select 0: OBJECT - the killed Zombie
 _this select 1: OBJECT - killer
 */
-private["_target","_killer","_dist","_kMsg","_sent","_curWeapon"];
+private["_target","_killer","_dist","_kMsg","_sent","_curWeapon","_index"];
 _target = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 _killer = [_this, 1, objNull, [objNull]] call BIS_fnc_param;
 if not isNull _killer then{
@@ -17,11 +17,15 @@ if not isNull _killer then{
 	};
 };
 if not isNull _target then{
-	// Decrement global zombie counter
-	ZombieTotal = ZombieTotal - 1;
-	publicVariableServer "ZombieTotal";
+	// Remove zombie from array
+	_index = FEARZombies find _target;
+	if (_index > -1) then
+	{
+		FEARZombies deleteAt _index;
+		publicVariableServer "FEARZombies";
+	};
 	
-	diag_log format["[FEAR] remaining zombies: %1",ZombieTotal];
+	diag_log format["[FEAR] remaining zombies: %1",count FEARZombies];
 	
 	uiSleep 300; // Wait 3 minutes, then delete
 	_target hideObjectGlobal true;

@@ -1,9 +1,9 @@
-private["_arr","_zombiePos","_zombieHordeSize","_zombieCount","_zombieClass","_zombieType","_zombie","_zBags","_zLoots","_zBag","_zLoot"];
+private["_arr","_zombiePos","_zombieHordeSize","_zombieCount","_zombieTotal","_zombieClass","_zombieType","_zombie","_zBags","_zLoots","_zBag","_zLoot"];
 
 _arr = _this;
 _zombiePos = _arr select 0;
 _zombieHordeSize = _arr select 1;
-_zombieCount = 0;
+_zombieTotal = count FEARZombies;
 
 _zombieClass = ["RyanZombieC_man_polo_2_Fslow","RyanZombieC_man_polo_4_Fslow","RyanZombieC_man_polo_5_Fslow","RyanZombieC_man_polo_6_Fslow","RyanZombieC_man_p_fugitive_Fslow","RyanZombieC_man_w_worker_Fslow","RyanZombieC_scientist_Fslow","RyanZombieC_man_hunter_1_Fslow","RyanZombieC_man_pilot_Fslow","RyanZombieC_journalist_Fslow","RyanZombieC_Orestesslow","RyanZombieC_Nikosslow","RyanZombieB_Soldier_02_fslow","RyanZombieB_Soldier_02_f_1slow","RyanZombieB_Soldier_02_f_1_1slow","RyanZombieB_Soldier_03_fslow","RyanZombieB_Soldier_03_f_1slow","RyanZombieB_Soldier_03_f_1_1slow","RyanZombieB_Soldier_04_fslow","RyanZombieB_Soldier_04_f_1slow","RyanZombieB_Soldier_04_f_1_1slow","RyanZombieB_Soldier_lite_Fslow","RyanZombieB_Soldier_lite_F_1slow","RyanZombieB_RangeMaster_Fmedium","RyanZombieSpider1"];
 
@@ -33,14 +33,11 @@ _zLoots = [
 	"pkin_mask_epoch"
 ];
 
-_zBag = _zBags select(floor(random(count _zBags)));
-_zLoot = _zLoots select(floor(random(count _zLoots)));
-
 if ((isNil "_zombieHordeSize") || (_zombieHordeSize == 0)) then{_zombieHordeSize = 1};
 
 // Assign _zombieHordeSize if total is larger than ZombieMax
-if ((ZombieTotal + _zombieHordeSize) > ZombieMax) then{
-	_zombieHordeSize = (ZombieMax - ZombieTotal);
+if ((_zombieTotal + _zombieHordeSize) > ZombieMax) then{
+	_zombieHordeSize = (ZombieMax - _zombieTotal);
 	diag_log "[FEAR] reached ZombieMax";
 };
 
@@ -49,28 +46,24 @@ for "_x" from 1 to _zombieHordeSize do{
 	// Create zombie unit
 	_zombieType = _zombieClass select(floor(random(count _zombieClass)));
 	_zombie = ZombieGroup createUnit[_zombieType,_zombiePos,[],0,"NONE"];
-	
-	// Add loot
-	_zombie addVest _zBag; 
-	if (50 > random 100) then {_zombie addItemToVest _zLoot}; // 50% chance of ammo 
-	if (10 > random 100) then {_zombie addItemToVest "FAK"}; // 10% chance of FAK
-	
-	//_zombie disableAI "FSM";
-	//_zombie disableAI "AUTOTARGET";
-	//_zombie disableAI "TARGET";
-	//_zombie setBehaviour "CARELESS";
 	_zombie disableConversation true;
-	//_zombie addRating -10000;
-	//_zombie setCaptive false;
-				
 	// Add event handler for zombie death
 	_zombie addMPEventHandler["mpkilled","if(isDedicated)then{[_this select 0,_this select 1] spawn FEARZombieKilled}"];
-	_zombie setVariable["LAST_CHECK", 300]; // Epoch Server_Monitor, delete after 3min if no players near
 	
-	_zombieCount = _zombieCount + 1;
-};
-// Increment global zombie counter
-ZombieTotal = ZombieTotal + _zombieCount;
-publicVariableServer "ZombieTotal";
+	// Add loot - 50% chance
+	if (50 > random 100) then {
+		_zBag = _zBags select(floor(random(count _zBags)));
+		_zLoot = _zLoots select(floor(random(count _zLoots)));
+		_zombie addVest _zBag; 
+		_zombie addItemToVest _zLoot; 
+		if (10 > random 100) then {_zombie addItemToVest "FAK"}; // 10% chance of FAK
+	};
 
-diag_log format["[FEAR] %1 zombie(s) spawned at %2. Total zombies: %3",_zombieCount,_zombiePos,ZombieTotal];
+	// Increment global zombie counter
+	FEARZombies pushBack _zombie;
+};
+
+publicVariableServer "FEARZombies";
+
+diag_log format["[FEAR] FEARZombies: %1",FEARZombies];
+diag_log format["[FEAR] %1 zombie(s) spawned at %2. Total zombies: %3",_zombieHordeSize,_zombiePos,count FEARZombies];

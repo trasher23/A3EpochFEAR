@@ -1,5 +1,20 @@
 if (!isDedicated && hasInterface) then {
 	
+	/* Load functions
+	-----------------------------------------------------------
+	*/
+	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
+	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
+	
+	FEAR_fnc_nukeSiren = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeSiren.sqf";
+	FEAR_fnc_nukeImpact = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeImpact.sqf";
+	FEAR_fnc_nukeGeiger = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeGeiger.sqf";
+	FEAR_fnc_nukeAsh = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeAsh.sqf";
+	FEAR_fnc_nukeColorCorrection = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeColorCorrection.sqf";
+	FEAR_fnc_nukeFlash = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeFlash.sqf";
+
+	FEAR_fnc_hasGasMask = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_hasGasMask.sqf";
+	
 	/* Server to Client functions
 	-----------------------------------------------------------
 	*/
@@ -40,26 +55,17 @@ if (!isDedicated && hasInterface) then {
 		SpawnExplodingBarrel = _this select 0;
 		publicVariableServer "SpawnExplodingBarrel";
 	};
-	
+		
 	// Spawn zombies
 	FEARspawnZombies = {
 		SpawnZombies = _this select 0;
 		publicVariableServer "SpawnZombies";
 	};
 	
-	/* Load functions
-	-----------------------------------------------------------
-	*/
-	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
-	call compileFinal preprocessFileLineNumbers "FEAR\scripts\FEAR_nukeClientFunctions.sqf";
-	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
-	
-	/* Load scripts
-	-----------------------------------------------------------
-	*/
+	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";		// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
 	[] execVM "FEAR\scripts\FEAR_statusBar.sqf";		// Status bar lower screen
 	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
-	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";		// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
+	[] execVM "FEAR\scripts\FEAR_clientLoop.sqf"; 		// FEAR client loop
 };
 
 /*
@@ -70,7 +76,7 @@ Need to run on both server and client
 [] execVM "trader\init.sqf";
 [] execVM "trader\HALV_takegive_crypto_init.sqf";
 [] execVM "trader\resetvehicleammo.sqf";
-[] execVM "messages\init.sqf";							// Kill msgs  http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
+[] execVM "messages\init.sqf";							// Kill msgs http://epochmod.com/forum/index.php?/topic/34570-easy-kill-feedmessages-beta/
 
 // At bottom of script, causes problems otherwise
 if (!isDedicated && hasInterface) then {
@@ -79,8 +85,7 @@ if (!isDedicated && hasInterface) then {
 
 waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
 
-if (!isDedicated && hasInterface) then {
+if (!isDedicated && hasInterface) then {	
 	(vehicle player) switchCamera "EXTERNAL"; 			// Start in 3rd person view
-	//player addGoggles "G_mas_wpn_gasmask";
-	[] execVM "FEAR\scripts\FEAR_masterLoop.sqf"; 		// FEAR master loop
+	player addGoggles "G_mas_wpn_gasmask";
 };

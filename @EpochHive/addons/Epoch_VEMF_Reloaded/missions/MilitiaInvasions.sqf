@@ -1,6 +1,19 @@
 /*
 	MilitiaInvasions by IT07, original written by TheVampire
 */
+private["_deleteQuarantineLoc"];
+
+_deleteQuarantineLoc = {
+	private "_loc";
+	_loc  = _this select 0;
+	_index = FEARQuarantineLocs find _loc;
+	if (_index > -1) then
+	{
+		FEARQuarantineLocs deleteAt _index;
+		publicVariableServer "FEARQuarantineLocs";
+	};
+};
+
 private ["_settings","_grpCount","_groupUnits","_playerCheck","_loc","_hasPlayers","_marker","_spawned","_grpArr","_unitArr","_done","_boxes","_box","_chute","_colors","_lightType","_light","_smoke"];
 
 // Define _settings
@@ -88,11 +101,7 @@ if (VEMF_invasCount < _maxInvasions) then
 				};
 				
 				// Delete from quarantine location array
-				_index = FEARQuarantineLocs find (_loc select 1);
-				if (_index > -1) then
-				{
-					FEARQuarantineLocs deleteAt _index;
-				};
+				[_loc select 1] call _deleteQuarantineLoc;
 				
 				if _done then
 				{
@@ -242,7 +251,7 @@ if (VEMF_invasCount < _maxInvasions) then
 					};
 				};
 			};
-			if isNil"_spawned" then
+			if isNil "_spawned" then
 			{
 				["MI", 0, format["Failed to spawn AI in %1", _locName]] call VEMFr_fnc_log;
 				if not isNil"_marker" then
@@ -251,6 +260,9 @@ if (VEMF_invasCount < _maxInvasions) then
 				};
 				VEMF_invasCount = VEMF_invasCount - 1;
 				VEMFr_missionCount = VEMFr_missionCount - 1;
+				
+				// Delete from quarantine location array
+				[_loc select 1] call _deleteQuarantineLoc;
 			};
 		};
 		if not _playerNear then
@@ -262,6 +274,9 @@ if (VEMF_invasCount < _maxInvasions) then
 			};
 			VEMF_invasCount = VEMF_invasCount - 1;
 			VEMFr_missionCount = VEMFr_missionCount - 1;
+			
+			// Delete from quarantine location array
+			[_loc select 1] call _deleteQuarantineLoc;
 		};
 	};
 };

@@ -1,7 +1,7 @@
 /*
 	FEAR functions
 */
-diag_log "[FEAR] compiling functions.";
+diag_log "[FEAR] compiling functions";
 
 /* Server Functions
 ----------------------------------------------
@@ -30,6 +30,6 @@ FEARspawnExplodingBarrel = compileFinal preprocessFileLineNumbers format["%1\scr
 FEARspawnZombies = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_spawnZombies.sqf",FEAR_directory];
 "SpawnZombies" addPublicVariableEventHandler {_id = (_this select 1) spawn FEARspawnZombies};
 
-diag_log "[FEAR] functions compiled.";
+diag_log "[FEAR] functions compiled";
 
 true

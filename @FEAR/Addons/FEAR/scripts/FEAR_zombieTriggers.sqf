@@ -80,7 +80,7 @@ _fnc_createTriggers = {
 if (isDedicated) then {
 	private "_numberOfTriggers";
 	
-	_numberOfTriggers = 15;
+	_numberOfTriggers = 10;
 	
 	for "_i" from 1 to _numberOfTriggers do{
 		[_i] call _fnc_createTriggers;

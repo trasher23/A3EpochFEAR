@@ -100,7 +100,7 @@ UrbanLootBubble = {
 	_ret
 };
 
-_FEAR_masterLoop = {
+_FEAR_clientLoop = {
 	private["_FEAR_05","_FEAR_30","_FEAR_60","_tickTime","_pos","_posPlayer","_zombieCount","_result","_rspawnw","_spawnChance"];
 	
 	_FEAR_05 = diag_tickTime;
@@ -152,8 +152,10 @@ _FEAR_masterLoop = {
 			if !(_result) then {
 				_spawnChance = 20;
 			} else {
-				_spawnChance = 35; // Zombie infection!
+				_spawnChance = 40; // Zombie infection!
 			};
+			
+			//[format["spawn chance: %1",_spawnChance]] call FEARserverLog;
 			
 			// If Jammer not in range, player not in vehicle and not near respawn box
 			_result = [_posPlayer] call InJammerRange;			
@@ -163,7 +165,7 @@ _FEAR_masterLoop = {
 				If (!isNil "_pos") then {
 					if (_spawnChance > random 100) then {
 						// Spawn zombies!
-						_zombieCount = 1 + random 4;
+						_zombieCount = round(1 + random 4);
 						[[_pos,_zombieCount]] spawn FEARspawnZombies;
 						_pos = nil;
 					};
@@ -176,5 +178,5 @@ _FEAR_masterLoop = {
 
 // Debug
 //[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
-[] spawn _FEAR_masterLoop;
-["masterloop initialised"] call FEARserverLog;
+[] spawn _FEAR_clientLoop;
+["clientLoop initialised"] call FEARserverLog;

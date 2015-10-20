@@ -43,15 +43,19 @@ _zombieLogic = ZombieGroup createUnit["ryanzombiesfeed",[0,0,0],[],0,"NONE"]; //
 _zombieLogic = ZombieGroup createUnit["ryanzombiescivilianattacks",[0,0,0],[],0,"NONE"]; // Zombie civilian attack
 
 ZombieMax = 30; // Max number of zombies on map
-ZombieTotal = 0; // Zombie counter
-
-diag_log "[FEAR] configuration file loaded";
 
 /*
 VEMF mission radius gets sent to clients for increased zombie spawn
 Needs array to store position for more than one mission
 */
 FEARQuarantineLocs = [];
-publicVariable "FEARQuarantineLocs";
+publicVariable "FEARQuarantineLocs"; // global used in clientLoop
+
+/*
+List of zombies, used to delete if not near players
+*/
+FEARZombies = [];
+
+diag_log "[FEAR] configuration file loaded";
 
 true // Config file run, return true
