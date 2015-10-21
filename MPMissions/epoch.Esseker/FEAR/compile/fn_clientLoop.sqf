@@ -4,21 +4,19 @@
 	Calls server side code via public variable
 */
 InJammerRange = {
-	private["_jammer","_pos","_ret"];
-	_pos = _this select 0;
+	private["_jammer","_ret"];
 	_ret = false;
-	_jammer = nearestObjects[_pos,["PlotPole_EPOCH"],500];
+	_jammer = nearestObjects[_this select 0,["PlotPole_EPOCH"],500];
 	if !(_jammer isEqualTo[]) then {_ret = true};
 	_ret
 };
 
 InQuarantineRange = {
-	private["_pos","_ret"];
-	_pos = _this select 0;
+	private["_ret"];
 	_ret = false;
 	[format["FEARQuarantineLocs: %1",FEARQuarantineLocs]] call FEARserverLog;
 	{
-		if (_pos distance _x < 300) then {_ret = true};
+		if ((_this select 0) distance _x < 300) then {_ret = true};
 	}forEach FEARQuarantineLocs;
 	_ret
 };
@@ -101,7 +99,7 @@ UrbanLootBubble = {
 };
 
 _FEAR_clientLoop = {
-	private["_FEAR_05","_FEAR_30","_FEAR_60","_tickTime","_pos","_posPlayer","_zombieCount","_result","_rspawnw","_spawnChance"];
+	private["_FEAR_05","_FEAR_30","_FEAR_60","_tickTime","_pos","_posPlayer","_zombieCount","_rspawnw","_spawnChance"];
 	
 	_FEAR_05 = diag_tickTime;
 	_FEAR_30 = diag_tickTime;
@@ -120,8 +118,7 @@ _FEAR_clientLoop = {
 			_FEAR_05 = _tickTime;
 			
 			// Gasmask breath sound
-			_result = call FEAR_fnc_hasGasMask;
-			if (_result) then {playsound3d ["A3\sounds_f\characters\human-sfx\other\diver-breath-2.wss",player,false,getposASL player,0.4,0.5,15]};
+			if (call FEAR_fnc_hasGasMask) then {playsound3d ["A3\sounds_f\characters\human-sfx\other\diver-breath-2.wss",player,false,getPosWorld player,0.4,0.5,15]};
 		};
 		
 		// Every 30 seconds
@@ -131,12 +128,16 @@ _FEAR_clientLoop = {
 			
 			_pos = call UrbanLootBubble;
 			// If pos exists, player not in vehicle and not near respawn box
-			If ((!isNil "_pos") && (vehicle player == player) && (player distance _rspawnw > 500)) then {
-				// 40% chance
-				if (40 > random 100) then {
-					// Spawn exploding barrel at position
-					[_pos] spawn FEARspawnExplodingBarrel;
-					_pos = nil;
+			If (!isNil "_pos") then {
+				if (isNull (objectParent player)) then {
+					if (player distance _rspawnw > 500) then {
+						// 40% chance
+						if (40 > random 100) then {
+							// Spawn exploding barrel at position
+							[_pos] spawn FEARspawnExplodingBarrel;
+							_pos = nil;
+						};
+					};
 				};
 			};
 		};
@@ -148,8 +149,7 @@ _FEAR_clientLoop = {
 			_posPlayer = getPos Player;
 			
 			// Increase zombie spawn chance if in VEMF quarantine zone
-			_result = [_posPlayer] call InQuarantineRange;
-			if !(_result) then {
+			if !([_posPlayer] call InQuarantineRange) then {
 				_spawnChance = 20;
 			} else {
 				_spawnChance = 40; // Zombie infection!
@@ -157,17 +157,20 @@ _FEAR_clientLoop = {
 			
 			//[format["spawn chance: %1",_spawnChance]] call FEARserverLog;
 			
-			// If Jammer not in range, player not in vehicle and not near respawn box
-			_result = [_posPlayer] call InJammerRange;			
-			If (!(_result) && (vehicle player == player) && (player distance _rspawnw > 500)) then {
-				_pos = [_posPlayer,[40,100],random 360] call SHK_pos; // spawn within a 40-100m range from any direction
-				// If pos 
-				If (!isNil "_pos") then {
-					if (_spawnChance > random 100) then {
-						// Spawn zombies!
-						_zombieCount = round(1 + random 4);
-						[[_pos,_zombieCount]] spawn FEARspawnZombies;
-						_pos = nil;
+			// If Jammer not in range, player on foot and not near respawn box		
+			If !([_posPlayer] call InJammerRange) then {
+				if (isNull objectParent player) then {
+					if (player distance _rspawnw > 500) then {
+						_pos = [_posPlayer,[40,100],random 360] call SHK_pos; // spawn within a 40-100m range from any direction
+						// If pos... 
+						If (!isNil "_pos") then {
+							if (_spawnChance > random 100) then {
+								// ...spawn zombies!
+								_zombieCount = round(1 + random 4);
+								[[_pos,_zombieCount]] spawn FEARspawnZombies;
+								_pos = nil;
+							};
+						};
 					};
 				};
 			};
@@ -176,7 +179,10 @@ _FEAR_clientLoop = {
 	};
 };
 
-// Debug
-//[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
-[] spawn _FEAR_clientLoop;
-["clientLoop initialised"] call FEARserverLog;
+if (hasInterface) then
+{
+	// Debug
+	//[[2661.84,4463.95,0]] spawn FEARspawnExplodingBarrel;
+	[] spawn _FEAR_clientLoop;
+	["clientLoop initialised"] call FEARserverLog;
+};

@@ -1,42 +1,16 @@
-// Start earplugs code
-waitUntil {vehicle player == player};
+waitUntil {isNull (objectParent player)};
 waituntil {!isnull (finddisplay 46)};
 
-_OPRbreathing = alive player;
-_OPRtrig=true;
-_OPRdude = player;
+// Earplugs code
+0 fadeSound 1;
+earplugsout=true;
 
-while {_OPRtrig} do {
-	sleep 0.001;
-	
-	if (_OPRbreathing) then {
-		_OPRstartingpos = position player;
-		sleep 0.001;
-		_OPRposition = position _OPRdude;
-		_OPRstationary = _OPRstartingpos select 0 == _OPRposition select 0 && _OPRstartingpos select 1 == _OPRposition select 1;
-		if (_OPRstationary) then {} else {_OPRtrig=false;};
-	};
-};
-
-uisleep 1;
-
-if (isNil {player getVariable "Has_EPEH_Loop"}) then {player setVariable["Has_EPEH_Loop", "NEVER"]};
-
-5 fadeSound 1;
-earplugsout=true;	
-SuperFunEPEHVariable = false;
+waitUntil{(isPlayer player) && (alive player) && (!isNil "EPOCH_loadingScreenDone")};
 
 // Start with apocalyptic environment
 _sound = MISSION_directory + "FEAR\fx\dimensionfold.ogg";
-playSound3D [_sound,player];
+playSound3D [_sound,player,false,getPosWorld player,1,0.5];
 [] spawn FEAR_fnc_nukeFlash;
 [] spawn FEAR_fnc_nukeAsh;
 
-uisleep 1;
-_hasEPEH = player getVariable "Has_EPEH_Loop";
-uisleep 1;
-if ((_hasEPEH == "NEVER")) then {[] spawn cm_EP_LOOP};	
-
-if (cmEarplugsKeyPressEnabled) then {
-	[] spawn {cmKeyPress = (findDisplay 46) displayAddEventHandler["KeyDown","if ((_this select 1) == cmEarplugs_hotkeyDIKCodeNumber) then {[] call cm_Earplugs_FUNc;};"];};
-};
+["run script: onPlayerRespawn"] call FEARserverLog;

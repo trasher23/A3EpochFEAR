@@ -35,14 +35,14 @@ EqTimerMax = 30;
 ZombieGroup = createGroup resistance;
 _zombieLogic = ZombieGroup createUnit["LOGIC",[0,0,0],[],0,"NONE"];
 _zombieLogic = ZombieGroup createUnit["Ryanzombieslogiceasy",[0,0,0],[],0,"NONE"]; // Zombie setting easy
-_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow25",[0,0,0],[],0,"NONE"]; // Zombie throw cars 25 meters
-_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrowtank25",[0,0,0],[],0,"NONE"]; // Zombie throw tanks 25 meters
+//_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow25",[0,0,0],[],0,"NONE"]; // Zombie throw cars 25 meters
+//_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrowtank25",[0,0,0],[],0,"NONE"]; // Zombie throw tanks 25 meters
 _zombieLogic = ZombieGroup createUnit["ryanzombiesjump",[0,0,0],[],0,"NONE"]; // Zombie jumping
 _zombieLogic = ZombieGroup createUnit["Ryanzombieslogicroam",[0,0,0],[],0,"NONE"]; // Zombie roam
-_zombieLogic = ZombieGroup createUnit["ryanzombiesfeed",[0,0,0],[],0,"NONE"]; // Zombie feed
-_zombieLogic = ZombieGroup createUnit["ryanzombiescivilianattacks",[0,0,0],[],0,"NONE"]; // Zombie civilian attack
+//_zombieLogic = ZombieGroup createUnit["ryanzombiesfeed",[0,0,0],[],0,"NONE"]; // Zombie feed
+//_zombieLogic = ZombieGroup createUnit["ryanzombiescivilianattacks",[0,0,0],[],0,"NONE"]; // Zombie civilian attack
 
-ZombieMax = 30; // Max number of zombies on map
+ZombieMax = 50; // Max number of zombies on map
 
 /*
 VEMF mission radius gets sent to clients for increased zombie spawn

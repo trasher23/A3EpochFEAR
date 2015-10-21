@@ -1,11 +1,11 @@
-// Start earplugs code
-5 fadeSound 1;
-earplugsout = true;
+// Earplugs code
 removeAllActions inCaseofDeath;
 removeAllActions theOneTrueName;
 inCaseofDeath setVariable["HasEarplugMenu","hasNoMenu"];
 theOneTrueName setVariable["HasEarplugMenu","hasNoMenu"];
-player setVariable["Has_EPEH_Loop", "Yep"];
+1 fadeSound 1;
+earplugsout = true;
+
 systemChat "Your soul is dragged to HELL...";
 
 (findDisplay 46) displayRemoveEventHandler["KeyDown", cmKeyPress];

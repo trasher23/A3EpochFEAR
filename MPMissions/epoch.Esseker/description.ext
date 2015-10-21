@@ -69,6 +69,27 @@ class cfgFunctions
 			class clientInit { postInit = 1; };
 		};
 	};
+	class FEAR
+	{
+		tag = "FEAR";
+		class FEARclient
+		{
+			file = "FEAR\compile";
+			class nukeSiren {};
+			class nukeImpact {};
+			class nukeFlash {};
+			class hasGasMask {};
+			class nukeGeiger {};
+			class nukeColorCorrection {};
+			class nukeAsh {};
+			class incomingMissile {};
+			//class getInProtect { postinit = 1; }; // prevents the other loop scripts from working?!
+			class ambientFx { postinit = 1; };
+			class statusBar { postInit = 1; };
+			class clientLoop { postInit = 1; };
+			class earPlugs { postinit = 1; };
+		};
+	};
 };
 
 

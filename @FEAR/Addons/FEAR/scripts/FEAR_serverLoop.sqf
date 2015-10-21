@@ -27,7 +27,9 @@ while {true} do {
 			};
 		}forEach FEARZombies;
 		
-		diag_log format["[FEAR] serverLoop _nrPlyrs: %1 FEARZombies: %2",count _nrPlyrs,FEARZombies];
+		if !(isNil "_nrPlyrs") then {
+			diag_log format["[FEAR] serverLoop _nrPlyrs: %1 FEARZombies: %2",count _nrPlyrs,FEARZombies];
+		};
 	};	
 	uiSleep 0.1;
 };

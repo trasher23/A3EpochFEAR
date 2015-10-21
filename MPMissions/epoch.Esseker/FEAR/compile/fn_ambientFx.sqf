@@ -39,18 +39,20 @@ playSoundFx = {
 	playSound3D [_sound,player,false,_soundSource,2];
 };
 
-private ["_timeDiff","_maxTime","_minTime"];
+if (hasInterface) then
+{
+	[] spawn {
+		private ["_timeDiff"];
 
-_minTime = 3; // minutes
-_maxTime = 15; 
+		// Find the min and max time
+		_timeDiff = ((15*60) - (3*60)); // _maxTime = 15 _minTime = 3
+			
+		while {true} do {
+			// Wait a Random Amount
+			uiSleep ((floor(random(_timeDiff))) + (3*60)); // _minTime = 3
 
-// Find the min and max time
-_timeDiff = ((_maxTime*60) - (_minTime*60));
-	
-while {true} do {
-	// Wait a Random Amount
-	uiSleep ((floor(random(_timeDiff))) + (_minTime*60));
-
-	// Not in a vehicle
-	if (vehicle player == player) then {[] spawn playSoundFx};
+			// player on foot
+			if (isNull objectParent player) then {[] spawn playSoundFx};
+		};
+	};
 };

@@ -37,7 +37,7 @@ _quarantineZone = {
 		_sign = createVehicle["SignAd_Sponsor_F",_pos,[],0,"CAN_COLLIDE"];
 		// Load from Mission PBO, took ages to find this out! 
 		// Global command broadcasts to clients.  They each need the picture file, separately.
-		_pic = format["%1FEAR\scripts\sign.jpg",MISSION_directory]; // Path has hidden backslash before FEAR path
+		_pic = format["%1FEAR\sign.jpg",MISSION_directory]; // Path has hidden backslash before FEAR path
 		_sign setObjectTextureGlobal[0,_pic];
 		_sign setDir([_pos,_trigger_pos] call BIS_fnc_DirTo);
 		

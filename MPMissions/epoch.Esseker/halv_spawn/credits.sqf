@@ -3,16 +3,19 @@
 	by Halv
 	Copyright (C) 2015  Halvhjearne > README.md
 */
-if(isServer)exitWith{};
+if (isServer) exitWith {};
+
+0 cutText  ["", "BLACK IN", 5];
+uiSleep 2; // Wait for client to load
+
+enableEnvironment true;
 
 // Start with apocalyptic environment
 _sound = MISSION_directory + "FEAR\fx\dimensionfold.ogg";
-playSound3D [_sound,player];
+playSound3D [_sound,player,false,getPosWorld player,1,0.5];
 [] spawn FEAR_fnc_nukeFlash;
 [] spawn FEAR_fnc_nukeAsh;
-enableEnvironment true;
 
-uiSleep 5; // Wait for client to load
 
 _alltext = [
 	[

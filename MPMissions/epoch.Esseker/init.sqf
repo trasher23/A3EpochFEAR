@@ -4,16 +4,6 @@ if (!isDedicated && hasInterface) then {
 	-----------------------------------------------------------
 	*/
 	call compileFinal preprocessFileLineNumbers "SHK_pos\shk_pos_init.sqf";
-	call compileFinal preProcessFileLineNumbers "cmEarplugs\config.sqf";
-	
-	FEAR_fnc_nukeSiren = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeSiren.sqf";
-	FEAR_fnc_nukeImpact = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeImpact.sqf";
-	FEAR_fnc_nukeGeiger = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeGeiger.sqf";
-	FEAR_fnc_nukeAsh = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeAsh.sqf";
-	FEAR_fnc_nukeColorCorrection = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeColorCorrection.sqf";
-	FEAR_fnc_nukeFlash = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_nukeFlash.sqf";
-
-	FEAR_fnc_hasGasMask = compileFinal preProcessFileLineNumbers "FEAR\scripts\FEAR_hasGasMask.sqf";
 	
 	/* Server to Client functions
 	-----------------------------------------------------------
@@ -62,10 +52,8 @@ if (!isDedicated && hasInterface) then {
 		publicVariableServer "SpawnZombies";
 	};
 	
-	[] execVM "FEAR\scripts\OX3_GetInProtect.sqf";		// http://epochmod.com/forum/index.php?/topic/35767-exploding-heli-protection-script/
-	[] execVM "FEAR\scripts\FEAR_statusBar.sqf";		// Status bar lower screen
-	[] execVM "FEAR\scripts\FEAR_ambientFx.sqf";		// Random sound fx
-	[] execVM "FEAR\scripts\FEAR_clientLoop.sqf"; 		// FEAR client loop
+	// If incoming missile, warn player
+	_EHincomingmissle = player addEventHandler ["IncomingMissile", {_this spawn "FEAR_fnc_incomingMissile.sqf"}];
 };
 
 /*
