@@ -1,6 +1,7 @@
-private["_FEAR_30","_tickTime","_index","_plyrCount"];
+private["_FEAR_30","_tickTime","_plyrCount","_index"];
 
 _FEAR_30 = diag_tickTime;
+_plyrCount = 0;
 
 while {true} do {
 	

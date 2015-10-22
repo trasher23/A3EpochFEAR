@@ -5,7 +5,7 @@
 */
 if (isServer) exitWith {};
 
-0 cutText  ["", "BLACK IN", 7];
+0 cutText  ["", "BLACK IN", 10];
 uiSleep 2; // Wait for client to load
 
 enableEnvironment true;
