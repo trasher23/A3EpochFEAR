@@ -1,4 +1,4 @@
-private["_FEAR_30","_tickTime","_index"];
+private["_FEAR_30","_tickTime","_index","_plyrCount"];
 
 _FEAR_30 = diag_tickTime;
 
@@ -12,9 +12,9 @@ while {true} do {
 		_FEAR_30 = _tickTime;
 		
 		// If no players near zombie, delete zombie
-		{
-			_nrPlyrs = nearestObjects [getPos _x, ["Epoch_Female_base_F","Epoch_Man_base_F"],200];
-			if (count _nrPlyrs < 1) then {
+		{	
+			_plyrCount = count((getPosWorld _x) nearEntities[["Epoch_Female_base_F","Epoch_Man_base_F"],200]);
+			if (_plyrCount == 0) then {
 				_x hideObjectGlobal true;
 				deleteVehicle _x;
 				
@@ -26,10 +26,8 @@ while {true} do {
 				};
 			};
 		}forEach FEARZombies;
-		
-		if !(isNil "_nrPlyrs") then {
-			diag_log format["[FEAR] serverLoop _nrPlyrs: %1 FEARZombies: %2",count _nrPlyrs,FEARZombies];
-		};
+
+		diag_log format["[FEAR] serverLoop _nrPlyrs: %1 FEARZombies: %2",_plyrCount,count FEARZombies];
 	};	
 	uiSleep 0.1;
 };
