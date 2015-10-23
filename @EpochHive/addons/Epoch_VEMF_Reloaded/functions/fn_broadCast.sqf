@@ -9,28 +9,22 @@
 	_this select 1: STRING - mode to send to client
 
 	Returns:
-	BOOL - true if no errors encountered during process
+	nothing
 */
 
-private ["_msg","_mode","_sent"];
-_sent = false;
+private ["_msg","_mode"];
 _msg = [_this, 0, format[""], [format[""]]] call BIS_fnc_param;
 if not(_msg isEqualTo format[""]) then
 {
 	_mode = [_this, 1, "", [""]] call BIS_fnc_param;
-	if (count playableUnits > 0) then
+	if (count allPlayers > 0) then
 	{
 		{
 			if (isPlayer _x) then
 			{
-				if (side _x isEqualTo EAST) then
-				{
-					VEMFrClientMsg = [_msg, _mode];
-					(owner _x) publicVariableClient "VEMFrClientMsg";
-				};
+				VEMFrClientMsg = [_msg, _mode];
+				(owner _x) publicVariableClient "VEMFrClientMsg";
 			};
-		} forEach playableUnits;
-		_sent = true;
+		} forEach allPlayers;
 	};
 };
-_sent

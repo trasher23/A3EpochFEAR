@@ -71,7 +71,7 @@ if not isNull _target then
 					{
 						_curWeapon = currentWeapon _killer;
 						_kMsg = format["[VEMF] %1: AI kill from %2m with %3", name _killer, round _dist, getText(configFile >> "CfgWeapons" >> _curWeapon >> "DisplayName")];
-						_sent = [_kMsg, "sys"] call VEMFr_fnc_broadCast;
+						_sent = [_kMsg, "sys"] spawn VEMFr_fnc_broadCast;
 					};
 				};
 			};
@@ -85,7 +85,7 @@ if not isNull _target then
 					if (isPlayer _killer) then // Should prevent Error:NoUnit
 					{
 						_kMsg = format["[VEMF] %1: AI road-kill with %2", name _killer, getText(configFile >> "CfgVehicles" >> typeOf(vehicle _killer) >> "DisplayName")];
-						_sent = [_kMsg, "sys"] call VEMFr_fnc_broadCast;
+						_sent = [_kMsg, "sys"] spawn VEMFr_fnc_broadCast;
 					};
 				};
 			};

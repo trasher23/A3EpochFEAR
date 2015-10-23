@@ -17,7 +17,7 @@
     ARRAY - Result
 */
 
-private["_cfg","_v","_r","_path"];
+private["_cfg","_v","_r","_path","_check"];
 _r = [];
 _check =
 {

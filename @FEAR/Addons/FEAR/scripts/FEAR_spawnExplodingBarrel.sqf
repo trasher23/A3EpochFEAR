@@ -12,6 +12,14 @@ Barrel_BOOM = compileFinal '
 	];
 	_ex setVectorDirAndUp[[0,0,1],[0,-1,0]];
 	_ex setVelocity[0,0,-1000];
+	
+	// Remove zombie from array
+	_index = FEARCleanup find _this;
+	if (_index > -1) then {
+		FEARCleanup deleteAt _index;
+		publicVariableServer "FEARCleanup";
+	};
+	
 	deleteVehicle _this;
 ';
 
@@ -53,6 +61,10 @@ _explodingBarrel = {
 	}];
 	_b addEventHandler["Killed", {_this select 0 call Barrel_BOOM}];
 	_b allowDamage true;
+	
+	// add to delete array
+	FEARCleanup pushBack _b;
+	publicVariableServer "FEARCleanup";
 };
 
 private "_pos";

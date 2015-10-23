@@ -56,7 +56,7 @@ if (_loggingEnabled > -1) then
                     {
                         _mode = "";
                     };
-                    diag_log text format["[VEMF] %1 %2: %3", _prefix, _mode, _logThis];
+                    diag_log text format["[Epoch_VEMF_Reloaded] %1 %2: %3", _prefix, _mode, _logThis];
                 };
             };
         };

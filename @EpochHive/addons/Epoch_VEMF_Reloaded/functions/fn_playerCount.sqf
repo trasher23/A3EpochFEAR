@@ -8,23 +8,31 @@
     none
 
     Returns:
-    ARRAY - [false if current player count is below minimum, true of more than minimum]
+    ARRAY - [false if current player count is below minimum, true if (more than OR equalTo) minimum]
 */
 
 private ["_minimum","_players","_ok"];
 _ok = false;
-_minimum = [_this, 0, 1, [0]] call BIS_fnc_param;
-_players = 0;
+if (typeName _this isEqualTo "ARRAY") then
 {
-    if (isPlayer _x AND side _x isEqualTo EAST) then
+    _minimum = [_this, 0, -1, [0]] call BIS_fnc_param;
+    if (_minimum > -1) then
     {
-        _players = _players + 1;
+        if (count allPlayers >= _minimum) then
+        {
+            _players = 0;
+            {
+                if (isPlayer _x) then
+                {
+                    _players = _players + 1;
+                };
+            } forEach allPlayers;
+            if not(_players isEqualTo 0) then
+            {
+                _ok = true
+            };
+        };
     };
-} forEach playableUnits;
-
-if (_players >= _minimum) then
-{
-    _ok = true
 };
 
 _ok

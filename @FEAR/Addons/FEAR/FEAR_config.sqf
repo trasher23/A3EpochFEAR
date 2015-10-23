@@ -33,6 +33,8 @@ EqTimerMax = 30;
 --------------------------------------------------
 */
 ZombieGroup = createGroup resistance;
+publicVariable "ZombieGroup";
+
 _zombieLogic = ZombieGroup createUnit["LOGIC",[0,0,0],[],0,"NONE"];
 _zombieLogic = ZombieGroup createUnit["Ryanzombieslogiceasy",[0,0,0],[],0,"NONE"]; // Zombie setting easy
 //_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow25",[0,0,0],[],0,"NONE"]; // Zombie throw cars 25 meters
@@ -52,9 +54,9 @@ FEARQuarantineLocs = [];
 publicVariable "FEARQuarantineLocs"; // global used in clientLoop
 
 /*
-List of zombies, used to delete if not near players
+List of objects, used to delete if not near players
 */
-FEARZombies = [];
+FEARCleanup = [];
 
 diag_log "[FEAR] configuration file loaded";
 

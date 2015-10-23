@@ -43,6 +43,8 @@ wreckRemovalMaxTime = 360;
 
 class cfgFunctions
 {
+	#include "VEMFr_client\CfgFunctions.hpp"
+	
 	class A3E
 	{
 		tag = "EPOCH";
@@ -57,16 +59,6 @@ class cfgFunctions
 			{
 				postInit = 1;
 			};
-		};
-	};
-	class VEMF_Reloaded
-	{
-		tag = "VEMFr";
-		class VEMFclient
-		{
-			file = "VEMFr_client\functions";
-			class clientMessage {};
-			class clientInit { postInit = 1; };
 		};
 	};
 	class FEAR
@@ -95,16 +87,36 @@ class cfgFunctions
 
 class CfgRemoteExec
 {
-  class Functions
-  {
-    mode = 1;
-    jip = 0;
-    class EPOCH_server_save_vehicles {
-      allowedTargets=2;
-      jip = 0;
-    };
-  };
-  class Commands {mode=0;};
+	class Functions
+	{
+		mode = 1;
+		jip = 0;
+		class EPOCH_server_save_vehicles 
+		{
+			allowedTargets=2;
+			jip = 0;
+		};
+	};
+	class Commands 
+	{ 
+		mode = 1; 
+		jip = 0;
+		class AwopPercMstpSgthWnonDnon_throw 
+		{
+			allowedTargets=2;
+			jip = 0;
+		};
+		class switchmove
+		{
+			allowedTargets=2;
+			jip = 0;
+		};
+		class attack
+		{
+			allowedTargets=2;
+			jip = 0;
+		};
+	};
 };
 
 class CfgEpochSapper

@@ -1,6 +1,7 @@
 /*
 	MilitiaInvasions by IT07, original written by TheVampire
 */
+
 private["_deleteQuarantineLoc"];
 
 _deleteQuarantineLoc = {
@@ -14,13 +15,17 @@ _deleteQuarantineLoc = {
 	};
 };
 
-private ["_settings","_grpCount","_groupUnits","_playerCheck","_loc","_hasPlayers","_marker","_spawned","_grpArr","_unitArr","_done","_boxes","_box","_chute","_colors","_lightType","_light","_smoke"];
+private ["_settings","_grpCount","_groupUnits","_playerCheck","_loc","_hasPlayers","_spawned","_grpArr","_unitArr","_done","_boxes","_box","_chute","_colors","_lightType","_light","_smoke"];
 
 // Define _settings
-_settings = [["MI"],["maxInvasions","groupCount","groupUnits","distanceCheck","distanceTooClose","distanceMaxPrefered","playerCheck","crateAltitude","useMarker","parachuteCrate","crateVisualMarker","crateMapMarker","crateSpawnSound","useAnnouncements"]] call VEMFr_fnc_getSetting;
+_settings = [["MI"],["maxInvasions","groupCount","groupUnits","distanceCheck","distanceTooClose","distanceMaxPrefered","playerCheck","crateAltitude","useMarker","parachuteCrate","crateVisualMarker","crateMapMarker","useAnnouncements"]] call VEMFr_fnc_getSetting;
 _maxInvasions = _settings select 0;
-if isNil"VEMF_invasCount" then { VEMF_invasCount = 0; };
-if (VEMF_invasCount < _maxInvasions) then
+if isNil"VEMFr_invasCount" then
+{
+	VEMFr_invasCount = 0;
+};
+VEMFr_invasCount = VEMFr_invasCount + 1;
+if (VEMFr_invasCount <= _maxInvasions) then
 {
 	_grpCount = _settings select 1;
 	_groupUnits = _settings select 2;
@@ -33,32 +38,30 @@ if (VEMF_invasCount < _maxInvasions) then
 	_useChute = _settings select 9;
 	_crateVisualMarker = _settings select 10;
 	_crateMapMarker = _settings select 11;
-	_crateSpawnSound = _settings select 12;
-	_useAnnouncements = _settings select 13;
+	_useAnnouncements = _settings select 12;
 
 	// Find A Town to Invade
-	_loc = ["loc", false, position (playableUnits select floor random count playableUnits), _range, _tooClose, _maxPref, _playerCheck] call VEMFr_fnc_findPos;
+	_loc = ["loc", false, position (allPlayers call VEMFr_fnc_random), _range, _tooClose, _maxPref, _playerCheck] call VEMFr_fnc_findPos;
 	if (typeName _loc isEqualTo "ARRAY") then
 	{
 		_locName = _loc select 0;
-		
 		// Setup quarantine parameter
 		_loc spawn FEARQuarantineZone;
-		
 		if (_locName isEqualTo "") then { _locName = "Area" };
-		["MI", 1, format["Invading %1...", _locName]] call VEMFr_fnc_log;
-		VEMF_invasCount = VEMF_invasCount + 1;
+		["MilitiaInvasions", 1, format["Invading %1...", _locName]] call VEMFr_fnc_log;
+
 		// Send message to all players
 		if (_useAnnouncements isEqualTo 1) then
 		{
-			//_newMissionMsg = [format["Militia have invaded %1%2 near %3", if (_locName isEqualTo "Area") then {"an " } else {""}, _locName, mapGridPosition (_loc select 1)], ""] call VEMFr_fnc_broadCast;
+			//_newMissionMsg = [format["Militia have invaded %1%2 near %3", if (_locName isEqualTo "Area") then {"an " } else {""}, _locName, mapGridPosition (_loc select 1)], ""] spawn VEMFr_fnc_broadCast;
 			_newMissionMsg = [format["Remnants of the CDC have quarantined %1%2", if (_locName isEqualTo "Area") then {"an " } else {""},_locName], ""] call FEARBroadcast;
 		};
+		private["_marker"];
 		if (_useMissionMarker isEqualTo 1) then
 		{ // Create/place the marker if enabled
 			_marker = createMarker [format["VEMF_DynaLocInva_ID%1", random 9000], (_loc select 1)];
 			_marker setMarkerShape "ICON";
-			_marker setMarkerType "o_inf";
+			_marker setMarkerType "o_unknown";
 			_marker setMarkerColor "ColorBlack";
 		};
 		// Usage: POSITION, Radius
@@ -82,11 +85,11 @@ if (VEMF_invasCount < _maxInvasions) then
 					_minesPlaced = [[_loc select 1, 5, 100] call VEMFr_fnc_placeMines, 0, [], [[]]] call BIS_fnc_param;
 					if (count _minesPlaced > 0) then
 					{
-						["MI", 1, format["Successfully placed mines at %1", _locName]] call VEMFr_fnc_log;
+						["MilitiaInvasions", 1, format["Successfully placed mines at %1", _locName]] call VEMFr_fnc_log;
 					};
 					if (count _minesPlaced isEqualto 0) then
 					{
-						["MI", 0, format["Failed to place mines at %1", _locName]] call VEMFr_fnc_log;
+						["MilitiaInvasions", 0, format["Failed to place mines at %1", _locName]] call VEMFr_fnc_log;
 						_minesPlaced = nil;
 					};
 				};
@@ -99,18 +102,15 @@ if (VEMF_invasCount < _maxInvasions) then
 				{
 					_usedLocs deleteAt _index;
 				};
-				
 				// Delete from quarantine location array
 				[_loc select 1] call _deleteQuarantineLoc;
-				
 				if _done then
 				{
 					// Broadcast
 					if (_useAnnouncements isEqualTo 1) then
 					{
-						//_completeMsg = [format["Militia invasion of %1 @ %2 defeated!", _locName, mapGridPosition (_loc select 1)], ""] call VEMFr_fnc_broadCast;
+						//_completeMsg = [format["Militia invasion of %1 @ %2 defeated!", _locName, mapGridPosition (_loc select 1)], ""] spawn VEMFr_fnc_broadCast;
 						_completeMsg = [format["The CDC at %1 have been defeated!",_locName],""] call FEARBroadcast;
-
 					};
 					// Deal with the 50s
 					if not isNil"_cal50s" then
@@ -149,21 +149,17 @@ if (VEMF_invasCount < _maxInvasions) then
 							_crate enableSimulationGlobal true;
 							_crate allowDamage false;
 							_crate attachTo [_chute, [0,0,0]];
-							["MI", 1, format ["Crate parachuted At: %1 / Grid: %2", (getPosATL _crate), mapGridPosition (getPosATL _crate)]] call VEMFr_fnc_log;
+							["MilitiaInvasions", 1, format ["Crate parachuted At: %1 / Grid: %2", (getPosATL _crate), mapGridPosition (getPosATL _crate)]] call VEMFr_fnc_log;
 							_lootLoaded = [_crate] call VEMFr_fnc_loadLoot;
-							if _lootLoaded then { ["MI", 1, "Loot loaded successfully into parachuting crate"] call VEMFr_fnc_log };
+							if _lootLoaded then { ["MilitiaInvasions", 1, "Loot loaded successfully into parachuting crate"] call VEMFr_fnc_log };
 						};
 					};
 					if (_useChute isEqualTo -1) then // If parachute is disabled
 					{
 						_crate = createVehicle [_box, _pos, [], 0, "NONE"];
 						_crate allowDamage false;
-						if (_crateSpawnSound isEqualTo 1) then
-						{
-							playSound3D ["\A3\Sounds_F_Bootcamp\SFX\VR\Spawn.wss", _crate, false, position _crate, 1, 1, 250];
-						};
 						_lootLoaded = [_crate] call VEMFr_fnc_loadLoot;
-						if _lootLoaded then { ["MI", 1, "Loot loaded successfully into crate"] call VEMFr_fnc_log };
+						if _lootLoaded then { ["MilitiaInvasions", 1, "Loot loaded successfully into crate"] call VEMFr_fnc_log };
 					};
 					if (_crateVisualMarker isEqualTo 1) then
 					{
@@ -193,9 +189,6 @@ if (VEMF_invasCount < _maxInvasions) then
 					{
 						deleteMarker _marker
 					};
-					VEMF_invasCount = VEMF_invasCount - 1;
-					VEMFr_missionCount = VEMFr_missionCount - 1;
-
 					// Put a marker on the crate if enabled
 					if not isNull _crate then
 					{
@@ -224,59 +217,89 @@ if (VEMF_invasCount < _maxInvasions) then
 					if not isNil"_minesPlaced" then
 					{
 						private ["_cleanMines"];
-						_cleanMines = [[["MI"],["cleanMines"]] call VEMFr_fnc_getSetting, 0, 1, [0]] call BIS_fnc_param;
-						if (_cleanMines isEqualTo 2) then
+						_cleanMines = [[["MI"],["cleanMines"]] call VEMFr_fnc_getSetting, 0, -1, [0]] call BIS_fnc_param;
+						if not(_cleanMines isEqualTo -1) then
 						{
+							if (_cleanMines isEqualTo 2) then
 							{
-								if not isNull _x then
 								{
-									_x setDamage 1;
-									uiSleep (2 + round random 2);
-								};
-							} forEach _minesPlaced;
-							["MI", 1, format["Successfully exploded all %1 mines at %2", count _minesPlaced, _locName]] call VEMFr_fnc_log;
-							_minesPlaced = nil;
+									if not isNull _x then
+									{
+										_x setDamage 1;
+										uiSleep (2 + round random 2);
+									};
+								} forEach _minesPlaced;
+								["MilitiaInvasions", 1, format["Successfully exploded all %1 mines at %2", count _minesPlaced, _locName]] call VEMFr_fnc_log;
+								_minesPlaced = nil;
+							};
+							if (_cleanMines isEqualTo 1) then
+							{
+								{
+									if not isNull _x then
+									{
+										deleteVehicle _x;
+									};
+								} forEach _minesPlaced;
+								["MilitiaInvasions", 1, format["Successfully deleted all %1 mines at %2", count _minesPlaced, _locName]] call VEMFr_fnc_log;
+								_minesPlaced = nil;
+							};
 						};
-						if (_cleanMines isEqualTo 1) then
+						if (_cleanMines isEqualTo -1) then
 						{
-							{
-								if not isNull _x then
-								{
-									deleteVehicle _x;
-								};
-							} forEach _minesPlaced;
-							["MI", 1, format["Successfully deleted all %1 mines at %2", count _minesPlaced, _locName]] call VEMFr_fnc_log;
-							_minesPlaced = nil;
+							["MilitiaInvasions", 0, format["Invalid mines setting! Please check the config.cpp"]] call VEMFr_fnc_log;
 						};
 					};
+					// Mission script is done.
+					VEMFr_invasCount = VEMFr_invasCount - 1;
+					VEMFr_missionCount = VEMFr_missionCount - 1;
+				};
+				if not _done then
+				{ // This one failed.
+					["MilitiaInvasions", 0, format["Mission failed. Waiting for completion went wrong. ERROR: %1", _done]] call VEMFr_fnc_log;
+					VEMFr_invasCount = VEMFr_invasCount - 1;
+					VEMFr_missionCount = VEMFr_missionCount - 1;
 				};
 			};
-			if isNil "_spawned" then
+			if isNil"_spawned" then
 			{
-				["MI", 0, format["Failed to spawn AI in %1", _locName]] call VEMFr_fnc_log;
+				["MilitiaInvasions", 0, format["Failed to spawn AI in %1", _locName]] call VEMFr_fnc_log;
 				if not isNil"_marker" then
 				{
 					deleteMarker _marker
 				};
-				VEMF_invasCount = VEMF_invasCount - 1;
+				VEMFr_invasCount = VEMFr_invasCount - 1;
 				VEMFr_missionCount = VEMFr_missionCount - 1;
-				
 				// Delete from quarantine location array
 				[_loc select 1] call _deleteQuarantineLoc;
 			};
 		};
 		if not _playerNear then
 		{
-			["MI", 1, format["Invasion of %1 timed out.", _locName]] call VEMFr_fnc_log;
+			["MilitiaInvasions", 1, format["Invasion of %1 timed out.", _locName]] call VEMFr_fnc_log;
 			if not isNil"_marker" then
 			{
 				deleteMarker _marker
 			};
-			VEMF_invasCount = VEMF_invasCount - 1;
+			_usedLocs = uiNamespace getVariable "VEMFrUsedLocs";
+			_index = _usedLocs find _loc;
+			if (_index > -1) then
+			{
+				_usedLocs deleteAt _index;
+			};
+			VEMFr_invasCount = VEMFr_invasCount - 1;
 			VEMFr_missionCount = VEMFr_missionCount - 1;
-			
 			// Delete from quarantine location array
 			[_loc select 1] call _deleteQuarantineLoc;
 		};
 	};
+	if not(typeName _loc isEqualTo "ARRAY") then
+	{
+		VEMFr_invasCount = VEMFr_invasCount - 1;
+		VEMFr_missionCount = VEMFr_missionCount - 1;
+	};
+};
+if (VEMFr_invasCount >= _maxInvasions) then
+{
+	VEMFr_invasCount = VEMFr_invasCount - 1;
+	VEMFr_missionCount = VEMFr_missionCount - 1;
 };

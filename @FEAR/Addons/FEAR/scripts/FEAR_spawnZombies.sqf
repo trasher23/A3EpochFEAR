@@ -3,7 +3,7 @@ private["_arr","_zombiePos","_zombieHordeSize","_zombieCount","_zombieTotal","_z
 _arr = _this;
 _zombiePos = _arr select 0;
 _zombieHordeSize = _arr select 1;
-_zombieTotal = count FEARZombies;
+_zombieTotal = count FEARCleanup;
 
 _zombieClass = ["RyanZombieC_man_polo_2_Fslow","RyanZombieC_man_polo_4_Fslow","RyanZombieC_man_polo_5_Fslow","RyanZombieC_man_polo_6_Fslow","RyanZombieC_man_p_fugitive_Fslow","RyanZombieC_man_w_worker_Fslow","RyanZombieC_scientist_Fslow","RyanZombieC_man_hunter_1_Fslow","RyanZombieC_man_pilot_Fslow","RyanZombieC_journalist_Fslow","RyanZombieC_Orestesslow","RyanZombieC_Nikosslow","RyanZombieB_Soldier_02_fslow","RyanZombieB_Soldier_02_f_1slow","RyanZombieB_Soldier_02_f_1_1slow","RyanZombieB_Soldier_03_fslow","RyanZombieB_Soldier_03_f_1slow","RyanZombieB_Soldier_03_f_1_1slow","RyanZombieB_Soldier_04_fslow","RyanZombieB_Soldier_04_f_1slow","RyanZombieB_Soldier_04_f_1_1slow","RyanZombieB_Soldier_lite_Fslow","RyanZombieB_Soldier_lite_F_1slow","RyanZombieB_RangeMaster_Fmedium","RyanZombieSpider1"];
 
@@ -59,11 +59,11 @@ for "_x" from 1 to _zombieHordeSize do{
 		if (10 > random 100) then {_zombie addItemToVest "FAK"}; // 10% chance of FAK
 	};
 
-	// Increment global zombie counter
-	FEARZombies pushBack _zombie;
+	// add to delete array
+	FEARCleanup pushBack _zombie;
 };
 
-publicVariableServer "FEARZombies";
+publicVariableServer "FEARCleanup";
 
-diag_log format["[FEAR] FEARZombies: %1",FEARZombies];
-diag_log format["[FEAR] %1 zombie(s) spawned at %2. Total zombies: %3",_zombieHordeSize,_zombiePos,count FEARZombies];
+diag_log format["[FEAR] FEARCleanup: %1",FEARCleanup];
+diag_log format["[FEAR] %1 zombie(s) spawned at %2. Total zombies: %3",_zombieHordeSize,_zombiePos,count FEARCleanup];

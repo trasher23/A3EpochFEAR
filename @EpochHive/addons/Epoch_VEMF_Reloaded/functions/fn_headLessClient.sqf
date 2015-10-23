@@ -23,7 +23,7 @@ if _hcEnabled then
         {
             _ingameHCs pushBack [_x, name _x];
         };
-    } forEach playableUnits;
+    } forEach allPlayers;
     if (count _ingameHCs > 0) then
     {
         // At least 1 of given headless clients is ingame, lets check their load

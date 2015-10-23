@@ -49,23 +49,20 @@ if (count _pos isEqualTo 3) then
 				_general = _skills select 9;
 
 				_houses = nearestObjects [_pos, ["House"], 200]; // Find some houses to spawn in
-				_houseFilter = [];
+				_notTheseHouses = "housesBlackList" call VEMFr_fnc_getSetting;
+				_goodHouses = [];
 				{ // Filter the houses that are too small for one group
-					if (count ([_x] call BIS_fnc_buildingPositions) < _unitsPerGrp) then
+					if not(typeOf _x in _notTheseHouses) then
 					{
-						_houseFilter pushBack _x;
+						if (count ([_x] call BIS_fnc_buildingPositions) > _unitsPerGrp) then
+						{
+							_goodHouses pushBack _x;
+						};
 					};
 				} forEach _houses;
-				{
-					_index = _houses find _x;
-					if (_index > -1) then
-					{
-						_houses deleteAt _index;
-					};
-				} forEach _houseFilter;
-				_houses = _houses call BIS_fnc_arrayShuffle;
+				_goodHouses = _goodHouses call BIS_fnc_arrayShuffle;
 				_noHouses = false;
-				if (count _houses < 1) then
+				if (count _goodHouses < _grpCount) then
 				{
 					_noHouses = true;
 				};
@@ -76,7 +73,7 @@ if (count _pos isEqualTo 3) then
 				{
 					if not _noHouses then
 					{
-						if (count _houses < 1) then
+						if (count _goodHouses < 1) then
 						{
 							_noHouses = true
 						};
@@ -93,9 +90,9 @@ if (count _pos isEqualTo 3) then
 					private ["_house","_housePositions"];
 					if not _noHouses then
 					{
-						_house = _houses call VEMFr_fnc_random;
-						_houseID = _houses find _house;
-						_houses deleteAt _houseID;
+						_house = _goodHouses call VEMFr_fnc_random;
+						_houseID = _goodHouses find _house;
+						_goodHouses deleteAt _houseID;
 						_housePositions = [_house] call BIS_fnc_buildingPositions;
 					};
 					_placed50 = false;

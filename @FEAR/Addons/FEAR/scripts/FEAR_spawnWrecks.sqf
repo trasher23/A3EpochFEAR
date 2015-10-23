@@ -82,12 +82,12 @@ _allCitysDync = [];
 
 _getRandomPos = false;
 _numberOfWrecks = 20;
-for "_i" from 1 to _numberOfWrecks do{
+for "_i" from 1 to _numberOfWrecks do {
 	
 	_direction = random 360;
 	_position = [0,0,0];
 
-	if (_allCitysDync isEqualTo []) then{
+	if (_allCitysDync isEqualTo []) then {
 		_position = [MapCentre,0,MapRadius,10,0,1000,0] call BIS_fnc_findSafePos;
 	} else {
 		_selectedCity = _allCitysDync deleteAt (floor random(count _allCitysDync));
@@ -114,7 +114,7 @@ for "_i" from 1 to _numberOfWrecks do{
 		};
 		
 		// 77% chance of land wreck
-		if (77 > random 100) then{
+		if (77 > random 100) then {
 			_wreck = _landWrecks select(floor(random(count _landWrecks)));
 			_wreckObj = createVehicle[_wreck,_position,[],0,_collide];
 			
@@ -124,7 +124,7 @@ for "_i" from 1 to _numberOfWrecks do{
 			// 180 = roof
 			_direction = [0,90,180] call BIS_fnc_selectRandom;
 			[_wreckObj,0,_direction] call BIS_fnc_setPitchBank;
-		}else{
+		} else {
 			_wreck = _airWrecks select(floor(random(count _airWrecks)));
 			_wreckObj = createVehicle [_wreck,_position,[],0,_collide];
 			// Dont flip airwrecks, they look stupid!

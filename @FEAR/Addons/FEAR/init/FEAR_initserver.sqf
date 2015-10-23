@@ -2,7 +2,7 @@
 	FEAR Server Initialization File
 	Description: Handles startup process for FEAR. Does not contain any values intended for modification.
 */
-if (hasInterface || !isDedicated ||!isNil "FEAR_isActive") exitWith {};
+if (hasInterface || !isDedicated || !isNil "FEAR_isActive") exitWith {};
 
 _startTime = diag_tickTime;
 

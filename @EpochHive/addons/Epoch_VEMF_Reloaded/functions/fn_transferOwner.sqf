@@ -35,7 +35,7 @@ if not isNull _toTransfer then
         	{
         		_hcClients pushBack [_x, owner _x];
             };
-        } forEach playableUnits;
+        } forEach allPlayers;
         if (count _hcClients > 0) then
         {
             _to = call VEMFr_fnc_headLessClient; // Select a random hc
@@ -51,7 +51,7 @@ if not isNull _toTransfer then
         {
             _closest = [0,0,0];
             {
-                if (isPlayer _x AND side _x isEqualTo EAST) then
+                if (isPlayer _x) then
                 {
                     _leaderPos = position (leader _toTransfer);
                     _dist = _leaderPos distance (position _x);
@@ -61,7 +61,7 @@ if not isNull _toTransfer then
                         _to = _x;
                     };
                 };
-            } forEach playableUnits;
+            } forEach allPlayers;
         };
     };
     if not isNil"_to" then

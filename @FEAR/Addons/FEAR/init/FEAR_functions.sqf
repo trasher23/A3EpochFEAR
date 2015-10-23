@@ -10,6 +10,7 @@ FEARGetPlayers = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_
 FEARBroadcast = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_broadcast.sqf",FEAR_directory];
 FEARZombieKilled = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_zombieKilled.sqf",FEAR_directory];
 FEARQuarantineZone = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_quarantineZone.sqf",FEAR_directory];
+FEARWolfKilled = compileFinal preprocessFileLineNumbers format["%1\scripts\FEAR_wolfKilled.sqf",FEAR_directory];
 
 /* Client to Server event handlers
 -----------------------------------------------

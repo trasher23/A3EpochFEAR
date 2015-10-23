@@ -10,9 +10,9 @@ class CfgVemfReloaded
 	// Global settings
 	allowHeadLessClient = -1; // HC support is currently broken // Set to 1 if you have (a) headless client(s) | -1 = DISABLED
 	minServerFPS = 20; // Missions will not spawn if server's FPS is below this number
-	validateLoot = -1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
+	validateLoot = 1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
 	minPlayers = 1; // Missions will not start until player count reaches this number OR when player count goes below this amount
-	maxGlobalMissions = 2; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
+	maxGlobalMissions = 10; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
  	timeOutTime = 20; // In minutes. Use -1 to disable mission timeout; Minimal: 5
 	minNew = 5; // Minimum time before new mission can run
 	maxNew = 15; // Maximum time before new mission can run
@@ -21,6 +21,7 @@ class CfgVemfReloaded
 	addons[] = {}; // Not used for now
 	noMissionPos[] = {{{18452.8,14279.5,0.00128174},500}}; // Format: {{position},radius} | Default: Altis East spawn
 	locationBlackList[] = {"Sagonisi","Monisi","Fournos","Savri","Atsalis","Polemista","Cap Makrinos","Pyrgi","Makrynisi","Chelonisi","Almyra","Surf Club"};
+	housesBlacklist[] = {};
 	killPercentage = 100; // In percent. 100 means all AI that belong to mission need to be killed
 	sayKilled = 1; // Set to -1 if you do not want AI killed messages
 	allowSmall = 1; // Set to -1 if you do not want missions to target very small unusual locations
@@ -61,12 +62,12 @@ class CfgVemfReloaded
 	{
 		useAnnouncements = 1; // Use -1 to disable mission announcements
 		useMarker = 1; // Use -1 to disable mission markers
-		maxInvasions = 2; // Max amount of active uncompleted invasions allowed at the same time
-		cal50s = 2; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
-			keep50s = 1; // Set to -1 to enable the removal of all 50s created by MI
+		maxInvasions = 3; // Max amount of active uncompleted invasions allowed at the same time
+		cal50s = 3; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
+			keep50s = -1; // Set to -1 to enable the removal of all 50s created by MI
 			cal50delMode = 1; // 1 is delete, 2 is destroy
-		groupCount[] = {1,3}; // In format: {minimum, maximum}; VEMF will pick a random number between min and max. If you want the same amount always, use same numbers for minimum and maximum.
-		groupUnits[] = {2,4}; // How much units in each group. Works the same like groupCount
+		groupCount[] = {2,4}; // In format: {minimum, maximum}; VEMF will pick a random number between min and max. If you want the same amount always, use same numbers for minimum and maximum.
+		groupUnits[] = {4,6}; // How much units in each group. Works the same like groupCount
 		/* TIP: increase groupCount and decrease groupUnits to make it harder for players. Easier to get flanked from all sides */
 		playerCheck = 800; // If player(s) within this range of location, location gets skipped. Distance in m (meters)
 		distanceCheck = 15000; // Check for locations around random player within this distance in m (meters)
@@ -74,10 +75,9 @@ class CfgVemfReloaded
 		distanceTooClose = 2500; // Mission will not spawn closer to random player than this distance in meters
 		distanceMaxPrefered = 4500; // Mission will prefer locations closer than this distance (in meters) to random player
 		parachuteCrate = 1; // Use -1 to disable the crate parachuting in
-			crateAltitude = 200; // Crate with parachute(!) will spawn at this altitude (meters) (originally 150)
+			crateAltitude = 150; // Crate with parachute(!) will spawn at this altitude (meters)
 		crateMapMarker = 1; // Use -1 if you do not want a marker to be placed on the crate
 		crateVisualMarker = 1; // Use -1 to disable chemlight/smoke on crate
-		crateSpawnSound = 1; // Use -1 to disable a spawn sound when crate spawns (only if parachuteCrate = 1)
 		crateTypes[] = {"I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F","I_supplyCrate_F","Box_East_AmmoVeh_F","Box_NATO_AmmoVeh_F"};
 		smokeTypes[] = {"SmokeShell","SmokeShellBlue","SmokeShellGreen","SmokeShellOrange","SmokeShellRed","SmokeShellYellow"};
 		flairTypes[] = {"Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"};
@@ -141,7 +141,7 @@ class CfgVemfReloaded
 		minItemSlots = 2; // Minimum number of attachment slots in each loot crate
 		itemsLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
-			{"FAK",5},{"EnergyPack",5},{"EnergyPackLg",2}
+			{"FAK",15},{"EnergyPack",10},{"EnergyPackLg",6}
 		};
 
 		maxVestSlots = 4; // Maximum number of vest slots in each loot crate
@@ -262,7 +262,7 @@ class CfgPatches
 		requiredAddons[] = {};
 		fileName = "Epoch_VEMF_Reloaded.pbo";
 		requiredVersion = 1.50;
-		version = 0.0724.3; // Do NOT change
+		version = 0725.8; // Do NOT change
 		author[]= {"IT07"};
 	};
 };

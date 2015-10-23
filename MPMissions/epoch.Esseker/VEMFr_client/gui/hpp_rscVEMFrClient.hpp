@@ -37,8 +37,7 @@ class txtTag: RscText
 	tooltipColorShade[] = {0,0,0,0.7};
 
 	idc = 1001;
-	//text = "[VEMF]"; //--- ToDo: Localize;
-	text = "RADIO";
+	text = "RADIO"; //--- ToDo: Localize;
 	x = 0.25 * safezoneW + safezoneX;
 	y = 0.9 * safezoneH + safezoneY;
 	w = 0 * safezoneW;

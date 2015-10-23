@@ -15,7 +15,7 @@ _validateLoot = if ("validateLoot" call VEMFr_fnc_getSetting isEqualTo 1) then {
 if _validateLoot then
 {
     // _validateLoot is enabled, go ahead...
-    ["fn_launchVEMF", 1, "Validating loot tables..."] call VEMFr_fnc_log;
+    ["CheckLoot", 1, "Validating loot tables..."] call VEMFr_fnc_log;
     _invalidClasses = [];
 
     _mags = [];
@@ -30,7 +30,7 @@ if _validateLoot then
         _bags pushBack (configName _x);
     } forEach _cfgBags;
 
-    _aiGear = [["aiGear"],["aiHeadGear","aiUniforms","aiVests","aiRifles","aiBackpacks","aiLaunchers","aiPistols"]] call VEMFr_fnc_getSetting;
+    _aiGear = [["aiGear"],["aiUniforms","aiVests","aiRifles","aiBackpacks","aiLaunchers","aiPistols"]] call VEMFr_fnc_getSetting;
     {
         {
             if not((_x in _mags) OR (_x in _weapons) OR (_x in _bags)) then
@@ -52,15 +52,15 @@ if _validateLoot then
     } forEach _loot;
 
     _invalid = if (count _invalidClasses isEqualTo 0) then { false } else { true };
-    switch _invalid do
+    switch true do
     {
-        case true:
+        case _invalid:
         {
-            ["fn_launchVEMF", 0, format["Invalid classes found in loot! | %1", _invalidClasses]] call VEMFr_fnc_log;
+            ["CheckLoot", 0, format["Invalid classes found in loot! | %1", _invalidClasses]] call VEMFr_fnc_log;
         };
-        case false:
+        case (not _invalid):
         {
-            ["fn_launchVEMF", 1, "Loot tables are all valid :)"] call VEMFr_fnc_log;
+            ["CheckLoot", 1, "Loot tables are all valid :)"] call VEMFr_fnc_log;
         };
     };
 };

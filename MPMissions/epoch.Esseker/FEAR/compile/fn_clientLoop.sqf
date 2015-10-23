@@ -6,7 +6,7 @@
 InJammerRange = {
 	private["_jammer","_ret"];
 	_ret = false;
-	_jammer = nearestObjects[_this select 0,["PlotPole_EPOCH"],500];
+	_jammer = nearestObjects[(_this select 0),["PlotPole_EPOCH"],500];
 	if !(_jammer isEqualTo[]) then {_ret = true};
 	_ret
 };
@@ -118,7 +118,7 @@ _FEAR_clientLoop = {
 			_FEAR_05 = _tickTime;
 			
 			// Gasmask breath sound
-			if (call FEAR_fnc_hasGasMask) then {playsound3d ["A3\sounds_f\characters\human-sfx\other\diver-breath-2.wss",player,false,getPosWorld player,0.4,0.5,15]};
+			if (call FEAR_fnc_hasGasMask) then {playsound3d ["A3\sounds_f\characters\human-sfx\other\diver-breath-2.wss",player,false,getPosWorld player,0.5,0.5,15]};
 		};
 		
 		// Every 30 seconds
@@ -152,14 +152,14 @@ _FEAR_clientLoop = {
 			if !([_posPlayer] call InQuarantineRange) then {
 				_spawnChance = 20;
 			} else {
-				_spawnChance = 40; // Zombie infection!
+				_spawnChance = 50; // Zombie infection!
 			};
 			
-			//[format["spawn chance: %1",_spawnChance]] call FEARserverLog;
+			[format["spawn chance: %1",_spawnChance]] call FEARserverLog;
 			
 			// If Jammer not in range, player on foot and not near respawn box		
 			If !([_posPlayer] call InJammerRange) then {
-				if (isNull objectParent player) then {
+				if (isNull (objectParent player)) then {
 					if (player distance _rspawnw > 500) then {
 						_pos = [_posPlayer,[40,100],random 360] call SHK_pos; // spawn within a 40-100m range from any direction
 						// If pos... 

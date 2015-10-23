@@ -9,14 +9,14 @@ class CfgPatches
 	};
 };
 
-class CfgFunctions {
-	class FEAR {
-		class FEAR_Server {
-			file = "FEAR";
-			
-			class FEAR_init {
-				preInit = 1;
-			};
+class CfgFunctions
+{
+	class FEAR 
+	{
+		class FEAR_Server 
+		{
+			file = "FEAR";	
+			class FEAR_init { preInit = 1; };
 		};
 	};
 };
