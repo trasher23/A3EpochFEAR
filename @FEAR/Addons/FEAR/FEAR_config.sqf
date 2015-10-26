@@ -1,7 +1,10 @@
 /*
   FEAR Configuration file
 */
-private "_zombieLogic";
+
+if (!isDedicated) exitWith {};
+
+private ["_center","_logic","_logicPos"];
 
 diag_log "[FEAR] reading FEAR configuration file";
 
@@ -32,19 +35,23 @@ EqTimerMax = 30;
 /* Zombie settings
 --------------------------------------------------
 */
-ZombieGroup = createGroup resistance;
-publicVariable "ZombieGroup";
+// Zombie side
+ZombieCentre = createCenter independent;
 
-_zombieLogic = ZombieGroup createUnit["LOGIC",[0,0,0],[],0,"NONE"];
-_zombieLogic = ZombieGroup createUnit["Ryanzombieslogiceasy",[0,0,0],[],0,"NONE"]; // Zombie setting easy
-//_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrow25",[0,0,0],[],0,"NONE"]; // Zombie throw cars 25 meters
-//_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicthrowtank25",[0,0,0],[],0,"NONE"]; // Zombie throw tanks 25 meters
-_zombieLogic = ZombieGroup createUnit["ryanzombiesjump",[0,0,0],[],0,"NONE"]; // Zombie jumping
-_zombieLogic = ZombieGroup createUnit["Ryanzombieslogicroam",[0,0,0],[],0,"NONE"]; // Zombie roam
-//_zombieLogic = ZombieGroup createUnit["ryanzombiesfeed",[0,0,0],[],0,"NONE"]; // Zombie feed
-//_zombieLogic = ZombieGroup createUnit["ryanzombiescivilianattacks",[0,0,0],[],0,"NONE"]; // Zombie civilian attack
+// Zombie logics
+_center = createCenter sideLogic;
+_logic = createGroup _center;
+_logicPos = [1,1,1];
+"Ryanzombieslogiceasy" createUnit[_logicPos,_logic];
+"Ryanzombieslogicthrow25" createUnit[_logicPos,_logic];
+"Ryanzombieslogicthrowtank25" createUnit[_logicPos,_logic];
+"ryanzombiesjump" createUnit[_logicPos,_logic];
+"Ryanzombieslogicroam" createUnit[_logicPos,_logic];
+"ryanzombiesfeed" createUnit[_logicPos,_logic];
+"ryanzombiescivilianattacks" createUnit[_logicPos,_logic];
 
-ZombieMax = 50; // Max number of zombies on map
+// Max number of zombies on map
+ZombieMax = 50; 
 
 /*
 VEMF mission radius gets sent to clients for increased zombie spawn

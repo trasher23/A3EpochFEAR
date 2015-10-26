@@ -2,7 +2,7 @@
 	FEAR_ambient_fx.sqf
 */
 
-getSoundFx = {
+_getSoundFx = {
 	private["_soundArray","_sound"];
 	
 	_soundArray = [
@@ -24,10 +24,10 @@ getSoundFx = {
 	_sound
 };
 
-playSoundFx = {
+_playSoundFx = {
 	private["_sound","_pos","_soundSource"];
 	
-	_sound = call getSoundFx;
+	_sound = call _getSoundFx;
 	
 	// Get random position between 25 & 150m, around player in 360 degrees for sound source
 	_pos = [player,[25,150],random 360] call SHK_pos;
@@ -52,7 +52,7 @@ if (hasInterface) then
 			uiSleep ((floor(random(_timeDiff))) + (3*60)); // _minTime = 3
 
 			// player on foot
-			if (isNull objectParent player) then {[] spawn playSoundFx};
+			if (isNull objectParent player) then {[] spawn _playSoundFx};
 		};
 	};
 };

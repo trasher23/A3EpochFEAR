@@ -28,7 +28,7 @@ while {true} do {
 			};
 		}forEach FEARCleanup;
 		
-		diag_log format["[FEAR] serverLoop nearPlayers: %1,  FEARCleanup: %2",_plyrCount,count FEARCleanup];
+		//diag_log format["[FEAR] serverLoop nearPlayers: %1,  FEARCleanup: %2",_plyrCount,count FEARCleanup];
 		
 		// Earthquake timer - 10% chance
 		if (10 > random 100) then {

@@ -63,8 +63,8 @@ class CfgVemfReloaded
 		useAnnouncements = 1; // Use -1 to disable mission announcements
 		useMarker = 1; // Use -1 to disable mission markers
 		maxInvasions = 3; // Max amount of active uncompleted invasions allowed at the same time
-		cal50s = 3; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
-			keep50s = -1; // Set to -1 to enable the removal of all 50s created by MI
+		cal50s = 2; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
+			keep50s = 1; // Set to -1 to enable the removal of all 50s created by MI
 			cal50delMode = 1; // 1 is delete, 2 is destroy
 		groupCount[] = {2,4}; // In format: {minimum, maximum}; VEMF will pick a random number between min and max. If you want the same amount always, use same numbers for minimum and maximum.
 		groupUnits[] = {4,6}; // How much units in each group. Works the same like groupCount
@@ -75,7 +75,7 @@ class CfgVemfReloaded
 		distanceTooClose = 2500; // Mission will not spawn closer to random player than this distance in meters
 		distanceMaxPrefered = 4500; // Mission will prefer locations closer than this distance (in meters) to random player
 		parachuteCrate = 1; // Use -1 to disable the crate parachuting in
-			crateAltitude = 150; // Crate with parachute(!) will spawn at this altitude (meters)
+			crateAltitude = 200; // Crate with parachute(!) will spawn at this altitude (meters)
 		crateMapMarker = 1; // Use -1 if you do not want a marker to be placed on the crate
 		crateVisualMarker = 1; // Use -1 to disable chemlight/smoke on crate
 		crateTypes[] = {"I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F","I_supplyCrate_F","Box_East_AmmoVeh_F","Box_NATO_AmmoVeh_F"};

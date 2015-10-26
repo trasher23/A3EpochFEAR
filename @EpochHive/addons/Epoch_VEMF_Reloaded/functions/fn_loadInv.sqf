@@ -49,10 +49,14 @@ if (typeName _this isEqualTo "ARRAY") then
 				removeGoggles _unit;
 				removeHeadGear _unit;
 
-				_unit addGoggles "G_Balaclava_blk";
-				_gear = _uniforms call VEMFr_fnc_random;
-				_unit forceAddUniform _gear; // Give the poor naked guy some clothing :)
-
+				//_unit addGoggles "G_Balaclava_blk";
+				//_gear = _uniforms call VEMFr_fnc_random;
+				//_unit forceAddUniform _gear; // Give the poor naked guy some clothing :)
+				
+				// FEAR - Quarantine Equipment
+				_unit addGoggles "G_mas_wpn_gasmask";
+				_unit forceAddUniform "U_C_Scientist";
+				
 				_gear = _vests call VEMFr_fnc_random;
 				_unit addVest _gear;
 

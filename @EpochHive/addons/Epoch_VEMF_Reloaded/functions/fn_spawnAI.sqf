@@ -79,7 +79,7 @@ if (count _pos isEqualTo 3) then
 						};
 					};
 					private ["_grp","_unit"];
-					_grp = createGroup independent;
+					_grp = createGroup resistance;
 					if not _noHouses then
 					{
 						_grp enableAttack false;

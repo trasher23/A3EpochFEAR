@@ -49,6 +49,32 @@ _quarantineZone = {
 	// Delete signs and trigger after set time
 	uiSleep 1200; // 20 minutes
 	{deleteVehicle _x}forEach _signs;
+	QuarantineActive = false;
+};
+
+_contaminationDamage = {
+	private["_quarantineCentre","_radius","_allPlayers"];
+	
+	_quarantineCentre = _this select 0;
+	_radius = _this select 1;
+	_allPlayers = call FEARGetPlayers;
+	
+	waitUntil {({(_quarantineCentre distance _x) < _radius} count _allPlayers) > 0};
+	
+	// Ground level fog
+	5 setFog [0.7,0.7,5];
+
+	while {QuarantineActive} do {
+		{
+			if (isPlayer _x) then {
+				if !(_x call FEAR_fnc_hasGasMask) then {
+					_x setDammage (getDammage _x + 0.01);
+					hint "You need a gas mask in the quarantine zone";
+				};
+			};
+		}forEach (_quarantineCentre nearEntities [["Epoch_Male_F","Epoch_Female_F"],_radius]);
+		uisleep 0.1;
+	};
 };
 
 private ["_arr","_list","_pos","_target","_radius","_name","_trigger"];
@@ -65,7 +91,9 @@ _trigger setTriggerArea[_radius,_radius,0,false];
 _trigger setTriggerActivation["ANY","PRESENT",true];
 _trigger setTriggerType "SWITCH";
 
+QuarantineActive = true;
 _trigger spawn _quarantineZone;
+[_pos,_radius] spawn _contaminationDamage;
 
 // Add to existing public array and broadcast location to clients
 FEARQuarantineLocs pushBack _pos;

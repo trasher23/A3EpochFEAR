@@ -41,22 +41,22 @@ allowedVehiclesList[] = {
 	{"jetski_epoch",1},
 
 	// Bikes
-	{"C_Quadbike_01_EPOCH",10},
-	{"ebike_epoch",10},
+	{"C_Quadbike_01_EPOCH",2},
+	{"ebike_epoch",2},
 
 	// Cars
-	{"C_Offroad_01_EPOCH",10},
-	{"C_Hatchback_01_EPOCH",10},
-	{"C_Hatchback_02_EPOCH",10},
-	{"C_SUV_01_EPOCH",10},
+	{"C_Offroad_01_EPOCH",2},
+	{"C_Hatchback_01_EPOCH",2},
+	{"C_Hatchback_02_EPOCH",2},
+	{"C_SUV_01_EPOCH",2},
 
-	{"B_G_Offroad_01_F",10},
-    {"I_G_Offroad_01_F",10},
-    {"I_G_Offroad_01_armed_F",5},
+	{"B_G_Offroad_01_F",2},
+    {"I_G_Offroad_01_F",2},
+    {"I_G_Offroad_01_armed_F",2},
 
 	// Vans
-	{"C_Van_01_box_EPOCH",10},
-	{"C_Van_01_transport_EPOCH",10},
+	{"C_Van_01_box_EPOCH",2},
+	{"C_Van_01_transport_EPOCH",2},
 
 	// Military Wheeled
 	{"B_MRAP_01_EPOCH",2},
@@ -90,8 +90,6 @@ allowedVehiclesList[] = {
 	{"B_Heli_Light_01_armed_F",2},
 	{"O_Heli_Attack_02_black_F",2},
 	{"C_Heli_Light_01_civil_EPOCH",5},
-
-
 	{"C_Heli_Light_01_civil_F",2},
 	{"O_Heli_Light_02_v2_F",2},
 
@@ -117,6 +115,35 @@ allowedVehiclesList[] = {
 	/* MAS
 	----------------
 	*/
+	
+	// Tanks
+	{"I_mas_T72B_Early_AAF_01",2},
+	{"I_mas_T55_AAF_01",2},
+	{"I_mas_ZSU_AAF_01",2},
+	{"I_mas_T34_AAF_01",2},
+	{"O_mas_ZSU_OPF_01",2},
+	
+	// APC
+	{"I_mas_BMP1_AAF_01",2},
+	{"O_mas_BMP2_Ambul_01",2},
+	{"O_mas_BMP2_HQ_OPF_01",2},
+	
+	{"I_mas_BRDM2",2},
+	{"I_mas_BTR60",2},
+	{"O_mas_BRDM2",2},
+	{"O_mas_BTR60",2},
+	
+	// Humvee
+	{"B_mas_HMMWV_UNA",2},
+	{"B_mas_HMMWV_Stinger_des",2},
+	
+	// Ural
+	{"I_mas_cars_Ural_repair",2},
+	{"I_mas_cars_Ural_fuel",2},
+	{"O_mas_cars_Ural_repair",2},
+	{"O_mas_cars_Ural_fuel",2},
+	{"I_mas_cars_Ural_ammo",2},
+	
 	// Landrovers
 	{"B_mas_cars_LR_Unarmed",5},
 	{"B_mas_cars_LR_Med",5},

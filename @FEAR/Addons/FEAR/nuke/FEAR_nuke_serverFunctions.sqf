@@ -108,15 +108,16 @@ FEAR_fnc_nukeRadDamage = {
 	private["_coords","_result"];
 	
 	_coords = _this select 0;
-	NUKEGeiger = "Land_HelipadEmpty_F" createVehicle _coords;
 	_result = false;
 	
-	// Endurance of Radiation in air = 15 minutes = (180 mins * uiSleep 5)
+	NUKEGeiger = "Land_HelipadEmpty_F" createVehicle _coords;
+	
+	// Endurance of Radiation: 15 minutes = (180 mins * uiSleep 5)
 	for [{_x = 0},{_x < 180},{_x = _x + 1}] do {
 		{	
 			// Damage
 			if (isPlayer _x) then {
-				_result = [_x] call FEAR_fnc_hasGasMask; // Wearing gas mask?
+				_result = _x call FEAR_fnc_hasGasMask; // Wearing gas mask?
 				(owner (vehicle _x)) publicVariableClient "NUKEGeiger"; // Geiger counter sound within radius
 			};
 			
@@ -134,8 +135,8 @@ FEAR_fnc_nukeRadDamage = {
 };
 
 FEAR_fnc_hasGasMask = {
-	private["_ret"];
-	_player = _this select 0;
+	private "_ret";
+	_player = _this;
 	_ret = false;
 	if (goggles _player == "Mask_M50" or goggles _player == "Mask_M40" or goggles _player == "Mask_M40_OD" or goggles _player == "G_mas_wpn_gasmask") then {
 		_ret = true;
