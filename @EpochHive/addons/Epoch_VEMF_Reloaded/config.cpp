@@ -63,7 +63,7 @@ class CfgVemfReloaded
 		useAnnouncements = 1; // Use -1 to disable mission announcements
 		useMarker = 1; // Use -1 to disable mission markers
 		maxInvasions = 3; // Max amount of active uncompleted invasions allowed at the same time
-		cal50s = 2; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
+		cal50s = round(random 3); // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
 			keep50s = 1; // Set to -1 to enable the removal of all 50s created by MI
 			cal50delMode = 1; // 1 is delete, 2 is destroy
 		groupCount[] = {2,4}; // In format: {minimum, maximum}; VEMF will pick a random number between min and max. If you want the same amount always, use same numbers for minimum and maximum.

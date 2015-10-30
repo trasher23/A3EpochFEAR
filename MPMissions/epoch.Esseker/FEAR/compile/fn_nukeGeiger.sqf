@@ -1,8 +1,6 @@
 private ["_nukeGeiger","_nukePos"];
 	
-_nukeGeiger = MISSION_directory + "FEAR\fx\" + "geiger.ogg";
 _nukePos = _this select 0;
+_nukeGeiger = MISSION_directory + "FEAR\fx\" + "geiger.ogg";
 
-playSound3D [_nukeGeiger, player, false, _nukePos, 2];
-
-NUKEGeiger = nil;
+playSound3D [_nukeGeiger,player,false,_nukePos,2];

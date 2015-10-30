@@ -39,11 +39,11 @@ if ((isNil "_zombieHordeSize") || (_zombieHordeSize == 0)) then{_zombieHordeSize
 if ((_zombieTotal + _zombieHordeSize) > ZombieMax) then{
 	_zombieHordeSize = (ZombieMax - _zombieTotal);
 	diag_log "[FEAR] reached ZombieMax";
-};
+};	
 
 _grp = createGroup ZombieCentre;
 uisleep 0.1;
-for "_x" from 1 to _zombieHordeSize do{
+for "_x" from 1 to _zombieHordeSize do {
 	
 	// Create zombie unit
 	_zombieType = _zombieClass select(floor(random(count _zombieClass)));
@@ -52,7 +52,7 @@ for "_x" from 1 to _zombieHordeSize do{
 	format["%1",_zombieType] createUnit[
 		_zombiePos,
 		_grp,
-		"_zombie = this; _zombie switchmove 'AmovPercMstpSnonWnonDnon_SaluteOut'; _zombie addMPEventHandler['mpkilled','if(isDedicated)then{[_this select 0,_this select 1] spawn FEARZombieKilled}'];"
+		"_zombie = this; _zombie switchmove 'AmovPercMstpSnonWnonDnon_SaluteOut'; _zombie playmove 'AmovPercMstpSnonWnonDnon'; _zombie addMPEventHandler['mpkilled','if (isDedicated) then {_this spawn FEARZombieKilled}'];"
 	];
 	
 	// Remove default gear and add ammo vest
@@ -61,7 +61,7 @@ for "_x" from 1 to _zombieHordeSize do{
 	removeHeadGear _zombie;
 	_zBag = _zBags select(floor(random(count _zBags)));
 	_zombie addVest _zBag;
-	if (10 > random 100) then {_zombie addItemToVest  "FAK"}; // 10% chance of FAK	
+	if (10 > random 100) then {_zombie addItemToVest "FAK"}; // 10% chance of FAK	
 	
 	// add to delete array
 	FEARCleanup pushBack _zombie;

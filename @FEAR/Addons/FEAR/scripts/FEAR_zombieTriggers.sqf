@@ -78,11 +78,30 @@ _fnc_createTriggers = {
 };
 
 if (isDedicated) then {
-	private "_numberOfTriggers";
+	private ["_center","_logic","_logicPos"];
 	
-	_numberOfTriggers = 10;
-	
-	for "_i" from 1 to _numberOfTriggers do{
+	for "_i" from 1 to 10 do{ // Number of triggers on map
 		[_i] call _fnc_createTriggers;
 	};
+	
+	/* Zombie settings
+	--------------------------------------------------
+	*/
+	// Zombie side
+	ZombieCentre = createCenter independent;
+
+	// Zombie logics
+	_center = createCenter sideLogic;
+	_logic = createGroup _center;
+	_logicPos = [0,0,0];
+	"Ryanzombieslogiceasy" createUnit[_logicPos,_logic];
+	"Ryanzombieslogicthrow25" createUnit[_logicPos,_logic];
+	"Ryanzombieslogicthrowtank25" createUnit[_logicPos,_logic];
+	"ryanzombiesjump" createUnit[_logicPos,_logic];
+	"Ryanzombieslogicroam" createUnit[_logicPos,_logic];
+	"ryanzombiesfeed" createUnit[_logicPos,_logic];
+	"ryanzombiescivilianattacks" createUnit[_logicPos,_logic];
+
+	// Max number of zombies on map at any one time
+	ZombieMax = 50; 
 };

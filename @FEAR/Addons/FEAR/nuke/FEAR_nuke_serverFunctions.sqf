@@ -1,8 +1,8 @@
 /*
-	Purpose: Returns a random city/town as target site for the nuke blast.
+	Assorted nuke functions
 */
 
-if(!isDedicated)exitWith{};
+if (!isDedicated) exitWith {};
 
 FEAR_fnc_nukeTarget = {
 	private ["_allPlayers","_selectedPlayer","_towns","_town"];
@@ -54,7 +54,7 @@ FEAR_fnc_nukeServerDamage = {
 		};
 		
 		uiSleep 0.1;
-	}forEach (nearestObjects [_coords,["house","Building","LandVehicle","Air","Ship"],NukeRadius]);
+	}forEach nearestObjects [_coords,[],NukeRadius];
 };
 
 FEAR_fnc_nukeAddMarker = {
@@ -105,41 +105,64 @@ FEAR_fnc_radAddMarker = {
 };
 
 FEAR_fnc_nukeRadDamage = {	
-	private["_coords","_result"];
+	private ["_coords","_result"];
 	
 	_coords = _this select 0;
-	_result = false;
 	
 	NUKEGeiger = "Land_HelipadEmpty_F" createVehicle _coords;
 	
-	// Endurance of Radiation: 15 minutes = (180 mins * uiSleep 5)
-	for [{_x = 0},{_x < 180},{_x = _x + 1}] do {
+	// Endurance of Radiation
+	while {!isNil "nukeMarkerCoords"} do {
 		{	
-			// Damage
+			// Damage player
 			if (isPlayer _x) then {
-				_result = _x call FEAR_fnc_hasGasMask; // Wearing gas mask?
+				// Wearing gas mask prevents damage (don't ask)
+				_result = [_x] call FEAR_fnc_hasGasMask;
+				if (!_result) then {_x setDammage ((getDammage _x) + 0.01)};
 				(owner (vehicle _x)) publicVariableClient "NUKEGeiger"; // Geiger counter sound within radius
-			};
-			
-			if (_result) then {
-				// No damage
-				_result = false;
 			} else {
-				_x setDammage (getDammage _x + 0.01);
+				_x setDammage ((getDammage _x) + 0.01); // Damage object
 			};
 			
-		}forEach (_coords nearEntities [["All"],NukeRadius]);
-
+		}forEach nearestObjects [_coords,[],NukeRadius];
+		
 		uisleep 5;
 	};
+	
+	NUKEGeiger = nil;
+	publicVariable "NUKEGeiger";
 };
 
 FEAR_fnc_hasGasMask = {
 	private "_ret";
-	_player = _this;
+	_player = _this select 0;
 	_ret = false;
 	if (goggles _player == "Mask_M50" or goggles _player == "Mask_M40" or goggles _player == "Mask_M40_OD" or goggles _player == "G_mas_wpn_gasmask") then {
 		_ret = true;
 	};
 	_ret
+};
+
+FEAR_fnc_escape = {
+	private ["_object","_xpos","_ypos","_units","_distance","_dir"];
+	
+	_object = _this select 0;
+	_xpos = _object select 0;
+	_ypos = _object select 1;
+
+	_units = [_xpos,_ypos,0] nearobjects ["All",NukeRadius];
+
+	{
+	  if ( _x iskindof "Man" || _x iskindof "Car" || _x iskindof "Motorcycle" ||
+		   _x iskindof "Tank" || _x iskindof "Ship" || _x iskindof "Air" ) then
+	  {
+		_distance = [_xpos, _ypos, 0] distance _x;
+		_dir = asin (((getpos _x select 1) - _ypos) / _distance);
+		if ( getpos _x select 0 < _xpos ) then {_dir = 180 - _dir};
+		_x domove [_xpos + NukeRadius * cos _dir, _ypos + NukeRadius * sin _dir];
+		_x setspeedmode "full";
+		_x setbehaviour "aware";
+		_x addRating -2001; // Make sideEnemey so they attack everything and each other
+	  };
+	} foreach _units;
 };

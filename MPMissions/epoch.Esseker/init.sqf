@@ -12,13 +12,16 @@ if (!isDedicated && hasInterface) then {
 		[_this select 1] spawn FEAR_fnc_nukeSiren;
 	};
 
-	"NUKEImpact" addPublicVariableEventHandler {
-		[_this select 1] spawn FEAR_fnc_nukeImpact;
+	"NUKEDetonate" addPublicVariableEventHandler {
+		[_this select 1] spawn FEAR_fnc_nukeDetonate;
+		NUKEDetonate = nil;
+		publicVariable "NUKEDetonate";
 	};
 	
 	"NUKEQuake" addPublicVariableEventHandler {
 		[random 4] spawn BIS_fnc_earthquake;
 		NUKEQuake = nil;
+		publicVariable "NUKEQuake";
 	};
 	
 	"NUKEGeiger" addPublicVariableEventHandler {
@@ -53,7 +56,7 @@ if (!isDedicated && hasInterface) then {
 	};
 	
 	// If incoming missile, warn player
-	_EHincomingmissle = player addEventHandler ["IncomingMissile", {_this spawn "FEAR_fnc_incomingMissile.sqf"}];
+	_EHincomingmissle = player addEventHandler ["IncomingMissile", {[_this] spawn "FEAR_fnc_incomingMissile.sqf"}];
 };
 
 /*
@@ -73,7 +76,10 @@ if (!isDedicated && hasInterface) then {
 
 waitUntil{(isPlayer player) && (alive player) && !(isNil "EPOCH_loadingScreenDone")};
 
-if (!isDedicated && hasInterface) then {	
+if (!isDedicated && hasInterface) then {
+	// Add gasmask if in spawnbox
+	if((player distance (getMarkerPos "respawn_west")) < 1500) then {
+		player addGoggles "G_mas_wpn_gasmask";
+	};
 	(vehicle player) switchCamera "EXTERNAL"; 			// Start in 3rd person view
-	player addGoggles "G_mas_wpn_gasmask";
 };
