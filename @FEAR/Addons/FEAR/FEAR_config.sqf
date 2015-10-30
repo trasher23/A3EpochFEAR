@@ -16,9 +16,9 @@ MapRadius = 5700;
 --------------------------------------------------
 */
 // The minimum time in seconds before a cruise missile launch.
-NukeTimerMin = 3; // minutes
+NukeTimerMin = 30; // minutes
 // Maximum time in seconds before a cruise missile launch.
-NukeTimerMax = 3;
+NukeTimerMax = 90;
 // Blast radius in km
 NukeRadius = 500;
 // Ground zero - total annihilation
