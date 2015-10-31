@@ -14,7 +14,7 @@ Epoch 0.3.4.0: http://epochmod.com/
 <br/>
 Esseker 0.7.0.5 http://a3esseker.info/
 <br/>
-Ryan's Zombies & Demons 2.8: http://www.armaholic.com/page.php?id=28958
+Ryan's Zombies & Demons 3.0: http://www.armaholic.com/page.php?id=28958
 <br/>
 MAS Weapons 1.10: http://www.armaholic.com/page.php?id=21912
 <br/>
