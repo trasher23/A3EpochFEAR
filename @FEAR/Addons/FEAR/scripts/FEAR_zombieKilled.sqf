@@ -26,7 +26,7 @@ if not isNull _killer then {
 };
 
 if not isNull _target then {
-	_target removeAllEventHandlers "MPKilled";
+	{_target removeAllEventHandlers _x} count ["MPKilled","Killed","HandleDamage","GetIn","GetOut","Fired","Local","Hit"];
 	
 	// Percentage chance of adding player weapon ammo to zombie vest
 	if (!isNil "_curWeapon") then {

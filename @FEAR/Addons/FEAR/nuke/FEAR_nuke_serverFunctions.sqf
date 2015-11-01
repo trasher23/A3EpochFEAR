@@ -29,7 +29,7 @@ FEAR_fnc_nukeServerDamage = {
 		// Kill everything within GroundZero (half of NukeRadius)
 		_x setDamage 1;
 		uiSleep 0.1;
-	}forEach (_coords nearEntities [["All"],GroundZero]);
+	}forEach _coords nearEntities[["All"],GroundZero];
 
 	// Object damage
 	{	
@@ -50,17 +50,21 @@ FEAR_fnc_nukeServerDamage = {
 		} else {
 			// The rest are set on fire
 			_burnObj = "test_EmptyObjectForFireBig" createVehicle (position _x);
-			_burnObj attachto[_x,[0,0,-1]];  
+			_burnObj attachto[_x,[0,0,-1]];
+			
+			// add to delete array
+			FEARCleanup pushBack _burnObj;
+			
 		};
 		
 		uiSleep 0.1;
-	}forEach nearestObjects [_coords,[],NukeRadius];
+	}forEach nearestObjects[_coords,[],NukeRadius];
 };
 
 FEAR_fnc_nukeAddMarker = {
 	/* Adds a marker for nuke. Only runs once.
 	FEAR_nuke_markerLoop.sqf keeps this marker updated. */
-
+	
 	// Public variable for markers
 	nukeMarkerCoords = _this select 0;
 
@@ -89,7 +93,10 @@ FEAR_fnc_radAddMarker = {
 	/* Adds a marker for Radiation Zone. Only runs once.
 	NUKEMarkerLoop.sqf keeps this marker updated. */
 	
-	if (isNil "nukeMarkerCoords") exitWith {};
+	if (isNil "nukeMarkerCoords") exitWith {
+		deleteMarker "radMarkerR";
+		deleteMarker "radMarkerY";
+	};
 	
 	_nul = createMarker ["radMarkerR",nukeMarkerCoords];
 	"radMarkerR" setMarkerColor "ColorRed";
@@ -110,21 +117,18 @@ FEAR_fnc_nukeRadDamage = {
 	_coords = _this select 0;
 	
 	NUKEGeiger = "Land_HelipadEmpty_F" createVehicle _coords;
-	
-	// Endurance of Radiation
+
 	while {!isNil "nukeMarkerCoords"} do {
 		{	
-			// Damage player
+			// Damage
+			_x setDammage (getDammage _x + 0.01);
+			
+			// Geiger counter sound within radius
 			if (isPlayer _x) then {
-				// Wearing gas mask prevents damage (don't ask)
-				_result = [_x] call FEAR_fnc_hasGasMask;
-				if (!_result) then {_x setDammage ((getDammage _x) + 0.01)};
-				(owner (vehicle _x)) publicVariableClient "NUKEGeiger"; // Geiger counter sound within radius
-			} else {
-				_x setDammage ((getDammage _x) + 0.01); // Damage object
+				(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
 			};
 			
-		}forEach nearestObjects [_coords,[],NukeRadius];
+		} forEach _coords nearEntities [["Epoch_Male_F","Epoch_Female_F"],NukeRadius];
 		
 		uisleep 5;
 	};

@@ -14,14 +14,10 @@ if (!isDedicated && hasInterface) then {
 
 	"NUKEDetonate" addPublicVariableEventHandler {
 		[_this select 1] spawn FEAR_fnc_nukeDetonate;
-		NUKEDetonate = nil;
-		publicVariable "NUKEDetonate";
 	};
 	
 	"NUKEQuake" addPublicVariableEventHandler {
-		[random 4] spawn BIS_fnc_earthquake;
-		NUKEQuake = nil;
-		publicVariable "NUKEQuake";
+		[ceil(random 4)] spawn BIS_fnc_earthquake;
 	};
 	
 	"NUKEGeiger" addPublicVariableEventHandler {

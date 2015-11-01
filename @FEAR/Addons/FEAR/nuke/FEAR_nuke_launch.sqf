@@ -2,8 +2,6 @@ if (!isDedicated) exitWith {};
 
 private["_town","_townName","_townPos", "_msgresponse","_nukeDevice"];
 
-if (!isNil "nukeMarkerCoords") exitWith {diag_log "[FEAR] nuke launch aborted, one already in progress"};
-
 // Get random town
 _town = call FEAR_fnc_nukeTarget;
 _townName = text _town;
@@ -22,11 +20,11 @@ NUKESiren = _nukeDevice;
 publicVariable "NUKESiren";
 
 // Inform players to get the hell out of dodge!
-// 3 minute timer till impact
+// 2 minute timer till impact
 _msgresponse = [format["Nuclear strike. You have %1 minutes to get %2k clear of %3.",2,500,_townName],""] call FEARBroadcast; // Use VEMF broadcast function
 
 // AI run!
-[_townPos] spawn FEAR_fnc_escape;
+[_nukeDevice] spawn FEAR_fnc_escape;
 
 uisleep 60; // Wait 1 minute
 
@@ -65,7 +63,8 @@ _msgresponse = [format["Keep clear of %1 until radiation dissipates.",_townName]
 uisleep 600;
 
 // Remove RadZone map markers
-deleteMarker "RADMarkerR";
-deleteMarker "RADMarkerY";
+deleteMarker "radMarkerR";
+deleteMarker "radMarkerY";
+// Reset nuke marker
 nukeMarkerCoords = nil;
 publicVariableServer "nukeMarkerCoords";

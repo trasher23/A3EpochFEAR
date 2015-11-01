@@ -51,14 +51,8 @@ class cfgFunctions
 		class Client
 		{
 			file = "\x\addons\a3_epoch_code\init";
-			class init
-			{
-				preInit = 1;
-			};
-			class postinit
-			{
-				postInit = 1;
-			};
+			class init { preInit = 1; };
+			class postinit { postInit = 1; };
 		};
 	};
 	class FEAR
@@ -68,7 +62,6 @@ class cfgFunctions
 		{
 			file = "FEAR\compile";
 			class nukeDetonate {};
-			class nukeWind {};
 			class nukeSiren {};
 			class nukeFlash {};
 			class hasGasMask {};
@@ -94,7 +87,8 @@ class CfgRemoteExec
 		mode = 1;
 		// Ability to send jip messages: 0-disabled, 1-enabled (default)
 		jip = 0;
-	
+		
+		// Ryan's Zombies and Demons
 		class EPOCH_server_save_vehicles { allowedTargets = 2; }; // can target: 0-anyone, 1-only clients, 2-only server};
 		class fnc_RyanZombies_PlayMoveNow { allowedTargets = 0; };
 		class fnc_RyanZombies_Bleeding { allowedTargets = 0; };
@@ -102,6 +96,11 @@ class CfgRemoteExec
 		class fnc_RyanZombies_DoMoveLocalized { allowedTargets = 0; };
 		class fnc_RyanZombies_Velocity { allowedTargets = 0; };
 		class fnc_RyanZombies_SetHitIndex { allowedTargets = 0; };
+		
+		// Reinstate BIS_fnc_MP
+		class fn_mp { allowedTargets = 0; };
+		class fn_MPexec { allowedTargets = 0; };
+		class fn_initMultiplayer { allowedTargets = 0; };
 	};
 	// List of script commands allowed to be sent from client via remoteExec
 	class Commands 

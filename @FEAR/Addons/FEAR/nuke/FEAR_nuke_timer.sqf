@@ -26,7 +26,9 @@ while {true} do
 	// Initiate countdown if players on server
 	if ((count _allPlayers) >= 1) then 
 	{
-		[] execVM format ["%1\nuke\FEAR_nuke_launch.sqf",FEAR_directory];
-		diag_log "[FEAR] nuke launch";
+		if (isNil "nukeMarkerCoords") then {
+			[] execVM format ["%1\nuke\FEAR_nuke_launch.sqf",FEAR_directory];
+			diag_log "[FEAR] nuke launch";
+		};
 	};
 };

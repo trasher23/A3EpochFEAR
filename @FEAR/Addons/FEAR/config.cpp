@@ -19,6 +19,24 @@ class CfgFunctions
 			class FEAR_init { preInit = 1; };
 		};
 	};
+	// Reinstate BIS mp functions
+	class A3
+	{
+		tag = "BIS";
+		class MP
+		{
+			file = "A3\functions_f\MP";
+			class MP {
+				file = "A3\functions_f\MP\fn_mp.sqf";
+			};
+			class MPexec {
+				file = "A3\functions_f\MP\fn_MPexec.sqf";
+			};
+			class initMultiplayer {
+				file = "A3\functions_f\MP\fn_initMultiplayer.sqf";
+			};
+		};
+	};
 };
 
 class CfgAmmo 

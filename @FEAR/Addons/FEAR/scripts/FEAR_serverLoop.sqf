@@ -12,7 +12,7 @@ while {true} do {
 		
 		_FEAR_60 = _tickTime;
 		
-		// If no players near zombie, delete zombie
+		// Remove objects from cleanup array if no players within 500m
 		{	
 			_plyrCount = count((getPosWorld _x) nearEntities[["Epoch_Female_base_F","Epoch_Man_base_F"],500]);
 			if (_plyrCount < 1) then {
@@ -35,7 +35,6 @@ while {true} do {
 			{
 				// Send quake to all players
 				if (isPlayer _x) then {
-					NUKEQuake = true;
 					(owner (vehicle _x)) publicVariableClient "NUKEQuake";
 				};
 			}forEach playableUnits;
