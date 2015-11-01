@@ -12,7 +12,6 @@ while {true} do
 	
 	// If the marker exists (meaning the mission is active) delete and re-add
 	if (!(getMarkerColor "nukeMarkerO" == "")) then {
-		
 		deleteMarker "nukeMarkerO";
 		deleteMarker "nukeMarkerR";
 		deleteMarker "nukeDot";
@@ -36,12 +35,10 @@ while {true} do
 		"nukeDot" setMarkerColor "ColorBlack";
 		"nukeDot" setMarkerType "mil_dot";
 		"nukeDot" setMarkerText " Nuclear Strike";
-		
 	};
 	
 	// Radiation zone
 	if (!(getMarkerColor "radMarkerR" == "")) then {
-		
 		deleteMarker "radMarkerR";
 		deleteMarker "radMarkerY";
 		
@@ -57,7 +54,6 @@ while {true} do
 		"radMarkerY" setMarkerType "mil_dot";
 		"radMarkerY" setMarkerColor "ColorYellow";
 		"radMarkerY" setMarkerText "  Radiation Zone";
-		
 	};
 	
 	uisleep 25;

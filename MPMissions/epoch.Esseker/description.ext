@@ -146,6 +146,6 @@ class CfgEpochCloak
 
 class RscTitles
 {
-	#include "FEAR\scripts\statusBar.hpp"
+	#include "FEAR\statusBar.hpp"
 	#include "VEMFr_client\gui\hpp_mainVEMFrClient.hpp"
 };

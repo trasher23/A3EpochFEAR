@@ -6,7 +6,7 @@ sleep 2;
 
 // Nuke blast sound fx
 _nukeBlast = MISSION_directory + "FEAR\fx\" + "nuke.ogg";
-playSound3D [_nukeBlast, player, false, _nukePos, 10];
+playSound3D [_nukeBlast,player,false,_nukePos,10];
 
 // Earthquake
 [4] spawn BIS_fnc_earthquake;
@@ -55,7 +55,7 @@ _light setLightBrightness 1000000.0;
 
 // Radiation effects
 _isInside = call EPOCH_fnc_isInsideBuilding;
-if((isPlayer player) && (player distance _nukePos <= 1000) && !_isInside) then {
+if((player distance _nukePos <= 1000) && (!_isInside)) then {
 	EPOCH_playerToxicity = 85;
 	EPOCH_playerSoiled = 85;
 };
@@ -136,8 +136,8 @@ _smoke setDropInterval 0.012;
 _Cone setDropInterval 0.02;
 _Wave setDropInterval 0.01;
 
-NUKEImpact = nil;
-publicVariable "NUKEImpact";
+NUKEDetonate = nil;
+publicVariable "NUKEDetonate";
 
 sleep 300;
 
