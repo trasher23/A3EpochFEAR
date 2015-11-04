@@ -15,16 +15,15 @@ diag_log format ["[FEAR] nuke target: %1",_townName];
 // nukeAddMarker is a simple script that adds a marker to the location
 [_townPos] call FEAR_fnc_nukeAddMarker;
 
-// Start siren
+// Assign nuke siren sound source
 NUKESiren = _nukeDevice;
-publicVariable "NUKESiren";
 
 // Inform players to get the hell out of dodge!
 // 2 minute timer till impact
 _msgresponse = [format["Nuclear strike. You have %1 minutes to get %2k clear of %3.",2,500,_townName],""] call FEARBroadcast; // Use VEMF broadcast function
 
 // AI run!
-[_nukeDevice] spawn FEAR_fnc_escape;
+[_townPos] spawn FEAR_fnc_escape;
 
 uisleep 60; // Wait 1 minute
 
@@ -33,10 +32,6 @@ _msgresponse = [format["Nuclear strike. You now have %1 minute to get %2m clear 
 
 uisleep 60; // Wait 1 minute
 
-// Switch Siren off
-NUKESiren = nil;
-publicVariable "NUKESiren";
-
 // Drop the Bass...
 NUKEDetonate = _nukeDevice;
 publicVariable "NUKEDetonate";
@@ -44,6 +39,9 @@ publicVariable "NUKEDetonate";
 [_townPos] spawn FEAR_fnc_nukeServerDamage;
 
 diag_log "[FEAR] nuke has reached its target";
+
+// Reset siren
+NUKESiren = nil;
 
 // Remove map markers
 deleteMarker "nukeMarkerO";

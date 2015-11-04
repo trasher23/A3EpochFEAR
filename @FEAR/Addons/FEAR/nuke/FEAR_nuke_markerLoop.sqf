@@ -35,6 +35,12 @@ while {true} do
 		"nukeDot" setMarkerColor "ColorBlack";
 		"nukeDot" setMarkerType "mil_dot";
 		"nukeDot" setMarkerText " Nuclear Strike";
+		
+		// Start siren
+		_allPlayers = call FEARGetPlayers;
+		{
+			(owner (vehicle _x)) publicVariableClient "NUKESiren";
+		}forEach _allPlayers;
 	};
 	
 	// Radiation zone
@@ -56,5 +62,5 @@ while {true} do
 		"radMarkerY" setMarkerText "  Radiation Zone";
 	};
 	
-	uisleep 25;
+	uisleep 23; // Duration of nuke siren
 };

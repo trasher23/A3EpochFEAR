@@ -29,7 +29,7 @@ FEAR_fnc_nukeServerDamage = {
 		// Kill everything within GroundZero (half of NukeRadius)
 		_x setDamage 1;
 		uiSleep 0.1;
-	}forEach _coords nearEntities[["All"],GroundZero];
+	}forEach (_coords nearEntities[["All"],GroundZero]);
 
 	// Object damage
 	{	
@@ -54,11 +54,10 @@ FEAR_fnc_nukeServerDamage = {
 			
 			// add to delete array
 			FEARCleanup pushBack _burnObj;
-			
 		};
 		
 		uiSleep 0.1;
-	}forEach nearestObjects[_coords,[],NukeRadius];
+	}forEach (nearestObjects[_coords,["house","Building","LandVehicle","Air","Ship"],NukeRadius]);
 };
 
 FEAR_fnc_nukeAddMarker = {
@@ -67,7 +66,7 @@ FEAR_fnc_nukeAddMarker = {
 	
 	// Public variable for markers
 	nukeMarkerCoords = _this select 0;
-
+	
 	// Orange Zone
 	_nul = createMarker ["nukeMarkerO",nukeMarkerCoords];
 	"nukeMarkerO" setMarkerColor "ColorOrange";
@@ -128,7 +127,7 @@ FEAR_fnc_nukeRadDamage = {
 				(owner (vehicle _x)) publicVariableClient "NUKEGeiger";
 			};
 			
-		} forEach _coords nearEntities [["Epoch_Male_F","Epoch_Female_F"],NukeRadius];
+		} forEach (_coords nearEntities[["All"], NukeRadius]);
 		
 		uisleep 5;
 	};
