@@ -2,7 +2,6 @@
 #include "halv_spawn\spawndialog.hpp"
 #include "trader\tradedialog.hpp"
 #include "trader\HSPricing.hpp"
-
 author = "Epoch Mod Team";
 class Header
 {
@@ -44,17 +43,23 @@ wreckRemovalMaxTime = 360;
 class cfgFunctions
 {
 	#include "VEMFr_client\CfgFunctions.hpp"
-	
 	class A3E
 	{
 		tag = "EPOCH";
 		class Client
 		{
 			file = "\x\addons\a3_epoch_code\init";
-			class init { preInit = 1; };
-			class postinit { postInit = 1; };
+			class init
+			{
+				preInit = 1;
+			};
+			class postinit
+			{
+				postInit = 1;
+			};
 		};
 	};
+	
 	class FEAR
 	{
 		tag = "FEAR";
@@ -80,15 +85,11 @@ class cfgFunctions
 
 class CfgRemoteExec
 {
-	// List of script functions allowed to be sent from client via remoteExec
-	class Functions
-	{
-		// State of remoteExec: 0-turned off, 1-turned on, taking whitelist into account, 2-turned on, however, ignoring whitelists (default because of backward compatibility)
-		mode = 1;
-		// Ability to send jip messages: 0-disabled, 1-enabled (default)
-		jip = 0;
-		
-		// Ryan's Zombies and Demons
+  class Functions
+  {
+    mode = 1;
+    jip = 0;
+	// Ryan's Zombies and Demons
 		class EPOCH_server_save_vehicles { allowedTargets = 2; }; // can target: 0-anyone, 1-only clients, 2-only server};
 		class fnc_RyanZombies_PlayMoveNow { allowedTargets = 0; };
 		class fnc_RyanZombies_Bleeding { allowedTargets = 0; };
@@ -101,12 +102,11 @@ class CfgRemoteExec
 		class fn_mp { allowedTargets = 0; };
 		class fn_MPexec { allowedTargets = 0; };
 		class fn_initMultiplayer { allowedTargets = 0; };
-	};
-	// List of script commands allowed to be sent from client via remoteExec
+  };
+  // List of script commands allowed to be sent from client via remoteExec
 	class Commands 
 	{ 
 		mode = 1; 
-		
 		class switchmove { allowedTargets = 0; };
 		class playmove { allowedTargets = 0; };
 	};
@@ -130,7 +130,7 @@ class CfgEpochUAV
 class CfgEpochAirDrop
 {
 	AirDropFreq = 1200; //AirDropChance, to decide if Air drop occurs, will only be checked once per AirDropFreq time period, for each player. Min value = 120.
-	AirDropChance = 10; //Percentage chance of air drop, for current player. Checked every AirDropFreq and upon antagonists spawn trigger. -1 To disable.
+	AirDropChance = 6; //Percentage chance of air drop, for current player. Checked every AirDropFreq and upon antagonists spawn trigger. -1 To disable.
 };
 
 class CfgEpochCloak

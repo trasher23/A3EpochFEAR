@@ -509,7 +509,7 @@ class CfgMainTable
 	{
 		lootMin = 7;
 		LootMax = 14;
-		tables[] = { 
+		tables[] = {
 				{ "Equipment", 6 },
 				{ "Pistols", 8 },
 				{ "PistolAmmo", 10 },
@@ -662,7 +662,7 @@ class CfgLootTable
 				{ { "acc_pointer_IR", "item" }, 20 },
 				// Marksman DLC
 				{ { "Bipods", "CfgLootTable" }, 5 }
-				
+
 		};
 	};
 
@@ -670,7 +670,7 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "SniperRiflem107", "CfgLootTable" }, 8 },
-				
+
 				// Marksman DLC
 				{ { "SniperRifleMarkDLC", "CfgLootTable" }, 10 },
 
@@ -679,6 +679,7 @@ class CfgLootTable
 				{ { "srifle_DMR_01_F", "weapon" }, 17 },
 				{ { "SniperRifleM14", "CfgLootTable" }, 18 },
 				{ { "srifle_EBR_F", "weapon" }, 20 },
+				
 				// MAS
 				{ { "srifle_mas_hk417", "weapon" }, 5 },
 				{ { "srifle_mas_sr25", "weapon" }, 5 },
@@ -736,7 +737,7 @@ class CfgLootTable
 				{ { "10Rnd_338_Mag", "magazine" }, 1 },
 				{ { "10Rnd_93x64_DMR_05_Mag", "magazine" }, 1 },
 				{ { "10Rnd_127x54_Mag", "magazine" }, 1 },
-				
+
 				// MAS
 				{ { "20Rnd_mas_762x51_Stanag", "magazine" }, 1 },
 				{ { "5Rnd_mas_762x51_Stanag", "magazine" }, 1 },
@@ -807,8 +808,8 @@ class CfgLootTable
 				{ { "FoodSnooter", "magazine" }, 9 },
 				{ { "TacticalBacon", "magazine" }, 5 },
 				{ { "FoodMeeps", "magazine" }, 1 }
-				
-				
+
+
 		};
 	};
 
@@ -857,7 +858,7 @@ class CfgLootTable
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
 				{ { "ItemSafe", "magazine" }, 1 }
-				
+
 		};
 	};
 
@@ -899,6 +900,7 @@ class CfgLootTable
 				{ { "SMG_01_F", "weapon" }, 9 },
 				{ { "SMG_02_F", "weapon" }, 9 },
 				{ { "hgun_PDW2000_F", "weapon" }, 10 },
+				
 				// MAS
 				{ { "arifle_mas_m4", "weapon" }, 2 },
 				{ { "arifle_mas_hk416", "weapon" }, 2 },
@@ -1020,6 +1022,7 @@ class CfgLootTable
 				{ { "RifleAmmo_30Rnd_45ACP_Mag_SMG_01", "CfgLootTable" }, 16 },
 				{ { "30Rnd_9x21_Mag", "magazine" }, 17 },
 				{ { "5Rnd_rollins_mag", "magazine" }, 20 },
+				
 				// MAS
 				{ { "7Rnd_mas_12Gauge_Slug", "magazine" }, 5 },
 				{ { "7Rnd_mas_12Gauge_Pellets", "magazine" }, 5 },
@@ -1117,6 +1120,7 @@ class CfgLootTable
 				{ { "LMG_Mk200_F", "weapon" }, 3 },
 				{ { "Machinegun_m249_EPOCH", "CfgLootTable" }, 3 },
 				{ { "MMG_MarkDLC_EPOCH", "CfgLootTable" }, 1 },
+				
 				// MAS
 				{ { "LMG_mas_Mk200_F", "weapon" }, 1 }
 		};
@@ -1223,6 +1227,7 @@ class CfgLootTable
 				{ { "1911_pistol_epoch", "weapon" }, 14 },
 				{ { "hgun_ACPC2_F", "weapon" }, 16 },
 				{ { "ruger_pistol_epoch", "weapon" }, 18 },
+				
 				// MAS
 				{ { "hgun_mas_mp7p_F", "weapon" }, 5 },
 				{ { "hgun_mas_uzi_F", "weapon" }, 5 },
@@ -1332,12 +1337,14 @@ class CfgLootTable
 				{ { "Muzzles_93mmgMarkDLC", "CfgLootTable" }, 1 }
 		};
 	};
-	
+
 	class Muzzles_338MarkDLC
 	{
 		items[] = {
 				{ { "muzzle_snds_338_black", "item" }, 1 },
-				{ { "muzzle_snds_338_green", "item" }, 1 }
+				{ { "muzzle_snds_338_green", "item" }, 1 },
+				{ { "muzzle_snds_338_sand", "item" }, 1 }
+				
 		};
 	};
 	class Muzzles_93mmgMarkDLC
@@ -1421,10 +1428,12 @@ class CfgLootTable
 				{ { "KitStudWall", "magazine" }, 13 },
 				{ { "KitShelf", "magazine" }, 9 },
 				{ { "KitWorkbench", "magazine" }, 2 },
-				{ { "KitWoodFloor", "magazine" }, 12 },
-				{ { "KitWoodStairs", "magazine" }, 10 },
+				{ { "KitWoodFloor", "magazine" }, 10 },
+				{ { "KitWoodStairs", "magazine" }, 9 },
 				{ { "KitWoodTower", "magazine" }, 5 },
 				{ { "KitWoodRamp", "magazine" }, 5 },
+				{ { "KitTankTrap", "magazine" }, 2 },
+				{ { "KitHesco3", "magazine" }, 1 },
 				{ { "KitWoodLadder", "magazine" }, 5 },
 				{ { "KitFirePlace", "magazine" }, 8 },
 				{ { "KitCinderWall", "magazine" }, 5 },
@@ -1433,7 +1442,7 @@ class CfgLootTable
 				{ { "ItemSafe", "magazine" }, 1 }
 		};
 	};
-	
+
 	class Mission_Payout1
 	{
 		items[] = {
@@ -1602,7 +1611,7 @@ class CfgLootTable
 				{ { "B_AssaultPack_rgr", "backpack" }, 5 },
 				{ { "B_AssaultPack_sgg", "backpack" }, 5 },
 				{ { "B_AssaultPack_blk", "backpack" }, 5 },
-				
+
 
 				{ { "B_Carryall_cbr", "backpack" }, 1 },
 				{ { "B_Carryall_khk", "backpack" }, 1 },
@@ -1911,7 +1920,7 @@ class CfgLootTable
 				{ { "wolf_mask_epoch", "item" }, 1 },
 				{ { "pkin_mask_epoch", "item" }, 1 },
 				{ { "clown_mask_epoch", "item" }, 1 }
-				
+
 		};
 	};
 };

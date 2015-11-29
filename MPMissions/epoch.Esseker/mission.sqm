@@ -47,11 +47,13 @@ class Mission
 		"mas_tanks",
 		"mas_cars",
 		"mas_cars_hilux",
-		"mas_vehicleweapons_fia"
+		"mas_vehicleweapons_fia",
+		"mas_ural"
 	};
 	addOnsAuto[]=
 	{
 		"a3_epoch_config",
+		"esseker",
 		"esseker",
 		"aia_chernarus_config",
 		"aia_misc3_config",
@@ -80,7 +82,8 @@ class Mission
 		"mas_tanks",
 		"mas_cars",
 		"mas_cars_hilux",
-		"mas_vehicleweapons_fia"
+		"mas_vehicleweapons_fia",
+		"mas_ural"
 	};
 	randomSeed=7213714;
 	class Intel
@@ -2162,7 +2165,8 @@ class Intro
 		"mas_tanks",
 		"mas_cars",
 		"mas_cars_hilux",
-		"mas_vehicleweapons_fia"
+		"mas_vehicleweapons_fia",
+		"mas_ural"
 	};
 	addOnsAuto[]=
 	{
@@ -2194,7 +2198,8 @@ class Intro
 		"mas_tanks",
 		"mas_cars",
 		"mas_cars_hilux",
-		"mas_vehicleweapons_fia"
+		"mas_vehicleweapons_fia",
+		"mas_ural"
 	};
 	randomSeed=2993082;
 	class Intel
@@ -2246,7 +2251,8 @@ class OutroWin
 		"mas_tanks",
 		"mas_cars",
 		"mas_cars_hilux",
-		"mas_vehicleweapons_fia"
+		"mas_vehicleweapons_fia",
+		"mas_ural"
 	};
 	addOnsAuto[]=
 	{
@@ -2278,7 +2284,8 @@ class OutroWin
 		"mas_tanks",
 		"mas_cars",
 		"mas_cars_hilux",
-		"mas_vehicleweapons_fia"
+		"mas_vehicleweapons_fia",
+		"mas_ural"
 	};
 	randomSeed=9072554;
 	class Intel
@@ -2330,7 +2337,8 @@ class OutroLoose
 		"mas_tanks",
 		"mas_cars",
 		"mas_cars_hilux",
-		"mas_vehicleweapons_fia"
+		"mas_vehicleweapons_fia",
+		"mas_ural"
 	};
 	addOnsAuto[]=
 	{
@@ -2362,7 +2370,8 @@ class OutroLoose
 		"mas_tanks",
 		"mas_cars",
 		"mas_cars_hilux",
-		"mas_vehicleweapons_fia"
+		"mas_vehicleweapons_fia",
+		"mas_ural"
 	};
 	randomSeed=10033491;
 	class Intel

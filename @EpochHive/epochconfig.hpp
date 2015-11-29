@@ -32,7 +32,7 @@ cloneCost = 0; // debt incurred on player death
 simulationHandler = false; // When enabled this feature disables simulation on vehicles that are not near players. Can help improve client fps at the cost of server fps. (This is disabled by default now that Arma has fixed the original issue)
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 allowedVehiclesList[] = {
-	// Boats
+    // Boats
 	{"C_Rubberboat_EPOCH",1},
 	{"C_Rubberboat_02_EPOCH",1},
 	{"C_Rubberboat_03_EPOCH",1},
