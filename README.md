@@ -10,7 +10,7 @@ A mish-mash of:
 Arma 3 1.52: http://arma3.com/
 <br/>
 <br/>
-Epoch 0.3.4.0: http://epochmod.com/
+Epoch 0.3.5.0: http://epochmod.com/
 <br/>
 Esseker 0.7.0.5 http://a3esseker.info/
 <br/>
