@@ -144,4 +144,3 @@ sleep 300;
 deleteVehicle _Wave;
 deleteVehicle _cone;
 deleteVehicle _smoke;
-};
