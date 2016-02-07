@@ -16,10 +16,6 @@ Esseker 0.7.0.5 http://a3esseker.info/
 <br/>
 Ryan's Zombies & Demons 3.6: http://www.armaholic.com/page.php?id=28958
 <br/>
-MAS Weapons 1.10: http://www.armaholic.com/page.php?id=21912
-<br/>
-MAS Vehicles 1.3: http://www.armaholic.com/page.php?id=27652
-<br/>
 <br/>
 A3AI 1.0.1a: https://github.com/dayzai/A3EAI
 <br/>
