@@ -33,7 +33,12 @@ simulationHandler = false; // When enabled this feature disables simulation on v
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 allowedVehiclesList[] = {
 	// Boats
-	{"C_Rubberboat_02_EPOCH",5},
+	{"C_Rubberboat_EPOCH",1},
+	{"C_Rubberboat_02_EPOCH",1},
+	{"C_Rubberboat_03_EPOCH",1},
+	{"C_Rubberboat_04_EPOCH",1},
+	{"C_Boat_Civil_01_EPOCH",1},
+	{"jetski_epoch",1},
 
 	// Bikes
 	{"C_Quadbike_01_EPOCH",2},
@@ -81,6 +86,7 @@ allowedVehiclesList[] = {
 	{"O_Heli_Transport_04_F",2},
 	{"O_Heli_Transport_04_medevac_F",2},
 	{"I_Heli_light_03_unarmed_F",2},
+	{"mosquito_epoch",10},
 	{"B_Heli_Light_01_armed_F",2},
 	{"O_Heli_Attack_02_black_F",2},
 	{"C_Heli_Light_01_civil_EPOCH",5},
@@ -91,6 +97,13 @@ allowedVehiclesList[] = {
 	{"B_APC_Wheeled_01_cannon_F",2},
 	{"I_APC_Wheeled_03_cannon_F",2},
 	{"O_APC_Wheeled_02_rcws_F",2},
+	{"I_APC_tracked_03_cannon_F",2},
+	{"B_APC_Tracked_01_CRV_F",2},
+	
+	// Tanks
+	{"O_MBT_02_cannon_F",2},
+	{"B_MBT_01_arty_F",2},
+	{"B_MBT_01_mlrs_F",2},
 	
 	// Planes
 	{"B_Plane_CAS_01_F",2},

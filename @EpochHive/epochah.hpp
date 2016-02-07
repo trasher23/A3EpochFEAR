@@ -20,7 +20,13 @@ antihack_customVariablesCheck = false; // true enables variable scanning on miss
 antihack_customVariables[] = {}; //Add global variables from custom scripts, example: {"MyOwnVar","CP_KK"} //Global Variables begin without "_" !!
 antihack_customVariablesCheckMode = 0; // 0 = Ban, 1 = Log, 2 == learning mode (only enable with trusted players in a passwored server to profile your variables keep disabled for normal operation)
 
-adminMenu_Owner[] = {};
+//FEAR
+adminMenu_Owner[] = {
+	{"76561197969049020","Chris"},
+	{"76561198093935187", "K0TT0S"}
+}; 
+//adminMenu_Owner[] = {};
+
 adminMenu_OwnerSetting[] = {
 	"ESP-PLAYER",
 	"ESP-VEHICLE",

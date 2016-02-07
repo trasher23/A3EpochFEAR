@@ -7,8 +7,13 @@ _geararr = [
 	[
 		// 0: Secondary weapons
 		[
-			"hgun_ACPC2_F","ruger_pistol_epoch","1911_pistol_epoch","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F",
-			"hgun_mas_mp7p_F","hgun_mas_p226_F_sd","hgun_mas_glock_F_sd","hgun_mas_m9_F_sd"
+			"hgun_ACPC2_F",
+			"ruger_pistol_epoch",
+			"1911_pistol_epoch",
+			"hgun_P07_F",
+			"hgun_Pistol_heavy_01_F",
+			"hgun_Pistol_heavy_02_F",
+			"hgun_Rook40_F"
 		],
 		// Ammo
 		6
@@ -17,7 +22,8 @@ _geararr = [
 	[
 		// 1: Primary weapons
 		[
-			"SMG_01_F","Rollins_F","arifle_mas_m16","arifle_mas_akms","srifle_mas_sr25_h","arifle_mas_m1014","arifle_mas_mp5","arifle_mas_m14","arifle_mas_lee_l","srifle_mas_ebr_sd"
+			"SMG_01_F",
+			"Rollins_F"
 		],
 		// Ammo
 		4
@@ -26,7 +32,7 @@ _geararr = [
 	[
 		// 2: Items
 		[
-			"FAK" //,"Heal_EPOCH","Defib_EPOCH","Repair_EPOCH"
+			"FAK"
 		],
 		1
 	],
@@ -34,7 +40,11 @@ _geararr = [
 	[
 		// 3: Tools
 		[
-			"EpochRadio0","ItemCompass","ItemWatch","Binocular","ItemGPS"
+			"EpochRadio0",
+			"ItemCompass",
+			"ItemWatch",
+			"Binocular",
+			"ItemGPS"
 		],
 		//Number of tools
 		3
@@ -43,15 +53,8 @@ _geararr = [
 	[
 		// 4: Magazines
 		[
-			"ItemSodaRbull","EnergyPack"
-			
-			/*
-			"Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue","EnergyPack","SmokeShellOrange","SmokeShellBlue","SmokeShellPurple","SmokeShellYellow",
-			"SmokeShellGreen","SmokeShellRed","SmokeShell","lighter_epoch","ItemSodaRbull","meatballs_epoch","WhiskeyNoodle","ItemSodaOrangeSherbet","sweetcorn_epoch",
-			"scam_epoch","HeatPack","ColdPack","SheepCarcass_EPOCH","GoatCarcass_EPOCH","Pelt_EPOCH","ChickenCarcass_EPOCH","RabbitCarcass_EPOCH","Venom_EPOCH",
-			"SnakeCarcass_EPOCH","ItemKiloHemp","ItemScraps","ItemCoolerE","ItemSodaPurple","ItemSodaMocha","ItemSodaBurst","FoodWalkNSons","honey_epoch",
-			"emptyjar_epoch","FoodBioMeat","sardines_epoch","FoodSnooter","Towelette"
-			*/
+			"ItemSodaRbull",
+			"EnergyPack"
 		],
 		// Number of magazines
 		1
@@ -80,9 +83,7 @@ _geararr = [
 		[
 			// Male Uniforms
 			"U_O_CombatUniform_ocamo","U_B_Survival_Uniform",
-			"U_OG_Guerilla1_1","U_OG_Guerilla2_1","U_OG_Guerilla2_2","U_O_PilotCoveralls","U_C_Poor_1","U_C_WorkerCoveralls","U_C_Journalist","U_C_Scientist",
-			"U_OrestesBody","U_C_Poloshirt_stripped","U_C_Poloshirt_blue","U_C_Poloshirt_burgundy","U_C_Poloshirt_tricolour","U_C_Poloshirt_salmon",
-			"U_C_Poloshirt_redwhite","U_OG_Guerilla2_3","U_OG_Guerilla3_1","U_OG_Guerilla3_2","U_OG_leader"
+			"U_OG_Guerilla1_1","U_OG_Guerilla2_1","U_OG_Guerilla2_2","U_O_PilotCoveralls","U_C_Poor_1","U_C_WorkerCoveralls","U_C_Journalist","U_C_Scientist","U_OrestesBody","U_C_Poloshirt_stripped","U_C_Poloshirt_blue","U_C_Poloshirt_burgundy","U_C_Poloshirt_tricolour","U_C_Poloshirt_salmon","U_C_Poloshirt_redwhite","U_OG_Guerilla2_3","U_OG_Guerilla3_1","U_OG_Guerilla3_2","U_OG_leader"
 		],
 		[
 			// Female Uniforms
@@ -93,11 +94,7 @@ _geararr = [
 	
 	[
 		// 8: Goggles
-		"G_mas_wpn_gasmask" // Gasmasks only!
-		/*
-		"G_Tactical_Clear","G_Shades_Black","G_Spectacles","G_Spectacles_Tinted","G_Lowprofile",
-		"G_Squares","G_Squares_Tinted","G_Tactical_Black"
-		*/
+		"G_Tactical_Clear","G_Shades_Black","G_Spectacles","G_Spectacles_Tinted","G_Lowprofile","G_Squares","G_Squares_Tinted","G_Tactical_Black"
 	],
 	
 	[
