@@ -21,9 +21,9 @@ events[] = {
 };
 
 // Antagonists
-antagonistChanceTrash = 0.25; //9% chance when player loot a trash object
+antagonistChanceTrash = 0.30; //9% chance when player loot a trash object
 antagonistChancePDeath = 0.33; //33% chance when player was killed from a other player (selfkill doesn't count)
-antagonistChanceLoot = 0.25; //9% chance when player click "SEARCH" on a loot object
+antagonistChanceLoot = 0.30; //9% chance when player click "SEARCH" on a loot object
 
 // Player Related
 cloneCost = 0; // debt incurred on player death
@@ -32,7 +32,7 @@ cloneCost = 0; // debt incurred on player death
 simulationHandler = false; // When enabled this feature disables simulation on vehicles that are not near players. Can help improve client fps at the cost of server fps. (This is disabled by default now that Arma has fixed the original issue)
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 allowedVehiclesList[] = {
-    // Boats
+	// Boats
 	{"C_Rubberboat_EPOCH",1},
 	{"C_Rubberboat_02_EPOCH",1},
 	{"C_Rubberboat_03_EPOCH",1},
@@ -173,13 +173,13 @@ allowedVehiclesList[] = {
 	{"B_mas_UH1Y_MEV_F",2},
 	{"B_mas_UH60M",2},
 	{"B_mas_UH60M_SF",2},
-	{"B_mas_UH60M_MEV",2}
+	{"B_mas_UH60M_MEV",2}    
 };
 
 // Traders
 taxRate = 0.1; // controls the price increase for purchases
 starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "CinderBlocks", "VehicleRepair", "CircuitParts", "ItemCorrugated", "PartPlankPack", "ItemRock", "ItemRope", "ItemStick" }, { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 } }; // Starter Items for fresh spawned trader first array is classnames second is quantity.
-NPCSlotsLimit = 3; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
+NPCSlotsLimit = 5; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
 forceStaticTraders = true; // disables traders moving from work to home
 
 // Markers
@@ -191,11 +191,11 @@ SHOW_BOATLOOT = true; // Shows the location of shipwreck loot
 DEBUG_VEH = false; // DEBUG ONLY used to debug spawing of vehicles
 
 // Hive Related
-expiresBuilding = "311040000";  // expiration date in seconds for buildings
-expiresPlayer = "311040000";  // expiration date in seconds for players
-expiresBank = "311040000";  // expiration date in seconds for players bank
-expiresVehicle = "311040000";  // expiration date in seconds for vehicles
-expiresAIdata = "311040000";  // expiration date in seconds for NPC Trader inventory
+expiresBuilding = "311040000"; //"604800";  // expiration date in seconds for buildings
+expiresPlayer = "311040000"; //"2592000";  // expiration date in seconds for players
+expiresBank = "311040000"; //"7776000";  // expiration date in seconds for players bank
+expiresVehicle = "311040000"; //"604800";  // expiration date in seconds for vehicles
+expiresAIdata = "311040000"; //"604800";  // expiration date in seconds for NPC Trader inventory
 hiveAsync = true; // true = asynchronous hive calls (non blocking), false = synchronous hive calls (blocking)
 
 // Admin Features

@@ -1,4 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
 
+    Contributors:
+
+	Description:
+	Epoch Server side loot table configs
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/loots.h
+*/
 class CfgMainTable
 {
 	class Default
@@ -679,7 +692,6 @@ class CfgLootTable
 				{ { "srifle_DMR_01_F", "weapon" }, 17 },
 				{ { "SniperRifleM14", "CfgLootTable" }, 18 },
 				{ { "srifle_EBR_F", "weapon" }, 20 },
-				
 				// MAS
 				{ { "srifle_mas_hk417", "weapon" }, 5 },
 				{ { "srifle_mas_sr25", "weapon" }, 5 },
@@ -769,7 +781,11 @@ class CfgLootTable
 				{ { "Sodas", "CfgLootTable" }, 8 },
 				{ { "CanFood", "CfgLootTable" }, 8 },
 				{ { "Primitive", "CfgLootTable" }, 21 },
-				{ { "lighter_epoch", "magazine" }, 1 }
+				{ { "lighter_epoch", "magazine" }, 1 },
+
+				{ { "ItemAluminumBar", "magazine" }, 2 },
+				{ { "ItemCopperBar", "magazine" }, 2 },
+				{ { "ItemTinBar", "magazine" }, 1 },
 		};
 	};
 
@@ -787,12 +803,14 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "WhiskeyNoodle", "magazine" }, 5 },
-				{ { "ItemSodaOrangeSherbet", "magazine" }, 16 },
-				{ { "ItemSodaPurple", "magazine" }, 15 },
-				{ { "ItemSodaMocha", "magazine" }, 14 },
-				{ { "ItemSodaBurst", "magazine" }, 23 },
+				{ { "ItemSodaOrangeSherbet", "magazine" }, 13 },
+				{ { "ItemSodaAlpineDude", "magazine" }, 6 },
+				{ { "ItemSodaPurple", "magazine" }, 13 },
+				{ { "ItemSodaMocha", "magazine" }, 12 },
+				{ { "ItemSodaBurst", "magazine" }, 15 },
 				{ { "ItemSodaRbull", "magazine" }, 13 },
-				{ { "FoodWalkNSons", "magazine" }, 14 }
+				{ { "FoodWalkNSons", "magazine" }, 13 },
+				{ { "ItemSodaEmpty", "magazine" }, 11 }
 		};
 	};
 	class CanFood
@@ -800,16 +818,15 @@ class CfgLootTable
 		items[] = {
 				{ { "honey_epoch", "magazine" }, 5 },
 				{ { "emptyjar_epoch", "magazine" }, 13 },
-				{ { "FoodBioMeat", "magazine" }, 13 },
+				{ { "FoodBioMeat", "magazine" }, 11 },
 				{ { "sardines_epoch", "magazine" }, 11 },
-				{ { "meatballs_epoch", "magazine" }, 14 },
-				{ { "scam_epoch", "magazine" }, 15 },
-				{ { "sweetcorn_epoch", "magazine" }, 15 },
+				{ { "meatballs_epoch", "magazine" }, 13 },
+				{ { "scam_epoch", "magazine" }, 14 },
+				{ { "sweetcorn_epoch", "magazine" }, 14 },
 				{ { "FoodSnooter", "magazine" }, 9 },
 				{ { "TacticalBacon", "magazine" }, 5 },
-				{ { "FoodMeeps", "magazine" }, 1 }
-
-
+				{ { "FoodMeeps", "magazine" }, 1 },
+				{ { "ItemEmptyTin", "magazine" }, 5 }
 		};
 	};
 
@@ -851,13 +868,15 @@ class CfgLootTable
 		items[] = {
 				{ { "MortarBucket", "magazine" }, 16 },
 				{ { "CinderBlocks", "magazine" }, 17 },
-				{ { "VehicleRepair", "magazine" }, 17 },
+				{ { "VehicleRepair", "magazine" }, 16 },
 				{ { "CircuitParts", "magazine" }, 17 },
 				{ { "ItemCorrugated", "magazine" }, 17 },
 				{ { "ItemSolar", "magazine" }, 5 },
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
-				{ { "ItemSafe", "magazine" }, 1 }
+				{ { "ItemSafe", "magazine" }, 1 },
+				{ { "ItemBarrelE", "magazine" }, 1 }
+
 
 		};
 	};
@@ -873,13 +892,14 @@ class CfgLootTable
 				{ { "VehicleRepair", "magazine" }, 10 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
 				{ { "CinderBlocks", "magazine" }, 12 },
-				{ { "JackKit", "magazine" }, 9 },
+				{ { "JackKit", "magazine" }, 8 },
 				{ { "ItemCoolerE", "magazine" }, 13 },
 				{ { "ItemScraps", "magazine" }, 13 },
 				{ { "lighter_epoch", "magazine" }, 1 },
 				{ { "ItemSolar", "magazine" }, 3 },
 				{ { "ItemBattery", "magazine" }, 3 },
-				{ { "ItemCables", "magazine" }, 3 }
+				{ { "ItemCables", "magazine" }, 3 },
+				{ { "ItemBarrelE", "magazine" }, 1 }
 		};
 	};
 
@@ -900,7 +920,6 @@ class CfgLootTable
 				{ { "SMG_01_F", "weapon" }, 9 },
 				{ { "SMG_02_F", "weapon" }, 9 },
 				{ { "hgun_PDW2000_F", "weapon" }, 10 },
-				
 				// MAS
 				{ { "arifle_mas_m4", "weapon" }, 2 },
 				{ { "arifle_mas_hk416", "weapon" }, 2 },
@@ -1022,7 +1041,6 @@ class CfgLootTable
 				{ { "RifleAmmo_30Rnd_45ACP_Mag_SMG_01", "CfgLootTable" }, 16 },
 				{ { "30Rnd_9x21_Mag", "magazine" }, 17 },
 				{ { "5Rnd_rollins_mag", "magazine" }, 20 },
-				
 				// MAS
 				{ { "7Rnd_mas_12Gauge_Slug", "magazine" }, 5 },
 				{ { "7Rnd_mas_12Gauge_Pellets", "magazine" }, 5 },
@@ -1120,7 +1138,6 @@ class CfgLootTable
 				{ { "LMG_Mk200_F", "weapon" }, 3 },
 				{ { "Machinegun_m249_EPOCH", "CfgLootTable" }, 3 },
 				{ { "MMG_MarkDLC_EPOCH", "CfgLootTable" }, 1 },
-				
 				// MAS
 				{ { "LMG_mas_Mk200_F", "weapon" }, 1 }
 		};
@@ -1227,7 +1244,6 @@ class CfgLootTable
 				{ { "1911_pistol_epoch", "weapon" }, 14 },
 				{ { "hgun_ACPC2_F", "weapon" }, 16 },
 				{ { "ruger_pistol_epoch", "weapon" }, 18 },
-				
 				// MAS
 				{ { "hgun_mas_mp7p_F", "weapon" }, 5 },
 				{ { "hgun_mas_uzi_F", "weapon" }, 5 },
@@ -1344,7 +1360,7 @@ class CfgLootTable
 				{ { "muzzle_snds_338_black", "item" }, 1 },
 				{ { "muzzle_snds_338_green", "item" }, 1 },
 				{ { "muzzle_snds_338_sand", "item" }, 1 }
-				
+
 		};
 	};
 	class Muzzles_93mmgMarkDLC
@@ -1369,14 +1385,23 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "Gems", "CfgLootTable" }, 5 },
-				{ { "ItemGoldBar10oz", "magazine" }, 6 },
-				{ { "ItemGoldBar", "magazine" }, 9 },
+				{ { "MetalBars", "CfgLootTable" }, 26 },
 				{ { "PartOreGold", "magazine" }, 10 },
-				{ { "ItemSilverBar", "magazine" }, 11 },
 				{ { "PartOreSilver", "magazine" }, 13 },
 				{ { "ItemKiloHemp", "magazine" }, 12 },
 				{ { "ItemScraps", "magazine" }, 16 },
 				{ { "PartOre", "magazine" }, 18 }
+		};
+	};
+	class MetalBars
+	{
+		items[] = {
+				{ { "ItemGoldBar10oz", "magazine" }, 1 },
+				{ { "ItemGoldBar", "magazine" }, 9 },
+				{ { "ItemSilverBar", "magazine" }, 20 },
+				{ { "ItemCopperBar", "magazine" }, 20 },
+				{ { "ItemAluminumBar", "magazine" }, 20 },
+				{ { "ItemTinBar", "magazine" }, 30 },
 		};
 	};
 	class Gems
@@ -1494,7 +1519,7 @@ class CfgLootTable
 	class Epoch_Sapper_F
 	{
 		items[] = {
-				{ { "ItemGoldBar", "magazine" }, 6 },
+				{ { "MetalBars", "CfgLootTable" }, 6 },
 				{ { "WhiskeyNoodle", "magazine" }, 11 },
 				{ { "ItemKiloHemp", "magazine" }, 16 },
 				{ { "ItemSilverBar", "magazine" }, 18 },

@@ -1,7 +1,17 @@
 /*
-	EAH 2.0
-*/
+	Author: Aaron Clark - EpochMod.com
 
+    Contributors:
+
+	Description:
+	Epoch Server side securty checks config
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/securty/security_checks.h
+*/
 class CfgSecConf
 {
     debug = false;
@@ -64,7 +74,7 @@ class CfgSecConf
         checks[] = {"Fired","InventoryClosed","InventoryOpened","Killed","HandleDamage","HandleHeal","Dammaged","Hit","HitPart"};
         Fired           = "_this call EPOCH_fnc_playerFired;";
         InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
-        InventoryOpened = "_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3] || (_this select 1) getVariable['EPOCH_Locked', false])";
+        InventoryOpened = "_this spawn EPOCH_initUI;_container = _this select 1;_lockedNear = false;if (_container isKindOf 'GroundWeaponHolder' || _container isKindOf 'WeaponHolderSimulated') then {{if (locked _x in [2, 3] ||_x getVariable['EPOCH_Locked', false]) exitWith {_lockedNear = true}} forEach (player nearSupplies 10);};if (locked _container in [2, 3] || _container getVariable['EPOCH_Locked', false] || _lockedNear) then {[] spawn {disableSerialization;waitUntil {!isNull findDisplay 602};_display = findDisplay 602;_ctrl_cargo = _display displayCtrl 6401;_ctrl_ground = _display displayCtrl 6321;_ctrl_cargo ctrlEnable  false;ctrlSetFocus _ctrl_ground;ctrlActivate _ctrl_ground;};};";
         Killed          = "_this call EPOCH_fnc_playerDeath;";
         HandleDamage    = "";
         HandleHeal      = "";

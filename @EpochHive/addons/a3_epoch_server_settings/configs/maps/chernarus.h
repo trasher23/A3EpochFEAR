@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Uro1, Robio
+
+	Description:
+	Epoch gamemode server Side map specific configs for chernarus.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/maps/chernarus.h
+*/
 class Chernarus : Default
 {
 	worldSize = 12000;
@@ -25,9 +39,6 @@ class Chernarus : Default
 			{ "Transport_N_EPOCH", { -0.286865, 8.17383, -10.3098 }, "", { 10688.6, 9428.98, 0.00144958 } } // North East
 	};
 	propsPos[] = {
-			//debug lights
-			{ "Land_PortableLight_double_F", { 1041.07,2032.96,0.249583 }, 48.2164 },
-			{ "Land_PortableLight_double_F", { 1008.24,2013.97,0.217788 }, 233.858 },
 			// phones
 			{ "Land_PhoneBooth_02_F", { 10455.2, 2214.84, 0 }, 52.4502 },
 			{ "Land_PhoneBooth_02_F", { 10480, 2350.02, 0.101999 }, 326.023 },

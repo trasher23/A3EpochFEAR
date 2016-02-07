@@ -68,7 +68,7 @@ if (typename _this == "ARRAY") then {
 			_normalMagazines = [_serverSettingsConfig, "normalMagazines", []] call EPOCH_fnc_returnConfigEntry;
 			_weaponsAndItems = [_serverSettingsConfig, "weaponsAndItems", ["", []]] call EPOCH_fnc_returnConfigEntry;
 
-			diag_log format["DEBUG (Load Player) _linkedItems 1: %1", _linkedItems];
+
 
 			if (count _arr < 11) then { // invaild format attempt to override
 				_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [""], [] + EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
@@ -77,6 +77,11 @@ if (typename _this == "ARRAY") then {
 			_worldspace = _arr select 0;
 			_dir = _worldspace select 0;
 			_location = _worldspace select 1;
+
+			if (count _location == 2) then{
+				_location = (_location select 0) vectorAdd (_location select 1);
+			};
+
 			_prevInstance = _worldspace select 2;
 			_medical = _arr select 1;
 			_server_vars = _arr select 3;
@@ -123,8 +128,9 @@ if (typename _this == "ARRAY") then {
 			};
 
 			_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
-
 			if !(isNull _newPlyr) then {
+
+				addToRemainsCollector[_newPlyr];
 
 				//diag_log format ["DEBUG Created New Player: %1", _newPlyr];
 				{
@@ -246,7 +252,6 @@ if (typename _this == "ARRAY") then {
 						_newPlyr linkItem _x;
 					};
 				} forEach _linkedItems;
-				diag_log format["DEBUG (Load Player) _linkedItems: %1", _linkedItems];
 
 				// add items to containers
 				[_newPlyr, _itemsInContainers] call _fnc_addItemToX;
@@ -300,9 +305,8 @@ if (typename _this == "ARRAY") then {
 						diag_log format["DEBUG (Load Player) Set Group: %1", _plyrGroup];
 					};
 
-					_newPlyr setVariable["SETUP", true];
-					_newPlyr setVariable["PUID", _plyrUID];
 
+					_newPlyr setVariable["PUID", _plyrUID];
 
 					if !(_vars isEqualTo[]) then {
 						_newPlyr setVariable["VARS", _vars];
@@ -316,6 +320,8 @@ if (typename _this == "ARRAY") then {
 						_newPlyr setVariable["REVIVE", _canBeRevived]
 					};
 					[_plyrNetID, _plyrUID, [_newPlyr, _vars, _currWeap, count(magazines _newPlyr), _plyrGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken]] call EPOCH_server_pushPlayer;
+
+					_newPlyr setVariable["SETUP", true, true];
 				};
 			} else {
 				diag_log format["LOGIN FAILED UNIT NULL: %1 [%2|%3]", _plyr, _group, count allgroups];
