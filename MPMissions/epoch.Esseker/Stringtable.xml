@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="Halv Translations">
+	<Package name="HALVSpawn">
+		<Container name="Spawn Dialogs Strings">
+			<Key ID="STR_HALV_SELECT_SPAWN">
+				<Original>Select Spawn</Original>
+				<English>Select Spawn</English>
+			</Key>
+			<Key ID="STR_HALV_TITLE">
+				<Original>Molecular Cloning Facility 0x10b</Original>
+				<English>Molecular Cloning Facility 0x10b</English>
+			</Key>
+			<Key ID="STR_HALV_RANDOM">
+				<Original>Random</Original>
+				<English>Random</English>
+			</Key>
+			<Key ID="STR_HALV_NEAR_GROUP">
+				<Original>Near Group</Original>
+				<English>Near Group</English>
+			</Key>
+			<Key ID="STR_HALV_NEAR_JAMMER">
+				<Original>Near Jammer</Original>
+				<English>Near Jammer</English>
+			</Key>
+			<Key ID="STR_HALV_SPAWNEDNEAR">
+				<Original>Dimension jump complete\nSubject: %2\nCurrent location: %1</Original>
+				<English>Dimension jump complete\nSubject: %2\nCurrent location: %1</English>  
+			</Key>
+			<Key ID="STR_HALV_DOUBLECLICKTOSPAWN">
+				<Original>Double Click To Spawn</Original>
+				<English>Double Click To Spawn</English>
+			</Key>
+			<Key ID="STR_HALV_DOUBLECLICKTOSPAWNJAM">
+				<Original>Double Click, to Spawn Near Jammer</Original>
+				<English>Double Click, to Spawn Near Jammer</English>
+			</Key>
+			<Key ID="STR_HALV_DOUBLECLICKTOSPAWNGROUP">
+				<Original>Double Click, to Spawn Near Group Leader.</Original>
+				<English>Double Click, to Spawn Near Group Leader.</English>
+			</Key>
+			<Key ID="STR_HALV_DOUBLECLICKFORRANSPAWN">
+				<Original>Double Click For Random Spawn</Original>
+				<English>Double Click For Random Spawn</English>
+			</Key>
+		</Container>
+	</Package>
+</Project>

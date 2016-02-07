@@ -1,3 +1,6 @@
+// Halv scripts http://epochmod.com/forum/index.php?/tags/forums/Halv/
+#include "halv_spawn\spawndialog.hpp"
+
 author = "Epoch Mod Team";
 class Header
 {
