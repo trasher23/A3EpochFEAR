@@ -12,7 +12,7 @@ Arma 3 1.54: http://arma3.com/
 <br/>
 Epoch 0.3.7.0: http://epochmod.com/
 <br/>
-Esseker 0.7.0.5 http://a3esseker.info/
+Esseker 0.7.3.1 http://a3esseker.info/
 <br/>
 Ryan's Zombies & Demons 3.6: http://www.armaholic.com/page.php?id=28958
 <br/>
