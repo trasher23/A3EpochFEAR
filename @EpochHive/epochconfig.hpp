@@ -107,7 +107,70 @@ allowedVehiclesList[] = {
 	
 	// Planes
 	{"B_Plane_CAS_01_F",2},
-	{"O_Plane_CAS_02_F",2}
+	{"O_Plane_CAS_02_F",2},
+	
+	/* MAS
+	----------------
+	*/
+	
+	// Tanks
+	{"I_mas_T72B_Early_AAF_01",2},
+	{"I_mas_T55_AAF_01",2},
+	{"I_mas_ZSU_AAF_01",2},
+	{"I_mas_T34_AAF_01",2},
+	{"O_mas_ZSU_OPF_01",2},
+	
+	// APC
+	{"I_mas_BMP1_AAF_01",2},
+	{"O_mas_BMP2_Ambul_01",2},
+	{"O_mas_BMP2_HQ_OPF_01",2},
+	
+	{"I_mas_BRDM2",2},
+	{"I_mas_BTR60",2},
+	{"O_mas_BRDM2",2},
+	{"O_mas_BTR60",2},
+	
+	// Humvee
+	{"B_mas_HMMWV_UNA",2},
+	{"B_mas_HMMWV_Stinger_des",2},
+	
+	// Ural
+	{"I_mas_cars_Ural_repair",2},
+	{"I_mas_cars_Ural_fuel",2},
+	{"O_mas_cars_Ural_repair",2},
+	{"O_mas_cars_Ural_fuel",2},
+	{"I_mas_cars_Ural_ammo",2},
+	
+	// Landrovers
+	{"B_mas_cars_LR_Unarmed",5},
+	{"B_mas_cars_LR_Med",5},
+	{"B_mas_cars_LR_M2",2},
+	{"B_mas_cars_LR_Mk19",2},
+	{"B_mas_cars_LR_TOW",2},
+	{"B_mas_cars_LR_Stinger",2},
+	{"B_mas_cars_LR_SPG9",2},
+	{"I_mas_cars_LR_soft_Unarmed",5},
+	{"I_mas_cars_LR_soft_Med",5},
+	{"I_mas_cars_LR_soft_M2",2},
+	{"I_mas_cars_LR_soft_Mk19",2},
+	{"I_mas_cars_LR_soft_TOW",2},
+	{"I_mas_cars_LR_soft_Stinger",2},
+	{"I_mas_cars_LR_soft_SPG9",2},
+	
+	// Helicopters
+	{"I_mas_MI8",2},
+	{"I_mas_MI8MTV",2},
+	{"O_mas_MI8",2},
+	{"O_mas_MI8MTV",2},
+	{"I_mas_MI24V",2},
+	{"O_mas_MI24V",2},
+	{"B_mas_CH_47F",2},
+	{"B_mas_UH1Y_F",2},
+	{"B_mas_UH1Y_UNA_F",2},
+	{"B_mas_UH1Y_MEV_F",2},
+	{"B_mas_UH60M",2},
+	{"B_mas_UH60M_SF",2},
+	{"B_mas_UH60M_MEV",2}
 };
 
 // Traders

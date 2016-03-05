@@ -150,7 +150,7 @@ _FEAR_clientLoop = {
 			
 			// Increase zombie spawn chance if in VEMF quarantine zone
 			if !([_posPlayer] call InQuarantineRange) then {
-				_spawnChance = 10;
+				_spawnChance = 15;
 			} else {
 				_spawnChance = 25; // Zombie infection!
 			};

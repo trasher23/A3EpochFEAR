@@ -13,7 +13,11 @@ _geararr = [
 			"hgun_P07_F",
 			"hgun_Pistol_heavy_01_F",
 			"hgun_Pistol_heavy_02_F",
-			"hgun_Rook40_F"
+			"hgun_Rook40_F",
+			"hgun_mas_mp7p_F",
+			"hgun_mas_p226_F_sd",
+			"hgun_mas_glock_F_sd",
+			"hgun_mas_m9_F_sd"
 		],
 		// Ammo
 		6
@@ -23,7 +27,15 @@ _geararr = [
 		// 1: Primary weapons
 		[
 			"SMG_01_F",
-			"Rollins_F"
+			"Rollins_F",
+			"arifle_mas_m16",
+			"arifle_mas_akms",
+			"srifle_mas_sr25_h",
+			"arifle_mas_m1014",
+			"arifle_mas_mp5",
+			"arifle_mas_m14",
+			"arifle_mas_lee_l",
+			"srifle_mas_ebr_sd"
 		],
 		// Ammo
 		4
@@ -94,12 +106,29 @@ _geararr = [
 	
 	[
 		// 8: Goggles
-		"G_Tactical_Clear","G_Shades_Black","G_Spectacles","G_Spectacles_Tinted","G_Lowprofile","G_Squares","G_Squares_Tinted","G_Tactical_Black"
+		"G_Tactical_Clear",
+		"G_Shades_Black",
+		"G_Spectacles",
+		"G_Spectacles_Tinted",
+		"G_Lowprofile",
+		"G_Squares",
+		"G_Squares_Tinted",
+		"G_Tactical_Black",
+		"G_mas_wpn_gasmask"
 	],
 	
 	[
 		// 9: Backpacks
-		"B_AssaultPack_cbr","B_AssaultPack_dgtl","B_AssaultPack_khk","B_AssaultPack_mcamo","B_AssaultPack_ocamo","B_AssaultPack_rgr","B_AssaultPack_sgg",
-		"smallbackpack_red_epoch","smallbackpack_green_epoch","smallbackpack_teal_epoch","smallbackpack_pink_epoch"
+		"B_AssaultPack_cbr",
+		"B_AssaultPack_dgtl",
+		"B_AssaultPack_khk",
+		"B_AssaultPack_mcamo",
+		"B_AssaultPack_ocamo",
+		"B_AssaultPack_rgr",
+		"B_AssaultPack_sgg",
+		"smallbackpack_red_epoch",
+		"smallbackpack_green_epoch",
+		"smallbackpack_teal_epoch",
+		"smallbackpack_pink_epoch"
 	]
 ];

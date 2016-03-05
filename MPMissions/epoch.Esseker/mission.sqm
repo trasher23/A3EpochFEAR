@@ -32,7 +32,23 @@ class Mission
 		"cup_buildings_config",
 		"cup_castructureshouse_housev",
 		"sar_ru_architecture",
-		"ryanzombies"
+		"ryanzombies",
+		"mas_uh60m",
+		"mas_ch47",
+		"mas_apc",
+		"mas_uh1y",
+		"mas_ural",
+		"mas_cars_lr",
+		"mas_vehicleweapons_core",
+		"mas_tanks",
+		"mas_brdm",
+		"mas_mi8",
+		"mas_mi24",
+		"mas_hmmwv",
+		"mas_weapons",
+		"mas_weapons_nw",
+		"mas_weapons_m4",
+		"mas_weapons_ak"
 	};
 	addOnsAuto[] = 
 	{
@@ -49,7 +65,23 @@ class Mission
 		"cup_buildings_config",
 		"cup_castructureshouse_housev",
 		"sar_ru_architecture",
-		"ryanzombies"
+		"ryanzombies",
+		"mas_uh60m",
+		"mas_ch47",
+		"mas_apc",
+		"mas_uh1y",
+		"mas_ural",
+		"mas_cars_lr",
+		"mas_vehicleweapons_core",
+		"mas_tanks",
+		"mas_brdm",
+		"mas_mi8",
+		"mas_mi24",
+		"mas_hmmwv",
+		"mas_weapons",
+		"mas_weapons_nw",
+		"mas_weapons_m4",
+		"mas_weapons_ak"
 	};
 	randomSeed = 7213714;
 	class Intel
@@ -2116,7 +2148,23 @@ class Intro
 		"cup_buildings_config",
 		"cup_castructureshouse_housev",
 		"sar_ru_architecture",
-		"ryanzombies"
+		"ryanzombies",
+		"mas_uh60m",
+		"mas_ch47",
+		"mas_apc",
+		"mas_uh1y",
+		"mas_ural",
+		"mas_cars_lr",
+		"mas_vehicleweapons_core",
+		"mas_tanks",
+		"mas_brdm",
+		"mas_mi8",
+		"mas_mi24",
+		"mas_hmmwv",
+		"mas_weapons",
+		"mas_weapons_nw",
+		"mas_weapons_m4",
+		"mas_weapons_ak"
 	};
 	addOnsAuto[] = 
 	{
@@ -2132,7 +2180,23 @@ class Intro
 		"cup_buildings_config",
 		"cup_castructureshouse_housev",
 		"sar_ru_architecture",
-		"ryanzombies"
+		"ryanzombies",
+		"mas_uh60m",
+		"mas_ch47",
+		"mas_apc",
+		"mas_uh1y",
+		"mas_ural",
+		"mas_cars_lr",
+		"mas_vehicleweapons_core",
+		"mas_tanks",
+		"mas_brdm",
+		"mas_mi8",
+		"mas_mi24",
+		"mas_hmmwv",
+		"mas_weapons",
+		"mas_weapons_nw",
+		"mas_weapons_m4",
+		"mas_weapons_ak"
 	};
 	randomSeed = 2993082;
 	class Intel
@@ -2169,7 +2233,23 @@ class OutroWin
 		"cup_buildings_config",
 		"cup_castructureshouse_housev",
 		"sar_ru_architecture",
-		"ryanzombies"
+		"ryanzombies",
+		"mas_uh60m",
+		"mas_ch47",
+		"mas_apc",
+		"mas_uh1y",
+		"mas_ural",
+		"mas_cars_lr",
+		"mas_vehicleweapons_core",
+		"mas_tanks",
+		"mas_brdm",
+		"mas_mi8",
+		"mas_mi24",
+		"mas_hmmwv",
+		"mas_weapons",
+		"mas_weapons_nw",
+		"mas_weapons_m4",
+		"mas_weapons_ak"
 	};
 	addOnsAuto[] = 
 	{
@@ -2185,7 +2265,23 @@ class OutroWin
 		"cup_buildings_config",
 		"cup_castructureshouse_housev",
 		"sar_ru_architecture",
-		"ryanzombies"
+		"ryanzombies",
+		"mas_uh60m",
+		"mas_ch47",
+		"mas_apc",
+		"mas_uh1y",
+		"mas_ural",
+		"mas_cars_lr",
+		"mas_vehicleweapons_core",
+		"mas_tanks",
+		"mas_brdm",
+		"mas_mi8",
+		"mas_mi24",
+		"mas_hmmwv",
+		"mas_weapons",
+		"mas_weapons_nw",
+		"mas_weapons_m4",
+		"mas_weapons_ak"
 	};
 	randomSeed = 9072554;
 	class Intel
@@ -2222,7 +2318,23 @@ class OutroLoose
 		"cup_buildings_config",
 		"cup_castructureshouse_housev",
 		"sar_ru_architecture",
-		"ryanzombies"
+		"ryanzombies",
+		"mas_uh60m",
+		"mas_ch47",
+		"mas_apc",
+		"mas_uh1y",
+		"mas_ural",
+		"mas_cars_lr",
+		"mas_vehicleweapons_core",
+		"mas_tanks",
+		"mas_brdm",
+		"mas_mi8",
+		"mas_mi24",
+		"mas_hmmwv",
+		"mas_weapons",
+		"mas_weapons_nw",
+		"mas_weapons_m4",
+		"mas_weapons_ak"
 	};
 	addOnsAuto[] = 
 	{
@@ -2238,7 +2350,23 @@ class OutroLoose
 		"cup_buildings_config",
 		"cup_castructureshouse_housev",
 		"sar_ru_architecture",
-		"ryanzombies"
+		"ryanzombies",
+		"mas_uh60m",
+		"mas_ch47",
+		"mas_apc",
+		"mas_uh1y",
+		"mas_ural",
+		"mas_cars_lr",
+		"mas_vehicleweapons_core",
+		"mas_tanks",
+		"mas_brdm",
+		"mas_mi8",
+		"mas_mi24",
+		"mas_hmmwv",
+		"mas_weapons",
+		"mas_weapons_nw",
+		"mas_weapons_m4",
+		"mas_weapons_ak"
 	};
 	randomSeed = 10033491;
 	class Intel
