@@ -68,10 +68,33 @@ _rifleList = _rifleList call _buildWeaponList;
 _machinegunList = _machinegunList call _buildWeaponList;
 _sniperList = _sniperList call _buildWeaponList;
 
-if !(_pistolList isEqualTo []) then {A3EAI_pistolList = _pistolList} else {diag_log "A3EAI Error: Could not dynamically generate Pistol weapon classname list. Classnames from A3EAI_config.sqf used instead."};
-if !(_rifleList isEqualTo []) then {A3EAI_rifleList = _rifleList} else {diag_log "A3EAI Error: Could not dynamically generate Rifle weapon classname list. Classnames from A3EAI_config.sqf used instead."};
-if !(_machinegunList isEqualTo []) then {A3EAI_machinegunList = _machinegunList} else {diag_log "A3EAI Error: Could not dynamically Machinegun weapon classname list. Classnames from A3EAI_config.sqf used instead."};
-if !(_sniperList isEqualTo []) then {A3EAI_sniperList = _sniperList} else {diag_log "A3EAI Error: Could not dynamically generate Sniper weapon classname list. Classnames from A3EAI_config.sqf used instead."};
+if !(_pistolList isEqualTo []) then {
+	A3EAI_pistolList = _pistolList; 
+	publicVariable "A3EAI_pistolList"; // Broadcast to clients
+} else {
+	diag_log "A3EAI Error: Could not dynamically generate Pistol weapon classname list. Classnames from A3EAI_config.sqf used instead.";
+};
+
+if !(_rifleList isEqualTo []) then {
+	A3EAI_rifleList = _rifleList; 
+	publicVariable "A3EAI_rifleList"; // Broadcast to clients
+} else {
+	diag_log "A3EAI Error: Could not dynamically generate Rifle weapon classname list. Classnames from A3EAI_config.sqf used instead.";
+};
+
+if !(_machinegunList isEqualTo []) then {
+	A3EAI_machinegunList = _machinegunList; 
+	publicVariable "A3EAI_machinegunList"; // Broadcast to clients
+} else {
+	diag_log "A3EAI Error: Could not dynamically Machinegun weapon classname list. Classnames from A3EAI_config.sqf used instead.";
+};
+
+if !(_sniperList isEqualTo []) then {
+	A3EAI_sniperList = _sniperList; 
+	publicVariable "A3EAI_sniperList"; // Broadcast to clients
+} else {
+	diag_log "A3EAI Error: Could not dynamically generate Sniper weapon classname list. Classnames from A3EAI_config.sqf used instead.";
+};
 
 if (A3EAI_debugLevel > 0) then {
 	if (A3EAI_debugLevel > 1) then {

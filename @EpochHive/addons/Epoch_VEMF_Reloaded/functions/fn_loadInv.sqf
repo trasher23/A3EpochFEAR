@@ -14,7 +14,7 @@
 */
 
 _ok = false;
-private ["_params","_units","_mode","_settings","_useLaunchers","_aiGear","_uniforms","_headGear","_vests","_backpacks","_launchers","_launcherChance","_rifles","_pistols"];
+private ["_params","_units","_mode","_useLaunchers","_aiGear","_launchers","_launcherChance"];
 _params = _this;
 if (typeName _this isEqualTo "ARRAY") then
 {
@@ -25,18 +25,19 @@ if (typeName _this isEqualTo "ARRAY") then
 		if not(_mode isEqualTo "") then
 		{
 			// Define settings
-			_aiGear = [["aiGear"],["aiUniforms","aiVests","aiBackpacks","aiLaunchers","aiRifles","aiPistols"]] call VEMFr_fnc_getSetting;
-			_uniforms = _aiGear select 0;
-			_vests = _aiGear select 1;
-			_backpacks = _aiGear select 2;
+			_aiGear = [["aiGear"],["aiLaunchers"]] call VEMFr_fnc_getSetting;
 			_useLaunchers = "useLaunchers" call VEMFr_fnc_getSetting;
 			if (_useLaunchers isEqualTo 1) then
 			{
-				_launchers = _aiGear select 3;
+				_launchers = _aiGear select 0;
 				_launcherChance = "launcherChance" call VEMFr_fnc_getSetting;
 			};
-			_rifles = _aiGear select 4;
-			_pistols = _aiGear select 5;
+			
+			_vests = A3EAI_vestTypes0;
+			_backpacks = A3EAI_backpackTypes0
+			_rifles = A3EAI_rifleList;
+			_pistols = A3EAI_pistolList;
+			
 			{
 				private ["_unit","_gear","_ammo"];
 				_unit = _x;
@@ -48,20 +49,22 @@ if (typeName _this isEqualTo "ARRAY") then
 				removeBackpack _unit;
 				removeGoggles _unit;
 				removeHeadGear _unit;
-
-				//_unit addGoggles "G_Balaclava_blk";
-				//_gear = _uniforms call VEMFr_fnc_random;
-				//_unit forceAddUniform _gear; // Give the poor naked guy some clothing :)
 				
 				// FEAR - Quarantine Equipment
 				_unit addGoggles "G_mas_wpn_gasmask";
 				_unit forceAddUniform "U_C_Scientist";
 				
-				_gear = _vests call VEMFr_fnc_random;
+				// Vest
+				_gear = A3EAI_vestTypes0 call VEMFr_fnc_random;
 				_unit addVest _gear;
-
-				_gear = _backpacks call VEMFr_fnc_random;
+				
+				// Backpack
+				_gear = A3EAI_backpackTypes0 call VEMFr_fnc_random;
 				_unit addBackpack _gear;
+				
+				// Add Weapons & Ammo
+				
+				// Launcher
 				if (_useLaunchers isEqualTo 1) then
 				{
 					if (random 1 < (_launcherChance/ 100*1)) then
@@ -80,12 +83,11 @@ if (typeName _this isEqualTo "ARRAY") then
 						};
 					};
 				};
-
-				// Add Weapons & Ammo
-				_gear = _rifles call VEMFr_fnc_random;
+				
+				// Primary
+				_gear = A3EAI_rifleList call VEMFr_fnc_random;
 				_unit addWeapon _gear;
 				_unit selectWeapon _gear;
-
 				_ammo = getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
 				if (count _ammo > 2) then
 				{
@@ -95,15 +97,18 @@ if (typeName _this isEqualTo "ARRAY") then
 				{
 					_unit addMagazine (_ammo select floor random count _ammo);
 				};
-
-				_gear = _pistols call VEMFr_fnc_random;
+				
+				// Secondary
+				_gear = A3EAI_pistolList call VEMFr_fnc_random;
 				_unit addWeapon _gear;
 				_ammo = getArray (configFile >> "cfgWeapons" >> _gear >> "magazines");
 				for "_i" from 0 to (2 + (round random 2)) do
 				{
 					_unit addMagazine (_ammo select floor random count _ammo);
 				};
+				
 			} forEach _units;
+			
 			_ok = true;
 		};
 	};

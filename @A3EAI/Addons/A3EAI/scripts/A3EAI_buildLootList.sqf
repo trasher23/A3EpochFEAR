@@ -39,6 +39,9 @@ if !(_items isEqualTo []) then {
 		_items = _items - A3EAI_dynamicLootBlacklist;
 	};
 	A3EAI_MiscLoot1 = _items;
+	
+	publicVariable "A3EAI_MiscLoot1"; // Broadcast to clients
+	
 	if (A3EAI_debugLevel > 0) then {diag_log format ["A3EAI Debug: Generated %1 generic loot classnames in %2 seconds.",(count _items),diag_tickTime - _startTime];
 		if (A3EAI_debugLevel > 1) then {
 			diag_log format ["A3EAI Debug: Contents of A3EAI_MiscLoot1: %1",A3EAI_MiscLoot1];

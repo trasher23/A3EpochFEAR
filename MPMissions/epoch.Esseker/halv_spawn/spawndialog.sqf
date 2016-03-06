@@ -172,7 +172,7 @@ Halv_spawn_player = {
 	_addedgear = [[],[],[],[],[],[],[],[],[],[]];
 	
 	// Backpacks
-	_item = (_geararr select 9) call BIS_fnc_selectRandom;
+	_item = A3EAI_backpackTypes0 call BIS_fnc_selectRandom;
 	player addbackpack _item;
 	(_addedgear select 9) pushBack ['random',_item];
 	
@@ -188,12 +188,12 @@ Halv_spawn_player = {
 	(_addedgear select 7) pushBack ['random',_item];
 	
 	// Vests
-	_item = (_geararr select 6) call BIS_fnc_selectRandom;
+	_item = A3EAI_vestTypes0 call BIS_fnc_selectRandom;
 	player addVest _item;
 	(_addedgear select 6) pushBack ['random',_item];
 
 	// Headgear
-	_item = (_geararr select 5) call BIS_fnc_selectRandom;
+	_item = A3EAI_headgearTypes0 call BIS_fnc_selectRandom;
 	player addheadgear _item;
 	(_addedgear select 5) pushBack ['random',_item];
 	
@@ -266,12 +266,14 @@ Halv_spawn_player = {
 	};
 
 	// Secondary weapons
-	_item = ((_geararr select 0) select 0) call BIS_fnc_selectRandom;
+	//_item = ((_geararr select 0) select 0) call BIS_fnc_selectRandom;
+	_item = A3EAI_pistolList call BIS_fnc_selectRandom;
 	_item call HALV_addiweaponwithammo;
 	(_addedgear select 0) pushBack ['random',_item];
 	
 	// Primary weapons
-	_item = ((_geararr select 1) select 0) call BIS_fnc_selectRandom;
+	//_item = ((_geararr select 1) select 0) call BIS_fnc_selectRandom;
+	_item = A3EAI_rifleList call BIS_fnc_selectRandom;
 	_item call HALV_addiweaponwithammo;
 	(_addedgear select 1) pushBack ['random',_item];
 	

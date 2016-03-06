@@ -39,6 +39,9 @@ if !(_items isEqualTo []) then {
 	A3EAI_backpackTypes1 = +_items;
 	A3EAI_backpackTypes2 = +_items;
 	A3EAI_backpackTypes3 = +_items;
+	
+	publicVariable "A3EAI_backpackTypes0"; // Broadcast to clients
+	
 	if (A3EAI_debugLevel > 0) then {
 		diag_log format ["A3EAI Debug: Generated %1 backpack classnames in %2 seconds.",(count _items),diag_tickTime - _startTime];
 		if (A3EAI_debugLevel > 1) then {

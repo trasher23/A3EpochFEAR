@@ -39,6 +39,9 @@ if !(_items isEqualTo []) then {
 	A3EAI_vestTypes1 = +_items;
 	A3EAI_vestTypes2 = +_items;
 	A3EAI_vestTypes3 = +_items;
+	
+	publicVariable "A3EAI_vestTypes0"; // Broadcast to clients
+	
 	if (A3EAI_debugLevel > 0) then {
 		diag_log format ["A3EAI Debug: Generated %1 vest classnames in %2 seconds.",(count _items),diag_tickTime - _startTime];
 		if (A3EAI_debugLevel > 1) then {

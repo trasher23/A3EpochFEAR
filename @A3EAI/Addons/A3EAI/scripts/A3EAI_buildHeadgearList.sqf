@@ -40,6 +40,9 @@ if !(_items isEqualTo []) then {
 	A3EAI_headgearTypes1 = +_items;
 	A3EAI_headgearTypes2 = +_items;
 	A3EAI_headgearTypes3 = +_items;
+	
+	publicVariable "A3EAI_headgearTypes0";
+	
 	if (A3EAI_debugLevel > 0) then {
 		diag_log format ["A3EAI Debug: Generated %1 headgear classnames in %2 seconds.",(count _items),diag_tickTime - _startTime];
 		if (A3EAI_debugLevel > 1) then {

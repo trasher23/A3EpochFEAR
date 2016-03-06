@@ -40,6 +40,9 @@ if !(_items isEqualTo []) then {
 		_items = _items - A3EAI_dynamicFoodBlacklist;
 	};
 	A3EAI_foodLoot = _items;
+	
+	publicVariable "A3EAI_foodLoot";
+	
 	if (A3EAI_debugLevel > 0) then {
 		diag_log format ["A3EAI Debug: Generated %1 food classnames in %2 seconds.",(count _items),diag_tickTime - _startTime];
 		if (A3EAI_debugLevel > 1) then {

@@ -1,41 +1,27 @@
 //Advanced Configuration File (For development purposes)
-//Do not edit unless you fully understand the consequences of the change.
-//Improper editing may stop A3EAI/A3XAI from functioning properly or at all.
-
 
 //Classnames 
 #define PARACHUTE_OBJECT "Steerable_Parachute_F"
-//#define RADIO_ITEM "ItemRadio" //A3XAI
-#define RADIO_ITEM "EpochRadio0" //A3EAI
-//#define PLAYER_UNITS "Exile_Unit_Player" //A3XAI
-#define PLAYER_UNITS "Epoch_Male_F","Epoch_Female_F" //A3EAI
-//#define LOOT_HOLDER_CLASS "GroundWeaponHolder" //A3XAI
-#define LOOT_HOLDER_CLASS "WH_Loot" //A3EAI
+#define RADIO_ITEM "EpochRadio0" 
+#define PLAYER_UNITS "Epoch_Male_F","Epoch_Female_F" 
+#define LOOT_HOLDER_CLASS "WH_Loot" 
 #define DEFAULT_UNIT_CLASSNAME "i_survivor_F"
 #define SPACE_FOR_OBJECT "Land_Coil_F"
-//#define PLOTPOLE_OBJECT "Exile_Construction_Flag_Static" //A3XAI
-#define PLOTPOLE_OBJECT "PlotPole_EPOCH" //A3EAI
+#define PLOTPOLE_OBJECT "PlotPole_EPOCH" 
 #define GRENADE_AMMO_3RND "3Rnd_HE_Grenade_shell"
 #define GRENADE_AMMO_1RND "1Rnd_HE_Grenade_shell"
 #define FIRST_AID_ITEM_AI "FirstAidKit"
-//#define FIRST_AID_ITEM_PLAYER "Exile_Item_InstaDoc" //A3XAI
-#define FIRST_AID_ITEM_PLAYER "FAK" //A3EAI
+#define FIRST_AID_ITEM_PLAYER "FAK" 
 #define NVG_ITEM_AI "NVGoggles"
-// #define NVG_ITEM_PLAYER "NVGoggles_OPFOR" //A3XAI
-#define NVG_ITEM_PLAYER "NVG_EPOCH" //A3EAI
-#define DEFAULT_UNIFORM_ITEM "U_Test1_uniform" //A3EAI
-#define DEFAULT_VEST_ITEM_MALE "V_41_EPOCH" //A3EAI
-#define DEFAULT_VEST_ITEM_FEMALE "V_F41_EPOCH" //A3EAI
-// #define BLACKLIST_OBJECT_GENERAL "A3XAI_BlacklistedArea" //A3XAI
-// #define BLACKLIST_OBJECT_NOAGGRO "A3XAI_NoAggroArea" //A3XAI
-// #define BLACKLIST_OBJECT_RANDOM "A3XAI_RandomSpawnArea" //A3XAI
-// #define BLACKLIST_OBJECT_DYNAMIC "A3XAI_DynamicSpawnArea" //A3XAI
-// #define TRIGGER_OBJECT "A3XAI_EmptyDetector" //A3XAI
-#define BLACKLIST_OBJECT_GENERAL "A3EAI_BlacklistedArea" //A3EAI
-#define BLACKLIST_OBJECT_NOAGGRO "A3EAI_NoAggroArea" //A3EAI
-#define BLACKLIST_OBJECT_RANDOM "A3EAI_RandomSpawnArea" //A3EAI
-#define BLACKLIST_OBJECT_DYNAMIC "A3EAI_DynamicSpawnArea" //A3EAI
-#define TRIGGER_OBJECT "A3EAI_EmptyDetector" //A3EAI
+#define NVG_ITEM_PLAYER "NVG_EPOCH" 
+#define DEFAULT_UNIFORM_ITEM "U_Test1_uniform" 
+#define DEFAULT_VEST_ITEM_MALE "V_41_EPOCH" 
+#define DEFAULT_VEST_ITEM_FEMALE "V_F41_EPOCH" 
+#define BLACKLIST_OBJECT_GENERAL "A3EAI_BlacklistedArea" 
+#define BLACKLIST_OBJECT_NOAGGRO "A3EAI_NoAggroArea" 
+#define BLACKLIST_OBJECT_RANDOM "A3EAI_RandomSpawnArea" 
+#define BLACKLIST_OBJECT_DYNAMIC "A3EAI_DynamicSpawnArea" 
+#define TRIGGER_OBJECT "A3EAI_EmptyDetector" 
 
 //Probabilities
 #define DYNAMIC_CHANCE_ADJUST_UNARMED -0.15
@@ -67,10 +53,8 @@
 #define PLAYER_DISTANCE_NO_LOS_RANDOM 200
 #define PLAYER_DISTANCE_WITH_LOS_RANDOM 400
 #define PLAYER_DISTANCE_WITH_LOS_ANTISTUCK 300
-//#define NO_AGGRO_AREA_SIZE 900 //A3XAI
-#define NO_AGGRO_AREA_SIZE 300 //A3EAI
-//#define BLACKLIST_AREA_SIZE 750 //A3XAI
-#define BLACKLIST_AREA_SIZE 750 //A3EAI
+#define NO_AGGRO_AREA_SIZE 300 
+#define BLACKLIST_AREA_SIZE 750 
 #define BLACKLIST_AREA_HC_SIZE 750
 #define TRIGGER_SIZE_SMALL 600
 #define TRIGGER_SIZE_NORMAL 650
@@ -152,14 +136,14 @@
 //Timing
 #define TIME_PER_RESPAWN_PROCESSING 5
 #define MONITOR_CLEANDEAD_FREQ 300
-#define MONITOR_VEHICLECLEANUP_FREQ 60 //A3EAI
+#define MONITOR_VEHICLECLEANUP_FREQ 60 
 #define MONITOR_LOCATIONCLEANUP_FREQ 360
 #define MONITOR_CHECK_RANDSPAWN_FREQ 360
 #define RANDSPAWN_EXPIRY_TIME 1080
 #define SIDECHECK_TIME 1200
 #define MONITOR_UPDATE_PLAYER_COUNT_FREQ 60
 #define DYNSPAWNMGR_SLEEP_DELAY 300
-#define KRYPTO_CLEANUP_FREQ 900 //A3EAI
+#define KRYPTO_CLEANUP_FREQ 900 
 #define SERVER_START_TIMEOUT 300
 #define TRIGGER_TIMEOUT_STATIC 3, 3, 3
 #define TRIGGER_TIMEOUT_PARAGROUP 3, 3, 3
@@ -174,11 +158,8 @@
 #define ANTISTUCK_CHECK_TIME_LAND 120
 
 //Other definitions
-//#define PLAYER_GROUP_SIDE resistance //A3XAI
-#define PLAYER_GROUP_SIDE1 west //A3EAI
-#define PLAYER_GROUP_SIDE2 east //A3EAI
-#define AI_GROUP_SIDE resistance //A3EAI
+#define PLAYER_GROUP_SIDE1 west 
+#define PLAYER_GROUP_SIDE2 east 
+#define AI_GROUP_SIDE resistance 
 #define AI_VEHICLEWEAPON_EXPLOSIVERATING_LIMIT 0.9
-//#define EXTERNAL_OBJECT_MONITOR_NAME "ExileSimulationMonitoredVehicles" //A3XAI
-//#define SERVER_STARTED_INDICATOR "PublicHiveIsLoaded" //A3XAI
-#define SERVER_STARTED_INDICATOR "EPOCH_BuildingSlotCount" //A3EAI
+#define SERVER_STARTED_INDICATOR "EPOCH_BuildingSlotCount" 

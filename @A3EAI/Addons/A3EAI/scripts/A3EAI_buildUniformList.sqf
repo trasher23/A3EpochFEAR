@@ -48,6 +48,9 @@ if !(_items isEqualTo []) then {
 	A3EAI_uniformTypes1 = +_items;
 	A3EAI_uniformTypes2 = +_items;
 	A3EAI_uniformTypes3 = +_items;
+	
+	publicVariable "A3EAI_uniformTypes0"; // Broadcast to clients
+	
 	if (A3EAI_debugLevel > 0) then {
 		diag_log format ["A3EAI Debug: Generated %1 uniform classnames in %2 seconds.",(count _items),diag_tickTime - _startTime];
 		if (A3EAI_debugLevel > 1) then {

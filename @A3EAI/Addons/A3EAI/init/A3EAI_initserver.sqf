@@ -10,8 +10,6 @@ if (hasInterface || !isDedicated ||!isNil "A3EAI_isActive") exitWith {};
 
 _startTime = diag_tickTime;
 
-A3EAI_isActive = true;
-
 private ["_startTime","_worldname","_allUnits","_configCheck","_functionsCheck","_readOverrideFile","_reportDirectoryName","_configVersion","_coreVersion","_compatibleVersions"];
 
 A3EAI_directory = "A3EAI"; //PREFIX
@@ -110,3 +108,4 @@ if ((PLAYER_GROUP_SIDE1 getFriend AI_GROUP_SIDE) > 0) then {PLAYER_GROUP_SIDE1 s
 diag_log format ["[A3EAI] A3EAI settings: Debug Level: %1. WorldName: %2. VerifyClassnames: %3. VerifySettings: %4.",A3EAI_debugLevel,_worldname,A3EAI_verifyClassnames,A3EAI_verifySettings];
 diag_log format ["[A3EAI] AI spawn settings: Static: %1. Dynamic: %2. Random: %3. Air: %4. Land: %5. UAV: %6. UGV: %7.",A3EAI_enableStaticSpawns,!(A3EAI_maxDynamicSpawns isEqualTo 0),!(A3EAI_maxRandomSpawns isEqualTo 0),!(A3EAI_maxAirPatrols isEqualTo 0),!(A3EAI_maxLandPatrols isEqualTo 0),!(A3EAI_maxUAVPatrols isEqualTo 0),!(A3EAI_maxUGVPatrols isEqualTo 0)];
 diag_log format ["[A3EAI] A3EAI loading completed in %1 seconds.",(diag_tickTime - _startTime)];
+A3EAI_isActive = true;
