@@ -135,7 +135,6 @@ class CfgFunctions
 			class placeMines {};
 			class waitForPlayers {};
 			class waitForMissionDone {};
-			class checkLoot {};
 			class missionTimer {};
 			class launch { postInit = 1; };
 			class REMOTEguard { postInit = 1; };
