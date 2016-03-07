@@ -14,7 +14,9 @@
 */
 
 _ok = false;
-private ["_params","_units","_mode","_useLaunchers","_aiGear","_launchers","_launcherChance"];
+private [
+	"_params","_units","_mode","_useLaunchers","_aiGear","_launchers","_launcherChance"
+];
 _params = _this;
 if (typeName _this isEqualTo "ARRAY") then
 {
@@ -32,11 +34,6 @@ if (typeName _this isEqualTo "ARRAY") then
 				_launchers = _aiGear select 0;
 				_launcherChance = "launcherChance" call VEMFr_fnc_getSetting;
 			};
-			
-			_vests = A3EAI_vestTypes0;
-			_backpacks = A3EAI_backpackTypes0
-			_rifles = A3EAI_rifleList;
-			_pistols = A3EAI_pistolList;
 			
 			{
 				private ["_unit","_gear","_ammo"];
@@ -113,5 +110,4 @@ if (typeName _this isEqualTo "ARRAY") then
 		};
 	};
 };
-
 _ok

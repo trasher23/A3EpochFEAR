@@ -40,7 +40,7 @@ class FSM
                          "" \n
                          "{" \n
                          "	_dog disableAI _x;" \n
-                         "} forEach [""TARGET"",""AUTOTARGET"",""FSM""];" \n
+                         "} forEach [""TARGET"",""AUTOTARGET"",""FSM"",""ANIM""];" \n
                          "_dog setBehaviour ""CARELESS"";" \n
                          "_dog setCombatMode ""RED"";" \n
                          "_dog setSkill 0; " \n

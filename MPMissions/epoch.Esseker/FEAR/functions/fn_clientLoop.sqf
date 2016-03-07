@@ -132,7 +132,7 @@ _FEAR_clientLoop = {
 				if (isNull (objectParent player)) then {
 					if (player distance _rspawnw > 500) then {
 						// 40% chance
-						if (40 > random 100) then {
+						if (45 > random 100) then {
 							// Spawn exploding barrel at position
 							[_pos] spawn FEARspawnExplodingBarrel;
 							_pos = nil;

@@ -177,10 +177,10 @@ class CfgA3EAISettings {
 	removeExplosiveAmmo = 1;
 	
 	//if enabled, AI units suffer no damage from vehicle collisions. (Default: 1)
-	noCollisionDamage = 1;
+	noCollisionDamage = 0;
 	
 	//If enabled, AI killed by vehicle collisions will have their gear removed (Default: 1)
-	roadKillPenalty = 1;
+	roadKillPenalty = 0;
 	
 		
 	/*	Static Infantry AI Spawning Settings
@@ -190,7 +190,7 @@ class CfgA3EAISettings {
 	
 	//Enable or disable static AI spawns. If enabled, AI spawn points will be generated in cities, towns, and other named areas.
 	//Enabled: A3EAI automatically generates static spawns at named locations on map. Disabled: No static spawns will be generated. (Default: 1)
-	enableStaticSpawns = 1;
+	enableStaticSpawns = 2;
 	
 	//Set minimum and maximum wait time (seconds) to respawn an AI group after all units have been killed. Applies to both static AI and custom spawned AI (Default: Min 300, Max 600).									
 	respawnTimeMin = 300;
@@ -216,7 +216,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/		
 	
 	//Upper limit of dynamic spawns on map at once. Set to 0 to disable dynamic spawns (Default: 15)
-	maxDynamicSpawns = 5;
+	maxDynamicSpawns = 6;
 	
 	//Minimum time (in seconds) that must pass between dynamic spawns for each player (Default: 900)
 	timePerDynamicSpawn = 900;
@@ -225,7 +225,7 @@ class CfgA3EAISettings {
 	purgeLastDynamicSpawnTime = 3600;
 	
 	//Probability for dynamic AI to actively hunt a targeted player. If probability check fails, dynamic AI will patrol the area instead of hunting (Default: 0.60)
-	spawnHunterChance = 0.60;
+	spawnHunterChance = 0.70;
 	
 	//Time to wait (seconds) before despawning all AI units in dynamic spawn area when no players are present. (Default: 120)
 	despawnDynamicSpawnTime = 120;
@@ -266,7 +266,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/		
 
 	//Global maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-	maxAirPatrols = 1;
+	maxAirPatrols = 2;
 	
 	//Probability of spawning Level 0/1/2/3 AI air vehicle patrol spawns. Probabilities should add up to 1.00		
 	levelChancesAir[] = {0.00,0.50,0.35,0.15};
@@ -288,7 +288,7 @@ class CfgA3EAISettings {
 	
 	//Probability of AI helicopter sucessfully detecting player if there is line-of-sight. AI helicopters will conduct a visual sweep upon arriving at each waypoint and some distance after leaving. (Default: 0.80)
 	//Affects: All AI air vehicle patrols, including custom and reinforcement.
-	airDetectChance = 0.80;
+	airDetectChance = 0.70;
 	
 	//Probability of AI to deploy infantry units by parachute if players are nearby when helicopter is investigating a waypoint. (Default: 0.50)
 	//Affects: Air vehicle patrols.
@@ -312,7 +312,7 @@ class CfgA3EAISettings {
 
 	
 	//Global maximum number of active AI land vehicle patrols. Set at 0 to disable (Default: 0).	
-	maxLandPatrols = 5;
+	maxLandPatrols = 6;
 	
 	//Probability of spawning Level 0/1/2/3 AI land vehicle spawns. Probabilities should add up to 1.00		
 	levelChancesLand[] = {0.00,0.50,0.35,0.15};
@@ -357,7 +357,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Maximum allowed number of simultaneous active reinforcements (Default: 5)
-	maxAirReinforcements = 2;
+	maxAirReinforcements = 3;
 	
 	//Air vehicles to use as reinforcement vehicles. Default: {"B_Heli_Transport_01_F","B_Heli_Light_01_armed_F"}
 	//Armed air vehicles will detect and engage players within reinforcement area. Unarmed air vehicles will deploy an AI paradrop group.
@@ -392,7 +392,7 @@ class CfgA3EAISettings {
 	--------------------------------------------------------------------------------------------------------------------*/
 
 	//Global maximum number of active UAV patrols. Set at 0 to disable (Default: 0).	
-	maxUAVPatrols = 1;
+	maxUAVPatrols = 2;
 	
 	//Classnames of UAV types to use, with the maximum amount of each type to spawn.
 	UAVList[] = {

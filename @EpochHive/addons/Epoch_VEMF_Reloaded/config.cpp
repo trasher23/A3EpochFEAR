@@ -10,14 +10,13 @@ class CfgVemfReloaded
 	// Global settings
 	allowHeadLessClient = -1; // HC support is currently broken // Set to 1 if you have (a) headless client(s) | -1 = DISABLED
 	minServerFPS = 20; // Missions will not spawn if server's FPS is below this number
-	validateLoot = 1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
 	minPlayers = 1; // Missions will not start until player count reaches this number OR when player count goes below this amount
-	maxGlobalMissions = 10; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
+	maxGlobalMissions = 5; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
  	timeOutTime = 20; // In minutes. Use -1 to disable mission timeout; Minimal: 5
 	minNew = 5; // Minimum time before new mission can run
 	maxNew = 15; // Maximum time before new mission can run
 	missionList[] = {"MilitiaInvasions"}; // Speaks for itself, right?
-	missionDistance = 3000; // Minimum distance between missions
+	missionDistance = 1500; // Minimum distance between missions
 	addons[] = {}; // Not used for now
 	noMissionPos[] = {{{18452.8,14279.5,0.00128174},500}}; // Format: {{position},radius} | Default: Altis East spawn
 	locationBlackList[] = {"Sagonisi","Monisi","Fournos","Savri","Atsalis","Polemista","Cap Makrinos","Pyrgi","Makrynisi","Chelonisi","Almyra","Surf Club"};

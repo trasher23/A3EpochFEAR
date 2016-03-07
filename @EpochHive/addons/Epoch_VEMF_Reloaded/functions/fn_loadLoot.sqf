@@ -14,7 +14,7 @@ private
 	"_crate","_maxSlots","_minSlots","_ammo","_ammos",
 	"_rifle","_rifles","_pistol","_pistols","_machinegun","_machineguns","_sniper","_snipers",
 	"_attachment","_attachments","_item","_items","_backpack","_backpacks",
-	"_vest","_vests","_headGear","_headGearItem","_ok"
+	"_headGear","_headGearItem","_vest","_vests","_ok"
 ];
 
 _ok = false;
@@ -28,7 +28,7 @@ if not isNull _crate then
 	clearItemCargoGlobal _crate;
 	clearBackpackCargoGlobal  _crate;
 	
-	_maxSlots = 5;
+	_maxSlots = 3;
 	_minSlots = 1;
 	
 	_rifles = A3EAI_rifleList;
@@ -38,11 +38,8 @@ if not isNull _crate then
 	_attachments = A3EAI_weaponOpticsList;
 	_items = A3EAI_MiscLoot1;
 	_backpacks = A3EAI_backpackTypes0;
-	
-	/*
-	_vests = _settings select 8;
-	_headGear = _settings select 10;
-	*/
+	_headGear = A3EAI_headgearTypes0;
+	_vests = A3EAI_vestTypes0;
 
 	// Add rifles
 	for "_j" from 0 to (_maxSlots - _minSlots + floor random _minSlots) do {
@@ -134,29 +131,17 @@ if not isNull _crate then
 		_crate addBackpackCargoGlobal [_backpack, 1];
 	};
 	
-	/*
+	// Helmets / caps / berets / bandanas
+	for "_j" from 0 to (_maxSlots - _minSlots + floor random _minSlots) do {
+		_headGearItem = _headGear call BIS_fnc_selectRandom;
+		_crate addItemCargoGlobal [_headGearItem, 1];
+	};
 	
 	// Vests
-	for "_j" from 0 to (maxSlots - _minSlots + floor random _minSlots) do
-	{
+	for "_j" from 0 to (_maxSlots - _minSlots + floor random _minSlots) do {
 		_vest = _vests call BIS_fnc_selectRandom;
-		if not((_vest select 0) in _blackList) then
-		{
-			_crate addItemCargoGlobal [_vest select 0, _vest select 1];
-		};
+		_crate addItemCargoGlobal [_vest, 1];
 	};
-
-	// Helmets / caps / berets / bandanas
-	for "_j" from 0 to (maxSlots - _minSlots + floor random _minSlots) do
-	{
-		_headGearItem = _headGear call BIS_fnc_selectRandom;
-		if not((_headGearItem select 0) in _blackList) then
-		{
-			_crate addItemCargoGlobal [_headGearItem select 0, _headGearItem select 1];
-		};
-	};
-
-	*/
 	
 	_ok = true;
 };

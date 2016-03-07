@@ -267,7 +267,7 @@ if ("" in A3EAI_backpackTypes2) then {A3EAI_backpackTypes2 = A3EAI_backpackTypes
 if ("" in A3EAI_backpackTypes3) then {A3EAI_backpackTypes3 = A3EAI_backpackTypes3 - [""];};
 
 {
-	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitBody") then {
+	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Body","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitBody") then {
 		diag_log format ["[A3EAI] Removing invalid vest classname from A3EAI_vestTypes0 array: %1.",_x];
 		A3EAI_vestTypes0 set [_forEachIndex,""];
 	};
@@ -275,7 +275,7 @@ if ("" in A3EAI_backpackTypes3) then {A3EAI_backpackTypes3 = A3EAI_backpackTypes
 if ("" in A3EAI_vestTypes0) then {A3EAI_vestTypes0 = A3EAI_vestTypes0 - [""];};
 
 {
-	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitBody") then {
+	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Body","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitBody") then {
 		diag_log format ["[A3EAI] Removing invalid vest classname from A3EAI_vestTypes1 array: %1.",_x];
 		A3EAI_vestTypes1 set [_forEachIndex,""];
 	};
@@ -283,7 +283,7 @@ if ("" in A3EAI_vestTypes0) then {A3EAI_vestTypes0 = A3EAI_vestTypes0 - [""];};
 if ("" in A3EAI_vestTypes1) then {A3EAI_vestTypes1 = A3EAI_vestTypes1 - [""];};
 
 {
-	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitBody") then {
+	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Body","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitBody") then {
 		diag_log format ["[A3EAI] Removing invalid vest classname from A3EAI_vestTypes2 array: %1.",_x];
 		A3EAI_vestTypes2 set [_forEachIndex,""];
 	};
@@ -291,7 +291,7 @@ if ("" in A3EAI_vestTypes1) then {A3EAI_vestTypes1 = A3EAI_vestTypes1 - [""];};
 if ("" in A3EAI_vestTypes2) then {A3EAI_vestTypes2 = A3EAI_vestTypes2 - [""];};
 
 {
-	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitBody") then {
+	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Body","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitBody") then {
 		diag_log format ["[A3EAI] Removing invalid vest classname from A3EAI_vestTypes3 array: %1.",_x];
 		A3EAI_vestTypes3 set [_forEachIndex,""];
 	};
@@ -299,7 +299,7 @@ if ("" in A3EAI_vestTypes2) then {A3EAI_vestTypes2 = A3EAI_vestTypes2 - [""];};
 if ("" in A3EAI_vestTypes3) then {A3EAI_vestTypes3 = A3EAI_vestTypes3 - [""];};
 
 {
-	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitHead") then {
+	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Head","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitHead") then {
 		diag_log format ["[A3EAI] Removing invalid headgear classname from A3EAI_headgearTypes0 array: %1.",_x];
 		A3EAI_headgearTypes0 set [_forEachIndex,""];
 	};
@@ -307,7 +307,7 @@ if ("" in A3EAI_vestTypes3) then {A3EAI_vestTypes3 = A3EAI_vestTypes3 - [""];};
 if ("" in A3EAI_headgearTypes0) then {A3EAI_headgearTypes0 = A3EAI_headgearTypes0 - [""];};
 
 {
-	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitHead") then {
+	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Head","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitHead") then {
 		diag_log format ["[A3EAI] Removing invalid headgear classname from A3EAI_headgearTypes1 array: %1.",_x];
 		A3EAI_headgearTypes1 set [_forEachIndex,""];
 	};
@@ -315,7 +315,7 @@ if ("" in A3EAI_headgearTypes0) then {A3EAI_headgearTypes0 = A3EAI_headgearTypes
 if ("" in A3EAI_headgearTypes1) then {A3EAI_headgearTypes1 = A3EAI_headgearTypes1 - [""];};
 
 {
-	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitHead") then {
+	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Head","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitHead") then {
 		diag_log format ["[CfgWeapons] Removing invalid headgear classname from A3EAI_headgearTypes2 array: %1.",_x];
 		A3EAI_headgearTypes2 set [_forEachIndex,""];
 	};
@@ -323,7 +323,7 @@ if ("" in A3EAI_headgearTypes1) then {A3EAI_headgearTypes1 = A3EAI_headgearTypes
 if ("" in A3EAI_headgearTypes2) then {A3EAI_headgearTypes2 = A3EAI_headgearTypes2 - [""];};
 
 {
-	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitHead") then {
+	if !(([configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Head","hitpointName",""] call BIS_fnc_returnConfigEntry) isEqualTo "HitHead") then {
 		diag_log format ["[A3EAI] Removing invalid headgear classname from A3EAI_headgearTypes3 array: %1.",_x];
 		A3EAI_headgearTypes3 set [_forEachIndex,""];
 	};

@@ -2,7 +2,7 @@ private ["_message"];
 
 _message = _this;
 if ((typeName _message) isEqualTo "STRING") then {
-	systemChat _message;
+	systemChat format ["%1 was killed",_message];
 } else {
 	diag_log format ["A3EAI Error: Kill message is non-string %1",_message];
 };
