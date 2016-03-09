@@ -1,5 +1,5 @@
 /*
-	FEAR_ambient_fx.sqf
+	fn_ambientFx.sqf
 */
 
 GetSoundFx = {

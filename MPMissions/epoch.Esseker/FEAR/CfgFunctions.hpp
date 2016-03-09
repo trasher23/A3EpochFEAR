@@ -13,6 +13,7 @@ class FEAR
 		class nukeAsh {};
 		class incomingMissile {};
 		class ambientFx { postInit = 1; };
+		class lightningStrike { postInit = 1; };
 		class statusBar { postInit = 1; };
 		class clientLoop { postInit = 1; };
 		class earPlugs { postInit = 1; };

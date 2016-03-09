@@ -131,7 +131,7 @@ _FEAR_clientLoop = {
 			If (!isNil "_pos") then {
 				if (isNull (objectParent player)) then {
 					if (player distance _rspawnw > 500) then {
-						// 40% chance
+						// 45% chance
 						if (45 > random 100) then {
 							// Spawn exploding barrel at position
 							[_pos] spawn FEARspawnExplodingBarrel;
@@ -152,7 +152,7 @@ _FEAR_clientLoop = {
 			if !([_posPlayer] call InQuarantineRange) then {
 				_spawnChance = 15;
 			} else {
-				_spawnChance = 25; // Zombie infection!
+				_spawnChance = 30; // Zombie infection!
 			};
 			
 			//[format["spawn chance: %1",_spawnChance]] call FEARserverLog;
