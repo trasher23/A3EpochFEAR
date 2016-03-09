@@ -21,6 +21,16 @@ InQuarantineRange = {
 	_ret
 };
 
+InCrateRange = {
+	private["_crateTypes","_crate","_ret"];
+	_ret = false;
+	// Quaranteen loot crate types
+	_crateTypes = ["I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F","I_supplyCrate_F","Box_East_AmmoVeh_F","Box_NATO_AmmoVeh_F"];
+	_crate = nearestObjects[(_this select 0),_crateTypes,50];
+	if !(_crate isEqualTo[]) then {_ret = true};
+	_ret
+};
+
 UrbanLootBubble = {
 	private["_buildings","_pos","_others","_result","_travelDir","_lootDist","_xPos","_yPos","_lootLoc","_playerPos","_distanceTraveled","_ret"];
 	
@@ -152,7 +162,13 @@ _FEAR_clientLoop = {
 			if !([_posPlayer] call InQuarantineRange) then {
 				_spawnChance = 15;
 			} else {
-				_spawnChance = 30; // Zombie infection!
+				
+				if ([_posPlayer] call InCrateRange) then {
+					_spawnChance = 75; // Near loot crate, spawn chance: 75%!
+				} else {
+					_spawnChance = 30; // Zombie infection!
+				};
+				
 			};
 			
 			//[format["spawn chance: %1",_spawnChance]] call FEARserverLog;
